@@ -15,7 +15,7 @@ import byui.cit260.adrift.model.Player;
 public class Adrift {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments i
      */
     public static void main(String[] args) {
         Player playerOne = new Player();
