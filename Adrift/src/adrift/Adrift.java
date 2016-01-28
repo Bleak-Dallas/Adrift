@@ -13,11 +13,9 @@ import byui.cit260.adrift.model.Player;
  * @author Joel
  */
 public class Adrift {
-
-    /**
-     * @param args the command line arguments i
-     */
-    public static void main(String[] args) {
+    
+    //Test methods for the team and individual code.
+    public static void teamTest() {
         Player playerOne = new Player();
         Game newGame = new Game();
                 
@@ -31,9 +29,33 @@ public class Adrift {
         
         String actorInfo = newGame.toString();
         String distanceInfo = newGame.toString();
-        System.out.println(newGame);      
-         
+        System.out.println(newGame); 
+        }
+    
+    public static void joelTest() {
         
+    }
+    
+    public static void johnTest() {
+        
+    }
+    
+    public static void dallasTest() {
+        
+    }
+
+    /**
+     * @param args the command line arguments i
+     */
+    public static void main(String[] args) {
+  
+        /* Uncomment only the method that you are testing.
+         * Keep all other methods commented out.
+         */
+         teamTest();
+         //joelTest();
+         //johnTest();
+         //dallasTest();
         
     }
     
