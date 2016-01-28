@@ -5,6 +5,7 @@
  */
 package adrift;
 
+import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Player;
@@ -45,7 +46,8 @@ public class Adrift {
     public static void dallasTest() {
         InventoryItem inventory = new InventoryItem();
         Tools tool = new Tools();
-                
+        Buggy startBuggy = new Buggy();
+                    
         inventory.setInventoryType("Drill");
         inventory.setQuantityInStock(1);
         inventory.setAmountRemaining(1);
@@ -59,8 +61,17 @@ public class Adrift {
         
         String toolInfo = tool.toString();
         System.out.println(toolInfo);
-
         
+        startBuggy.setFuelCapacity(25);
+        startBuggy.setFuelLevel(20);
+        startBuggy.setStartLocation("A2");
+        startBuggy.setLocation("B1");
+        startBuggy.setMaxWeight(200);
+        startBuggy.setLoadedWeight(126);
+        
+        String buggyInfo = startBuggy.toString();
+        System.out.println(buggyInfo);
+
     }
 
     /**
