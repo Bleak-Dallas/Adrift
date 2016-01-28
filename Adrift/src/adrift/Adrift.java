@@ -9,6 +9,7 @@ import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Player;
+import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
 
 /**
@@ -47,6 +48,7 @@ public class Adrift {
         InventoryItem inventory = new InventoryItem();
         Tools tool = new Tools();
         Buggy startBuggy = new Buggy();
+        ResourceSceneType resource = new ResourceSceneType();
                     
         inventory.setInventoryType("Drill");
         inventory.setQuantityInStock(1);
@@ -56,7 +58,7 @@ public class Adrift {
         System.out.println(inventoryInfo);
         
         tool.setDescriptionOfTool("Used to mine ore");
-        tool.setRequiredResources("Metal");
+        tool.setRequiredResources("Iron");
         tool.setMiningValue(1.2);
         
         String toolInfo = tool.toString();
@@ -71,7 +73,16 @@ public class Adrift {
         
         String buggyInfo = startBuggy.toString();
         System.out.println(buggyInfo);
-
+        
+        resource.setResourceDescription("Used for making drills, shovels, and hammers.");
+        resource.setDistanceTraveled(100);
+        resource.setBlocked(true);
+        resource.setSymbol('I');
+        resource.setAmountAvailable(2);
+        resource.setResourceType("Iron Ore");
+        
+        String resourceInfo = resource.toString();
+        System.out.println(resourceInfo);
     }
 
     /**
@@ -82,10 +93,10 @@ public class Adrift {
         /* Uncomment only the method that you are testing.
          * Keep all other methods commented out.
          */
-         //teamTest();
+         teamTest();
          //joelTest();
          //johnTest();
-         dallasTest();
+         //dallasTest();
         
     }
     
