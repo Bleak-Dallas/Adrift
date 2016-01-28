@@ -6,6 +6,7 @@
 package adrift;
 
 import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Player;
 
 /**
@@ -41,6 +42,15 @@ public class Adrift {
     }
     
     public static void dallasTest() {
+        InventoryItem inventory = new InventoryItem();
+                
+        inventory.setInventoryType("Drill");
+        inventory.setQuantityInStock(1);
+        inventory.setAmountRemaining(1);
+        
+        String inventoryInfo = inventory.toString();
+        System.out.println(inventory);
+
         
     }
 
@@ -52,10 +62,10 @@ public class Adrift {
         /* Uncomment only the method that you are testing.
          * Keep all other methods commented out.
          */
-         teamTest();
+         //teamTest();
          //joelTest();
          //johnTest();
-         //dallasTest();
+         dallasTest();
         
     }
     
