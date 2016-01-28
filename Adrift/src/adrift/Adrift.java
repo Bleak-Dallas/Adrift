@@ -8,6 +8,7 @@ package adrift;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Player;
+import byui.cit260.adrift.model.Tools;
 
 /**
  *
@@ -43,13 +44,21 @@ public class Adrift {
     
     public static void dallasTest() {
         InventoryItem inventory = new InventoryItem();
+        Tools tool = new Tools();
                 
         inventory.setInventoryType("Drill");
         inventory.setQuantityInStock(1);
         inventory.setAmountRemaining(1);
         
         String inventoryInfo = inventory.toString();
-        System.out.println(inventory);
+        System.out.println(inventoryInfo);
+        
+        tool.setDescriptionOfTool("Used to mine ore");
+        tool.setRequiredResources("Metal");
+        tool.setMiningValue(1.2);
+        
+        String toolInfo = tool.toString();
+        System.out.println(toolInfo);
 
         
     }
