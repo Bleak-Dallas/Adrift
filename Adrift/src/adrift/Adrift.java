@@ -93,10 +93,10 @@ public class Adrift {
         /* Uncomment only the method that you are testing.
          * Keep all other methods commented out.
          */
-         teamTest();
+         //teamTest();
          //joelTest();
          //johnTest();
-         //dallasTest();
+         dallasTest();
         
     }
     
