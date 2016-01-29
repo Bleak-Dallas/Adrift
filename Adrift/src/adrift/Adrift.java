@@ -35,9 +35,8 @@ public class Adrift {
         newGame.setNoOfActors(3);
         newGame.setTotalDistanceTraveled(3000);
         
-        String actorInfo = newGame.toString();
-        String distanceInfo = newGame.toString();
-        System.out.println(newGame); 
+        String gameInfo = newGame.toString();
+        System.out.println(gameInfo); 
         }
     
     public static void joelTest() {
