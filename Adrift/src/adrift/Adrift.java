@@ -5,16 +5,18 @@
  */
 package adrift;
 
-import byui.cit260.adrift.model.Actor;
+
 import byui.cit260.adrift.model.Buggy;
-import byui.cit260.adrift.model.FacilitySceneType;
+
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
-import byui.cit260.adrift.model.Location;
-import byui.cit260.adrift.model.Map;
+
+
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
+import byui.cit260.adrift.model.Ship;
+import java.text.NumberFormat;
 
 /**
  *
@@ -40,17 +42,27 @@ public class Adrift {
         }
     
     public static void joelTest() {
+        Ship ship = new Ship();
+        
+        ship.setDamageLevel(.70);
+        ship.setFuelCapacity(100);
+        ship.setFuelLevel(.12);
+        
+        NumberFormat defaultFormat = NumberFormat.getPercentInstance();
+	defaultFormat.setMinimumFractionDigits(1);
+	System.out.println("Damage Level: " + defaultFormat.format(ship.getDamageLevel()));
+        System.out.println("Fuel Level: " + defaultFormat.format(ship.getFuelLevel()));
         
     }
     
-    public static void johnTest() {
+  public static void johnTest() {
         //testing push and pull to see if it worked
         FacilitySceneType resource = new FacilitySceneType ();
         Location area = new Location ();
         Map tool  = new Map();
         Actor player = new Actor ();
     }
-    
+       
     public static void dallasTest() {
         InventoryItem inventory = new InventoryItem();
         Tools tool = new Tools();
@@ -101,9 +113,9 @@ public class Adrift {
          * Keep all other methods commented out.
          */
          //teamTest();
-         //joelTest();
+         joelTest();
          //johnTest();
-         dallasTest();
+         //dallasTest();
         
     }
     
