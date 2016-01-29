@@ -41,7 +41,7 @@ public class Adrift {
     }
     
     public static void johnTest() {
-        //testing push and pull
+        //testing push and pull to see if it worked
     }
     
     public static void dallasTest() {
