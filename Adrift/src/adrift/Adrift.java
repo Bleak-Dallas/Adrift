@@ -5,9 +5,13 @@
  */
 package adrift;
 
+import byui.cit260.adrift.model.Actor;
 import byui.cit260.adrift.model.Buggy;
+import byui.cit260.adrift.model.FacilitySceneType;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
+import byui.cit260.adrift.model.Location;
+import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
@@ -42,6 +46,10 @@ public class Adrift {
     
     public static void johnTest() {
         //testing push and pull to see if it worked
+        FacilitySceneType resource = new FacilitySceneType ();
+        Location area = new Location ();
+        Map tool  = new Map();
+        Actor player = new Actor ();
     }
     
     public static void dallasTest() {
