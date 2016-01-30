@@ -21,7 +21,7 @@ import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
 import byui.cit260.adrift.model.Ship;
 import java.text.NumberFormat;
-import static javax.swing.text.html.HTML.Tag.HEAD;
+
 
 /**
  *
