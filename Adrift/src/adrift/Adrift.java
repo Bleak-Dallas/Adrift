@@ -45,7 +45,7 @@ public class Adrift {
     }
     
     public static void johnTest() {
-        //testing push and pull to see if it worked
+        
         FacilitySceneType resource = new FacilitySceneType ();
         Location area = new Location ();
         Map tool  = new Map();
@@ -103,8 +103,8 @@ public class Adrift {
          */
          //teamTest();
          //joelTest();
-         //johnTest();
-         dallasTest();
+       johnTest();
+         //dallasTest();
         
     }
     
