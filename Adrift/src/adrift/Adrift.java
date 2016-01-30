@@ -17,6 +17,7 @@ import byui.cit260.adrift.model.Map;
 
 
 import byui.cit260.adrift.model.Player;
+import byui.cit260.adrift.model.RegularSceneType;
 import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
 import byui.cit260.adrift.model.Ship;
@@ -48,6 +49,7 @@ public class Adrift {
     
     public static void joelTest() {
         Ship ship = new Ship();
+        RegularSceneType regular = new RegularSceneType();
         
         ship.setDamageLevel(.70);
         ship.setFuelCapacity(100);
@@ -57,6 +59,14 @@ public class Adrift {
 	defaultFormat.setMinimumFractionDigits(1);
 	System.out.println("Damage Level: " + defaultFormat.format(ship.getDamageLevel()));
         System.out.println("Fuel Level: " + defaultFormat.format(ship.getFuelLevel()));
+        
+        regular.setBlocked(false);
+        regular.setDistanceTraveled(10);
+        
+        String regularInfo  = regular.toString();
+        System.out.println(regularInfo);
+        
+        
         
     }
     
