@@ -67,7 +67,7 @@ public class Adrift {
         
   public static void johnTest() {
         //Revised comment to main
-        FacilitySceneType resource = new FacilitySceneType ();
+        FacilitySceneType resource = new FacilitySceneType   ();
         Location area = new Location ();
         Map tool  = new Map();
         Actor player = new Actor ();
