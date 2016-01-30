@@ -66,7 +66,7 @@ public class Adrift {
 
         
   public static void johnTest() {
-        //testing push and pull to see if it worked
+        //Revised comment to main
         FacilitySceneType resource = new FacilitySceneType ();
         Location area = new Location ();
         Map tool  = new Map();
