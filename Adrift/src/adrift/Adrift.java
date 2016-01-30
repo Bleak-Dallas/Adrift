@@ -22,7 +22,7 @@ import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
 import byui.cit260.adrift.model.Ship;
 import java.text.NumberFormat;
-import static javax.swing.text.html.HTML.Tag.HEAD;
+
 
 /**
  *
@@ -75,13 +75,13 @@ public class Adrift {
      */
 
         
- public static void johnTest() {
-      testing push and pull to see if it worked
-      FacilitySceneType resource = new FacilitySceneType ();
-      Location area = new Location ();
-      Map tool  = new Map();
-      Actor player = new Actor ();
-  }
+  public static void johnTest() {
+        //Revised comment to main
+        FacilitySceneType resource = new FacilitySceneType ();
+        Location area = new Location ();
+        Map tool  = new Map();
+        Actor player = new Actor ();
+    }
        
     public static void dallasTest() {
         InventoryItem inventory = new InventoryItem();
@@ -133,10 +133,8 @@ public class Adrift {
          * Keep all other methods commented out.
          */
          //teamTest();
-        // joelTest();
-       //johnTest();
          //joelTest();
-         //johnTest();
+         johnTest();
          //dallasTest();
         
     }
