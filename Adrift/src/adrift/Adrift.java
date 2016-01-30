@@ -17,6 +17,7 @@ import byui.cit260.adrift.model.Map;
 
 
 import byui.cit260.adrift.model.Player;
+import byui.cit260.adrift.model.RegularSceneType;
 import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
 import byui.cit260.adrift.model.Ship;
@@ -48,6 +49,7 @@ public class Adrift {
     
     public static void joelTest() {
         Ship ship = new Ship();
+        RegularSceneType regular = new RegularSceneType();
         
         ship.setDamageLevel(.70);
         ship.setFuelCapacity(100);
@@ -58,6 +60,14 @@ public class Adrift {
 	System.out.println("Damage Level: " + defaultFormat.format(ship.getDamageLevel()));
         System.out.println("Fuel Level: " + defaultFormat.format(ship.getFuelLevel()));
         
+        regular.setBlocked(false);
+        regular.setDistanceTraveled(10);
+        
+        String regularInfo  = regular.toString();
+        System.out.println(regularInfo);
+        
+        
+        
     }
     
     /**
@@ -65,13 +75,13 @@ public class Adrift {
      */
 
         
-  public static void johnTest() {
-        //testing push and pull to see if it worked
-        FacilitySceneType resource = new FacilitySceneType ();
-        Location area = new Location ();
-        Map tool  = new Map();
-        Actor player = new Actor ();
-    }
+ public static void johnTest() {
+      testing push and pull to see if it worked
+      FacilitySceneType resource = new FacilitySceneType ();
+      Location area = new Location ();
+      Map tool  = new Map();
+      Actor player = new Actor ();
+  }
        
     public static void dallasTest() {
         InventoryItem inventory = new InventoryItem();
@@ -123,7 +133,7 @@ public class Adrift {
          * Keep all other methods commented out.
          */
          //teamTest();
-         //joelTest();
+        // joelTest();
        //johnTest();
          //joelTest();
          //johnTest();
