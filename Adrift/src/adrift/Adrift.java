@@ -8,6 +8,7 @@ package adrift;
 
 import byui.cit260.adrift.model.Actor;
 import byui.cit260.adrift.model.Buggy;
+import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.FacilitySceneType;
 
 import byui.cit260.adrift.model.Game;
@@ -50,15 +51,17 @@ public class Adrift {
     public static void joelTest() {
         Ship ship = new Ship();
         RegularSceneType regular = new RegularSceneType();
+        Elevator elevator = new Elevator();
         
         ship.setDamageLevel(.70);
         ship.setFuelCapacity(100);
         ship.setFuelLevel(.12);
-        
+               
         NumberFormat defaultFormat = NumberFormat.getPercentInstance();
 	defaultFormat.setMinimumFractionDigits(1);
 	System.out.println("Damage Level: " + defaultFormat.format(ship.getDamageLevel()));
         System.out.println("Fuel Level: " + defaultFormat.format(ship.getFuelLevel()));
+        
         
         regular.setBlocked(false);
         regular.setDistanceTraveled(10);
@@ -66,11 +69,17 @@ public class Adrift {
         String regularInfo  = regular.toString();
         System.out.println(regularInfo);
         
+        elevator.setCapacity(13000);
+        elevator.setCapacityUsed(.99);
+        
+       
+        System.out.println("Elevator Capacity: " + elevator.getCapacity() + " lbs");
+        System.out.println("Elevator Capacity Used: " + defaultFormat.format(elevator.getCapacityUsed()));
         
         
     }
     
-    /**
+    /** 
      *
      */
 
