@@ -81,6 +81,36 @@ public class Adrift {
         Location area = new Location ();
         Map tool  = new Map();
         Actor player = new Actor ();
+        
+        resource.setFacilityDescription("Deep Space9");
+        resource.setDistanceTraveled(100);
+        resource.setLocationBlocked(2);
+        resource.setFacilitySymbol("ADRIFT");
+        resource.setNoOfItems(5);
+        
+        String facilityInfo = resource.toString();
+        System.out.println(facilityInfo);
+        
+        area.setRowLocation(4);
+        area.setLocationVisited(5);
+        area.setColumnLocation("B");
+        area.setAmountRemaining(9);
+        
+        String locationInfo = area.toString();
+        System.out.println(locationInfo);
+        
+        tool.setRowCount(8);
+        tool.setColumnCount(9);
+        
+        String mapInfo = tool.toString();
+        System.out.println(mapInfo);
+        
+        player.setActorAllName("Darth Vader");
+        player.setCalorieLevel(200);
+        player.setOxygenLevel (150);
+        
+        String actorInfo = player.toString();
+        System.out.println(actorInfo);
     }
        
     public static void dallasTest() {
@@ -134,7 +164,7 @@ public class Adrift {
          */
          //teamTest();
          //joelTest();
-         //johnTest();
+        //johnTest();
          //dallasTest();
         
     }
