@@ -8,7 +8,6 @@ package adrift;
 
 import byui.cit260.adrift.model.Actor;
 import byui.cit260.adrift.model.Buggy;
-import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.FacilitySceneType;
 
 import byui.cit260.adrift.model.Game;
@@ -18,6 +17,7 @@ import byui.cit260.adrift.model.Map;
 
 
 import byui.cit260.adrift.model.Player;
+import byui.cit260.adrift.model.PreMissionSceneType;
 import byui.cit260.adrift.model.RegularSceneType;
 import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
@@ -51,7 +51,7 @@ public class Adrift {
     public static void joelTest() {
         Ship ship = new Ship();
         RegularSceneType regular = new RegularSceneType();
-        Elevator elevator = new Elevator();
+        PreMissionSceneType preMission = new PreMissionSceneType();
         
         ship.setDamageLevel(.70);
         ship.setFuelCapacity(100);
@@ -69,13 +69,14 @@ public class Adrift {
         String regularInfo  = regular.toString();
         System.out.println(regularInfo);
         
-        elevator.setCapacity(13000);
-        elevator.setCapacityUsed(.99);
+        preMission.setElevatorCapacity(8000);
+        preMission.setElevatorCapacityUsed(7500);
+        preMission.setResourceType("Water");
+        preMission.setSymbol('W');
+        preMission.setNoOfItems(1500);
         
-       
-        System.out.println("Elevator Capacity: " + elevator.getCapacity() + " lbs");
-        System.out.println("Elevator Capacity Used: " + defaultFormat.format(elevator.getCapacityUsed()));
-        
+        String preMissionInfo = preMission.toString();
+        System.out.println(preMissionInfo);
         
     }
     
