@@ -69,6 +69,9 @@ public class Adrift {
         String regularInfo  = regular.toString();
         System.out.println(regularInfo);
         
+        
+        /*Eliminated the Elevator class and merged elevatorCapacity and 
+        elevatorCapacityUsed to PreMissionSceneType class*/
         preMission.setElevatorCapacity(8000);
         preMission.setElevatorCapacityUsed(7500);
         preMission.setResourceType("Water");
