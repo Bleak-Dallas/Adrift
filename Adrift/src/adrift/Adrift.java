@@ -70,7 +70,7 @@ public class Adrift {
         System.out.println(regularInfo);
         
         
-        /*Eliminated the Elevator class and merged elevatorCapacity and 
+        /*Eliminated Elevator class and merged elevatorCapacity and 
         elevatorCapacityUsed to PreMissionSceneType class*/
         preMission.setElevatorCapacity(8000);
         preMission.setElevatorCapacityUsed(7500);
