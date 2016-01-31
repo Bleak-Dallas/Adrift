@@ -9,13 +9,10 @@ package adrift;
 import byui.cit260.adrift.model.Actor;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.FacilitySceneType;
-
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
-
-
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.PreMissionSceneType;
 import byui.cit260.adrift.model.RegularSceneType;
@@ -25,10 +22,6 @@ import byui.cit260.adrift.model.Ship;
 import java.text.NumberFormat;
 
 
-/**
- *
- * @author Joel
- */
 public class Adrift {
     
     //Test methods for the team and individual code.
@@ -46,7 +39,7 @@ public class Adrift {
         
         String gameInfo = newGame.toString();
         System.out.println(gameInfo); 
-        }
+    }
     
     public static void joelTest() {
         Ship ship = new Ship();
@@ -62,13 +55,11 @@ public class Adrift {
 	System.out.println("Damage Level: " + defaultFormat.format(ship.getDamageLevel()));
         System.out.println("Fuel Level: " + defaultFormat.format(ship.getFuelLevel()));
         
-        
         regular.setBlocked(false);
         regular.setDistanceTraveled(10);
         
         String regularInfo  = regular.toString();
         System.out.println(regularInfo);
-        
         
         /*Eliminated Elevator class and merged elevatorCapacity and 
         elevatorCapacityUsed to PreMissionSceneType class*/
@@ -80,13 +71,7 @@ public class Adrift {
         
         String preMissionInfo = preMission.toString();
         System.out.println(preMissionInfo);
-        
     }
-    
-    /** 
-     *
-     */
-
         
   public static void johnTest() {
         //Revised comment to main
@@ -177,7 +162,7 @@ public class Adrift {
          */
          //teamTest();
          //joelTest();
-        //johnTest();
+         //johnTest();
          //dallasTest();
         
     }
