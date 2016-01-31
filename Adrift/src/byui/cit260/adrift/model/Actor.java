@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Actor implements Serializable{
     
-        private String actorName;
+        private String actorAllName;
         private int calorieLevel;
         private int oxygenLevel;
 
@@ -23,12 +23,12 @@ public class Actor implements Serializable{
         
         
 
-    public String getActorName() {
-        return actorName;
+    public String getActorAllName() {
+        return actorAllName;
     }
 
-    public void setActorName(String actorName) {
-        this.actorName = actorName;
+    public void setActorAllName(String actorAllName) {
+        this.actorAllName = actorAllName;
     }
 
     public int getCalorieLevel() {
@@ -50,18 +50,19 @@ public class Actor implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.actorName);
-        hash = 43 * hash + this.calorieLevel;
-        hash = 43 * hash + this.oxygenLevel;
+        hash = 59 * hash + Objects.hashCode(this.actorAllName);
+        hash = 59 * hash + this.calorieLevel;
+        hash = 59 * hash + this.oxygenLevel;
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Actor{" + "actorName=" + actorName + ", calorieLevel=" + calorieLevel + ", oxygenLevel=" + oxygenLevel + '}';
+        return "Actor{" + "actorAllName=" + actorAllName + ", calorieLevel=" + calorieLevel + ", oxygenLevel=" + oxygenLevel + '}';
     }
-
     
+    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -80,14 +81,10 @@ public class Actor implements Serializable{
         if (this.oxygenLevel != other.oxygenLevel) {
             return false;
         }
-        if (!Objects.equals(this.actorName, other.actorName)) {
+        if (!Objects.equals(this.actorAllName, other.actorAllName)) {
             return false;
         }
         return true;
-
     }
+    
 }
-        
-
-
-   

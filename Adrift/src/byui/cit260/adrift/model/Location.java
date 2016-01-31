@@ -6,6 +6,7 @@
 package byui.cit260.adrift.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class Location implements Serializable {
     
         private int rowLocation;
-        private int columnLocation;
+        private String columnLocation;
         private int locationVisited;
         private int amountRemaining;
 
@@ -31,11 +32,11 @@ public class Location implements Serializable {
         this.rowLocation = rowLocation;
     }
 
-    public int getColumnLocation() {
+    public String getColumnLocation() {
         return columnLocation;
     }
 
-    public void setColumnLocation(int columnLocation) {
+    public void setColumnLocation(String columnLocation) {
         this.columnLocation = columnLocation;
     }
 
@@ -57,11 +58,11 @@ public class Location implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.rowLocation;
-        hash = 97 * hash + this.columnLocation;
-        hash = 97 * hash + this.locationVisited;
-        hash = 97 * hash + this.amountRemaining;
+        int hash = 3;
+        hash = 41 * hash + this.rowLocation;
+        hash = 41 * hash + Objects.hashCode(this.columnLocation);
+        hash = 41 * hash + this.locationVisited;
+        hash = 41 * hash + this.amountRemaining;
         return hash;
     }
 
@@ -87,13 +88,16 @@ public class Location implements Serializable {
         if (this.rowLocation != other.rowLocation) {
             return false;
         }
-        if (this.columnLocation != other.columnLocation) {
+        if (this.columnLocation == null ? other.columnLocation != null : !this.columnLocation.equals(other.columnLocation)) {
             return false;
         }
         if (this.locationVisited != other.locationVisited) {
             return false;
         }
         if (this.amountRemaining != other.amountRemaining) {
+            return false;
+        }
+        if (!Objects.equals(this.columnLocation, other.columnLocation)) {
             return false;
         }
         return true;
