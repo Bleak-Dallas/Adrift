@@ -14,30 +14,19 @@ import java.util.Objects;
  */
 public class Location implements Serializable {
     
-        private int rowLocation;
-        private String columnLocation;
+        private int location;
         private int locationVisited;
         private int amountRemaining;
 
     public Location() {
     }
-        
-        
 
-    public int getRowLocation() {
-        return rowLocation;
+    public int getLocation() {
+        return location;
     }
 
-    public void setRowLocation(int rowLocation) {
-        this.rowLocation = rowLocation;
-    }
-
-    public String getColumnLocation() {
-        return columnLocation;
-    }
-
-    public void setColumnLocation(String columnLocation) {
-        this.columnLocation = columnLocation;
+    public void setLocation(int location) {
+        this.location = location;
     }
 
     public int getLocationVisited() {
@@ -58,21 +47,18 @@ public class Location implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + this.rowLocation;
-        hash = 41 * hash + Objects.hashCode(this.columnLocation);
-        hash = 41 * hash + this.locationVisited;
-        hash = 41 * hash + this.amountRemaining;
+        int hash = 7;
+        hash = 59 * hash + this.location;
+        hash = 59 * hash + this.locationVisited;
+        hash = 59 * hash + this.amountRemaining;
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Location{" + "rowLocation=" + rowLocation + ", columnLocation=" + columnLocation + ", locationVisited=" + locationVisited + ", amountRemaining=" + amountRemaining + '}';
+        return "Location{" + "location=" + location + ", locationVisited=" + locationVisited + ", amountRemaining=" + amountRemaining + '}';
     }
     
-    
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -85,10 +71,7 @@ public class Location implements Serializable {
             return false;
         }
         final Location other = (Location) obj;
-        if (this.rowLocation != other.rowLocation) {
-            return false;
-        }
-        if (this.columnLocation == null ? other.columnLocation != null : !this.columnLocation.equals(other.columnLocation)) {
+        if (this.location != other.location) {
             return false;
         }
         if (this.locationVisited != other.locationVisited) {
@@ -97,11 +80,8 @@ public class Location implements Serializable {
         if (this.amountRemaining != other.amountRemaining) {
             return false;
         }
-        if (!Objects.equals(this.columnLocation, other.columnLocation)) {
-            return false;
-        }
         return true;
     }
-        
-        
+    
+    
 }

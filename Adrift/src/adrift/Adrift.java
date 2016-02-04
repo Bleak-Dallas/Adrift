@@ -89,9 +89,8 @@ public class Adrift {
         String facilityInfo = resource.toString();
         System.out.println(facilityInfo);
         
-        area.setRowLocation(4);
+        area.setLocation(4);
         area.setLocationVisited(5);
-        area.setColumnLocation("B");
         area.setAmountRemaining(9);
         
         String locationInfo = area.toString();
