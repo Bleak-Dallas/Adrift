@@ -47,18 +47,17 @@ public class InventoryControl {
             
         }
 
-        /*if (elevatorCapacityUsed < elevatorCapacity){ // check remaining elevator capacity
-            //("Remaining capacity in elevator is " + remainingCapacity)
-            return -1;
+        if (elevatorCapacityUsed < elevatorCapacity){ // check remaining elevator capacity
+            elevatorCapacityUsed = noOfItems * 1000;
+            remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
+            System.out.println("Remaining capacity in elevator is " + remainingCapacity);
             
         }
         
         if (elevatorCapacityUsed == elevatorCapacity){ // check to see if elevator is full
-            //("Elevator is Full")
-            return -1;
+            System.out.println("Elevator is Full");
             
         }
-        */
         
         elevatorCapacityUsed = noOfItems * 1000;
         remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
