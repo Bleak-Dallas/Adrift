@@ -15,13 +15,12 @@ import java.util.Objects;
 public class Actor implements Serializable{
     
         private String actorAllName;
+        private double currentLocation;
         private int calorieLevel;
         private int oxygenLevel;
 
     public Actor() {
     }
-        
-        
 
     public String getActorAllName() {
         return actorAllName;
@@ -29,6 +28,14 @@ public class Actor implements Serializable{
 
     public void setActorAllName(String actorAllName) {
         this.actorAllName = actorAllName;
+    }
+
+    public double getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(double currentLocation) {
+        this.currentLocation = currentLocation;
     }
 
     public int getCalorieLevel() {
@@ -50,19 +57,18 @@ public class Actor implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.actorAllName);
-        hash = 59 * hash + this.calorieLevel;
-        hash = 59 * hash + this.oxygenLevel;
+        hash = 89 * hash + Objects.hashCode(this.actorAllName);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.currentLocation) ^ (Double.doubleToLongBits(this.currentLocation) >>> 32));
+        hash = 89 * hash + this.calorieLevel;
+        hash = 89 * hash + this.oxygenLevel;
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Actor{" + "actorAllName=" + actorAllName + ", calorieLevel=" + calorieLevel + ", oxygenLevel=" + oxygenLevel + '}';
+        return "Actor{" + "actorAllName=" + actorAllName + ", currentLocation=" + currentLocation + ", calorieLevel=" + calorieLevel + ", oxygenLevel=" + oxygenLevel + '}';
     }
     
-    
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -75,6 +81,9 @@ public class Actor implements Serializable{
             return false;
         }
         final Actor other = (Actor) obj;
+        if (Double.doubleToLongBits(this.currentLocation) != Double.doubleToLongBits(other.currentLocation)) {
+            return false;
+        }
         if (this.calorieLevel != other.calorieLevel) {
             return false;
         }
@@ -86,5 +95,6 @@ public class Actor implements Serializable{
         }
         return true;
     }
+
     
 }

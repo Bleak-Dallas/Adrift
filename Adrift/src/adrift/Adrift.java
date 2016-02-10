@@ -103,6 +103,7 @@ public class Adrift {
         System.out.println(mapInfo);
         
         player.setActorAllName("Darth Vader");
+        player.setCurrentLocation(23);
         player.setCalorieLevel(200);
         player.setOxygenLevel (150);
         
