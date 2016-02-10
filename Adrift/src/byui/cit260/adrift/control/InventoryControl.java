@@ -5,10 +5,7 @@
  */
 package byui.cit260.adrift.control;
 
-/**
- *
- * 
- */
+
 public class InventoryControl {
   
     public double calculateO2Needed(double currentO2,int currentLocation,int destination){
@@ -33,6 +30,11 @@ public class InventoryControl {
         return remainingO2;
     
     }   
+    
+    public void resourceInventory(){
+    
+    }
+    
     public double packElevator(int elevatorCapacity, int elevatorCapacityUsed, int noOfItems){
         
         int remainingCapacity;
@@ -62,6 +64,62 @@ public class InventoryControl {
         elevatorCapacityUsed = noOfItems * 1000;
         remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
         return remainingCapacity;
+    
+    }
+    
+    public int getAmountToManufacture(String inventoryType, int quantityInStock) {
+        
+        int resourcesNeeded = 0;
+        
+        return resourcesNeeded;
+    
+    }
+    
+    public double calculateIronNeededShip(double damageLevel, int quantityInStock){
+    
+        int resourcesNeeded = 0;
+        
+        return resourcesNeeded;
+    
+    }
+    
+    public double calculateFuelNeededShip(double fuelCapacity, double fuelLevel, int quantityInStock){
+    
+        int resourcesNeeded = 0;
+        
+        return resourcesNeeded;
+    
+    }
+    
+    public double calculateAluminumNeededO2Tank(String inventoryType, int quantityInStock){
+    
+        int resourcesNeeded = 0;
+        
+        return resourcesNeeded;
+    
+    }
+    
+    public String getInventoryList(String inventoryType, int quantityInStock){
+            
+    String resourcesAvailable = null;
+        
+    return resourcesAvailable;
+    
+    }
+    
+    public int addToInventory(String inventoryType, int quantityInStock){
+        
+    int resourcesNeeded = 0;
+        
+    return resourcesNeeded;    
+    
+    }
+    
+    public int removeFromInventory(String inventoryType, int quantityInStock){
+        
+    int resourcesNeeded = 0;
+        
+    return resourcesNeeded;    
     
     }
     
