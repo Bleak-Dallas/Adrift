@@ -31,6 +31,31 @@ public class InventoryControl {
     
     }   
     
+    
+    public double calculateFuelNeeded(double currentFuel,int currentLocation,int destination){
+        
+        double numberOfSpacesTraveled = 0;
+         
+        if (destination < 1 || destination > 25){
+            return -1;
+        }
+
+        if (currentLocation  < destination) {
+            numberOfSpacesTraveled = destination - currentLocation; 
+            
+        }
+
+        if (currentLocation > destination){
+            numberOfSpacesTraveled = currentLocation - destination;
+            
+        }
+
+        double remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
+        return remainingFuel;
+    
+    }   
+    
+    
     public void resourceInventory(){
     
     }
@@ -122,5 +147,7 @@ public class InventoryControl {
     return resourcesNeeded;    
     
     }
+
     
-}
+    }
+    
