@@ -27,13 +27,43 @@ public class InventoryControl {
         if (currentLocation > destination){
             numberOfSpacesTraveled = currentLocation - destination;
             
-            
         }
 
-     
         double remainingO2 =  currentO2 - (numberOfSpacesTraveled * .25);
         return remainingO2;
     
     }   
+    public double packElevator(int elevatorCapacity, int elevatorCapacityUsed, int noOfItems){
+        
+        int remainingCapacity;
+        
+         
+        if (noOfItems <= 0){ // check to see if itmems less than or equal to zero
+            return -1;
+        }
 
+        if (noOfItems > 12) { // check to see if items exceed 12
+            return -1;
+            
+        }
+
+        /*if (elevatorCapacityUsed < elevatorCapacity){ // check remaining elevator capacity
+            //("Remaining capacity in elevator is " + remainingCapacity)
+            return -1;
+            
+        }
+        
+        if (elevatorCapacityUsed == elevatorCapacity){ // check to see if elevator is full
+            //("Elevator is Full")
+            return -1;
+            
+        }
+        */
+        
+        elevatorCapacityUsed = noOfItems * 1000;
+        remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
+        return remainingCapacity;
+    
+    }
+    
 }

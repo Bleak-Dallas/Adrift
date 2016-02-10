@@ -110,4 +110,98 @@ public class InventoryControlTest {
         result = instance.calculateO2Needed(currentO2, currentLocation, destination);
         assertEquals(expResult, result, 0.0);
     }
+
+    /**
+     * Test of packElevator method, of class InventoryControl.
+     */
+    @Test
+    public void testPackElevator() {
+        System.out.println("packElevator");
+        /********************
+         * Test case #1
+         ********************/
+        System.out.println("\tTest Case #1");
+        int elevatorCapacity = 12000;
+        int elevatorCapacityUsed = 6000;
+        int noOfItems = 6;
+        
+        int expResult = 6000;
+        
+        InventoryControl instance = new InventoryControl();
+        double result = instance.packElevator(elevatorCapacity, elevatorCapacityUsed, noOfItems);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("packElevator");
+        /********************
+         * Test case #2
+         ********************/
+        System.out.println("\tTest Case #2");
+        elevatorCapacity = 12000;
+        elevatorCapacityUsed = 11000;
+        noOfItems = 11;
+        
+        expResult = 1000;
+        
+        result = instance.packElevator(elevatorCapacity, elevatorCapacityUsed, noOfItems);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("packElevator");
+        /********************
+         * Test case #3
+         ********************/
+        System.out.println("\tTest Case #3");
+        elevatorCapacity = 12000;
+        elevatorCapacityUsed = 0;
+        noOfItems = 0;
+        
+        expResult = -1;
+        
+        result = instance.packElevator(elevatorCapacity, elevatorCapacityUsed, noOfItems);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("packElevator");
+        /********************
+         * Test case #4
+         ********************/
+        System.out.println("\tTest Case #4");
+        elevatorCapacity = 12000;
+        elevatorCapacityUsed = 16000;
+        noOfItems = 16;
+        
+        expResult = -1;
+        
+        result = instance.packElevator(elevatorCapacity, elevatorCapacityUsed, noOfItems);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("packElevator");
+        /********************
+         * Test case #5
+         ********************/
+        System.out.println("\tTest Case #5");
+        elevatorCapacity = 12000;
+        elevatorCapacityUsed = 1000;
+        noOfItems = 1;
+        
+        expResult = 11000;
+        
+        result = instance.packElevator(elevatorCapacity, elevatorCapacityUsed, noOfItems);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("packElevator");
+        /********************
+         * Test case #6
+         ********************/
+        System.out.println("\tTest Case #6");
+        elevatorCapacity = 12000;
+        elevatorCapacityUsed = 12000;
+        noOfItems = 12;
+        
+        expResult = 0;
+        
+        result = instance.packElevator(elevatorCapacity, elevatorCapacityUsed, noOfItems);
+        assertEquals(expResult, result, 0.0);
+
+    }
+
+  
 }

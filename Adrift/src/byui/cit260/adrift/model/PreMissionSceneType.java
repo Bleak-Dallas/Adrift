@@ -15,10 +15,10 @@ import java.util.Objects;
 public class PreMissionSceneType implements Serializable{
     private String description;
     private char symbol;
-    private double noOfItems;
+    private int noOfItems;
     private String resourceType;
-    private double elevatorCapacity;
-    private double elevatorCapacityUsed;
+    private int elevatorCapacity;
+    private int elevatorCapacityUsed;
 
     public PreMissionSceneType() {
     }
@@ -43,7 +43,7 @@ public class PreMissionSceneType implements Serializable{
         return noOfItems;
     }
 
-    public void setNoOfItems(double noOfItems) {
+    public void setNoOfItems(int noOfItems) {
         this.noOfItems = noOfItems;
     }
 
@@ -59,7 +59,7 @@ public class PreMissionSceneType implements Serializable{
         return elevatorCapacity;
     }
 
-    public void setElevatorCapacity(double elevatorCapacity) {
+    public void setElevatorCapacity(int elevatorCapacity) {
         this.elevatorCapacity = elevatorCapacity;
     }
 
@@ -67,7 +67,7 @@ public class PreMissionSceneType implements Serializable{
         return elevatorCapacityUsed;
     }
 
-    public void setElevatorCapacityUsed(double elevatorCapacityUsed) {
+    public void setElevatorCapacityUsed(int elevatorCapacityUsed) {
         this.elevatorCapacityUsed = elevatorCapacityUsed;
     }
 
