@@ -111,7 +111,99 @@ public class InventoryControlTest {
         assertEquals(expResult, result, 0.0);
     }
     
-    
+     /**
+     * Test of calculateCaloriesNeeded method, of class InventoryControl.
+     */
+    @Test
+    public void testCalculateCaloriesNeeded() {
+        System.out.println("calculateCaloriesNeeded");
+        /********************
+         * Test case #1
+         ********************/
+        System.out.println("\tTest Case #1");
+        double currentCalories = 50;
+        int currentLocation = 25;
+        int destination = 22;
+        
+        double expResult = 49.25;
+        InventoryControl instance = new InventoryControl();
+        double result = instance.calculateCaloriesNeeded(currentCalories, currentLocation, destination);
+        assertEquals(expResult, result, 0.0);
+        
+        
+      
+        System.out.println("calculateCaloriesNeeded");
+        /********************
+         * Test case #2
+         ********************/
+        System.out.println("\tTest Case #2");
+        currentCalories = 50;
+        currentLocation = 1;
+        destination = 2;
+        expResult = 49.75;
+        result = instance.calculateO2Needed(currentCalories, currentLocation, destination);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calculateCaloriesNeeded");
+        /********************
+         * Test case #3
+         ********************/
+        System.out.println("\tTest Case #3");
+        currentCalories = 50;
+        currentLocation = 1;
+        destination = 26;
+        expResult = -1;
+        result = instance.calculateCaloriesNeeded(currentCalories, currentLocation, destination);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calculateCaloriesNeeded");
+        /********************
+         * Test case #4
+         ********************/
+        System.out.println("\tTest Case #4");
+        currentCalories = 50;
+        currentLocation = 20;
+        destination = 0;
+        expResult = -1;
+        result = instance.calculateCaloriesNeeded(currentCalories, currentLocation, destination);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calculateCaloriesNeeded");
+        /********************
+         * Test case #5
+         ********************/
+        System.out.println("\tTest Case #5");
+        currentCalories = 50;
+        currentLocation = 20;
+        destination = 0;
+        expResult = -1;
+        result = instance.calculateCaloriesNeeded(currentCalories, currentLocation, destination);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calculateCaloriesNeeded");
+        /********************
+         * Test case #6
+         ********************/
+        System.out.println("\tTest Case #6");
+        currentCalories = 50;
+        currentLocation = 24;
+        destination = 25;
+        expResult = 49.75;
+        result = instance.calculateCaloriesNeeded(currentCalories, currentLocation, destination);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calculateCaloriesNeeded");
+        /********************
+         * Test case #7
+         ********************/
+        System.out.println("\tTest Case #7");
+        currentCalories = 50;
+        currentLocation = 2;
+        destination = 1;
+        expResult = 49.75;
+        result = instance.calculateCaloriesNeeded(currentCalories, currentLocation, destination);
+        assertEquals(expResult, result, 0.0);
+    }
     /**
      * Test of calculateO2Needed method, of class InventoryControl.
      */
