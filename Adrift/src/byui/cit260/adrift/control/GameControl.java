@@ -11,4 +11,23 @@ package byui.cit260.adrift.control;
  */
 public class GameControl {
     
+    public void startNewGame() {
+
+    }
+    
+    public void saveGame(String actor) {
+
+    }
+    
+    public void loadGame(String actor) {
+
+    }
+    
+    public void initializeMap() {
+
+    }
+
+    public void createNewPlayer() {
+
+    }
 }
