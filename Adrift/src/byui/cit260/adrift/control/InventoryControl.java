@@ -55,6 +55,28 @@ public class InventoryControl {
     
     }   
     
+    public double calculateCaloriesNeeded(double currentCalories,int currentLocation,int destination){
+        
+        double numberOfSpacesTraveled = 0;
+         
+        if (destination < 1 || destination > 25){
+            return -1;
+        }
+
+        if (currentLocation  < destination) {
+            numberOfSpacesTraveled = destination - currentLocation; 
+            
+        }
+
+        if (currentLocation > destination){
+            numberOfSpacesTraveled = currentLocation - destination;
+            
+        }
+
+        double remainingCalories =  currentCalories - (numberOfSpacesTraveled * .25);
+        return remainingCalories;
+    
+    }   
     
     public void resourceInventory(){
     
