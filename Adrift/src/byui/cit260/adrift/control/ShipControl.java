@@ -10,5 +10,10 @@ package byui.cit260.adrift.control;
  * 
  */
 public class ShipControl {
-    
+    public void damageLevel() {
+
+    }
+    public void fuelLevel() {
+
+    }
 }
