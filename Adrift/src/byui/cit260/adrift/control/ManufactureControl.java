@@ -11,4 +11,11 @@ package byui.cit260.adrift.control;
  */
 public class ManufactureControl {
     
+    public void manufactureTool(String requiredResources, String inventoryType, int quantityInStock) {
+        
+    }
+    
+    public void adequateResourcesInInventory(String inventoryType, int amountRemaining) {
+        
+    }
 }

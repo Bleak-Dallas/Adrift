@@ -11,4 +11,15 @@ package byui.cit260.adrift.control;
  */
 public class MiningControl {
     
+    public void getListofResourcesAtLocation(double currentLocation, String resource, int amountRemaining) {
+        
+    }
+    
+    public void mineResource() {
+        
+    }
+
+    public void minePetroleum(String inventoryType, int quantityInStock){
+    
+    }
 }
