@@ -37,7 +37,14 @@ public class StartProgramView {
     public void displayBanner() {
         System.out.println("\n\n*********************************************");
         
-         System.out.println("*                                      *"
+        System.out.println("\n               _      _  __ _   \n" +
+                             "     /\\      | |    (_)/ _| |  \n" +
+                             "    /  \\   __| |_ __ _| |_| |_ \n" +
+                             "   / /\\ \\ / _` | '__| |  _| __|\n" +
+                             "  / ____ \\ (_| | |  | | | | |_ \n" +
+                             " /_/    \\_\\__,_|_|  |_|_|  \\__|\n" +
+                             "                               \n");
+        System.out.println("*                                      *"
                         + "\n* You are playing Adrift               *"
                         + "\n* In this game you will guide a crew   *"
                         + "\n* of American astronauts to recover a  *"
@@ -81,3 +88,4 @@ public class StartProgramView {
         System.out.println("================================================");
     }
 }
+
