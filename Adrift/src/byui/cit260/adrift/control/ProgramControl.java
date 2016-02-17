@@ -5,10 +5,17 @@
  */
 package byui.cit260.adrift.control;
 
+import byui.cit260.adrift.model.Player;
+
 /**
  *
  * @author Dallas
  */
 public class ProgramControl {
+
+    public static Player createPlayer(String playerName) {
+        System.out.println("\n****** createPlayer function callled ****");
+        return null;
+    }
     
 }

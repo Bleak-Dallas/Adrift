@@ -5,6 +5,8 @@
  */
 package byui.cit260.adrift.view;
 
+import byui.cit260.adrift.control.ProgramControl;
+import byui.cit260.adrift.model.Player;
 import java.util.Scanner;
 
 /**
@@ -25,6 +27,7 @@ public class StartProgramView {
 //      Get the players name
         String playerName = this.getPlayerName();
 //      Create a new player
+        Player player = ProgramControl.createPlayer(playerName);
 //      DISPLAY a customized welcome message
 //      DISPLAY the main menu 
 
