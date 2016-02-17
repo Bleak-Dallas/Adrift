@@ -19,6 +19,7 @@ import byui.cit260.adrift.model.RegularSceneType;
 import byui.cit260.adrift.model.ResourceSceneType;
 import byui.cit260.adrift.model.Tools;
 import byui.cit260.adrift.model.Ship;
+import byui.cit260.adrift.view.StartProgramView;
 import java.text.NumberFormat;
 
 
@@ -164,6 +165,9 @@ public class Adrift {
          //joelTest();
          //johnTest();
          //dallasTest();
+         
+         StartProgramView startProgramView = new StartProgramView();
+         startProgramView.startProgram();
         
     }
     
