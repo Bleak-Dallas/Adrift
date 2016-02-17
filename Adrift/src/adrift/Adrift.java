@@ -30,7 +30,7 @@ public class Adrift {
         Player playerOne = new Player();
         Game newGame = new Game();
                 
-        playerOne.setName("Darth Vader");
+        playerOne.setPlayerName("Darth Vader");
         
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);

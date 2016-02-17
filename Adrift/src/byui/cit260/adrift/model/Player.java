@@ -17,29 +17,36 @@ import java.util.Objects;
 public class Player implements Serializable{
 
     //class instance variables
-    private String name;
+    private String playerName;
 
-    public String getName() {
-        return name;
+    public Player() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Player(String playerName) {
+        this.playerName = playerName;
+    }
+    
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.name);
+        hash = 29 * hash + Objects.hashCode(this.playerName);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + '}';
+        return "Player{" + "playerName=" + playerName + '}';
     }
 
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -52,17 +59,12 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.playerName, other.playerName)) {
             return false;
         }
         return true;
     }
+    
+    
 
-    
-    
-    public Player() {
-    }
-    
-    
-    
 }

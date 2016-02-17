@@ -5,6 +5,8 @@
  */
 package byui.cit260.adrift.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Dallas
@@ -21,6 +23,7 @@ public class StartProgramView {
 //      Display the banner screen
         this.displayBanner();
 //      Get the players name
+        String playerName = this.getPlayerName();
 //      Create a new player
 //      DISPLAY a customized welcome message
 //      DISPLAY the main menu 
@@ -44,5 +47,26 @@ public class StartProgramView {
                         + "\n* alive throughout your mission.       *");
         
         System.out.println("***********************************************");
+    }
+
+    private String getPlayerName() {
+        boolean valid = false;
+        String playerName = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while (!valid){
+            System.out.println("Enters player's name below");
+            
+            playerName = keyboard.nextLine();
+            playerName= playerName.trim();
+            
+            if (playerName.length() < 2) {
+                System.out.println("Invalid name - the name must not be blank");
+                continue;
+            }
+            break;
+        }
+        
+        return playerName;
     }
 }
