@@ -5,6 +5,7 @@
  */
 package byui.cit260.adrift.control;
 
+import adrift.Adrift;
 import byui.cit260.adrift.model.Player;
 
 /**
@@ -14,8 +15,18 @@ import byui.cit260.adrift.model.Player;
 public class ProgramControl {
 
     public static Player createPlayer(String playerName) {
-        System.out.println("\n****** createPlayer function callled ****");
-        return null;
+        
+        if (playerName == null) {
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setPlayerName(playerName);
+        
+        Adrift.setPlayer(player);
+        
+        return player;
+        
     }
     
 }

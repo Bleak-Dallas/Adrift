@@ -25,6 +25,9 @@ import java.text.NumberFormat;
 
 public class Adrift {
     
+    private static Game currentGame = null;
+    private static Player player = null;
+
     //Test methods for the team and individual code.
     public static void teamTest() {
         Player playerOne = new Player();
@@ -153,9 +156,24 @@ public class Adrift {
         System.out.println(resourceInfo);
     }
 
-    /**
-     * @param args the command line arguments i
-     */
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        Adrift.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        Adrift.player = player;
+    }
+    
+    
+  
     public static void main(String[] args) {
   
         /* Uncomment only the method that you are testing.

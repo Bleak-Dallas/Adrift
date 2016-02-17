@@ -29,6 +29,7 @@ public class StartProgramView {
 //      Create a new player
         Player player = ProgramControl.createPlayer(playerName);
 //      DISPLAY a customized welcome message
+        this.displayWelcomeMessage(player);
 //      DISPLAY the main menu 
 
         }
@@ -71,5 +72,12 @@ public class StartProgramView {
         }
         
         return playerName;
+    }
+
+    private void displayWelcomeMessage(Player player) {
+        System.out.println("\n\n=============================================");
+        System.out.println("\tWelcome to Adrift " + player.getPlayerName());
+        System.out.println("\tWe hope you have a BLAST!!");
+        System.out.println("================================================");
     }
 }
