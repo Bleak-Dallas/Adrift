@@ -31,8 +31,8 @@ public class StartProgramView {
 //      DISPLAY a customized welcome message
         this.displayWelcomeMessage(player);
 //      DISPLAY the main menu 
-//        MainMenuView mainMenu = new MainMenuView ();
-//        mainMenu.displayMenu ();
+        MainMenuView mainMenu = new MainMenuView ();
+        mainMenu.displayMenu ();
         }
 
     public void displayBanner() {

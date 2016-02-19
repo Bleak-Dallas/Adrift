@@ -5,6 +5,8 @@
  */
 package byui.cit260.adrift.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Autumn
@@ -15,77 +17,88 @@ public class MainMenuView {
             + "\n----------------------------------------"
             + "\n | Main Menu                           |"
             + "\n ---------------------------------------"
-            + "\nG - Start Game"
-            + "\nH - Get help on how ot play the game"
+            + "\nN - Start new game"
+            + "\nL - Load saved game"
+            + "\nH - Get help on how to play the game"
             + "\nS - Save Game"
-            + "\nE - Exit Game";
+            + "\nE - Exit Game"
+            + "\n---------------------------------------";
+
+    void displayMenu() {
           
+        char selection = ' ';
+        do {
+            
+            System.out.println(MENU); //To change body of generated methods, choose Tools | Templates.
+    
+            String input = this.getInput();
+            selection = input.charAt(0);
+        
+            this.doAction(selection);
+        
+        } while (selection != 'E');
+    }
+
+    private String getInput() {
+        boolean valid = false;
+        String input = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while (!valid){
+            System.out.println("Enter menu selection");
+            
+            input = keyboard.nextLine();
+            input= input.trim();
+            
+            if (input.length() < 1) {
+                System.out.println("Invalid selection - the menu item must not be blank");
+                continue;
+            }
+            break;
+        }
+        
+        return input;
+    }
+
+    private void doAction(char choice) {
+        switch (choice) {
+            case 'N': //create and start new game
+                this.startNewGame();
+                break;
+            case 'L': //Load existing game
+                this.startExistingGame();
+                break;
+            case 'H': // display Help Menu
+                this.displayHelpMenu();
+                break;
+            case 'S': //Save game
+                this.saveGame();
+                break;
+            case 'E': //Exit the game
+                return;
+            default:
+                System.out.println("\n*** Invalid selection *** Try Again");
+                break;
+        }     
+    }
+
+    private void startNewGame() {
+        System.out.println("\n*** startNewGame function called ***");
+    }
+
+    private void startExistingGame() {
+        System.out.println("\n*** startExistingGame function called ***");
+    }
+
+    private void displayHelpMenu() {
+        System.out.println("*** display Help Menu function called ***");
+    }
+
+    private void saveGame() {
+        System.out.println("\n*** saveGame function called ***");
+    }
+
 }
-//      public  void displayMenu() {
-//        
-//        char selection = ' ';
-//        do {
-//            
-//        System.out.println(Menu); //To change body of generated methods, choose Tools | Templates.
-//    
-//        String input = this.getInput();
-//        selection = input.charAt(0);
-//        
-//        this.doAction(selection);
-//        
-//        } while (selection != 'E');
-//        
-//    public void doAction(char choice) {
-//
-//        switch (choice) {
-//            case 'N': //create and start new game
-//                this.startNewGame();
-//                break;
-//            case 'G': // What is the goal of the game? 
-//                this.startExistingGame();
-//                break;
-//            case 'H': // display Help Menu
-//                this.displayHelpMenu();
-//                break;
-//            case 'E': // Estimating the amount of resources needed
-//                this.displayHelpMenu();
-//                break;
-//            case 'F': // Calculating Fuel
-//                this.displayHelpMenu();
-//                break;
-//            case 'O': // Calculating O2
-//                this.displayHelpMenu();
-//                break;
-//            case 'T': // Constructing Tools
-//                this.displayHelpMenu();
-//                break;
-//            case 'H': // Harvesting Resources
-//                this.displayHelpMenu();
-//                break;
-//            case 'D': // Delivering resources to facility
-//                this.displayHelpMenu();
-//                break;
-//            case 'S': // Repairing the Ship
-//                this.displayHelpMenu();
-//                break;
-//            case 'Q': // Quit
-//                this.displayHelpMenu();
-//                return;
-//             default:
-//                    System.out.println("\n*** Invalid selection *** Try Again");
-//                    break;
-//    }     
-//}
-//    
-//
-//    private String getInput() {
-//        System.out.println("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    private void doAction(char selection) {
-//        System.out.println("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//    
 //      private void startNewGame() // create a new game{
 //        GameControl.createNewGame (Adrift.getPlayer());
 //          
@@ -93,13 +106,13 @@ public class MainMenuView {
 //        GameMenuView gameMenu = new GameMenuView ();
 //        gameMenu.displayMenu();
 ////}
-//      private void startExistingGame() {
-//        System.out.println("\n*** startExistingGame function called ***");
+// 
+//        
 //}
 //      private void saveGame() {
 //        System.out.println("*** startExistingGame function called ***");
 //}
-//      private void displayHelpMenu() {
-//        System.out.println("*** display Help Menu function called ***");
+// 
+//        
 //} 
-//}
+
