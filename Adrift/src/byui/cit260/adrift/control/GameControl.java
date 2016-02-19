@@ -5,11 +5,18 @@
  */
 package byui.cit260.adrift.control;
 
+import byui.cit260.adrift.model.Player;
+
 /**
  *
  * 
  */
 public class GameControl {
+
+    public static void createNewGame(Player player) {
+        System.out.println("\n*** createNewGame function called ***");
+    }
+    
     
     public void startNewGame() {
 
@@ -31,6 +38,4 @@ public class GameControl {
 
     }
     
-////    public static void createNewGame(Player player) {
-//        System.out.println("*** createNewGame stub called ***");
 }

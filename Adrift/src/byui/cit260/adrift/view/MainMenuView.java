@@ -5,6 +5,8 @@
  */
 package byui.cit260.adrift.view;
 
+import adrift.Adrift;
+import byui.cit260.adrift.control.GameControl;
 import java.util.Scanner;
 
 /**
@@ -83,7 +85,9 @@ public class MainMenuView {
     }
 
     private void startNewGame() {
-        System.out.println("\n*** startNewGame function called ***");
+         GameControl.createNewGame (Adrift.getPlayer()); //create new gamew
+         GameMenuView gameMenu = new GameMenuView (); //display the game menu
+         gameMenu.displayMenu();
     }
 
     private void startExistingGame() {
@@ -91,7 +95,8 @@ public class MainMenuView {
     }
 
     private void displayHelpMenu() {
-        System.out.println("*** display Help Menu function called ***");
+        HelpMenuView helpMenu = new HelpMenuView (); //display the game menu
+        helpMenu.displayHelpMenu();
     }
 
     private void saveGame() {
@@ -99,20 +104,5 @@ public class MainMenuView {
     }
 
 }
-//      private void startNewGame() // create a new game{
-//        GameControl.createNewGame (Adrift.getPlayer());
-//          
-//          // display the game menu
-//        GameMenuView gameMenu = new GameMenuView ();
-//        gameMenu.displayMenu();
-////}
-// 
-//        
-//}
-//      private void saveGame() {
-//        System.out.println("*** startExistingGame function called ***");
-//}
-// 
-//        
-//} 
+
 

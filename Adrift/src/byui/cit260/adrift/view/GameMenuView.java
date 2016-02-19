@@ -10,7 +10,9 @@ package byui.cit260.adrift.view;
  * @author Autumn
  */
 public class GameMenuView {
-////     void displayMenu() {
-//////        System.out.println("\n*** displayMenu stub called ***");
-//
+    
+     void displayMenu() {
+        System.out.println("\n*** displayMenu stub called ***");
+     }
+
 }
