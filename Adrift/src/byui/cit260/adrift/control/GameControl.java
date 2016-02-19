@@ -30,4 +30,7 @@ public class GameControl {
     public void createNewPlayer() {
 
     }
+    
+////    public static void createNewGame(Player player) {
+//        System.out.println("*** createNewGame stub called ***");
 }
