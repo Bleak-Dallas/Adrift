@@ -30,9 +30,6 @@ public class StartProgramView {
         Player player = ProgramControl.createPlayer(playerName);
 //      DISPLAY a customized welcome message
         this.displayWelcomeMessage(player);
-        //      DISPLAY the premission menu 
-        PreMissionView preMissionMenu = new PreMissionView ();
-        preMissionMenu.displayPreMissionMenu ();
 //      DISPLAY the main menu 
         MainMenuView mainMenu = new MainMenuView ();
         mainMenu.displayMenu ();
