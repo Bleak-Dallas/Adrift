@@ -26,6 +26,7 @@ public class HelpMenuView {
             + "\nD - Delivering resources to facility"
             + "\nS - Repairing the ship"
             + "\nE - Exit help menu"
+            + "\nX - Test Game Menu"
             + "\n---------------------------------------";
         
         void displayHelpMenu() {
@@ -102,10 +103,17 @@ public class HelpMenuView {
                 System.out.println("You must repair the hull of the ship with"
                         + "resources mined on the asteriod before you can launch.");
                 break;
-            case 'E': //Exit the help menu
+               
+                case 'X': // Test Game menu
                 GameMenuView gameMenu = new GameMenuView (); //display the game menu
-                gameMenu.displayMenu();
-            default:
+                gameMenu.displayGameMenu();;
+                break;
+                
+                case 'E': //Exit the help menu
+                MainMenuView mainMenu = new MainMenuView (); //display the game menu
+                mainMenu.displayMenu();
+                default:
+                    
                 System.out.println("\n*** Invalid selection *** Try Again");
                 break;
         }     
