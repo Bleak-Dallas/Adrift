@@ -82,11 +82,4 @@ public class Ship implements Serializable{
         }
         return true;
     }
-    
-       
-    
-
-   
-    
-    
 }
