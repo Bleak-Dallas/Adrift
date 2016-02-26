@@ -103,7 +103,7 @@ public class GameMenuView {
                 break;
                 
             case 'C': // Construct Tools
-                System.out.println("Construct Tools");
+                this.constructTools();
                 break;
                 
             case 'R': // Mine Resources
@@ -138,5 +138,10 @@ public class GameMenuView {
 
     void displayMenu() {
          //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void constructTools() {
+        ConstructToolsView constructToolsMenu = new ConstructToolsView ();//display the construct tools menu
+        constructToolsMenu.displayconstructToolsMenu();
     }
 }

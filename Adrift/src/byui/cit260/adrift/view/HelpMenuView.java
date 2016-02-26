@@ -104,10 +104,10 @@ public class HelpMenuView {
                         + "resources mined on the asteriod before you can launch.");
                 break;
                
-                case 'X': // Test Game menu
-                GameMenuView gameMenu = new GameMenuView (); //display the game menu
-                gameMenu.displayGameMenu();;
-                break;
+//                case 'X': // Test Game menu
+//                GameMenuView gameMenu = new GameMenuView (); //display the game menu
+//                gameMenu.displayGameMenu();;
+//                break;
                 
                 case 'E': //Exit the help menu
                 MainMenuView mainMenu = new MainMenuView (); //display the game menu

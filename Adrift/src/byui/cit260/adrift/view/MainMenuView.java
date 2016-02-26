@@ -90,7 +90,7 @@ public class MainMenuView {
          
          GameControl.createNewGame (Adrift.getPlayer()); //create new gamew
          GameMenuView gameMenu = new GameMenuView (); //display the game menu
-         gameMenu.displayMenu();
+         gameMenu.displayGameMenu();
     }
 
     private void startExistingGame() {
