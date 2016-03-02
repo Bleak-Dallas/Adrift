@@ -13,9 +13,10 @@ import java.util.Scanner;
  *
  * @author Autumn
  */
-public class MainMenuView {
+public class MainMenuView extends View {
     
-    private final String MENU = "\n"
+    public MainMenuView(){
+        super ("\n"
             + "\n----------------------------------------"
             + "\n | Main Menu                           |"
             + "\n ---------------------------------------"
@@ -23,46 +24,16 @@ public class MainMenuView {
             + "\nL - Load saved game"
             + "\nH - Get help on how to play the game"
             + "\nS - Save Game"
-            + "\nE - Exit Game"
-            + "\n---------------------------------------";
-
-    void displayMenu() {
-          
-        char selection = ' ';
-        do {
-            
-            System.out.println(MENU); //To change body of generated methods, choose Tools | Templates.
+            + "\nQ - Quit Game"
+            + "\n---------------------------------------");
+    }
+  
+    @Override
+    public boolean doAction(String value) {
+        
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered 
     
-            String input = this.getInput();
-            selection = input.charAt(0);
-        
-            this.doAction(selection);
-        
-        } while (selection != 'E');
-    }
-
-    private String getInput() {
-        boolean valid = false;
-        String input = null;
-        Scanner keyboard = new Scanner(System.in);
-        
-        while (!valid){
-            System.out.println("Enter menu selection");
-            
-            input = keyboard.nextLine();
-            input= input.trim();
-            
-            if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
-                continue;
-            }
-            break;
-        }
-        
-        return input;
-    }
-
-    private void doAction(char choice) {
         switch (choice) {
             case 'N': //create and start new game
                 this.startNewGame();
@@ -76,12 +47,13 @@ public class MainMenuView {
             case 'S': //Save game
                 this.saveGame();
                 break;
-            case 'E': //Exit the game
-                return;
+            case 'Q': //Quit the game
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try Again");
                 break;
         }     
+        return false;
     }
 
     private void startNewGame() { 

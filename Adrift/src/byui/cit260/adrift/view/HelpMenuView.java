@@ -111,7 +111,7 @@ public class HelpMenuView {
                 
                 case 'E': //Exit the help menu
                 MainMenuView mainMenu = new MainMenuView (); //display the game menu
-                mainMenu.displayMenu();
+                mainMenu.display();
                 default:
                     
                 System.out.println("\n*** Invalid selection *** Try Again");
