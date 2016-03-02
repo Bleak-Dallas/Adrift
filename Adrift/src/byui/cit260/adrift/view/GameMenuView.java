@@ -23,7 +23,8 @@ public class GameMenuView extends View {
             + "\nE - Estimate Resources Needed"
             + "\nF - Calculate Fuel"
             + "\nO - Calculate O2"
-            + "\nC - Construct Tools"
+            + "\nC - Calculate Calories"
+            + "\nT - Construct Tools"
             + "\nR - Mine Resources"
             + "\nD - Deliver Resource"
             + "\nW - Repair Ship"
@@ -70,7 +71,11 @@ public class GameMenuView extends View {
                 System.out.println("Calculate O2");
                 break;
                 
-            case 'C': // Construct Tools
+            case 'C': //Calculate Calories
+                System.out.println("Calculate Calories");
+                break;
+                
+            case 'T': // Construct Tools
                 this.constructTools();
                 break;
                 
