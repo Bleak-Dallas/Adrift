@@ -11,9 +11,9 @@ import java.util.Scanner;
  *
  * @author Dallas
  */
-public class PreMissionView {
-    
-    private final String PREMISSIONMENU = "\n"
+public class PreMissionView extends View{
+    public PreMissionView() {
+    super("\n"
             + "\n ---------------------------------------"
             + "\n | Pre-Mission Selection Menu          |"
             + "\n ---------------------------------------"
@@ -28,46 +28,17 @@ public class PreMissionView {
             + "\nM - Special Mining Equipment"
             + "\nF - Fuel"
             + "\nR - Replacement Parts/Repair Materials for Ship"
-            + "\nD - Done"
-            + "\n---------------------------------------";
-
-    void displayPreMissionMenu() {
-        
-        char selection = ' ';
-        do {
-            
-            System.out.println(PREMISSIONMENU); //To change body of generated methods, choose Tools | Templates.
-    
-            String input = this.getInput();
-            selection = input.charAt(0);
-        
-            this.doAction(selection);
-        
-        } while (selection != 'D');
+            + "\nQ - Done with selections"
+            + "\n---------------------------------------");
     }
 
-    private String getInput() {
-        boolean valid = false;
-        String input = null;
-        Scanner keyboard = new Scanner(System.in);
+ 
+    @Override
+    public boolean doAction(String value) {
         
-        while (!valid){
-            System.out.println("Enter menu selection");
-            
-            input = keyboard.nextLine();
-            input= input.trim();
-            
-            if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
-                continue;
-            }
-            break;
-        }
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered
         
-        return input;
-    }
-
-    private void doAction(char choice) {
         switch (choice) {
             case 'E': //create and start new game
                 this.chooseAmount();
@@ -87,12 +58,15 @@ public class PreMissionView {
             case 'R': //Save game
                 this.chooseAmount();
                 break;
-            case 'D': //display main menu
-                return;
+            case 'Q': //display main menu
+                MainMenuView mainMenu = new MainMenuView (); //display the game menu
+                mainMenu.display();
             default:
                 System.out.println("\n*** Invalid selection *** Try Again");
                 break;
         }
+        return false;
+
     }
 
     private void chooseAmount() {

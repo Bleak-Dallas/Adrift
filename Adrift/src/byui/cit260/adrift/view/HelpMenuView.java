@@ -5,15 +5,14 @@
  */
 package byui.cit260.adrift.view;
 
-import java.util.Scanner;
 
 /**
  *
  * @author Dallas
  */
-public class HelpMenuView {
-    
-        private final String MENU = "\n"
+public class HelpMenuView extends View {
+    public HelpMenuView() {
+        super("\n"
             + "\n----------------------------------------"
             + "\n | Help Menu                           |"
             + "\n ---------------------------------------"
@@ -25,47 +24,17 @@ public class HelpMenuView {
             + "\nH - Mining Resources"
             + "\nD - Delivering resources to facility"
             + "\nS - Repairing the ship"
-            + "\nE - Exit help menu"
-            + "\nX - Test Game Menu"
-            + "\n---------------------------------------";
-        
-        void displayHelpMenu() {
-          
-        char selection = ' ';
-        do {
-            
-            System.out.println(MENU); //To change body of generated methods, choose Tools | Templates.
-    
-            String input = this.getInput();
-            selection = input.charAt(0);
-        
-            this.doAction(selection);
-        
-        } while (selection != 'E');
+            + "\nQ - Quit help menu"
+            + "\n---------------------------------------");
     }
-
-    private String getInput() {
-        boolean valid = false;
-        String input = null;
-        Scanner keyboard = new Scanner(System.in);
         
-        while (!valid){
-            System.out.println("Enter menu selection");
-            
-            input = keyboard.nextLine();
-            input= input.trim();
-            
-            if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
-                continue;
-            }
-            break;
-        }
-        
-        return input;
-    }
 
-    private void doAction(char choice) {
+    @Override
+    public boolean doAction(String value) {
+        
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered
+        
         switch (choice) {
             case 'G': //Goal of the game
                 System.out.println("Survive on a desolate asteroid by mining"
@@ -103,20 +72,16 @@ public class HelpMenuView {
                 System.out.println("You must repair the hull of the ship with"
                         + "resources mined on the asteriod before you can launch.");
                 break;
-               
-//                case 'X': // Test Game menu
-//                GameMenuView gameMenu = new GameMenuView (); //display the game menu
-//                gameMenu.displayGameMenu();;
-//                break;
-                
-                case 'E': //Exit the help menu
+                case 'Q': //Exit the help menu
                 MainMenuView mainMenu = new MainMenuView (); //display the game menu
                 mainMenu.display();
                 default:
                     
                 System.out.println("\n*** Invalid selection *** Try Again");
                 break;
-        }     
+        }
+        
+        return false;
     }
     
 }

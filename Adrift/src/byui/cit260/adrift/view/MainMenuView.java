@@ -7,7 +7,6 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byui.cit260.adrift.control.GameControl;
-import java.util.Scanner;
 
 /**
  *
@@ -16,7 +15,7 @@ import java.util.Scanner;
 public class MainMenuView extends View {
     
     public MainMenuView(){
-        super ("\n"
+        super("\n"
             + "\n----------------------------------------"
             + "\n | Main Menu                           |"
             + "\n ---------------------------------------"
@@ -57,10 +56,10 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() { 
-         PreMissionView preMissionMenu = new PreMissionView ();//display the premission menu
-         preMissionMenu.displayPreMissionMenu ();
-         
          GameControl.createNewGame (Adrift.getPlayer()); //create new gamew
+         PreMissionView preMissionMenu = new PreMissionView ();//display the premission menu
+         preMissionMenu.display();
+         
          GameMenuView gameMenu = new GameMenuView (); //display the game menu
          gameMenu.displayGameMenu();
     }
@@ -71,7 +70,7 @@ public class MainMenuView extends View {
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView (); //display the game menu
-        helpMenu.displayHelpMenu();
+        helpMenu.display();
     }
 
     private void saveGame() {
