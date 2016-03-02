@@ -128,7 +128,7 @@ public class GameMenuView {
                 
             case 'Q': //Exit the game menu
                 GameMenuView gameMenu = new GameMenuView (); //display the game menu
-                gameMenu.displayMenu();
+                gameMenu.display();
                 
             default:
                 System.out.println("\n*** Invalid selection *** Try Again");
@@ -136,7 +136,7 @@ public class GameMenuView {
         }     
     }
 
-    void displayMenu() {
+    void display() {
          //To change body of generated methods, choose Tools | Templates.
     }
 

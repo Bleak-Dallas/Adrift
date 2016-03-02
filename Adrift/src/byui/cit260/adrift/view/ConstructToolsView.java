@@ -79,7 +79,7 @@ class ConstructToolsView {
                 
             case 'Q': //Exit the game menu
                 GameMenuView gameMenu = new GameMenuView (); //display the game menu
-                gameMenu.displayMenu();
+                gameMenu.display();
                 
             default:
                 System.out.println("\n*** Invalid selection *** Try Again");
