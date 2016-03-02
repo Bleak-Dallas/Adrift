@@ -65,7 +65,8 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
-        System.out.println("\n*** startExistingGame function called ***");
+        LoadGameView loadGame = new LoadGameView (); //display the game menu
+        loadGame.display();
     }
 
     private void displayHelpMenu() {
@@ -74,7 +75,8 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-        System.out.println("\n*** saveGame function called ***");
+        SaveGameView saveGame = new SaveGameView (); //display the game menu
+        saveGame.display();
     }
 
 }

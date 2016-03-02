@@ -64,7 +64,7 @@ public class GameMenuView extends View {
                 break;
                 
             case 'F': // Calculate Fuel
-                System.out.println("Calculate Fuel");
+                this.displayCalcFuel();
                 break;
                 
             case 'O': // Calculate O2
@@ -114,5 +114,10 @@ public class GameMenuView extends View {
     private void constructTools() {
         ConstructToolsView constructToolsMenu = new ConstructToolsView ();//display the construct tools menu
         constructToolsMenu.displayconstructToolsMenu();
+    }
+
+    private void displayCalcFuel() {
+        CalculateFuelView calcFuel = new CalculateFuelView();
+        calcFuel.display();
     }
 }
