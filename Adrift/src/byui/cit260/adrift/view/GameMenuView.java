@@ -9,9 +9,9 @@ import java.util.Scanner;
  *
  * @author Autumn
  */
-public class GameMenuView {
-    
-        private final String GAMEMENU = "\n"
+public class GameMenuView extends View {
+    public GameMenuView(){
+    super ("\n"
             + "\n----------------------------------------"
             + "\n | Game Menu                           |"
             + "\n ---------------------------------------"
@@ -30,45 +30,13 @@ public class GameMenuView {
             + "\nJ - Launch Ship"
             + "\nH - Help"
             + "\nQ - Exit to Main Menu"
-            + "\n---------------------------------------";
-        
-        void displayGameMenu() {
-          
-        char selection = ' ';
-        do {
-            
-            System.out.println(GAMEMENU); //To change body of generated methods, choose Tools | Templates.
-    
-            String input = this.getInput();
-            selection = input.charAt(0);
-        
-            this.doAction(selection);
-        
-        } while (selection != 'Q');
+            + "\n---------------------------------------");
     }
-
-    private String getInput() {
-        boolean valid = false;
-        String input = null;
-        Scanner keyboard = new Scanner(System.in);
+    @Override
+    public boolean doAction(String value) {
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered
         
-        while (!valid){
-            System.out.println("Enter menu selection");
-            
-            input = keyboard.nextLine();
-            input= input.trim();
-            
-            if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
-                continue;
-            }
-            break;
-        }
-        
-        return input;
-    }
-
-    private void doAction(char choice) {
         switch (choice) {
             case 'V': // view map
                 System.out.println("view map");
@@ -134,12 +102,10 @@ public class GameMenuView {
                 System.out.println("\n*** Invalid selection *** Try Again");
                 break;
         }     
+        return false;
     }
 
-    void display() {
-         //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
     private void constructTools() {
         ConstructToolsView constructToolsMenu = new ConstructToolsView ();//display the construct tools menu
         constructToolsMenu.displayconstructToolsMenu();

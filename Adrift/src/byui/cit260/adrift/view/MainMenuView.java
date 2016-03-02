@@ -61,7 +61,7 @@ public class MainMenuView extends View {
          preMissionMenu.display();
          
          GameMenuView gameMenu = new GameMenuView (); //display the game menu
-         gameMenu.displayGameMenu();
+         gameMenu.display();
     }
 
     private void startExistingGame() {
