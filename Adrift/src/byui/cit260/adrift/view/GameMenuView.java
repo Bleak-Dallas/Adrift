@@ -72,7 +72,7 @@ public class GameMenuView extends View {
                 break;
                 
             case 'C': //Calculate Calories
-                System.out.println("Calculate Calories");
+                this.displayCalcCalories();
                 break;
                 
             case 'T': // Construct Tools
@@ -119,5 +119,10 @@ public class GameMenuView extends View {
     private void displayCalcFuel() {
         CalculateFuelView calcFuel = new CalculateFuelView();
         calcFuel.display();
+    }
+
+    private void displayCalcCalories() {
+        CalculateCaloriesView calcCalories = new CalculateCaloriesView();
+        calcCalories.display();
     }
 }
