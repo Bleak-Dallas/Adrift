@@ -5,15 +5,15 @@
  */
 package byui.cit260.adrift.view;
 
-import java.util.Scanner;
+import byui.cit260.adrift.control.ToolsControl;
 
 /**
  *
- * @author Joel
+ * @author Dallas
  */
-class ConstructToolsView {
-
-    private final String TOOLSMENU = "\n"
+class ConstructToolsView extends View{
+    public ConstructToolsView(){
+        super("\n"
             + "\n----------------------------------------"
             + "\n | Tools Menu                           |"
             + "\n ---------------------------------------"
@@ -22,44 +22,14 @@ class ConstructToolsView {
             + "\nH - Hammer"
             + "\nT - O2 Tank"
             + "\nQ - Exit to Game Menu"
-            + "\n---------------------------------------";
-    
-    void displayconstructToolsMenu() {
-        char selection = ' ';
-        do {
-            
-            System.out.println(TOOLSMENU); //To change body of generated methods, choose Tools | Templates.
-    
-            String input = this.getInput();
-            selection = input.charAt(0);
-        
-            this.doAction(selection);
-        
-        } while (selection != 'Q');
+            + "\n---------------------------------------");
     }
+    
 
-    private String getInput() {
-        boolean valid = false;
-        String input = null;
-        Scanner keyboard = new Scanner(System.in);
-        
-        while (!valid){
-            System.out.println("Enter menu selection");
-            
-            input = keyboard.nextLine();
-            input= input.trim();
-            
-            if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
-                continue;
-            }
-            break;
-        }
-        
-        return input;
-    }
-
-    private void doAction(char choice) {
+    @Override
+    public boolean doAction(String value) {
+         value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered
         switch (choice) {
             case 'D': //make mining drill
                 this.makeDrill();
@@ -78,17 +48,19 @@ class ConstructToolsView {
                 break;
                 
             case 'Q': //Exit the game menu
-                GameMenuView gameMenu = new GameMenuView (); //display the game menu
+                GameMenuView gameMenu = new GameMenuView(); //display the game menu
                 gameMenu.display();
                 
             default:
                 System.out.println("\n*** Invalid selection *** Try Again");
                 break;
         } 
+        return true;         
     }
 
     private void makeDrill() {
-        System.out.println("\n*** makeDrill function called ***");
+//        ToolsControl drill = new ToolsControl();
+//        drill.resourcesNeeded();
     }
 
     private void makeShovel() {

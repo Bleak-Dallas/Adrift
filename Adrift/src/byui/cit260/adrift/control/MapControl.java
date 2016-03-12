@@ -314,6 +314,7 @@ public class MapControl {
         locations[0][2].setScene(scenes[SceneType.sandy1.ordinal()]);
         locations[0][3].setScene(scenes[SceneType.icy1.ordinal()]);
         locations[0][4].setScene(scenes[SceneType.rocky1.ordinal()]);
+        locations[0][4].setVisited(true);
         
         locations[1][0].setScene(scenes[SceneType.outpost1.ordinal()]);
         locations[1][1].setScene(scenes[SceneType.crater1.ordinal()]);

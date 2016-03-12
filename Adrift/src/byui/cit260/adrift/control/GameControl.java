@@ -6,7 +6,6 @@
 package byui.cit260.adrift.control;
 
 import adrift.Adrift;
-import byu.cit260.adrift.enums.ActorType;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Constants;
 import byui.cit260.adrift.model.Game;
@@ -16,7 +15,7 @@ import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Scene;
 import byui.cit260.adrift.model.Ship;
-import java.awt.Point;
+import byui.cit260.adrift.model.Tools;
 
 /**
  *
@@ -34,6 +33,9 @@ public class GameControl {
         InventoryItem[] inventoryList = GameControl.createInventoryList();
         game.setInventory(inventoryList);
         
+        Tools[] toolList = ToolsControl.createToolList();
+        game.setToolInventory(toolList);
+        
         Ship ship = new Ship(); // create new ship
         game.setShip(ship); // save ship in game
         
@@ -48,36 +50,36 @@ public class GameControl {
         
         // move actors to starting location in the map
 //        ActorType actors = MapControl.assignScenesToLocations(map, scenes);
-//        game.setActors(actors);
+//        game.setActors(actors); 
         
     }
 
     private static InventoryItem[] createInventoryList() { 
         // create array(list) of inventory items
         InventoryItem[] inventory = new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
-        InventoryItem shovel = new InventoryItem();
-        shovel.setDescription("Shovel  ");
-        shovel.setQuantityInStock(0);
-        shovel.setRequiredAmount(0);
-        inventory[Item.shovel.ordinal()] = shovel;
-
-        InventoryItem drill = new InventoryItem();
-        drill.setDescription("Drill    ");
-        drill.setQuantityInStock(0);
-        drill.setRequiredAmount(0);
-        inventory[Item.drill.ordinal()] = drill;
-        
-        InventoryItem hammer = new InventoryItem();
-        hammer.setDescription("Hammer  ");
-        hammer.setQuantityInStock(0);
-        hammer.setRequiredAmount(0);
-        inventory[Item.hammer.ordinal()] = hammer;
-        
-        InventoryItem O2tank = new InventoryItem();
-        O2tank.setDescription("O2Tank  ");
-        O2tank.setQuantityInStock(0);
-        O2tank.setRequiredAmount(0);
-        inventory[Item.O2tank.ordinal()] = O2tank;
+//        InventoryItem shovel = new InventoryItem();
+//        shovel.setDescription("Shovel  ");
+//        shovel.setQuantityInStock(0);
+//        shovel.setRequiredAmount(0);
+//        inventory[Item.shovel.ordinal()] = shovel;
+//
+//        InventoryItem drill = new InventoryItem();
+//        drill.setDescription("Drill    ");
+//        drill.setQuantityInStock(0);
+//        drill.setRequiredAmount(0);
+//        inventory[Item.drill.ordinal()] = drill;
+//        
+//        InventoryItem hammer = new InventoryItem();
+//        hammer.setDescription("Hammer  ");
+//        hammer.setQuantityInStock(0);
+//        hammer.setRequiredAmount(0);
+//        inventory[Item.hammer.ordinal()] = hammer;
+//        
+//        InventoryItem O2tank = new InventoryItem();
+//        O2tank.setDescription("O2Tank  ");
+//        O2tank.setQuantityInStock(0);
+//        O2tank.setRequiredAmount(0);
+//        inventory[Item.O2tank.ordinal()] = O2tank;
         
         InventoryItem food = new InventoryItem();
         food.setDescription("Food    ");
