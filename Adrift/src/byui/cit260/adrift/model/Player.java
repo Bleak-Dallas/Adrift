@@ -18,6 +18,9 @@ public class Player implements Serializable{
 
     //class instance variables
     private String playerName;
+    private int calorieLevel;
+    private int oxygenLevel;
+    private int currentLocation;
 
     public Player() {
     }
@@ -35,16 +38,43 @@ public class Player implements Serializable{
         this.playerName = playerName;
     }
 
+    public int getCalorieLevel() {
+        return calorieLevel;
+    }
+
+    public void setCalorieLevel(int calorieLevel) {
+        this.calorieLevel = calorieLevel;
+    }
+
+    public int getOxygenLevel() {
+        return oxygenLevel;
+    }
+
+    public void setOxygenLevel(int oxygenLevel) {
+        this.oxygenLevel = oxygenLevel;
+    }
+    
+        public Integer getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Integer currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.playerName);
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.playerName);
+        hash = 53 * hash + this.calorieLevel;
+        hash = 53 * hash + this.oxygenLevel;
+        hash = 53 * hash + Objects.hashCode(this.currentLocation);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "playerName=" + playerName + '}';
+        return "Player{" + "playerName=" + playerName + ", calorieLevel=" + calorieLevel + ", oxygenLevel=" + oxygenLevel + ", currentLocation=" + currentLocation + '}';
     }
 
     @Override
@@ -59,7 +89,16 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
+        if (this.calorieLevel != other.calorieLevel) {
+            return false;
+        }
+        if (this.oxygenLevel != other.oxygenLevel) {
+            return false;
+        }
         if (!Objects.equals(this.playerName, other.playerName)) {
+            return false;
+        }
+        if (!Objects.equals(this.currentLocation, other.currentLocation)) {
             return false;
         }
         return true;

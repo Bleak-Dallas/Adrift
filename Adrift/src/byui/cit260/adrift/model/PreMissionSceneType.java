@@ -6,127 +6,27 @@
 package byui.cit260.adrift.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
  * @author Joel
  */
-public class PreMissionSceneType implements Serializable{
-    private String description;
-    private char symbol;
-    private int noOfItems;
-    private String resourceType;
-    private int elevatorCapacity;
-    private int elevatorCapacityUsed;
+public enum PreMissionSceneType implements Serializable{
+    
+    O2tanks("This will give you additional O2 at the start of the game."),
+    water("This will give you additional water at the start of the game."),
+    food("This will give you additional food/calories at the start of the game."),
+    fuel("This will give you additional fuel at the start of the game.");
+    
+    private final String description;
 
-    public PreMissionSceneType() {
+
+    PreMissionSceneType(String description) {
+        this.description = description;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(char symbol) {
-        this.symbol = symbol;
-    }
-
-    public double getNoOfItems() {
-        return noOfItems;
-    }
-
-    public void setNoOfItems(int noOfItems) {
-        this.noOfItems = noOfItems;
-    }
-
-    public String getResourceType() {
-        return resourceType;
-    }
-
-    public void setResourceType(String resourceType) {
-        this.resourceType = resourceType;
-    }
-
-    public double getElevatorCapacity() {
-        return elevatorCapacity;
-    }
-
-    public void setElevatorCapacity(int elevatorCapacity) {
-        this.elevatorCapacity = elevatorCapacity;
-    }
-
-    public double getElevatorCapacityUsed() {
-        return elevatorCapacityUsed;
-    }
-
-    public void setElevatorCapacityUsed(int elevatorCapacityUsed) {
-        this.elevatorCapacityUsed = elevatorCapacityUsed;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + this.symbol;
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.noOfItems) ^ (Double.doubleToLongBits(this.noOfItems) >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.resourceType);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.elevatorCapacity) ^ (Double.doubleToLongBits(this.elevatorCapacity) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.elevatorCapacityUsed) ^ (Double.doubleToLongBits(this.elevatorCapacityUsed) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "PreMissionSceneType{" + "description=" + description + ", symbol=" + symbol + ", noOfItems=" + noOfItems + ", resourceType=" + resourceType + ", elevatorCapacity=" + elevatorCapacity + ", elevatorCapacityUsed=" + elevatorCapacityUsed + '}';
-    }
-
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final PreMissionSceneType other = (PreMissionSceneType) obj;
-        if (this.symbol != other.symbol) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.noOfItems) != Double.doubleToLongBits(other.noOfItems)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.elevatorCapacity) != Double.doubleToLongBits(other.elevatorCapacity)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.elevatorCapacityUsed) != Double.doubleToLongBits(other.elevatorCapacityUsed)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.resourceType, other.resourceType)) {
-            return false;
-        }
-        return true;
-    }
-
-    
-
-    
-    
-    
-    
-    
 }

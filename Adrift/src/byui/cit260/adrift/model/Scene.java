@@ -6,20 +6,22 @@
 package byui.cit260.adrift.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
  *
- * @author Joel
+ * @author Dallas
  */
-public class RegularSceneType implements Serializable{
+public class Scene implements Serializable{
     
     private int distanceTraveled;
-    private char symbol;
+    private String symbol;
     private boolean blocked;
     private String description;
+    private Scene[] scenes;
 
-    public RegularSceneType() {
+    public Scene() {
     }
     
     
@@ -31,11 +33,11 @@ public class RegularSceneType implements Serializable{
         this.distanceTraveled = distanceTraveled;
     }
 
-    public char getSymbol() {
+    public String getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(char symbol) {
+    public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
@@ -55,23 +57,30 @@ public class RegularSceneType implements Serializable{
         this.description = description;
     }
 
-    
+    public Scene[] getScenes() {
+        return scenes;
+    }
+
+    public void setScenes(Scene[] scenes) {
+        this.scenes = scenes;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + this.distanceTraveled;
-        hash = 71 * hash + this.symbol;
-        hash = 71 * hash + (this.blocked ? 1 : 0);
-        hash = 71 * hash + Objects.hashCode(this.description);
+        int hash = 5;
+        hash = 19 * hash + this.distanceTraveled;
+        hash = 19 * hash + Objects.hashCode(this.symbol);
+        hash = 19 * hash + (this.blocked ? 1 : 0);
+        hash = 19 * hash + Objects.hashCode(this.description);
+        hash = 19 * hash + Arrays.deepHashCode(this.scenes);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "RegularSceneType{" + "distanceTraveled=" + distanceTraveled + ", symbol=" + symbol + ", blocked=" + blocked + ", description=" + description + '}';
+        return "Scene{" + "distanceTraveled=" + distanceTraveled + ", symbol=" + symbol + ", blocked=" + blocked + ", description=" + description + ", scenes=" + scenes + '}';
     }
 
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -83,22 +92,25 @@ public class RegularSceneType implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final RegularSceneType other = (RegularSceneType) obj;
+        final Scene other = (Scene) obj;
         if (this.distanceTraveled != other.distanceTraveled) {
-            return false;
-        }
-        if (this.symbol != other.symbol) {
             return false;
         }
         if (this.blocked != other.blocked) {
             return false;
         }
+        if (!Objects.equals(this.symbol, other.symbol)) {
+            return false;
+        }
         if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.scenes, other.scenes)) {
             return false;
         }
         return true;
     }
 
+
+
 } 
-    
-   

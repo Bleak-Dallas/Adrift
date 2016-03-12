@@ -14,6 +14,7 @@ import java.util.Objects;
  */
 public class ResourceSceneType implements Serializable{
     
+    String [] resource;
     private String resourceDescription;
     private int distanceTraveled;
     private boolean blocked;

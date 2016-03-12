@@ -21,12 +21,10 @@ public abstract class View implements ViewInterface {
     
     @Override
     public void display () {
-        boolean done = false;
+        boolean done;
         do {
             
             String value = this.getInput();
-            if (value.toUpperCase().equals("Q"))
-                return;
                         
             done = this.doAction(value);
         

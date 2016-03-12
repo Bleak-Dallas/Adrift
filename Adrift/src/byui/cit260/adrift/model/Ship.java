@@ -6,26 +6,30 @@
 package byui.cit260.adrift.model;
 
 import java.io.Serializable;
-import java.util.Objects;
+
 
 /**
  *
  * @author Joel
  */
 public class Ship implements Serializable{
-    private double fuelCapacity;
-    private double fuelLevel;
-    private double damageLevel;
+    
+String [] shipStatus;   
+private double repairLevel;
+private double fuelLevel;
 
     public Ship() {
+        
+        this.repairLevel = 0;
+        this.fuelLevel = 0;
     }
 
-    public double getFuelCapacity() {
-        return fuelCapacity;
+    public double getRepairLevel() {
+        return repairLevel;
     }
 
-    public void setFuelCapacity(double fuelCapacity) {
-        this.fuelCapacity = fuelCapacity;
+    public void setRepairLevel(double repairLevel) {
+        this.repairLevel = repairLevel;
     }
 
     public double getFuelLevel() {
@@ -36,29 +40,19 @@ public class Ship implements Serializable{
         this.fuelLevel = fuelLevel;
     }
 
-    public double getDamageLevel() {
-        return damageLevel;
-    }
-
-    public void setDamageLevel(double damageLevel) {
-        this.damageLevel = damageLevel;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.fuelCapacity) ^ (Double.doubleToLongBits(this.fuelCapacity) >>> 32));
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.damageLevel) ^ (Double.doubleToLongBits(this.damageLevel) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.repairLevel) ^ (Double.doubleToLongBits(this.repairLevel) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Ship{" + "fuelCapacity=" + fuelCapacity + ", fuelLevel=" + fuelLevel + ", damageLevel=" + damageLevel + '}';
+        return "Ship{" + "repairLevel=" + repairLevel + ", fuelLevel=" + fuelLevel + '}';
     }
-
-        
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -71,15 +65,15 @@ public class Ship implements Serializable{
             return false;
         }
         final Ship other = (Ship) obj;
-        if (Double.doubleToLongBits(this.fuelCapacity) != Double.doubleToLongBits(other.fuelCapacity)) {
+        if (Double.doubleToLongBits(this.repairLevel) != Double.doubleToLongBits(other.repairLevel)) {
             return false;
         }
         if (Double.doubleToLongBits(this.fuelLevel) != Double.doubleToLongBits(other.fuelLevel)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.damageLevel) != Double.doubleToLongBits(other.damageLevel)) {
-            return false;
-        }
         return true;
     }
+
+    
+
 }

@@ -5,6 +5,7 @@
  */
 package byui.cit260.adrift.model;
 
+import byu.cit260.adrift.enums.ActorType;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,27 +15,38 @@ import java.util.Objects;
  */
 public class Location implements Serializable {
     
-        private int location;
-        private int locationVisited;
+        private int row;
+        private int column;
+        private boolean visited;
         private int amountRemaining;
+        private Scene scene;
+        private ActorType actors;
 
     public Location() {
     }
 
-    public int getLocation() {
-        return location;
+    public int getRow() {
+        return row;
     }
 
-    public void setLocation(int location) {
-        this.location = location;
+    public void setRow(int row) {
+        this.row = row;
     }
 
-    public int getLocationVisited() {
-        return locationVisited;
+    public int getColumn() {
+        return column;
     }
 
-    public void setLocationVisited(int locationVisited) {
-        this.locationVisited = locationVisited;
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 
     public int getAmountRemaining() {
@@ -45,20 +57,39 @@ public class Location implements Serializable {
         this.amountRemaining = amountRemaining;
     }
 
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public ActorType getActors() {
+        return actors;
+    }
+
+    public void setActors(ActorType actors) {
+        this.actors = actors;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + this.location;
-        hash = 59 * hash + this.locationVisited;
-        hash = 59 * hash + this.amountRemaining;
+        hash = 23 * hash + this.row;
+        hash = 23 * hash + this.column;
+        hash = 23 * hash + (this.visited ? 1 : 0);
+        hash = 23 * hash + this.amountRemaining;
+        hash = 23 * hash + Objects.hashCode(this.scene);
+        hash = 23 * hash + Objects.hashCode(this.actors);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Location{" + "location=" + location + ", locationVisited=" + locationVisited + ", amountRemaining=" + amountRemaining + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", amountRemaining=" + amountRemaining + ", scene=" + scene + ", actors=" + actors + '}';
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -71,17 +102,25 @@ public class Location implements Serializable {
             return false;
         }
         final Location other = (Location) obj;
-        if (this.location != other.location) {
+        if (this.row != other.row) {
             return false;
         }
-        if (this.locationVisited != other.locationVisited) {
+        if (this.column != other.column) {
+            return false;
+        }
+        if (this.visited != other.visited) {
             return false;
         }
         if (this.amountRemaining != other.amountRemaining) {
             return false;
         }
+        if (!Objects.equals(this.scene, other.scene)) {
+            return false;
+        }
+        if (this.actors != other.actors) {
+            return false;
+        }
         return true;
     }
-    
     
 }

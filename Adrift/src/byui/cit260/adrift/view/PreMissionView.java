@@ -5,7 +5,6 @@
  */
 package byui.cit260.adrift.view;
 
-import java.util.Scanner;
 
 /**
  *
@@ -58,9 +57,11 @@ public class PreMissionView extends View{
             case 'R': //Save game
                 this.chooseAmount();
                 break;
-            case 'Q': //display main menu
-                MainMenuView mainMenu = new MainMenuView (); //display the game menu
-                mainMenu.display();
+            case 'Q': 
+                //display game menu
+                GameMenuView gameMenu = new GameMenuView (); //display the game menu
+                gameMenu.display();
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try Again");
                 break;

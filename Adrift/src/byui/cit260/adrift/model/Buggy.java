@@ -16,12 +16,14 @@ public class Buggy implements Serializable{
     
     private int fuelCapacity;
     private int fuelLevel;
-    private String startLocation;
-    private String location;
     private int maxWeight;
     private int loadedWeight;
 
     public Buggy() {
+        this.fuelCapacity = 1;
+        this.fuelLevel = 0;
+        this.maxWeight = 6000;
+        this.loadedWeight = 0;
     }
     
 
@@ -39,22 +41,6 @@ public class Buggy implements Serializable{
 
     public void setFuelLevel(int fuelLevel) {
         this.fuelLevel = fuelLevel;
-    }
-
-    public String getStartLocation() {
-        return startLocation;
-    }
-
-    public void setStartLocation(String startLocation) {
-        this.startLocation = startLocation;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public int getMaxWeight() {
@@ -78,8 +64,6 @@ public class Buggy implements Serializable{
         int hash = 7;
         hash = 19 * hash + this.fuelCapacity;
         hash = 19 * hash + this.fuelLevel;
-        hash = 19 * hash + Objects.hashCode(this.startLocation);
-        hash = 19 * hash + Objects.hashCode(this.location);
         hash = 19 * hash + this.maxWeight;
         hash = 19 * hash + this.loadedWeight;
         return hash;
@@ -87,7 +71,7 @@ public class Buggy implements Serializable{
 
     @Override
     public String toString() {
-        return "Buggy{" + "fuelCapacity=" + fuelCapacity + ", fuelLevel=" + fuelLevel + ", startLocation=" + startLocation + ", location=" + location + ", maxWeight=" + maxWeight + ", loadedWeight=" + loadedWeight + '}';
+        return "Buggy{" + "fuelCapacity=" + fuelCapacity + ", fuelLevel=" + fuelLevel + ", maxWeight=" + maxWeight + ", loadedWeight=" + loadedWeight + '}';
     }
     
     @Override
@@ -112,12 +96,6 @@ public class Buggy implements Serializable{
             return false;
         }
         if (this.loadedWeight != other.loadedWeight) {
-            return false;
-        }
-        if (!Objects.equals(this.startLocation, other.startLocation)) {
-            return false;
-        }
-        if (!Objects.equals(this.location, other.location)) {
             return false;
         }
         return true;

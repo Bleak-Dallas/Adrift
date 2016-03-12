@@ -6,6 +6,7 @@
 package byui.cit260.adrift.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -13,23 +14,33 @@ import java.util.Objects;
  * @author Dallas
  */
 public class InventoryItem implements Serializable{
-    
-    private String inventoryType;
+
+    String[] inventory;
+    private String description;
     private int quantityInStock;
-    private int amountRemaining;
+    private int requiredAmount;
+
+
 
     public InventoryItem() {
     }
+
+    public String[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(String[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
-
-    public String getInventoryType() {
-        return inventoryType;
-    }
-
-    public void setInventoryType(String inventoryType) {
-        this.inventoryType = inventoryType;
-    }
-
     public int getQuantityInStock() {
         return quantityInStock;
     }
@@ -37,29 +48,29 @@ public class InventoryItem implements Serializable{
     public void setQuantityInStock(int quantityInStock) {
         this.quantityInStock = quantityInStock;
     }
-
-    public int getAmountRemaining() {
-        return amountRemaining;
+    
+    public int getRequiredAmount() {
+        return requiredAmount;
     }
 
-    public void setAmountRemaining(int amountRemaining) {
-        this.amountRemaining = amountRemaining;
+    public void setRequiredAmount(int requiredAmount) {
+        this.requiredAmount = requiredAmount;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.inventoryType);
-        hash = 79 * hash + this.quantityInStock;
-        hash = 79 * hash + this.amountRemaining;
+        int hash = 7;
+        hash = 19 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 19 * hash + Objects.hashCode(this.description);
+        hash = 19 * hash + this.quantityInStock;
+        hash = 19 * hash + this.requiredAmount;
         return hash;
     }
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityInStock=" + quantityInStock + ", amountRemaining=" + amountRemaining + '}';
+        return "InventoryItem{" + "inventory=" + inventory + ", description=" + description + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + '}';
     }
-    
     
     @Override
     public boolean equals(Object obj) {
@@ -76,14 +87,20 @@ public class InventoryItem implements Serializable{
         if (this.quantityInStock != other.quantityInStock) {
             return false;
         }
-        if (this.amountRemaining != other.amountRemaining) {
+        if (this.requiredAmount != other.requiredAmount) {
             return false;
         }
-        if (!Objects.equals(this.inventoryType, other.inventoryType)) {
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
             return false;
         }
         return true;
     }
+
     
+    
+
     
 }

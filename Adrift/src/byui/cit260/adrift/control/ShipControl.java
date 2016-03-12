@@ -5,12 +5,15 @@
  */
 package byui.cit260.adrift.control;
 
+import byui.cit260.adrift.model.Ship;
+
 /**
  *
  * 
  */
 public class ShipControl {
     public void damageLevel() {
+        
 
     }
     public void fuelLevel() {

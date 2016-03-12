@@ -22,11 +22,13 @@ public class ProgramControl {
         
         Player player = new Player();
         player.setPlayerName(playerName);
-        
+
+       
         Adrift.setPlayer(player);
         
         return player;
         
     }
+
     
 }

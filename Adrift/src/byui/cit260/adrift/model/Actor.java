@@ -6,69 +6,51 @@
 package byui.cit260.adrift.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
  *
- * @author Autumn
+ * @author Dallas
  */
 public class Actor implements Serializable{
     
-        private String actorAllName;
-        private double currentLocation;
-        private int calorieLevel;
-        private int oxygenLevel;
+    private String description;
+    private Actor[] actors;
 
     public Actor() {
+       
     }
 
-    public String getActorAllName() {
-        return actorAllName;
+    public Actor[] getActors() {
+        return actors;
     }
 
-    public void setActorAllName(String actorAllName) {
-        this.actorAllName = actorAllName;
+    public void setActors(Actor[] actors) {
+        this.actors = actors;
     }
 
-    public double getCurrentLocation() {
-        return currentLocation;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCurrentLocation(double currentLocation) {
-        this.currentLocation = currentLocation;
-    }
-
-    public int getCalorieLevel() {
-        return calorieLevel;
-    }
-
-    public void setCalorieLevel(int calorieLevel) {
-        this.calorieLevel = calorieLevel;
-    }
-
-    public int getOxygenLevel() {
-        return oxygenLevel;
-    }
-
-    public void setOxygenLevel(int oxygenLevel) {
-        this.oxygenLevel = oxygenLevel;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.actorAllName);
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.currentLocation) ^ (Double.doubleToLongBits(this.currentLocation) >>> 32));
-        hash = 89 * hash + this.calorieLevel;
-        hash = 89 * hash + this.oxygenLevel;
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.description);
+        hash = 41 * hash + Arrays.deepHashCode(this.actors);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Actor{" + "actorAllName=" + actorAllName + ", currentLocation=" + currentLocation + ", calorieLevel=" + calorieLevel + ", oxygenLevel=" + oxygenLevel + '}';
+        return "Actor{" + "description=" + description + ", actors=" + Arrays.toString(actors) + '}';
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -81,20 +63,14 @@ public class Actor implements Serializable{
             return false;
         }
         final Actor other = (Actor) obj;
-        if (Double.doubleToLongBits(this.currentLocation) != Double.doubleToLongBits(other.currentLocation)) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (this.calorieLevel != other.calorieLevel) {
-            return false;
-        }
-        if (this.oxygenLevel != other.oxygenLevel) {
-            return false;
-        }
-        if (!Objects.equals(this.actorAllName, other.actorAllName)) {
+        if (!Arrays.deepEquals(this.actors, other.actors)) {
             return false;
         }
         return true;
     }
-
+   
     
 }

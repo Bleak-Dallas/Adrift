@@ -73,8 +73,7 @@ public class HelpMenuView extends View {
                         + "resources mined on the asteriod before you can launch.");
                 break;
                 case 'Q': //Exit the help menu
-                MainMenuView mainMenu = new MainMenuView (); //display the game menu
-                mainMenu.display();
+                return true;
                 default:
                     
                 System.out.println("\n*** Invalid selection *** Try Again");

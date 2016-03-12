@@ -56,12 +56,15 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() { 
-         GameControl.createNewGame (Adrift.getPlayer()); //create new gamew
-         PreMissionView preMissionMenu = new PreMissionView ();//display the premission menu
-         preMissionMenu.display();
+        //create new game
+        GameControl.createNewGame (Adrift.getPlayer()); 
+        
+        //display the premission menu
+        PreMissionView preMissionMenu = new PreMissionView ();
+        preMissionMenu.display();
          
-         GameMenuView gameMenu = new GameMenuView (); //display the game menu
-         gameMenu.display();
+//        GameMenuView gameMenu = new GameMenuView (); //display the game menu
+//        gameMenu.display();
     }
 
     private void startExistingGame() {
