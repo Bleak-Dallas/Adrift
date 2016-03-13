@@ -7,7 +7,10 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
+import byui.cit260.adrift.control.MapControl;
 import byui.cit260.adrift.model.InventoryItem;
+import byui.cit260.adrift.model.Location;
+import byui.cit260.adrift.model.Map;
 
 
 /**
@@ -86,6 +89,10 @@ public class PreMissionView extends View{
         chooseFuel.display();
     }
 
+    private void chooseAmount() {
+        Map map = MapControl.createMap();
+        Location[][] locations = map.getLocations();
+        System.out.println("\n***" + locations[0][2].getScene().getResourceDescription());
 }
     
-    
+}    

@@ -8,6 +8,7 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byui.cit260.adrift.control.GameControl;
+import byui.cit260.adrift.control.MapControl;
 import byui.cit260.adrift.control.ToolsControl;
 import byui.cit260.adrift.model.Game;
 //import byui.cit260.adrift.control.MapControl;
@@ -70,7 +71,7 @@ public class GameMenuView extends View {
                 break;
                 
             case 'L': // View Contents of Coordinate
-                System.out.println("View Contents of Coordinate");
+                this.viewResourceSceneType();
                 break;
                 
             case 'M': // Move To Coordinate
@@ -278,9 +279,37 @@ public class GameMenuView extends View {
                                item.getQuantityInStock() + "\t\t" +
                                item.getRequiredResource() + "\t\t" +
                                item.getRequiredAmount());
+            
         }
     }
- }
-
+        private void viewResourceSceneType() {
+           // get sorted list of inventory items for the current game
+         Map map = MapControl.createMap();
+         Location[][] locations = map.getLocations();
+         
+        System.out.println("\n*************************************************"
+                            + "\n|          List of Resource Items              |"
+                            + "\n*************************************************\n");
+        System.out.println("Description" + "\t\t" +
+                            "Available");
+        
+         
+        
+        // for each inventory item
+        
+        for(int row = 0; row < map.getLocations().length; row++) {
+            // Add header
+            for (int column = 0; column < map.getLocations()[row].length; column++) {
+                
+            }
+            // Display the description, the required amount and the amount in stock
+            System.out.println(locations[0][2].getScene().getResourceDescription() + "\t\t" +
+                               locations[0][2].getScene().getResourceAmount());
+        }
+            System.out.println(locations[2][4].getScene().getResourceDescription() + "\t\t" +
+                               locations[2][4].getScene().getResourceAmount());
+    }
+     
+}
 
         
