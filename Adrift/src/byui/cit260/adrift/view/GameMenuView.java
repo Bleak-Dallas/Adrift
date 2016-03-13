@@ -306,8 +306,8 @@ public class GameMenuView extends View {
             System.out.println(locations[0][2].getScene().getResourceDescription() + "\t\t" +
                                locations[0][2].getScene().getResourceAmount());
         }
-            System.out.println(locations[2][4].getScene().getResourceDescription() + "\t\t" +
-                               locations[2][4].getScene().getResourceAmount());
+            System.out.println(locations[1][4].getScene().getResourceDescription() + "\t\t" +
+                               locations[1][4].getScene().getResourceAmount());
     }
      
 }
