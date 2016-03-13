@@ -6,10 +6,7 @@
 package byui.cit260.adrift.control;
 
 import adrift.Adrift;
-import byu.cit260.adrift.enums.Item;
 import byu.cit260.adrift.enums.ToolType;
-import byui.cit260.adrift.model.Game;
-import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Tools;
 
 /**
