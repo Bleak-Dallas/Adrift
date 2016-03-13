@@ -78,26 +78,25 @@ public class InventoryControl {
     
     }   
     
-//    public void resourceInventory(){
-//    
-//    }
+
     
-    public double packElevator(int elevatorCapacity, int elevatorCapacityUsed, int noOfItems){
+    public int packElevator(int elevatorCapacity, int elevatorCapacityUsed, int noOfItems){
         
-        double remainingCapacity;
+        int remainingCapacity;
         
          
         if (noOfItems <= 0){ // check to see if itmems less than or equal to zero
+            System.out.println("Please enter a value greater than zero");
             return -1;
         }
 
         if (noOfItems > 12) { // check to see if items exceed 12
+            System.out.println("You may only have 12 items");
             return -1;
             
         }
 
         if (elevatorCapacityUsed < elevatorCapacity){ // check remaining elevator capacity
-            elevatorCapacityUsed = noOfItems * 1000;
             remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
             System.out.println("Remaining capacity in elevator is " + remainingCapacity);
             return remainingCapacity;
@@ -110,69 +109,13 @@ public class InventoryControl {
             return remainingCapacity;
         }
         
-        elevatorCapacityUsed = noOfItems * 1000;
+        elevatorCapacityUsed = noOfItems;
         remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
         return remainingCapacity;
     
     }
     
-//    public int getAmountToManufacture(String inventoryType, int quantityInStock) {
-//        
-//        int resourcesNeeded = 0;
-//        
-//        return resourcesNeeded;
-//    
-//    }
-//    
-//    public double calculateIronNeededShip(double damageLevel, int quantityInStock){
-//    
-//        int resourcesNeeded = 0;
-//        
-//        return resourcesNeeded;
-//    
-//    }
-//    
-//    public double calculateFuelNeededShip(double fuelCapacity, double fuelLevel, int quantityInStock){
-//    
-//        int resourcesNeeded = 0;
-//        
-//        return resourcesNeeded;
-//    
-//    }
-//    
-//    public double calculateAluminumNeededO2Tank(String inventoryType, int quantityInStock){
-//    
-//        int resourcesNeeded = 0;
-//        
-//        return resourcesNeeded;
-//    
-//    }
-    
-//    public String getInventoryList(String inventoryType, int quantityInStock){
-//            
-//    String resourcesAvailable = null;
-//        
-//    return resourcesAvailable;
-//    
-//    }
-    
-    /*public int addToInventory(String inventoryType, int quantityInStock){
-        
-    int resourcesNeeded = 0;
-        
-    return resourcesNeeded;    
-    
-    }
-    */
-    
-    /*public int removeFromInventory(String inventoryType, int quantityInStock){
-        
-    int resourcesNeeded = 0;
-        
-    return resourcesNeeded;    
-    
-    }
-   */
+
     
     }
     

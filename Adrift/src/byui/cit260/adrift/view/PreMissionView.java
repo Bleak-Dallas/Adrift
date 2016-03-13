@@ -5,6 +5,10 @@
  */
 package byui.cit260.adrift.view;
 
+import adrift.Adrift;
+import byu.cit260.adrift.enums.Item;
+import byui.cit260.adrift.model.InventoryItem;
+
 
 /**
  *
@@ -18,15 +22,13 @@ public class PreMissionView extends View{
             + "\n ---------------------------------------"
             + "\n"
             + "\n ======================================="
-            + "\n  You may choose a maximum of 3 of any"
+            + "\n  You may choose a maximum of 4 of any"
             + "\n  item with a total of 12 items"
             + "\n ======================================="
-            + "\nE - Emergency Rations"
-            + "\nW - Water"
+            + "\nR - Food Rations"
             + "\nT - O2 Tanks"
-            + "\nM - Special Mining Equipment"
+            + "\nD - Drill"
             + "\nF - Fuel"
-            + "\nR - Replacement Parts/Repair Materials for Ship"
             + "\nQ - Done with selections"
             + "\n---------------------------------------");
     }
@@ -39,23 +41,17 @@ public class PreMissionView extends View{
         char choice = value.charAt(0); // get first character entered
         
         switch (choice) {
-            case 'E': //create and start new game
-                this.chooseAmount();
-                break;
-            case 'W': //Load existing game
-                this.chooseAmount();
+            case 'R': //create and start new game
+                this.chooseFood();
                 break;
             case 'T': // display Help Menu
-                this.chooseAmount();
+                this.chooseO2Tanks();
                 break;
-            case 'M': //Save game
-                this.chooseAmount();
+            case 'D': //Save game
+                this.chooseDrill();
                 break;
             case 'F': //Save game
-                this.chooseAmount();
-                break;
-            case 'R': //Save game
-                this.chooseAmount();
+                this.chooseFuel();
                 break;
             case 'Q': 
                 //display game menu
@@ -70,9 +66,26 @@ public class PreMissionView extends View{
 
     }
 
-    private void chooseAmount() {
-        System.out.println("\n*** chooseAmount function called ***");
+    private void chooseFood() {
+        ChooseFoodView foodView = new ChooseFoodView();
+        foodView.display();
     }
-    
+
+    private void chooseO2Tanks() {
+        ChooseO2TanksView O2TanksView = new ChooseO2TanksView();
+        O2TanksView.display();
+    }
+
+    private void chooseDrill() {
+        ChooseDrillView chooseDrill = new ChooseDrillView();
+        chooseDrill.display();
+    }
+
+    private void chooseFuel() {
+        ChooseFuelView chooseFuel = new ChooseFuelView();
+        chooseFuel.display();
+    }
+
 }
+    
     

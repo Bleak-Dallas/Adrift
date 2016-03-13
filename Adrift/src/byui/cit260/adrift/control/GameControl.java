@@ -7,10 +7,10 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 import byui.cit260.adrift.model.Buggy;
-import byui.cit260.adrift.model.Constants;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byu.cit260.adrift.enums.Item;
+import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Scene;
@@ -29,6 +29,12 @@ public class GameControl {
         
         game.setPlayer(player);
         
+        Map map = MapControl.createMap(); // create and initialize map
+        game.setMap(map); // save map in game
+        
+        Scene[] scenes = MapControl.createScenes(); //create scenes
+        game.setScenes(scenes); //save scenes
+        
         // create the inventory list and save in game
         InventoryItem[] inventoryList = GameControl.createInventoryList();
         game.setInventory(inventoryList);
@@ -36,18 +42,15 @@ public class GameControl {
         Tools[] toolList = ToolsControl.createToolList();
         game.setToolInventory(toolList);
         
+        Elevator elevator = new Elevator();
+        game.setElevator(elevator);
+        
         Ship ship = new Ship(); // create new ship
         game.setShip(ship); // save ship in game
         
         Buggy buggy = new Buggy(); // create new buggy
         game.setBuggy(buggy);// save buggy in game
        
-        Map map = MapControl.createMap(); // create and initialize map
-        game.setMap(map); // save map in game
-        
-        Scene[] scenes = MapControl.createScenes(); //create scenes
-        game.setScenes(scenes); //save scenes
-        
         // move actors to starting location in the map
 //        ActorType actors = MapControl.assignScenesToLocations(map, scenes);
 //        game.setActors(actors); 
@@ -56,30 +59,7 @@ public class GameControl {
 
     private static InventoryItem[] createInventoryList() { 
         // create array(list) of inventory items
-        InventoryItem[] inventory = new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
-//        InventoryItem shovel = new InventoryItem();
-//        shovel.setDescription("Shovel  ");
-//        shovel.setQuantityInStock(0);
-//        shovel.setRequiredAmount(0);
-//        inventory[Item.shovel.ordinal()] = shovel;
-//
-//        InventoryItem drill = new InventoryItem();
-//        drill.setDescription("Drill    ");
-//        drill.setQuantityInStock(0);
-//        drill.setRequiredAmount(0);
-//        inventory[Item.drill.ordinal()] = drill;
-//        
-//        InventoryItem hammer = new InventoryItem();
-//        hammer.setDescription("Hammer  ");
-//        hammer.setQuantityInStock(0);
-//        hammer.setRequiredAmount(0);
-//        inventory[Item.hammer.ordinal()] = hammer;
-//        
-//        InventoryItem O2tank = new InventoryItem();
-//        O2tank.setDescription("O2Tank  ");
-//        O2tank.setQuantityInStock(0);
-//        O2tank.setRequiredAmount(0);
-//        inventory[Item.O2tank.ordinal()] = O2tank;
+        InventoryItem[] inventory = new InventoryItem[Item.values().length];
         
         InventoryItem food = new InventoryItem();
         food.setDescription("Food    ");

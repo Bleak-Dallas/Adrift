@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class Elevator implements Serializable{
     
     private int noOfItems;
-    private int elevatorCapacity;
+    private int elevatorCapacity = 12;
     private int elevatorCapacityUsed;
 
     public Elevator() {

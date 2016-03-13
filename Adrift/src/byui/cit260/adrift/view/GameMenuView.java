@@ -264,7 +264,7 @@ public class GameMenuView extends View {
         Tools[] toolInventory = ToolsControl.getSortedToolList();
         
         System.out.println("\n*************************************************"
-                            + "\n|          List of Inventory Items              |"
+                            + "\n|          List of Tools              |"
                             + "\n*************************************************\n");
         System.out.println("Description" + "\t\t" +
                             "In Stock"   + "\t" +

@@ -11,10 +11,6 @@ package byu.cit260.adrift.enums;
  */
 public enum Item {
     
-    shovel,
-    drill,
-    hammer,
-    O2tank,
     food,
     water,
     fuel,
