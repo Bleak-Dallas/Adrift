@@ -5,6 +5,10 @@
  */
 package byui.cit260.adrift.view;
 
+import byui.cit260.adrift.control.MapControl;
+import byui.cit260.adrift.model.Location;
+import byui.cit260.adrift.model.Map;
+
 
 /**
  *
@@ -31,7 +35,6 @@ public class PreMissionView extends View{
             + "\n---------------------------------------");
     }
 
- 
     @Override
     public boolean doAction(String value) {
         
@@ -71,8 +74,10 @@ public class PreMissionView extends View{
     }
 
     private void chooseAmount() {
-        System.out.println("\n*** chooseAmount function called ***");
+        Map map = MapControl.createMap();
+        Location[][] locations = map.getLocations();
+        System.out.println("\n***" + locations[0][2].getScene().getResourceDescription());
+        
     }
-    
 }
     

@@ -20,7 +20,10 @@ public class Scene implements Serializable{
     private boolean blocked;
     private String description;
     private Scene[] scenes;
-
+    private String resourceDescription;
+    private int resourceAmount;
+    
+    
     public Scene() {
     }
     
@@ -63,6 +66,22 @@ public class Scene implements Serializable{
 
     public void setScenes(Scene[] scenes) {
         this.scenes = scenes;
+    }
+
+    public String getResourceDescription() {
+        return resourceDescription;
+    }
+
+    public void setResourceDescription(String resourceDescription) {
+        this.resourceDescription = resourceDescription;
+    }
+
+    public int getResourceAmount() {
+        return resourceAmount;
+    }
+
+    public void setResourceAmount(int resourceAmount) {
+        this.resourceAmount = resourceAmount;
     }
 
     @Override

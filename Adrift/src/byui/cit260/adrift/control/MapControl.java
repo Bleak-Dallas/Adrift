@@ -29,7 +29,10 @@ public class MapControl {
 //        Actor[] actors = createActorList();
         
         moveActorsToStartingLocation(map);
-
+        
+        // assign the diffeent scenes to locations in the map
+        assignScenesToLocations(map, scenes); 
+        
     return map;
     
     }
@@ -62,8 +65,11 @@ public class MapControl {
         sandy1.setSymbol(" SA1 ");
         sandy1.setBlocked(false);
         sandy1.setDistanceTraveled(0);
+        sandy1.setResourceDescription("Aluminum");
+        sandy1.setResourceAmount(10);
         scenes[SceneType.sandy1.ordinal()] = sandy1;
-        
+    
+                
         Scene sandy2 = new Scene();
         sandy2.setDescription("You notice that the area is relatively flat with "
                 + "thick deep sand. You also notice that there are some old "
