@@ -54,6 +54,8 @@ public class MapControl {
         start.setSymbol(" ST ");
         start.setBlocked(false);
         start.setDistanceTraveled(0);
+        start.setResourceDescription("Ice");
+        start.setResourceAmount(1);
         scenes[SceneType.start.ordinal()] = start;
         
         Scene sandy1 = new Scene();
@@ -85,7 +87,7 @@ public class MapControl {
         rocky1.setSymbol(" RO1 ");
         rocky1.setBlocked(false);
         rocky1.setDistanceTraveled(0);
-        rocky1.setResourceDescription("iron");
+        rocky1.setResourceDescription("Iron");
         rocky1.setResourceAmount(20);
         scenes[SceneType.rocky1.ordinal()] = rocky1;
         
@@ -276,6 +278,8 @@ public class MapControl {
         drill1.setSymbol(" DL1 ");
         drill1.setBlocked(false);
         drill1.setDistanceTraveled(0);
+        drill1.setResourceDescription("Copper");
+        drill1.setResourceAmount(20);
         scenes[SceneType.drill1.ordinal()] = drill1;
         
         Scene drill2 = new Scene();
@@ -284,6 +288,8 @@ public class MapControl {
         drill2.setSymbol(" DL2 ");
         drill2.setBlocked(false);
         drill2.setDistanceTraveled(0);
+        drill2.setResourceDescription("Copper");
+        drill2.setResourceAmount(10);
         scenes[SceneType.drill2.ordinal()] = drill2;
         
         Scene drill3 = new Scene();
@@ -296,6 +302,8 @@ public class MapControl {
         drill3.setSymbol(" DL3 ");
         drill3.setBlocked(false);
         drill3.setDistanceTraveled(0);
+        drill3.setResourceDescription("Aluminum");
+        drill3.setResourceAmount(15);
         scenes[SceneType.drill3.ordinal()] = drill3;
         
         Scene drill4 = new Scene();
@@ -306,6 +314,8 @@ public class MapControl {
         drill4.setSymbol(" DL4 ");
         drill4.setBlocked(false);
         drill4.setDistanceTraveled(0);
+        drill4.setResourceDescription("Aluminum");
+        drill4.setResourceAmount(10);
         scenes[SceneType.drill4.ordinal()] = drill4;
         
         Scene facility = new Scene();
@@ -318,6 +328,8 @@ public class MapControl {
         facility.setSymbol(" FC ");
         facility.setBlocked(false);
         facility.setDistanceTraveled(0);
+        facility.setResourceDescription("Oil");
+        facility.setResourceAmount(1);
         scenes[SceneType.facility.ordinal()] = facility;
         
         Scene ship = new Scene();
@@ -327,6 +339,8 @@ public class MapControl {
         ship.setSymbol(" SP ");
         ship.setBlocked(false);
         ship.setDistanceTraveled(0);
+        ship.setResourceDescription("Fuel");
+        ship.setResourceAmount(1);
         scenes[SceneType.ship.ordinal()] = ship;
         
         Scene finish = new Scene();
@@ -336,6 +350,8 @@ public class MapControl {
         finish.setSymbol(" FN ");
         finish.setBlocked(false);
         finish.setDistanceTraveled(0);
+        finish.setResourceDescription("Iron");
+        finish.setResourceAmount(1);
         scenes[SceneType.finish.ordinal()] = finish;
         
         return scenes;

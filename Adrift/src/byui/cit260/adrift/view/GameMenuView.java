@@ -16,6 +16,8 @@ import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Tools;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -283,7 +285,7 @@ public class GameMenuView extends View {
         }
     }
         private void viewResourceSceneType() {
-           // get sorted list of inventory items for the current game
+         //get sorted list of inventory items for the current game
          Map map = MapControl.createMap();
          Location[][] locations = map.getLocations();
          
@@ -301,15 +303,16 @@ public class GameMenuView extends View {
             // Add header
             for (int column = 0; column < map.getLocations()[row].length; column++) {
                 
-            }
             // Display the description, the required amount and the amount in stock
-            System.out.println(locations[0][2].getScene().getResourceDescription() + "\t\t" +
-                               locations[0][2].getScene().getResourceAmount());
+            System.out.println(locations[row][column].getScene().getResourceDescription() + "\t\t" +
+                               locations[row][column].getScene().getResourceAmount());
         }
-            System.out.println(locations[1][4].getScene().getResourceDescription() + "\t\t" +
-                               locations[1][4].getScene().getResourceAmount());
+//            System.out.println(locations[2][4].getScene().getResourceDescription() + "\t\t" +
+//                               locations[2][4].getScene().getResourceAmount());
+
+
+        }
     }
-     
 }
 
         
