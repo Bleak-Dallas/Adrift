@@ -36,7 +36,7 @@ public class GameMenuView extends View {
             + "\nB - View Tool Inventory"
             + "\nS - View Ship Status"
             + "\nL - View Contents of Coordinate"
-            + "\nM - Move To Coordinate"
+            + "\nM - Move To New Sector"
             + "\nE - Estimate Resources Needed"
             + "\nF - Calculate Fuel"
             + "\nO - Calculate O2"
@@ -76,8 +76,8 @@ public class GameMenuView extends View {
                 this.viewResourceSceneType();
                 break;
                 
-            case 'M': // Move To Coordinate
-                System.out.println("Move To Coordinate");
+            case 'M': // Move To New Sector
+                this.moveLocation();
                 break;
                 
             case 'E': // Estimate Resources needed
@@ -258,8 +258,8 @@ public class GameMenuView extends View {
     }
 
     private void displayResourcesNeeded() {
-        EstimateResourceView estimateResourceMenu = new EstimateResourceView ();//display the construct tools menu
-        estimateResourceMenu.display();
+        EstimateResourcesView estimateResourcesMenu = new EstimateResourcesView ();//display the construct tools menu
+        estimateResourcesMenu.display();
     }
 
     private void displayToolInventory() {
@@ -312,6 +312,11 @@ public class GameMenuView extends View {
 
 
         }
+    }
+
+    private void moveLocation() {
+        MoveLocationView moveLocation = new MoveLocationView();
+        moveLocation.displayMoveToLocation();
     }
 }
 
