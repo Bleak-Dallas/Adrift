@@ -5,6 +5,7 @@
  */
 package byui.cit260.adrift.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class Player implements Serializable{
     private String playerName;
     private int calorieLevel;
     private int oxygenLevel;
-    private int currentLocation;
+    private Point currentLocation;
 
     public Player() {
     }
@@ -53,14 +54,15 @@ public class Player implements Serializable{
     public void setOxygenLevel(int oxygenLevel) {
         this.oxygenLevel = oxygenLevel;
     }
-    
-        public Integer getCurrentLocation() {
+
+    public Point getCurrentLocation() {
         return currentLocation;
     }
 
-    public void setCurrentLocation(Integer currentLocation) {
+    public void setCurrentLocation(Point currentLocation) {
         this.currentLocation = currentLocation;
     }
+
 
     @Override
     public int hashCode() {

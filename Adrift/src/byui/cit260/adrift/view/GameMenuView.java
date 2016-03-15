@@ -316,7 +316,7 @@ public class GameMenuView extends View {
 
     private void moveLocation() {
         MoveLocationView moveLocation = new MoveLocationView();
-        moveLocation.displayMoveToLocation();
+        moveLocation.display();
     }
 }
 
