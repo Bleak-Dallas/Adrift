@@ -102,6 +102,8 @@ public class MoveLocationView extends View{
              }
             column = Integer.parseInt(input);
             this.moveLocation();
+            SceneView sceneView = new SceneView();
+            sceneView.display();
             break;
          }
 
@@ -114,6 +116,10 @@ public class MoveLocationView extends View{
         Scene[] scenes = game.getScenes();
         Location[][] locations = map.getLocations();
         game.setCurrentLocation(locations[row][column]);
+        
+        SceneView sceneView = new SceneView();
+            sceneView.display();
+        
   
     }
 }

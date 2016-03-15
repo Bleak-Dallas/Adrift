@@ -16,6 +16,7 @@ public enum SceneType {
     sandy2,
     rocky1,
     rocky2,
+    rocky3,
     icy1,
     icy2,
     canyon1,

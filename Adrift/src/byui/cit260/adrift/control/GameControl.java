@@ -97,11 +97,11 @@ public class GameControl {
         aluminum.setRequiredAmount(0);
         inventory[Item.aluminum.ordinal()] = aluminum;
         
-        InventoryItem ice = new InventoryItem();
-        ice.setDescription("Ice       ");
-        ice.setQuantityInStock(0);
-        ice.setRequiredAmount(0);
-        inventory[Item.ice.ordinal()] = ice;
+        InventoryItem fluxcapacitor = new InventoryItem();
+        fluxcapacitor.setDescription("Flux Capacitor");
+        fluxcapacitor.setQuantityInStock(0);
+        fluxcapacitor.setRequiredAmount(0);
+        inventory[Item.fluxcapacitor.ordinal()] = fluxcapacitor;
         
         InventoryItem copper = new InventoryItem();
         copper.setDescription("Copper   ");

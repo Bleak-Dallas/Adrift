@@ -63,7 +63,7 @@ public class MapControl {
                 + "causing a dust storm making it difficult to see.");
         sandy1.setSymbol(" SA1 ");
         sandy1.setBlocked(false);
-        sandy1.setDistanceTraveled(0);
+        sandy1.setDistanceTraveled(3);
         sandy1.setResourceDescription("Aluminum");
         sandy1.setResourceAmount(10);
         scenes[SceneType.sandy1.ordinal()] = sandy1;
@@ -76,7 +76,7 @@ public class MapControl {
                 + "It looks someone lived here long ago");
         sandy2.setSymbol(" SA2 ");
         sandy2.setBlocked(false);
-        sandy2.setDistanceTraveled(0);
+        sandy2.setDistanceTraveled(15);
         sandy2.setResourceDescription("Fuel");
         sandy2.setResourceAmount(20);
         scenes[SceneType.sandy2.ordinal()] = sandy2;
@@ -86,7 +86,7 @@ public class MapControl {
                 + "areas are usually great for mining all types of ore.");
         rocky1.setSymbol(" RO1 ");
         rocky1.setBlocked(false);
-        rocky1.setDistanceTraveled(0);
+        rocky1.setDistanceTraveled(5);
         rocky1.setResourceDescription("Iron");
         rocky1.setResourceAmount(20);
         scenes[SceneType.rocky1.ordinal()] = rocky1;
@@ -98,10 +98,22 @@ public class MapControl {
                 + "take a while.");
         rocky2.setSymbol(" RO2 ");
         rocky2.setBlocked(false);
-        rocky2.setDistanceTraveled(0);
+        rocky2.setDistanceTraveled(18);
         rocky2.setResourceDescription("Iron");
         rocky2.setResourceAmount(50);
         scenes[SceneType.rocky2.ordinal()] = rocky2;
+        
+        Scene rocky3 = new Scene();
+        rocky3.setDescription("This sector is inundated with large rocks making "
+                + "it difficult to pass through. You look around for an easier "
+                + "way to get through this section, but it looks like it may "
+                + "take a while.");
+        rocky3.setSymbol(" RO2 ");
+        rocky3.setBlocked(false);
+        rocky3.setDistanceTraveled(23);
+        rocky3.setResourceDescription("Iron");
+        rocky3.setResourceAmount(50);
+        scenes[SceneType.rocky3.ordinal()] = rocky3;
         
         Scene icy1 = new Scene();
         icy1.setDescription("This sector is bitterly cold and difficult to "
@@ -114,7 +126,7 @@ public class MapControl {
                 + "what resource you can get from the area.");
         icy1.setSymbol(" IC1 ");
         icy1.setBlocked(false);
-        icy1.setDistanceTraveled(0);
+        icy1.setDistanceTraveled(4);
         icy1.setResourceDescription("Ice");
         icy1.setResourceAmount(20);
         scenes[SceneType.icy1.ordinal()] = icy1;
@@ -124,8 +136,8 @@ public class MapControl {
                 + "The lake is very large and the ice is extremely blue.");
         icy2.setSymbol(" IC2 ");
         icy2.setBlocked(false);
-        icy2.setDistanceTraveled(0);
-        icy2.setResourceDescription("Ice");
+        icy2.setDistanceTraveled(17);
+        icy2.setResourceDescription("Aluminum");
         icy2.setResourceAmount(20);
         scenes[SceneType.icy2.ordinal()] = icy2;
         
@@ -135,8 +147,8 @@ public class MapControl {
                 + "warning signs that read, “8 hour exposure limit.”");
         canyon1.setSymbol(" CA1 ");
         canyon1.setBlocked(false);
-        canyon1.setDistanceTraveled(0);
-        canyon1.setResourceDescription("Copper");
+        canyon1.setDistanceTraveled(9);
+        canyon1.setResourceDescription("Uranium");
         canyon1.setResourceAmount(20);
         scenes[SceneType.canyon1.ordinal()] = canyon1;
         
@@ -145,21 +157,21 @@ public class MapControl {
                 + "previous sector with no end in sight.");
         canyon2.setSymbol(" CA2 ");
         canyon2.setBlocked(false);
-        canyon2.setDistanceTraveled(0);
-        canyon2.setResourceDescription("Drill");
-        canyon2.setResourceAmount(1);
+        canyon2.setDistanceTraveled(10);
+        canyon2.setResourceDescription("Uranium");
+        canyon2.setResourceAmount(10);
         scenes[SceneType.canyon2.ordinal()] = canyon2;
         
         Scene crater1 = new Scene();
         crater1.setDescription("The sector is almost completely consumed by a "
                 + "very large crater. As you head down the crater you find a "
-                + "shed with mining core samples that read, “Iron” and, “Copper.” "
+                + "shed with a mining core sample that reads, “Copper.” "
                 + "You decide to head down and see if you can get any of this ore here.");
         crater1.setSymbol(" CR1 ");
         crater1.setBlocked(false);
-        crater1.setDistanceTraveled(0);
-        crater1.setResourceDescription("O2Tanks");
-        crater1.setResourceAmount(20);
+        crater1.setDistanceTraveled(7);
+        crater1.setResourceDescription("Copper");
+        crater1.setResourceAmount(10);
         scenes[SceneType.crater1.ordinal()] = crater1;
         
         Scene crater2 = new Scene();
@@ -170,8 +182,8 @@ public class MapControl {
                 + "for mining.");
         crater2.setSymbol(" CR2 ");
         crater2.setBlocked(false);
-        crater2.setDistanceTraveled(0);
-        crater2.setResourceDescription("Hammer");
+        crater2.setDistanceTraveled(19);
+        crater2.setResourceDescription("Copper");
         crater2.setResourceAmount(20);
         scenes[SceneType.crater2.ordinal()] = crater2;
         
@@ -181,8 +193,8 @@ public class MapControl {
                 + "may need while you are here.");
         outpost1.setSymbol(" OP1 ");
         outpost1.setBlocked(false);
-        outpost1.setDistanceTraveled(0);
-        outpost1.setResourceDescription("Iron");
+        outpost1.setDistanceTraveled(6);
+        outpost1.setResourceDescription("Food");
         outpost1.setResourceAmount(15);
         scenes[SceneType.outpost1.ordinal()] = outpost1;
         
@@ -191,8 +203,8 @@ public class MapControl {
                 + "eye on your calories and look for any Emergency Rations.");
         outpost2.setSymbol(" OP2 ");
         outpost2.setBlocked(false);
-        outpost2.setDistanceTraveled(0);
-        outpost2.setResourceDescription("Fuel");
+        outpost2.setDistanceTraveled(11);
+        outpost2.setResourceDescription("Food");
         outpost2.setResourceAmount(20);
         scenes[SceneType.outpost2.ordinal()] = outpost2;
         
@@ -202,8 +214,8 @@ public class MapControl {
                 + "you are taking care to search these outposts thoroughly.");
         outpost3.setSymbol(" OP3 ");
         outpost3.setBlocked(false);
-        outpost3.setDistanceTraveled(0);
-        outpost3.setResourceDescription("Oil");
+        outpost3.setDistanceTraveled(16);
+        outpost3.setResourceDescription("Food");
         outpost3.setResourceAmount(20);
         scenes[SceneType.outpost3.ordinal()] = outpost3;
         
@@ -213,8 +225,8 @@ public class MapControl {
                 + "at this outpost. You should search again to make sure");
         outpost4.setSymbol(" OP4 ");
         outpost4.setBlocked(false);
-        outpost4.setDistanceTraveled(0);
-        outpost4.setResourceDescription("Fuel");
+        outpost4.setDistanceTraveled(21);
+        outpost4.setResourceDescription("Food");
         outpost4.setResourceAmount(10);
         scenes[SceneType.outpost4.ordinal()] = outpost4;
         
@@ -224,8 +236,8 @@ public class MapControl {
                 + "this rough area.");
         mountain1.setSymbol(" MN1 ");
         mountain1.setBlocked(false);
-        mountain1.setDistanceTraveled(0);
-        mountain1.setResourceDescription("Food");
+        mountain1.setDistanceTraveled(12);
+        mountain1.setResourceDescription("Iron");
         mountain1.setResourceAmount(30);
         scenes[SceneType.mountain1.ordinal()] = mountain1;
         
@@ -236,8 +248,8 @@ public class MapControl {
                 + "off a cliff.");
         mountain2.setSymbol(" MN2 ");
         mountain2.setBlocked(false);
-        mountain2.setDistanceTraveled(0);
-        mountain2.setResourceDescription("Fuel");
+        mountain2.setDistanceTraveled(24);
+        mountain2.setResourceDescription("Aluminum");
         mountain2.setResourceAmount(20);
         scenes[SceneType.mountain2.ordinal()] = mountain2;
         
@@ -248,7 +260,7 @@ public class MapControl {
                 + "able to get some uranium here.");
         cave1.setSymbol(" CV1 ");
         cave1.setBlocked(false);
-        cave1.setDistanceTraveled(0);
+        cave1.setDistanceTraveled(13);
         cave1.setResourceDescription("Uranium");
         cave1.setResourceAmount(20);
         scenes[SceneType.cave1.ordinal()] = cave1;
@@ -264,9 +276,9 @@ public class MapControl {
                 + "can leave this rock");
         cave2.setSymbol(" CV2 ");
         cave2.setBlocked(false);
-        cave2.setDistanceTraveled(0);
-        cave2.setResourceDescription("Fuel");
-        cave2.setResourceAmount(40);
+        cave2.setDistanceTraveled(25);
+        cave2.setResourceDescription("Flux Capacitor");
+        cave2.setResourceAmount(1);
         scenes[SceneType.cave2.ordinal()] = cave2;
         
         Scene drill1 = new Scene();
@@ -277,8 +289,8 @@ public class MapControl {
                 + "mining facility if you do not already have one.");
         drill1.setSymbol(" DL1 ");
         drill1.setBlocked(false);
-        drill1.setDistanceTraveled(0);
-        drill1.setResourceDescription("Copper");
+        drill1.setDistanceTraveled(8);
+        drill1.setResourceDescription("Fuel");
         drill1.setResourceAmount(20);
         scenes[SceneType.drill1.ordinal()] = drill1;
         
@@ -287,8 +299,8 @@ public class MapControl {
                 + "in working order");
         drill2.setSymbol(" DL2 ");
         drill2.setBlocked(false);
-        drill2.setDistanceTraveled(0);
-        drill2.setResourceDescription("Copper");
+        drill2.setDistanceTraveled(14);
+        drill2.setResourceDescription("Fuel");
         drill2.setResourceAmount(10);
         scenes[SceneType.drill2.ordinal()] = drill2;
         
@@ -301,8 +313,8 @@ public class MapControl {
                 + "type of drill and teaches you how to use it.");
         drill3.setSymbol(" DL3 ");
         drill3.setBlocked(false);
-        drill3.setDistanceTraveled(0);
-        drill3.setResourceDescription("Aluminum");
+        drill3.setDistanceTraveled(20);
+        drill3.setResourceDescription("Fuel");
         drill3.setResourceAmount(15);
         scenes[SceneType.drill3.ordinal()] = drill3;
         
@@ -313,8 +325,8 @@ public class MapControl {
                 + "crude oil, SCORE!!");
         drill4.setSymbol(" DL4 ");
         drill4.setBlocked(false);
-        drill4.setDistanceTraveled(0);
-        drill4.setResourceDescription("Aluminum");
+        drill4.setDistanceTraveled(22);
+        drill4.setResourceDescription("Fuel");
         drill4.setResourceAmount(10);
         scenes[SceneType.drill4.ordinal()] = drill4;
         
@@ -327,9 +339,9 @@ public class MapControl {
                 + "and resources you collect here at the facility.");
         facility.setSymbol(" FC ");
         facility.setBlocked(false);
-        facility.setDistanceTraveled(0);
-        facility.setResourceDescription("Oil");
-        facility.setResourceAmount(1);
+        facility.setDistanceTraveled(2);
+        facility.setResourceDescription("Fuel");
+        facility.setResourceAmount(4);
         scenes[SceneType.facility.ordinal()] = facility;
         
         Scene ship = new Scene();
@@ -338,7 +350,7 @@ public class MapControl {
                 + "you want to work on the ship?");
         ship.setSymbol(" SP ");
         ship.setBlocked(false);
-        ship.setDistanceTraveled(0);
+        ship.setDistanceTraveled(1);
         ship.setResourceDescription("Fuel");
         ship.setResourceAmount(1);
         scenes[SceneType.ship.ordinal()] = ship;
@@ -367,7 +379,6 @@ public class MapControl {
         locations[0][2].setScene(scenes[SceneType.sandy1.ordinal()]);
         locations[0][3].setScene(scenes[SceneType.icy1.ordinal()]);
         locations[0][4].setScene(scenes[SceneType.rocky1.ordinal()]);
-        locations[0][4].setVisited(true);
         
         locations[1][0].setScene(scenes[SceneType.outpost1.ordinal()]);
         locations[1][1].setScene(scenes[SceneType.crater1.ordinal()]);
