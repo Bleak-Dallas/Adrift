@@ -23,7 +23,7 @@ public class Game implements Serializable{
     private Tools[] toolInventory;
     private Scene[] scenes;
     private Elevator elevator;
-    private Ship ship;
+    private Ship[] ship;
     private Buggy buggy;
     private Map map;
     private Location currentLocation;
@@ -72,13 +72,14 @@ public class Game implements Serializable{
         this.elevator = elevator;
     }
 
-    public Ship getShip() {
+    public Ship[] getShip() {
         return ship;
     }
 
-    public void setShip(Ship ship) {
+    public void setShip(Ship[] ship) {
         this.ship = ship;
     }
+
 
     public Buggy getBuggy() {
         return buggy;
@@ -131,25 +132,25 @@ public class Game implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + this.noOfActors;
-        hash = 37 * hash + this.totalDistanceTraveled;
-        hash = 37 * hash + Objects.hashCode(this.player);
-        hash = 37 * hash + Arrays.deepHashCode(this.actors);
-        hash = 37 * hash + Arrays.deepHashCode(this.inventory);
-        hash = 37 * hash + Arrays.deepHashCode(this.toolInventory);
-        hash = 37 * hash + Arrays.deepHashCode(this.scenes);
-        hash = 37 * hash + Objects.hashCode(this.elevator);
-        hash = 37 * hash + Objects.hashCode(this.ship);
-        hash = 37 * hash + Objects.hashCode(this.buggy);
-        hash = 37 * hash + Objects.hashCode(this.map);
-        hash = 37 * hash + Objects.hashCode(this.currentLocation);
+        int hash = 7;
+        hash = 29 * hash + this.noOfActors;
+        hash = 29 * hash + this.totalDistanceTraveled;
+        hash = 29 * hash + Objects.hashCode(this.player);
+        hash = 29 * hash + Arrays.deepHashCode(this.actors);
+        hash = 29 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 29 * hash + Arrays.deepHashCode(this.toolInventory);
+        hash = 29 * hash + Arrays.deepHashCode(this.scenes);
+        hash = 29 * hash + Objects.hashCode(this.elevator);
+        hash = 29 * hash + Arrays.deepHashCode(this.ship);
+        hash = 29 * hash + Objects.hashCode(this.buggy);
+        hash = 29 * hash + Objects.hashCode(this.map);
+        hash = 29 * hash + Objects.hashCode(this.currentLocation);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "noOfActors=" + noOfActors + ", totalDistanceTraveled=" + totalDistanceTraveled + ", player=" + player + ", actors=" + Arrays.toString(actors) + ", inventory=" + Arrays.toString(inventory) + ", toolInventory=" + Arrays.toString(toolInventory) + ", scenes=" + Arrays.toString(scenes) + ", elevator=" + elevator + ", ship=" + ship + ", buggy=" + buggy + ", map=" + map + ", currentLocation=" + currentLocation + '}';
+        return "Game{" + "noOfActors=" + noOfActors + ", totalDistanceTraveled=" + totalDistanceTraveled + ", player=" + player + ", actors=" + actors + ", inventory=" + inventory + ", toolInventory=" + toolInventory + ", scenes=" + scenes + ", elevator=" + elevator + ", ship=" + ship + ", buggy=" + buggy + ", map=" + map + ", currentLocation=" + currentLocation + '}';
     }
 
     @Override
@@ -188,7 +189,7 @@ public class Game implements Serializable{
         if (!Objects.equals(this.elevator, other.elevator)) {
             return false;
         }
-        if (!Objects.equals(this.ship, other.ship)) {
+        if (!Arrays.deepEquals(this.ship, other.ship)) {
             return false;
         }
         if (!Objects.equals(this.buggy, other.buggy)) {
@@ -202,5 +203,5 @@ public class Game implements Serializable{
         }
         return true;
     }
-    
+
 }

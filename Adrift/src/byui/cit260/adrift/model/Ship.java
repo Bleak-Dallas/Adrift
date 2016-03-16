@@ -6,6 +6,8 @@
 package byui.cit260.adrift.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
 
 
 /**
@@ -13,8 +15,11 @@ import java.io.Serializable;
  * @author Joel
  */
 public class Ship implements Serializable{
-    
-String [] shipStatus;   
+
+String [] shipItems;
+private String description;
+private int shipItemAmount;
+private int requiredShipAmount;
 private double repairLevel;
 private double fuelLevel;
 
@@ -22,6 +27,38 @@ private double fuelLevel;
         
         this.repairLevel = 0;
         this.fuelLevel = 0;
+    }
+
+    public String[] getShipItems() {
+        return shipItems;
+    }
+
+    public void setShipItems(String[] shipItems) {
+        this.shipItems = shipItems;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getShipItemAmount() {
+        return shipItemAmount;
+    }
+
+    public void setShipItemAmount(int shipItemAmount) {
+        this.shipItemAmount = shipItemAmount;
+    }
+
+    public int getRequiredShipAmount() {
+        return requiredShipAmount;
+    }
+
+    public void setRequiredShipAmount(int requiredShipAmount) {
+        this.requiredShipAmount = requiredShipAmount;
     }
 
     public double getRepairLevel() {
@@ -43,16 +80,20 @@ private double fuelLevel;
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.repairLevel) ^ (Double.doubleToLongBits(this.repairLevel) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
+        hash = 53 * hash + Arrays.deepHashCode(this.shipItems);
+        hash = 53 * hash + Objects.hashCode(this.description);
+        hash = 53 * hash + this.shipItemAmount;
+        hash = 53 * hash + this.requiredShipAmount;
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.repairLevel) ^ (Double.doubleToLongBits(this.repairLevel) >>> 32));
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Ship{" + "repairLevel=" + repairLevel + ", fuelLevel=" + fuelLevel + '}';
+        return "Ship{" + "shipItems=" + shipItems + ", description=" + description + ", shipItemAmount=" + shipItemAmount + ", requiredShipAmount=" + requiredShipAmount + ", repairLevel=" + repairLevel + ", fuelLevel=" + fuelLevel + '}';
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -65,15 +106,25 @@ private double fuelLevel;
             return false;
         }
         final Ship other = (Ship) obj;
+        if (this.shipItemAmount != other.shipItemAmount) {
+            return false;
+        }
+        if (this.requiredShipAmount != other.requiredShipAmount) {
+            return false;
+        }
         if (Double.doubleToLongBits(this.repairLevel) != Double.doubleToLongBits(other.repairLevel)) {
             return false;
         }
         if (Double.doubleToLongBits(this.fuelLevel) != Double.doubleToLongBits(other.fuelLevel)) {
             return false;
         }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.shipItems, other.shipItems)) {
+            return false;
+        }
         return true;
     }
-
-    
 
 }

@@ -45,8 +45,8 @@ public class GameControl {
         Elevator elevator = new Elevator();
         game.setElevator(elevator);
         
-        Ship ship = new Ship(); // create new ship
-        game.setShip(ship); // save ship in game
+        Ship[] shipItems = ShipControl.createShipList(); // create new ship
+        game.setShip(shipItems); // save ship in game
         
         Buggy buggy = new Buggy(); // create new buggy
         game.setBuggy(buggy);// save buggy in game
