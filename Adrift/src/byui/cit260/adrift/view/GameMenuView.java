@@ -25,7 +25,10 @@ import java.util.List;
  * @author Autumn
  */
 public class GameMenuView extends View {
-
+    
+    public static final String ANSI_RED = "\u001B[31m";
+    private String ANSI_REST;
+    
     public GameMenuView(){
     super ("\n"
             + "\n----------------------------------------"
@@ -101,7 +104,7 @@ public class GameMenuView extends View {
                 break;
                 
             case 'R': // Mine Resources
-                System.out.println("Mine Resources");
+                System.out.println(ANSI_RED + "Mine Resources" + ANSI_REST); //(ANSI_RED + "This text is red!" + ANSI_RESET)
                 break;
                 
             case 'D': // Deliver resources

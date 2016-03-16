@@ -8,15 +8,20 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.InventoryControl;
+import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Dallas
  */
 class ChooseFuelView extends View{
+    
+    
     public ChooseFuelView() {
     super("\n"
             + "\n ======================================="
@@ -33,9 +38,12 @@ class ChooseFuelView extends View{
  
     @Override
     public boolean doAction(String value) {
+      
         
        // value = value.toUpperCase(); // convert to all upper case
+    
         char choice = (char) Integer.parseInt(value); // change char to int
+    
         Game game = Adrift.getCurrentGame();
         InventoryItem[] inventory = game.getInventory();
         Elevator elevator = game.getElevator();
@@ -54,7 +62,11 @@ class ChooseFuelView extends View{
         elevator.setElevatorCapacityUsed(noOfItems);
         int capacityUsed = elevator.getElevatorCapacityUsed();
         int capacity = elevator.getElevatorCapacity();
-        inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
+        try {
+            inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
+        } catch (InventoryControlException ex) {
+            System.out.println(ex.getMessage());
+        }
   
 
         return true;

@@ -5,15 +5,21 @@
  */
 package byui.cit260.adrift.control;
 
+import byui.cit260.adrift.exceptions.InventoryControlException;
+
+
 
 public class InventoryControl {
+    public static final String ANSI_RED = "\u001B[31m";
+    private String ANSI_REST;
   
-    public double calculateO2Needed(double currentO2,int currentLocation,int destination){
+    public double calculateO2Needed(double currentO2,int currentLocation,int destination)
+                    throws InventoryControlException {
         
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
-            return -1;
+            throw new InventoryControlException("your x and y coordinates must be between 1 and 25");
         }
 
         if (currentLocation  < destination) {
@@ -32,12 +38,13 @@ public class InventoryControl {
     }   
     
     
-    public double calculateFuelNeeded(double currentFuel,int currentLocation,int destination){
+    public double calculateFuelNeeded(double currentFuel,int currentLocation,int destination)
+                        throws InventoryControlException {
         
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
-            return -1;
+            throw new InventoryControlException("your x and y coordinates must be between 1 and 25");
         }
 
         if (currentLocation  < destination) {
@@ -55,12 +62,13 @@ public class InventoryControl {
     
     }   
     
-    public double calculateCaloriesNeeded(double currentCalories,int currentLocation,int destination){
+    public double calculateCaloriesNeeded(double currentCalories,int currentLocation,int destination)
+                            throws InventoryControlException {
         
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
-            return -1;
+            throw new InventoryControlException("your x and y coordinates must be between 1 and 25");
         }
 
         if (currentLocation  < destination) {
@@ -80,19 +88,19 @@ public class InventoryControl {
     
 
     
-    public int packElevator(int elevatorCapacity, int elevatorCapacityUsed, int noOfItems){
+    public int packElevator(int elevatorCapacity, int elevatorCapacityUsed, int noOfItems)
+                            throws InventoryControlException {
         
         int remainingCapacity;
         
          
-        if (noOfItems <= 0){ // check to see if itmems less than or equal to zero
-            System.out.println("Please enter a value greater than zero");
-            return -1;
+        if (noOfItems <= 0){  
+// check to see if itmems less than or equal to zero
+            throw new InventoryControlException(ANSI_RED + "\n\nPlease enter a value greater than zero" + ANSI_REST);
         }
 
         if (noOfItems > 12) { // check to see if items exceed 12
-            System.out.println("You may only have 12 items");
-            return -1;
+            throw new InventoryControlException("\n\nYou may only have 12 items");
             
         }
 

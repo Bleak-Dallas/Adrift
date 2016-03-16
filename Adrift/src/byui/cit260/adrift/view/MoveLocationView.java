@@ -75,7 +75,12 @@ public class MoveLocationView extends View{
                 System.out.println("Invalid selection - the menu item must not be blank");
                 continue;
              }
+        try {
+            
             row = Integer.parseInt(input);
+        } catch (NumberFormatException nf){
+            System.out.println("\nYou must enter a valid number");
+        }
             break;
          }
          
@@ -98,7 +103,13 @@ public class MoveLocationView extends View{
                 System.out.println("Invalid selection - the menu item must not be blank");
                 continue;
              }
+            
+        try {
+                  
             column = Integer.parseInt(input);
+        } catch (NumberFormatException nf){
+            System.out.println("\nYou must enter a valid number");
+        }
             this.moveLocation();
             break;
          }

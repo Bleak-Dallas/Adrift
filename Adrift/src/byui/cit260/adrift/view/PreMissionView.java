@@ -89,10 +89,10 @@ public class PreMissionView extends View{
         chooseFuel.display();
     }
 
-    private void chooseAmount() {
-        Map map = MapControl.createMap();
-        Location[][] locations = map.getLocations();
-        System.out.println("\n***" + locations[0][2].getScene().getResourceDescription());
+//    private void chooseAmount() {
+//        Map map = MapControl.createMap();
+//        Location[][] locations = map.getLocations();
+//        System.out.println("\n***" + locations[0][2].getScene().getResourceDescription());
 }
     
-}    
+

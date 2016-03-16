@@ -185,9 +185,14 @@ public class Adrift {
          //dallasTest();
          
          StartProgramView startProgramView = new StartProgramView();
+    try {
          startProgramView.startProgram();
-        
+    } catch (Throwable te){
+      System.out.println(te.getMessage());
+      te.printStackTrace();
+      startProgramView.startProgram();
     }
+}
     
     
     
