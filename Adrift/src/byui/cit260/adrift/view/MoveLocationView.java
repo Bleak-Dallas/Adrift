@@ -10,8 +10,6 @@ import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
-import byui.cit260.adrift.model.Scene;
-import java.awt.Point;
 import java.util.Scanner;
 
 /**
@@ -102,8 +100,6 @@ public class MoveLocationView extends View{
              }
             column = Integer.parseInt(input);
             this.moveLocation();
-            SceneView sceneView = new SceneView();
-            sceneView.display();
             break;
          }
 
@@ -113,12 +109,12 @@ public class MoveLocationView extends View{
         Game game = Adrift.getCurrentGame();
         Player player = game.getPlayer();
         Map map = game.getMap();
-        Scene[] scenes = game.getScenes();
         Location[][] locations = map.getLocations();
+        
         game.setCurrentLocation(locations[row][column]);
         
         SceneView sceneView = new SceneView();
-            sceneView.display();
+            sceneView.displaySceneView(row, column);
         
   
     }
