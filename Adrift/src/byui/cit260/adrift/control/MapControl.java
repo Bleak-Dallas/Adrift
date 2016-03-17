@@ -5,15 +5,19 @@
  */
 package byui.cit260.adrift.control;
 
+import adrift.Adrift;
 import byu.cit260.adrift.enums.ActorType;
 import byui.cit260.adrift.model.Actor;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Scene;
 import byu.cit260.adrift.enums.SceneType;
+import byui.cit260.adrift.model.Game;
 
 
 public class MapControl {
+    
+    Game game = Adrift.getCurrentGame();
     
     public static Map createMap() {
         // create the map
@@ -25,8 +29,7 @@ public class MapControl {
          // assign the diffeent scenes to locations in the map
         assignScenesToLocations(map, scenes);
         
-         // create a list of actors
-//        Actor[] actors = createActorList();
+         // move actors to startin location
         
         moveActorsToStartingLocation(map);
 
@@ -403,7 +406,7 @@ public class MapControl {
         locations[4][2].setScene(scenes[SceneType.rocky1.ordinal()]);
         locations[4][3].setScene(scenes[SceneType.mountain2.ordinal()]);
         locations[4][4].setScene(scenes[SceneType.cave2.ordinal()]);
-        
+
     }
 
 //    static Actor[] createActorList() {
@@ -437,6 +440,7 @@ public class MapControl {
         locations[0][1].setActors(ActorType.Chewy);
         locations[0][1].setActors(ActorType.Bones);
         locations[0][1].setActors(ActorType.R2C3Data);
+        
         
         }
       

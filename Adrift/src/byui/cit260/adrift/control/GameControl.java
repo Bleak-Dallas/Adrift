@@ -50,6 +50,7 @@ public class GameControl {
         
         Buggy buggy = new Buggy(); // create new buggy
         game.setBuggy(buggy);// save buggy in game
+        
        
         // move actors to starting location in the map
 //        ActorType actors = MapControl.assignScenesToLocations(map, scenes);
@@ -142,20 +143,13 @@ public class GameControl {
 
     
 
-    public void saveGame(String actor) {
+    public void saveGame(String player) {
 
     }
     
-    public void loadGame(String actor) {
-
-    }
-    
-    public void initializeMap() {
+    public void loadGame(String player) {
 
     }
 
-    public void createNewPlayer() {
-
-    }
     
 }

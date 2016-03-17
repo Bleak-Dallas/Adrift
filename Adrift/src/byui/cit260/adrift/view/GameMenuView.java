@@ -257,7 +257,8 @@ public class GameMenuView extends View {
     }
 
     private void viewShipStatus() {
-        System.out.println("\n****  viewShipStatus() function called in GameMenuView ***");
+        ShipStatusView shipStauts = new ShipStatusView();
+        shipStauts.dislpayShipStatus();
     }
 
     private void displayResourcesNeeded() {

@@ -24,9 +24,7 @@ private double repairLevel;
 private double fuelLevel;
 
     public Ship() {
-        
-        this.repairLevel = 0;
-        this.fuelLevel = 0;
+ 
     }
 
     public String[] getShipItems() {

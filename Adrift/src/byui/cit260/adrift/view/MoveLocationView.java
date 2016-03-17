@@ -83,6 +83,10 @@ public class MoveLocationView extends View{
         }
             break;
          }
+        
+        if(row < 0 || row > 4) {
+                System.out.println("\n The X coordinate must be between 0 and 4");
+            }
          
      }
     
@@ -110,9 +114,14 @@ public class MoveLocationView extends View{
         } catch (NumberFormatException nf){
             System.out.println("\nYou must enter a valid number");
         }
-            this.moveLocation();
             break;
          }
+        
+        if(column < 0 || column > 4) {
+            System.out.println("\n The Y coordinate must be between 0 and 4");
+        }
+        
+        this.moveLocation();
 
     }
 

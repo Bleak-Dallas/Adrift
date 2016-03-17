@@ -11,6 +11,7 @@ package byu.cit260.adrift.enums;
  */
 public enum ShipType {
     
+    shipstatus,
     iron,
     copper,
     uranium;

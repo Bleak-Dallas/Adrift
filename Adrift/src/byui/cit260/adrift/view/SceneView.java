@@ -41,28 +41,10 @@ public class SceneView {
 //                            + "\n---------------------------------------";
 
     void displaySceneView(int row, int column) {
-        String MENU = locations[row][column].getScene().getDescription();
-        System.out.println(MENU);
+        String menu = locations[row][column].getScene().getDescription();
+        System.out.println(menu);
     }
 
-//    public boolean doAction(String value) {
-//        value = value.toUpperCase(); // convert to all upper case
-//        char choice = value.charAt(0); // get first character entered
-//        
-//        switch (choice) {
-//             case 'X': //create and start new game
-//                 //this.moveToX();
-//                 break;
-//             case 'Y': //Load existing game
-//                 //this.moveToY();
-//                 break;
-//             case 'Q': //Exit the game
-//                 return true;
-//             default:
-//                 System.out.println("\n*** Invalid selection *** Try Again");
-//                 break;
-//         }  
-//         return false;
-//    }
+
     
 }
