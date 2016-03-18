@@ -10,10 +10,7 @@ import byu.cit260.adrift.enums.ShipType;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Ship;
 
-/**
- *
- * 
- */
+
 public class ShipControl {
     
     Game game = Adrift.getCurrentGame();
@@ -26,8 +23,7 @@ public class ShipControl {
     private int requiredShipUranium = ship[ShipType.uranium.ordinal()].getRequiredShipAmount();
     int currentAmountIC = currentShipIron + currentShipCopper;
     int requiredAmountIC = requiredShipIron + requiredShipCopper;
-    
-    
+      
 
     static Ship[] createShipList() {
         
