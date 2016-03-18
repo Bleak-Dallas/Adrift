@@ -12,10 +12,7 @@ import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Ship;
 import java.text.NumberFormat;
 
-/**
- *
- * @author Dallas
- */
+
 public class ShipStatusView {
     Game game = Adrift.getCurrentGame();
     Ship[] shipItems = game.getShip();
