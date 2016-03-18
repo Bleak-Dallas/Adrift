@@ -5,11 +5,30 @@
  */
 package byui.cit260.adrift.view;
 
+import adrift.Adrift;
+import byui.cit260.adrift.control.InventoryControl;
+import byui.cit260.adrift.exceptions.InventoryControlException;
+import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.Location;
+import byui.cit260.adrift.model.Map;
+import byui.cit260.adrift.model.Player;
+import byui.cit260.adrift.model.Scene;
+import java.util.Scanner;
+
 /**
  *
  * @author Joel
  */
-class CalculateO2View extends View {
+public class CalculateO2View extends View {
+    Game game = Adrift.getCurrentGame();
+    Player player = game.getPlayer();
+    Map map = game.getMap();
+    Scene[] scenes = game.getScenes();
+    Location[][] locations = map.getLocations();
+    InventoryControl inventoryControl = new InventoryControl();
+    int currentO2 = player.getOxygenLevel();
+    int currentLocation;
+    int destination;    
     
     public CalculateO2View() {
         super("\n"
@@ -48,11 +67,124 @@ class CalculateO2View extends View {
     }
 
     private void currentLocation() {
-        System.out.println("\n*** currentLocation function called ***");
+        boolean valid = false;
+        int row = 0;
+        int column = 0;
+        String input = null;  // Integer.parseInt(numberAsString)
+        Scanner keyboard = new Scanner(System.in);
+         
+        while (!valid){
+            System.out.println("Enter X coordinate");
+             
+            input = keyboard.nextLine();
+            input= input.trim();
+             
+            if (input.length() < 1) {
+                System.out.println("Invalid selection - the menu item must not be blank");
+                continue;
+             }
+        try {
+            
+            row = Integer.parseInt(input);
+        } catch (NumberFormatException nf){
+            System.out.println("\nYou must enter a valid number");
+        }
+            break;
+         }
+        
+        if(row < 0 || row > 4) {
+                System.out.println("\n The X coordinate must be between 0 and 4");
+            }
+        
+         while (!valid){
+            System.out.println("Enter Y coordinate");
+             
+            input = keyboard.nextLine();
+            input= input.trim();
+             
+            if (input.length() < 1) {
+                System.out.println("Invalid selection - the menu item must not be blank");
+                continue;
+             }
+            
+        try {
+                  
+            column = Integer.parseInt(input);
+        } catch (NumberFormatException nf){
+            System.out.println("\nYou must enter a valid number");
+        }
+            break;
+         }
+        
+        if(column < 0 || column > 4) {
+            System.out.println("\n The Y coordinate must be between 0 and 4");
+        }
+        
+        currentLocation = locations[row][column].getScene().getDistanceTraveled();
     }
 
     private void destination() {
-        System.out.println("\n*** destination function called ***");
+          boolean valid = false;
+        int row = 0;
+        int column = 0;
+        String input = null;  // Integer.parseInt(numberAsString)
+        Scanner keyboard = new Scanner(System.in);
+         
+        while (!valid){
+            System.out.println("Enter X coordinate");
+             
+            input = keyboard.nextLine();
+            input= input.trim();
+             
+            if (input.length() < 1) {
+                System.out.println("Invalid selection - the menu item must not be blank");
+                continue;
+             }
+        try {
+            
+            row = Integer.parseInt(input);
+        } catch (NumberFormatException nf){
+            System.out.println("\nYou must enter a valid number");
+        }
+            break;
+         }
+        
+        if(row < 0 || row > 4) {
+                System.out.println("\n The X coordinate must be between 0 and 4");
+            }
+        
+         while (!valid){
+            System.out.println("Enter Y coordinate");
+             
+            input = keyboard.nextLine();
+            input= input.trim();
+             
+            if (input.length() < 1) {
+                System.out.println("Invalid selection - the menu item must not be blank");
+                continue;
+             }
+            
+        try {
+                  
+            column = Integer.parseInt(input);
+        } catch (NumberFormatException nf){
+            System.out.println("\nYou must enter a valid number");
+        }
+            break;
+         }
+        
+        if(column < 0 || column > 4) {
+            System.out.println("\n The Y coordinate must be between 0 and 4");
+        }
+        
+        destination = locations[row][column].getScene().getDistanceTraveled();
+        
+        try {
+            inventoryControl.calculateO2Needed(currentO2, currentLocation, destination);
+        } catch (InventoryControlException ex) {
+
+        }
+
     }
     
 }

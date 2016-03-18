@@ -62,6 +62,7 @@ public class MainMenuView extends View {
         //display the premission menu
         PreMissionView preMissionMenu = new PreMissionView ();
         preMissionMenu.display();
+        
     }
 
     private void startExistingGame() {

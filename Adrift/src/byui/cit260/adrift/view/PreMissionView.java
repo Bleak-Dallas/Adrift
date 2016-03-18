@@ -7,10 +7,15 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
+import byu.cit260.adrift.enums.ToolType;
 import byui.cit260.adrift.control.MapControl;
+import byui.cit260.adrift.model.Buggy;
+import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
+import byui.cit260.adrift.model.Player;
+import byui.cit260.adrift.model.Tools;
 
 
 /**
@@ -58,6 +63,7 @@ public class PreMissionView extends View{
                 break;
             case 'Q': 
                 //display game menu
+                this.createPlayerItems();
                 GameMenuView gameMenu = new GameMenuView (); //display the game menu
                 gameMenu.display();
                 return true;
@@ -93,6 +99,18 @@ public class PreMissionView extends View{
 //        Map map = MapControl.createMap();
 //        Location[][] locations = map.getLocations();
 //        System.out.println("\n***" + locations[0][2].getScene().getResourceDescription());
+
+    void createPlayerItems() {
+        Game game = Adrift.getCurrentGame();
+        Player player = game.getPlayer();
+        Buggy buggy = game.getBuggy();
+        InventoryItem[] inventoryList = game.getInventory();
+        Tools[] toolList = game.getToolInventory();
+        
+        player.setCalorieLevel(inventoryList[Item.food.ordinal()].getQuantityInStock());
+        player.setOxygenLevel(toolList[ToolType.O2tank.ordinal()].getQuantityInStock());
+        buggy.setFuelLevel(inventoryList[Item.fuel.ordinal()].getQuantityInStock());
+    }
 }
     
 

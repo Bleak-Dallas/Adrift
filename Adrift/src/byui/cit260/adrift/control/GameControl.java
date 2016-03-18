@@ -50,6 +50,8 @@ public class GameControl {
         
         Buggy buggy = new Buggy(); // create new buggy
         game.setBuggy(buggy);// save buggy in game
+
+
         
        
         // move actors to starting location in the map
@@ -141,7 +143,6 @@ public class GameControl {
         return inventoryList;
     }
 
-    
 
     public void saveGame(String player) {
 

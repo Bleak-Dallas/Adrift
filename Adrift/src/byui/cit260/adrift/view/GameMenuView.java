@@ -27,7 +27,8 @@ import java.util.List;
 public class GameMenuView extends View {
     
     public static final String ANSI_RED = "\u001B[31m";
-    private String ANSI_REST;
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
     
     public GameMenuView(){
     super ("\n"
@@ -92,7 +93,7 @@ public class GameMenuView extends View {
                 break;
                 
             case 'O': // Calculate O2
-                System.out.println("Calculate O2");
+                this.displayCalcO2();
                 break;
                 
             case 'C': //Calculate Calories
@@ -104,7 +105,7 @@ public class GameMenuView extends View {
                 break;
                 
             case 'R': // Mine Resources
-                System.out.println(ANSI_RED + "Mine Resources" + ANSI_REST); //(ANSI_RED + "This text is red!" + ANSI_RESET)
+                System.out.println(ANSI_RED + "Mine Resources" + ANSI_RESET); //(ANSI_RED + "This text is red!" + ANSI_RESET)
                 break;
                 
             case 'D': // Deliver resources
@@ -142,6 +143,11 @@ public class GameMenuView extends View {
     private void displayCalcFuel() {
         CalculateFuelView calcFuel = new CalculateFuelView();
         calcFuel.display();
+    }
+    
+    private void displayCalcO2() {
+        CalculateO2View calcO2 = new CalculateO2View();
+        calcO2.display();
     }
 
     private void displayCalcCalories() {
@@ -236,9 +242,9 @@ public class GameMenuView extends View {
 
                 for (int column = 0; column < locations[row].length; column++)
                     if(locations[row][column] == game.getCurrentLocation()) {
-                        System.out.print("|__You're Here__|");
+                        System.out.print(ANSI_GREEN + "|__You're Here__|" + ANSI_RESET);
                     } else if (locations[row][column].isVisited()) {
-                        System.out.print("|____Visited____|");
+                        System.out.print(ANSI_RED + "|____Visited____|" + ANSI_RESET);
                     } else {
                         System.out.print("|__Not Visited__|");
                     }
@@ -322,6 +328,8 @@ public class GameMenuView extends View {
         MoveLocationView moveLocation = new MoveLocationView();
         moveLocation.display();
     }
+
+
 }
 
         

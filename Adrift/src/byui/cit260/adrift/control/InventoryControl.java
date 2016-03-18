@@ -11,7 +11,8 @@ import byui.cit260.adrift.exceptions.InventoryControlException;
 
 public class InventoryControl {
     public static final String ANSI_RED = "\u001B[31m";
-    private String ANSI_REST;
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
   
     public double calculateO2Needed(double currentO2,int currentLocation,int destination)
                     throws InventoryControlException {
@@ -33,6 +34,13 @@ public class InventoryControl {
         }
 
         double remainingO2 =  currentO2 - (numberOfSpacesTraveled * .25);
+                if(remainingO2 < 0){
+                    System.out.println(ANSI_RED + "\n\nIf you take this trip your remaining O2 would be " 
+                                        + remainingO2 + ". You would die!!" + ANSI_RESET);
+                }
+                else{
+                    System.out.println(ANSI_GREEN + "\n\nIf you take this trip your remaining O2 would be " + remainingO2 + ANSI_RESET);
+                }
         return remainingO2;
     
     }   
@@ -58,6 +66,13 @@ public class InventoryControl {
         }
 
         double remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
+                if(remainingFuel < 0){
+                    System.out.println(ANSI_RED + "\n\nIf you take this trip your remaining fuel would be " 
+                                        + remainingFuel + ". You would die!!" + ANSI_RESET);
+                }
+                else{
+                    System.out.println(ANSI_GREEN + "\n\nIf you take this trip your remaining fuel would be " + remainingFuel + ANSI_RESET);
+                }
         return remainingFuel;
     
     }   
@@ -82,6 +97,13 @@ public class InventoryControl {
         }
 
         double remainingCalories =  currentCalories - (numberOfSpacesTraveled * .25);
+                if(remainingCalories < 0){
+                    System.out.println(ANSI_RED + "\n\nIf you take this trip your remaining food would be " 
+                                        + remainingCalories + ". You would die!!" + ANSI_RESET);
+                }
+                else{
+                    System.out.println(ANSI_GREEN + "\n\nIf you take this trip your remaining food would be " + remainingCalories + ANSI_RESET);
+                }
         return remainingCalories;
     
     }   
@@ -96,7 +118,7 @@ public class InventoryControl {
          
         if (noOfItems <= 0){  
 // check to see if itmems less than or equal to zero
-            throw new InventoryControlException(ANSI_RED + "\n\nPlease enter a value greater than zero" + ANSI_REST);
+            throw new InventoryControlException(ANSI_RED + "\n\nPlease enter a value greater than zero" + ANSI_RESET);
         }
 
         if (noOfItems > 12) { // check to see if items exceed 12
