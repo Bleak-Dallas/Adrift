@@ -68,8 +68,43 @@ public class ShipControl {
     }
 
     public void shipStatus() {
+        double repairLevel = 0;
+        double amountNeededIC = 0;
+        double amountNeededU;
+        double fuelLevel = 0;
+       
+        if(currentAmountIC < requiredAmountIC) {
+            amountNeededIC = requiredAmountIC - currentAmountIC;
+            repairLevel = amountNeededIC / requiredAmountIC;
+
+        }
+        
+        if(currentAmountIC == requiredAmountIC){
+            repairLevel = 1;
+        }
+
+        if(currentShipUranium < requiredShipUranium) {
+            amountNeededU = requiredShipUranium - currentShipUranium;
+            fuelLevel = amountNeededU / requiredShipUranium;
+
+        }
+        
+        if(currentShipUranium == requiredShipUranium){
+            fuelLevel = 1;
+  
+        }
+        
+        Ship shipstatus = new Ship();
+        shipstatus.setDescription("Ship Status");
+        shipstatus.setShipItemAmount(0);
+        shipstatus.setRequiredShipAmount(0);
+        shipstatus.setRepairLevel(repairLevel);
+        shipstatus.setFuelLevel(fuelLevel);
+        ship[ShipType.shipstatus.ordinal()] = shipstatus;
+    }
+
 
 
     }
     
-}
+
