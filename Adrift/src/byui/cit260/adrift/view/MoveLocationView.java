@@ -7,8 +7,10 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byui.cit260.adrift.control.BuggyControl;
+import byui.cit260.adrift.control.ToolsControl;
 import byui.cit260.adrift.exceptions.FoodControlException;
 import byui.cit260.adrift.exceptions.MapControlException;
+import byui.cit260.adrift.exceptions.ToolControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.FoodControl;
 import byui.cit260.adrift.model.Game;
@@ -32,6 +34,7 @@ public class MoveLocationView extends View{
     Buggy buggy  = game.getBuggy();
     BuggyControl buggyControl = new BuggyControl();
     FoodControl foodControl = new FoodControl();
+    ToolsControl toolControl = new ToolsControl();
     private int row;
     private int column;
     
@@ -41,13 +44,13 @@ public class MoveLocationView extends View{
                     + "\n |       Move To New Location          |"
                     + "\n ---------------------------------------"
      + ANSI_BLUE    + "\nTo move from one location to the next"
-     + ANSI_BLUE               + "\nyou will need to enter the X and Y "
-     + ANSI_BLUE               + "\ncoordinates. On the view map screen you"
-     + ANSI_BLUE               + "\nwill see Sectors like this: 0,2. The"
-     + ANSI_BLUE               + "\nfirst number is the X coordinate and"
-     + ANSI_BLUE               + "\nthe second number is the Y coordinate."
-     + ANSI_BLUE               +"\n" + ANSI_RESET
-                 + "\nX - Enter X coordinate" 
+     + ANSI_BLUE    + "\nyou will need to enter the X and Y "
+     + ANSI_BLUE    + "\ncoordinates. On the view map screen you"
+     + ANSI_BLUE    + "\nwill see Sectors like this: 0,2. The"
+     + ANSI_BLUE    + "\nfirst number is the X coordinate and"
+     + ANSI_BLUE    + "\nthe second number is the Y coordinate."
+     + ANSI_BLUE    + "\n" + ANSI_RESET
+                    + "\nX - Enter X coordinate" 
                     + "\nY - Enter Y coordinate"
                     + "\n --------------------------------------"
                     + "\nC - Check buggy's fuel level"
@@ -82,24 +85,23 @@ public class MoveLocationView extends View{
             }
         }
                  break;
-             case 'C': //create and start new game
+             case 'C': 
                  this.checkFuel();
                  break;
-             case 'F': //Load existing game
+             case 'F': 
                  this.fillBuggy();
                  break;
-             case 'O': //create and start new game
+             case 'O': 
                  this.checkO2();
                  break;
-             case 'R': //Load existing game
+             case 'R': 
                  this.fillO2();
                  break;
-             case 'L': //create and start new game
+             case 'L': 
                  this.checkFood();
                  break;
              case 'E': {
             try {
-                //Load existing game
                 this.fillFood();
             } catch (FoodControlException ex) {
                 System.out.println(ex);
@@ -183,10 +185,17 @@ public class MoveLocationView extends View{
         Player player = game.getPlayer();
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
+        StartProgramView startProgramView = new StartProgramView();
      
         Location currentLocation = game.getCurrentLocation();
         buggyControl.calcFuel(currentLocation, row, column);
         foodControl.calcFood(currentLocation, row, column);
+        try {
+            toolControl.calcO2(currentLocation, row, column);
+        } catch (ToolControlException ex) {
+            System.out.println(ex);
+            startProgramView.startProgram();
+        }
 
 
         game.setCurrentLocation(locations[row][column]);
@@ -239,9 +248,7 @@ public class MoveLocationView extends View{
 
     private void checkO2() {
         System.out.println("\n*** called checkO2 function has been called in MoveLocation Class ***");
-        //double amountToFill = buggy.getFuelCapacity() - buggy.getFuelLevel();
-        //System.out.println(ANSI_BLUE + "\nThe buggy's current fuel level is: " + buggy.getFuelLevel()
-        //                 + "\nThe buugy can hold " + amountToFill + " more gallons" + ANSI_RESET);
+
     }
 
     private void fillO2() {
@@ -253,7 +260,7 @@ public class MoveLocationView extends View{
     }
 
     private void fillFood() throws FoodControlException {
-         boolean valid = false;
+        boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
         int fillAmount = 0;
         

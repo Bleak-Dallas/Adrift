@@ -7,6 +7,11 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.ToolType;
+import byui.cit260.adrift.exceptions.ToolControlException;
+import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.Location;
+import byui.cit260.adrift.model.Map;
+import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Tools;
 
 /**
@@ -14,6 +19,14 @@ import byui.cit260.adrift.model.Tools;
  * @author Dallas
  */
 public class ToolsControl {
+    Game game = Adrift.getCurrentGame();
+    Map map = game.getMap();
+    Player player = game.getPlayer();
+    Location[][] locations = map.getLocations();
+    Tools[] tool = game.getToolInventory();
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     static Tools[] createToolList() {
         // create array(list) of inventory items
@@ -41,7 +54,7 @@ public class ToolsControl {
         
         Tools O2tank = new Tools();
         O2tank.setDescription("O2Tank  ");
-        O2tank.setQuantityInStock(0);
+        O2tank.setQuantityInStock(1);
         O2tank.setRequiredAmount(3);
         O2tank.setRequiredResource("Aluminum");
         toolInventory[ToolType.O2tank.ordinal()] = O2tank;
@@ -67,76 +80,35 @@ public class ToolsControl {
         }
         return toolList;
     }
+     
+    public double calcO2(Location currentLocation, int row, int column) throws ToolControlException{
+        int currentLoc = currentLocation.getScene().getDistanceTraveled();
+        int destination = locations[row][column].getScene().getDistanceTraveled();
+        double cuurentO2 = player.getCurrentOxygenLevel();
+        double remainingO2;
+        double numberOfSpacesTraveled = 0;
+        
+        if(cuurentO2 == 0) {
+            throw new ToolControlException(ANSI_RED + "YOU DIED!!!  YOU RAN OUT OF O2" + ANSI_RESET);
+        }
 
+        if (currentLoc  < destination) {
+            numberOfSpacesTraveled = destination - currentLoc; 
+            
+        }
 
-//    public InventoryItem[] sortedTools(){
-//        InventoryItem[] originalInventoryList = Adrift.getCurrentGame().getInventory(); // current game inventory
-//               
-//                // clone of current inventory
-//                InventoryItem[] inventoryList = originalInventoryList.clone(); 
-//               
-//                //Tools to find
-//                String drill1  = inventoryList[Item.drill.ordinal()].getDescription().trim();
-//                String hammer1 = inventoryList[Item.hammer.ordinal()].getDescription().trim();
-//                String o2Tank1 = inventoryList[Item.O2tank.ordinal()].getDescription().trim();
-//                String shovel  = inventoryList[Item.shovel.ordinal()].getDescription().trim();
-//
-//                /*
-//                 * There are several ways we can check whether a String array
-//                 * contains a particular string.
-//                 *
-//                 * First of them is iterating the array elements and check as given below.
-//                 */
-//               
-//                boolean contains = false;
-//               
-//                //iterate the String array
-//                for(int i=0; i < inventoryList.length; i++){
-//                       
-//                        //check if string array contains the string
-//                        if(inventoryList[i].getDescription().trim().equals(drill1)  || 
-//                           inventoryList[i].getDescription().trim().equals(hammer1) ||
-//                           inventoryList[i].getDescription().trim().equals(o2Tank1) ||
-//                           inventoryList[i].getDescription().trim().equals(shovel)){
-// 
-//                                //string found
-//                                contains = true;
-//    
-//                        }
-//                }
-//               
-//                if(contains){
-//                        System.out.println("String array contains String "    + drill1 
-//                                                                        + " " + hammer1
-//                                                                        + " " + o2Tank1
-//                                                                        + " " + shovel);
-//                }else{
-//                        System.out.println("String array does not contain String " + drill1);
-//                }
-//                            
-//       
-//    return inventoryList;
-//    }
-                
-                        
-//    public double resourcesNeeded(){
-//       
-//       for(ToolType name : ToolType.values()) {
-//            if(inventoryList[Item.iron.ordinal()].getQuantityInStock() < ToolType.drill.getAmountRequired()) {
-//            }
-//            System.out.println("You do not have enough resources to make tool");
-//           }  
-//       return 0;
-//    }
-                   
+        if (currentLoc > destination){
+            numberOfSpacesTraveled = currentLoc - destination;
+            
+        }
+
+        remainingO2 =  cuurentO2 - (numberOfSpacesTraveled * .25);
+        player.setCurrentOxygenLevel(remainingO2);
+
+        
+        return remainingO2;
+
+        }
+     
+           
 }
-
-
-
-                        
-
-//for(ToolType name : ToolType.values()) {
-//            if(inventoryList[Item.iron.ordinal()].getQuantityInStock() < ToolType.drill.getAmountRequired()) {
-//            }
-//            System.out.println("You do not have enough resources to make tool");
-//           }

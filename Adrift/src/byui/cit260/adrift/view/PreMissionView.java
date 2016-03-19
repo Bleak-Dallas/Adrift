@@ -66,6 +66,8 @@ public class PreMissionView extends View{
             case 'Q': 
                 //display game menu
                 this.createPlayerItems();
+                SceneView sceneView = new SceneView();
+                sceneView.displayStartingScene();
                 GameMenuView gameMenu = new GameMenuView (); //display the game menu
                 gameMenu.display();
                 return true;
@@ -106,7 +108,6 @@ public class PreMissionView extends View{
         Game game = Adrift.getCurrentGame();
         Player player = game.getPlayer();
         Buggy buggy = game.getBuggy();
-        InventoryItem[] inventoryList = game.getInventory();
         Tools[] toolList = game.getToolInventory();
         
         player.setCurrentCalorieLevel(2);

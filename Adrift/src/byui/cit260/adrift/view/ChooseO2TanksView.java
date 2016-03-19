@@ -11,9 +11,9 @@ import byui.cit260.adrift.control.InventoryControl;
 import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Tools;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -46,6 +46,7 @@ class ChooseO2TanksView extends View{
         }
     
         Game game = Adrift.getCurrentGame();
+        Player player = game.getPlayer();
         Tools[] toolInventory = game.getToolInventory();
         Elevator elevator = game.getElevator();
         InventoryControl inventoryControl = new InventoryControl();
@@ -56,6 +57,9 @@ class ChooseO2TanksView extends View{
         O2tank.setRequiredAmount(3);
         O2tank.setRequiredResource("Aluminum");
         toolInventory[ToolType.O2tank.ordinal()] = O2tank;
+        
+        double playerCurrentO2 = player.getCurrentOxygenLevel();
+        player.setCurrentOxygenLevel(playerCurrentO2 + choice);
     
         int currentNoOfItems = elevator.getNoOfItems();
         elevator.setNoOfItems(choice + currentNoOfItems);

@@ -6,7 +6,7 @@
 package byui.cit260.adrift.view;
 
 import adrift.Adrift;
-import byu.cit260.adrift.enums.Item;
+import byu.cit260.adrift.enums.SceneType;
 import byui.cit260.adrift.control.BuggyControl;
 import byui.cit260.adrift.control.SceneControl;
 import byui.cit260.adrift.exceptions.SceneControlException;
@@ -16,9 +16,7 @@ import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Scene;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -84,10 +82,18 @@ public class SceneView extends View{
     void displaySceneView(int row, int column) {
         this.row = row;
         this.column = column;
-
+        
+        if(row == 0 && column == 0) {
+            this.displayShipScene();
+        }
+        else if(row == 0 && column == 01) {
+            this.displayFacilityScene();
+        }
+        else {
         String menu = locations[row][column].getScene().getDescription();
         System.out.println("\n" + ANSI_BLUE + menu + ANSI_RESET);
         this.display();
+        }
     }
 
     private void checkResources() {
@@ -97,6 +103,24 @@ public class SceneView extends View{
                          + "\nThe amount remaining is " + resourceAmount + ANSI_RESET);
         
     }
-
+    
+    public void displayStartingScene() {
+        String startScene = scenes[SceneType.start.ordinal()].getDescription();
+        System.out.println(startScene);
+    }
+    
+    public void displayShipScene() {
+        System.out.println("\n*** The displayShipScene function was called in the SceneView class ***");
+    }
+    
+    public void displayFacilityScene() {
+        FacilitySceneView faciltyScene = new FacilitySceneView();
+        faciltyScene.displayFacilitySCene();
+        
+    }
+    
+    public void displayFinishScene() {
+        
+    }
 }
 

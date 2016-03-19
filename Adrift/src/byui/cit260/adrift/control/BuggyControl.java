@@ -31,11 +31,10 @@ public class BuggyControl {
     int loadedWeight = buggy.getLoadedWeight();
     int maxWeight = buggy.getMaxWeight();
     double fuelCapacity = buggy.getFuelCapacity();
-    double fuelLevel = buggy.getFuelLevel();
     int fuelInventory = inventoryList[Item.fuel.ordinal()].getQuantityInStock();
     int fuelAfterFill;
     int currentWeight;
-    int currentFuel;
+    double currentFuel;
     int currentLoc;
     int destination;
     boolean calledBefore = false;
@@ -60,8 +59,9 @@ public class BuggyControl {
     return currentWeight;
     }
     
-    public int fillFuel(int noOfItems) {
-        currentFuel = (int) (fuelLevel + noOfItems);
+    public double fillFuel(int noOfItems) {
+        double fuelLevel = buggy.getFuelLevel();
+        currentFuel = fuelLevel + noOfItems;
         fuelAfterFill = fuelInventory - noOfItems;
 
 
@@ -92,9 +92,11 @@ public class BuggyControl {
     public double calcFuel(Location currentLocation, int row, int column) {
         currentLoc = currentLocation.getScene().getDistanceTraveled();
         destination = locations[row][column].getScene().getDistanceTraveled();
+        double fuelLevel = buggy.getFuelLevel();
         double remainingFuel;
 
         double numberOfSpacesTraveled = 0;
+        
          
         if (destination < 1 || destination > 25){
             System.out.println(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);

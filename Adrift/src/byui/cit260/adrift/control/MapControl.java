@@ -53,10 +53,14 @@ public class MapControl {
             + ANSI_BLUE +"\nassessing the damage on the ship. Your ship’s hull is damaged "
             + ANSI_BLUE +"\nand will need to be fixed. Due to the damage to the hull your "
             + ANSI_BLUE +  "\nfuel cells have been damaged and additional fuel cells will "
-            + ANSI_BLUE +  "\nneed to be needed if you are ever to take off again. As "
-            + ANSI_BLUE +  "\nmission commander you need to: 1) Retrieve the top secret item "
+            + ANSI_BLUE +  "\nbe needed if you are ever to take off again. As mission"
+            + ANSI_BLUE +  "\ncommander you need to: 1) Retrieve the top secret item "
             + ANSI_BLUE +  "\nfrom the asteroid, 2) Fix the damaged hull, 3) Create new "
-            + ANSI_BLUE +  "\nfuel cells if possible, 4) Save your crew and return the item to earth." + ANSI_RESET);
+            + ANSI_BLUE +  "\nfuel cells if possible, 4) Save your crew and return the secret "
+            + ANSI_BLUE +  "\nitem to earth."
+            + ANSI_BLUE +  "\n"
+            + ANSI_BLUE +  "\nMeet up with your crew at the mining facility at sector 0,1 by"
+            + ANSI_BLUE +  "\nselecting 'M below in the game menu" + ANSI_RESET);
         start.setSymbol(" ST ");
         start.setBlocked(false);
         start.setDistanceTraveled(0);
