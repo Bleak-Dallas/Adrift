@@ -9,6 +9,7 @@ import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.BuggyControl;
 import byui.cit260.adrift.control.SceneControl;
+import byui.cit260.adrift.exceptions.SceneControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
@@ -16,6 +17,8 @@ import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Scene;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -61,8 +64,13 @@ public class SceneView extends View{
             case 'C': //create and start new game
                 this.checkResources();
                 break;
-            case 'M': //Load existing game
-                sceneControl.mineResources(resourceDescription, currentInventoryDesc);
+            case 'M': {
+           try {               
+               sceneControl.mineResources(resourceDescription, currentInventoryDesc);
+           } catch (SceneControlException ex) {
+               System.out.println(ex);
+           }
+       }
                 break;
             case 'Q': //Quit the game
                 return true;
