@@ -5,6 +5,8 @@
  */
 package byui.cit260.adrift.view;
 
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RESET;
 import byui.cit260.adrift.control.ToolsControl;
 
 /**
@@ -52,7 +54,7 @@ class ConstructToolsView extends View{
                 gameMenu.display();
                 
             default:
-                System.out.println("\n*** Invalid selection *** Try Again");
+                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         } 
         return true;         

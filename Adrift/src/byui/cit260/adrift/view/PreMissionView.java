@@ -23,6 +23,12 @@ import byui.cit260.adrift.model.Tools;
  * @author Dallas
  */
 public class PreMissionView extends View{
+    
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    
     public PreMissionView() {
     super("\n"
             + "\n ---------------------------------------"
@@ -68,7 +74,7 @@ public class PreMissionView extends View{
                 gameMenu.display();
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try Again");
+                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }
         return false;
@@ -107,8 +113,8 @@ public class PreMissionView extends View{
         InventoryItem[] inventoryList = game.getInventory();
         Tools[] toolList = game.getToolInventory();
         
-        player.setCalorieLevel(inventoryList[Item.food.ordinal()].getQuantityInStock());
-        player.setOxygenLevel(toolList[ToolType.O2tank.ordinal()].getQuantityInStock());
+        player.setCurrentCalorieLevel(2);
+        player.setCurrentOxygenLevel(toolList[ToolType.O2tank.ordinal()].getQuantityInStock());
         buggy.setFuelLevel(1);
     }
 }

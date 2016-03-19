@@ -30,6 +30,9 @@ public class CalculateFuelView extends View{
     double currentFuel = buggy.getFuelLevel();
     int currentLocation;
     int destination;
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
     
     public CalculateFuelView() {
         super("\n"
@@ -61,7 +64,7 @@ public class CalculateFuelView extends View{
             case 'Q': //Quit the game
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try Again");
+                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }     
         return false;
@@ -81,14 +84,14 @@ public class CalculateFuelView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
+                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
                 continue;
              }
         try {
             
             row = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println("\nYou must enter a valid number");
+            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
             break;
          }
@@ -104,7 +107,7 @@ public class CalculateFuelView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
+                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
                 continue;
              }
             
@@ -112,7 +115,7 @@ public class CalculateFuelView extends View{
                   
             column = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println("\nYou must enter a valid number");
+            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
             break;
          }
@@ -138,14 +141,14 @@ public class CalculateFuelView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
+                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
                 continue;
              }
         try {
             
             row = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println("\nYou must enter a valid number");
+            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
             break;
          }
@@ -161,7 +164,7 @@ public class CalculateFuelView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
+                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
                 continue;
              }
             
@@ -169,7 +172,7 @@ public class CalculateFuelView extends View{
                   
             column = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println("\nYou must enter a valid number");
+            System.out.println( ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
             break;
          }
@@ -183,6 +186,7 @@ public class CalculateFuelView extends View{
         try {
             inventoryControl.calculateFuelNeeded(currentFuel, currentLocation, destination);
         } catch (InventoryControlException ex) {
+            System.out.println(ex);
 
         }
 

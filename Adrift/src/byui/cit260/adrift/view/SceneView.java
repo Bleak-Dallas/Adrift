@@ -75,7 +75,7 @@ public class SceneView extends View{
             case 'Q': //Quit the game
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try Again");
+                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }     
         return false;
@@ -96,45 +96,7 @@ public class SceneView extends View{
         System.out.println(ANSI_BLUE + "\nThe resource found in this sector is " + resourceDescription
                          + "\nThe amount remaining is " + resourceAmount + ANSI_RESET);
         
-
     }
 
-//    private void mineResources() {
-//        
-//        boolean valid = false;
-//        int currentInventoryAmount;
-//        String input = null;  // Integer.parseInt(numberAsString)
-//        Scanner keyboard = new Scanner(System.in);
-//         
-//        while (!valid){
-//            System.out.println(ANSI_BLUE + "\nHow much " + resourceDescription 
-//                                + " would you like to mine?" + ANSI_RESET);
-//             
-//            input = keyboard.nextLine();
-//            input= input.trim();
-//             
-//            if (input.length() < 1) {
-//                System.out.println("Invalid selection - the menu item must not be blank");
-//                continue;
-//             }   
-//            amountToMine = Integer.parseInt(input);
-//                if(amountToMine > resourceAmount) {
-//                    System.out.println("Invalid selection you only have " + resourceAmount
-//                                        + " " + resourceDescription + " to mine.");
-//                }
-//                buggyControl.calWeight(amountToMine);
-//        
-//        for(InventoryItem inventory : inventoryList) {
-//            currentInventoryAmount = inventory.getQuantityInStock();
-//            currentInventoryDesc = inventory.getDescription().trim();
-//            if(inventory.getDescription().trim().equals(resourceDescription.trim()))
-//                inventory.setQuantityInStock(amountToMine + currentInventoryAmount);
-//        }
-//
-//           sceneAmount = resourceAmount - amountToMine;
-//                locations[row][column].getScene().setResourceAmount(sceneAmount);
-//                break;
-//        }
-        
-    }
+}
 

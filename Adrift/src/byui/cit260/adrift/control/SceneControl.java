@@ -6,6 +6,7 @@
 package byui.cit260.adrift.control;
 
 import adrift.Adrift;
+
 import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.exceptions.SceneControlException;
 import byui.cit260.adrift.model.Buggy;
@@ -16,6 +17,7 @@ import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Scene;
 import static byui.cit260.adrift.view.SceneView.ANSI_BLUE;
 import static byui.cit260.adrift.view.SceneView.ANSI_RESET;
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
 import java.util.Scanner;
 
 /**
@@ -60,8 +62,8 @@ public class SceneControl {
              }   
             amountToMine = Integer.parseInt(input);
                 if(amountToMine > resourceAmount) {
-                    System.out.println("Invalid selection you only have " + resourceAmount
-                                        + " " + resourceDescription + " to mine.");
+                    System.out.println(ANSI_RED + "Invalid selection you only have " + resourceAmount
+                                        + " " + resourceDescription + " to mine." + ANSI_RESET);
                 }
                 buggyControl.calWeight(amountToMine);
         

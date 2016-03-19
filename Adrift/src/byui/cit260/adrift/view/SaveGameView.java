@@ -11,6 +11,11 @@ package byui.cit260.adrift.view;
  */
 class SaveGameView extends View {
     
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    
     public SaveGameView(){
         super("\n"
             + "\n----------------------------------------"
@@ -34,13 +39,13 @@ class SaveGameView extends View {
             case 'Q': //Quit the game
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try Again");
+                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }     
         return false;
     }
 
     private void saveGame() {
-        System.out.println("\n*** saveGame function called ***");
+        System.out.println(ANSI_BLUE + "\n*** saveGame function called ***" + ANSI_RESET);
     }
 }
