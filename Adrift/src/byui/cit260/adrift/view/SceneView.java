@@ -8,6 +8,7 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.BuggyControl;
+import byui.cit260.adrift.exceptions.BuggyControlException;
 import byui.cit260.adrift.control.SceneControl;
 import byui.cit260.adrift.exceptions.SceneControlException;
 import byui.cit260.adrift.model.Buggy;
@@ -67,7 +68,7 @@ public class SceneView extends View{
             case 'M': {
            try {               
                sceneControl.mineResources(resourceDescription, currentInventoryDesc);
-           } catch (SceneControlException ex) {
+           } catch (SceneControlException | BuggyControlException ex) {
                System.out.println(ex);
            }
        }

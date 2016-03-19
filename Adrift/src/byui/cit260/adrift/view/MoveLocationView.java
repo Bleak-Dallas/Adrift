@@ -7,6 +7,7 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byui.cit260.adrift.control.BuggyControl;
+import byui.cit260.adrift.exceptions.BuggyControlException;
 import byui.cit260.adrift.exceptions.FoodControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.FoodControl;
@@ -15,6 +16,8 @@ import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -72,8 +75,14 @@ public class MoveLocationView extends View{
              case 'C': //create and start new game
                  this.checkFuel();
                  break;
-             case 'F': //Load existing game
-                 this.fillBuggy();
+             case 'F': {
+            try {
+                //Load existing game
+                this.fillBuggy();
+            } catch (BuggyControlException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
                  break;
              case 'O': //create and start new game
                  this.checkO2();
@@ -187,7 +196,7 @@ public class MoveLocationView extends View{
                     + ANSI_BLUE      + "\nThe buugy can hold " + amountToFill + " more gallons" + ANSI_RESET);
     }
 
-    private void fillBuggy() {
+    private void fillBuggy() throws BuggyControlException {
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
         int fillAmount = 0;
@@ -215,7 +224,7 @@ public class MoveLocationView extends View{
         }
         
         if(fillAmount < 0 || fillAmount > 4) {
-            System.out.println(ANSI_RED + "\nYou obviously cannot follow instructions. Enter 1-4" + ANSI_RESET);
+            throw new BuggyControlException(ANSI_RED + "\nYou obviously cannot follow instructions. Enter 1-4" + ANSI_RESET);
         }
         
         buggyControl.fillFuel(fillAmount);
@@ -269,6 +278,10 @@ public class MoveLocationView extends View{
     } catch (FoodControlException ex) {
         System.out.println(ex);
         }
+    }
+
+    private void BuggyControlException(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
