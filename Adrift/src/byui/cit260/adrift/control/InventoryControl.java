@@ -20,7 +20,7 @@ public class InventoryControl {
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
-            throw new InventoryControlException("your x and y coordinates must be between 1 and 25");
+            throw new InventoryControlException(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);
         }
 
         if (currentLocation  < destination) {
@@ -52,7 +52,7 @@ public class InventoryControl {
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
-            throw new InventoryControlException("your x and y coordinates must be between 1 and 25");
+            throw new InventoryControlException(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);
         }
 
         if (currentLocation  < destination) {
@@ -83,7 +83,7 @@ public class InventoryControl {
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
-            throw new InventoryControlException("your x and y coordinates must be between 1 and 25");
+            throw new InventoryControlException(ANSI_RED +"your x and y coordinates must be between 1 and 25" + ANSI_RESET);
         }
 
         if (currentLocation  < destination) {
@@ -122,19 +122,19 @@ public class InventoryControl {
         }
 
         if (noOfItems > 12) { // check to see if items exceed 12
-            throw new InventoryControlException("\n\nYou may only have 12 items");
+            throw new InventoryControlException(ANSI_RED + "\n\nYou may only have 12 items" + ANSI_RESET);
             
         }
 
         if (elevatorCapacityUsed < elevatorCapacity){ // check remaining elevator capacity
             remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
-            System.out.println("Remaining capacity in elevator is " + remainingCapacity);
+            System.out.println(ANSI_GREEN +"Remaining capacity in elevator is " + remainingCapacity + ANSI_RESET);
             return remainingCapacity;
             
         }
         
         if (elevatorCapacityUsed == elevatorCapacity){ // check to see if elevator is full
-            System.out.println("Elevator is Full");
+            System.out.println(ANSI_RED + "Elevator is Full" + ANSI_RESET);
             remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
             return remainingCapacity;
         }

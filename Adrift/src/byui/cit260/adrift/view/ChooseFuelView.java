@@ -8,6 +8,8 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.InventoryControl;
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RESET;
 import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.Game;
@@ -44,7 +46,7 @@ class ChooseFuelView extends View{
     try {
         choice = (char) Integer.parseInt(value); // change char to int
        }    catch (NumberFormatException nf){
-            System.out.println("\nYou must enter a valid number");
+            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
         Game game = Adrift.getCurrentGame();
         InventoryItem[] inventory = game.getInventory();
