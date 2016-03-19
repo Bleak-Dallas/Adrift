@@ -26,7 +26,7 @@ public class CalculateO2View extends View {
     Scene[] scenes = game.getScenes();
     Location[][] locations = map.getLocations();
     InventoryControl inventoryControl = new InventoryControl();
-    int currentO2 = player.getOxygenLevel();
+    double currentO2 = player.getCurrentOxygenLevel();
     int currentLocation;
     int destination;    
     public static final String ANSI_RED = "\u001B[31m";

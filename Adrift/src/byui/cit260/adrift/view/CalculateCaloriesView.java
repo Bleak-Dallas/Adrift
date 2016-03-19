@@ -27,7 +27,7 @@ public class CalculateCaloriesView extends View {
     Scene[] scenes = game.getScenes();
     Location[][] locations = map.getLocations();
     InventoryControl inventoryControl = new InventoryControl();
-    int currentCalories = player.getCalorieLevel();
+    double currentCalories = player.getCurrentCalorieLevel();
     int currentLocation;
     int destination;
     public static final String ANSI_RED = "\u001B[31m";

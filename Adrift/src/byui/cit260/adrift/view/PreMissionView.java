@@ -113,8 +113,8 @@ public class PreMissionView extends View{
         InventoryItem[] inventoryList = game.getInventory();
         Tools[] toolList = game.getToolInventory();
         
-        player.setCalorieLevel(inventoryList[Item.food.ordinal()].getQuantityInStock());
-        player.setOxygenLevel(toolList[ToolType.O2tank.ordinal()].getQuantityInStock());
+        player.setCurrentCalorieLevel(2);
+        player.setCurrentOxygenLevel(toolList[ToolType.O2tank.ordinal()].getQuantityInStock());
         buggy.setFuelLevel(1);
     }
 }
