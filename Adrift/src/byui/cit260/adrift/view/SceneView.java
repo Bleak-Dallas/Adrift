@@ -6,45 +6,127 @@
 package byui.cit260.adrift.view;
 
 import adrift.Adrift;
+import byu.cit260.adrift.enums.Item;
+import byui.cit260.adrift.control.BuggyControl;
+import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Scene;
+import java.util.Scanner;
 
 /**
  *
  * @author Dallas
  */
 
-public class SceneView {
-    
+public class SceneView extends View{
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
     Game game = Adrift.getCurrentGame();
     Map map = game.getMap();
     Location[][] locations = map.getLocations();
     Scene[] scenes = game.getScenes();
+    InventoryItem[] inventoryList = game.getInventory();
+    Buggy buggy = game.getBuggy();
+    BuggyControl buggyControl = new BuggyControl();
+    int row;
+    int column;
+    int amountToMine;
+    int resourceAmount;
+    int sceneAmount;
+    String resourceDescription;
+    String currentInventoryDesc;
     
-//    private final String MENU = locations[row][column].getScene().getDescription();
-//            "\n"
-//                            + "\n----------------------------------------"
-//                            + "\n |       Move To New Location          |"
-//                            + "\n ---------------------------------------"
-//                            + "\nTo move from one location to the next"
-//                            + "\nyou will need to enter the X and Y "
-//                            + "\ncoordinates. On the view map screen you"
-//                            + "\nwill see Sectors like this: 0,2. The"
-//                            + "\nfirst number is the X coordinate and"
-//                            + "\nthe second number is the Y coordinate."
-//                            +"\n"
-//                            + "\nX - Enter X coordinate"
-//                            + "\nY - Enter Y coordinate"
-//                            + "\nQ - Quit to game menu"
-//                            + "\n---------------------------------------";
+    public SceneView() {
+        super("\n"
+            + "\nWhat would you like to do in this sector"
+            +"\n"
+            + "\nC - Check resources"
+            + "\nM - Mine resources"
+            + "\nQ - Quit to move to location menu"
+            + "\n---------------------------------------");
+    }
+         @Override
+    public boolean doAction(String value) {
+       value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered 
+    
+        switch (choice) {
+            case 'C': //create and start new game
+                this.checkResources();
+                break;
+            case 'M': //Load existing game
+                this.mineResources();
+                break;
+            case 'Q': //Quit the game
+                return true;
+            default:
+                System.out.println("\n*** Invalid selection *** Try Again");
+                break;
+        }     
+        return false;
+    }
 
     void displaySceneView(int row, int column) {
+        this.row = row;
+        this.column = column;
+
         String menu = locations[row][column].getScene().getDescription();
-        System.out.println(menu);
+        System.out.println("\n" + menu);
+        this.display();
+    }
+
+    private void checkResources() {
+        resourceDescription = locations[row][column].getScene().getResourceDescription().trim();
+        resourceAmount = locations[row][column].getScene().getResourceAmount();
+        System.out.println(ANSI_BLUE + "\nThe resource found in this sector is " + resourceDescription
+                         + "\nThe amount remaining is " + resourceAmount + ANSI_RESET);
+        
+
+    }
+
+    private void mineResources() {
+        
+        boolean valid = false;
+        int currentInventoryAmount;
+        String input = null;  // Integer.parseInt(numberAsString)
+        Scanner keyboard = new Scanner(System.in);
+         
+        while (!valid){
+            System.out.println(ANSI_BLUE + "\nHow much " + resourceDescription 
+                                + " would you like to mine?" + ANSI_RESET);
+             
+            input = keyboard.nextLine();
+            input= input.trim();
+             
+            if (input.length() < 1) {
+                System.out.println("Invalid selection - the menu item must not be blank");
+                continue;
+             }   
+            amountToMine = Integer.parseInt(input);
+                if(amountToMine > resourceAmount) {
+                    System.out.println("Invalid selection you only have " + resourceAmount
+                                        + " " + resourceDescription + " to mine.");
+                }
+                buggyControl.calWeight(amountToMine);
+        
+        for(InventoryItem inventory : inventoryList) {
+            currentInventoryAmount = inventory.getQuantityInStock();
+            currentInventoryDesc = inventory.getDescription().trim();
+            if(inventory.getDescription().trim().equals(resourceDescription.trim()))
+                inventory.setQuantityInStock(amountToMine + currentInventoryAmount);
+        }
+
+           sceneAmount = resourceAmount - amountToMine;
+                locations[row][column].getScene().setResourceAmount(sceneAmount);
+                break;
+        }
+        
     }
 
 
-    
 }

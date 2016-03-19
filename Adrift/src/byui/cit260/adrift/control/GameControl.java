@@ -11,6 +11,7 @@ import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.model.Elevator;
+import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Scene;
@@ -22,6 +23,7 @@ import byui.cit260.adrift.model.Tools;
  * 
  */
 public class GameControl {
+
 
     public static void createNewGame(Player player) {
         Game game = new Game();  // create new game

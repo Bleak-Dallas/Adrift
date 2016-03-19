@@ -28,7 +28,11 @@ public class GameMenuView extends View {
     
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
+    
+    Game game = Adrift.getCurrentGame();
+    Map map = game.getMap();
     
     public GameMenuView(){
     super ("\n"
@@ -105,7 +109,7 @@ public class GameMenuView extends View {
                 break;
                 
             case 'R': // Mine Resources
-                System.out.println(ANSI_RED + "Mine Resources" + ANSI_RESET); //(ANSI_RED + "This text is red!" + ANSI_RESET)
+                System.out.println("Mine Resources"); //(ANSI_RED + "This text is red!" + ANSI_RESET)
                 break;
                 
             case 'D': // Deliver resources
@@ -181,8 +185,6 @@ public class GameMenuView extends View {
     }
 
     private void displayMap() {
-        Game game = Adrift.getCurrentGame();
-        Map map = game.getMap();
         Location[][] locations = map.getLocations();
 
         String menu = ""
@@ -295,8 +297,6 @@ public class GameMenuView extends View {
         }
     }
         private void viewResourceSceneType() {
-         //get sorted list of inventory items for the current game
-         Map map = MapControl.createMap();
          Location[][] locations = map.getLocations();
          
         System.out.println("\n*************************************************"

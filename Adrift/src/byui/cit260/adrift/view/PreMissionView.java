@@ -109,7 +109,7 @@ public class PreMissionView extends View{
         
         player.setCalorieLevel(inventoryList[Item.food.ordinal()].getQuantityInStock());
         player.setOxygenLevel(toolList[ToolType.O2tank.ordinal()].getQuantityInStock());
-        buggy.setFuelLevel(inventoryList[Item.fuel.ordinal()].getQuantityInStock());
+        buggy.setFuelLevel(1);
     }
 }
     

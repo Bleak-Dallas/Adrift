@@ -16,6 +16,10 @@ import byui.cit260.adrift.model.Game;
 
 
 public class MapControl {
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
     
     Game game = Adrift.getCurrentGame();
     
@@ -29,7 +33,6 @@ public class MapControl {
          // assign the diffeent scenes to locations in the map
         assignScenesToLocations(map, scenes);
         
-         // move actors to startin location
         
         moveActorsToStartingLocation(map);
 
@@ -119,14 +122,14 @@ public class MapControl {
         scenes[SceneType.rocky3.ordinal()] = rocky3;
         
         Scene icy1 = new Scene();
-        icy1.setDescription("\nThis sector is bitterly cold and difficult to "
-                + "\nmaneuver due to the massive amounts of ice. The good news is"
-                + "\nthat you have found a mining buggy in this sector. The bad "
-                + "\nnews is that it has no fuel. With the buggy you can begin "
-                + "\nmining ore and other resources to fix your ship. If you do "
-                + "\nnot have any fuel with you, you will need to travel back to "
-                + "\nthe facility to get some in order to use the buggy. I wonder "
-                + "\nwhat resource you can get from the area.");
+        icy1.setDescription(ANSI_BLUE + "\nThis sector is bitterly cold and difficult to "
+                + ANSI_BLUE + "\nmaneuver due to the massive amounts of ice. The good news is"
+                + ANSI_BLUE + "\nthat you have found a mining buggy in this sector. The bad "
+                + ANSI_BLUE + "\nnews is that it has no fuel. With the buggy you can begin "
+                + ANSI_BLUE + "\nmining ore and other resources to fix your ship. If you do "
+                + ANSI_BLUE + "\nnot have any fuel with you, you will need to travel back to "
+                + ANSI_BLUE + "\nthe facility to get some in order to use the buggy. I wonder "
+                + ANSI_BLUE + "\nwhat resource you can get from the area." + ANSI_RESET);
         icy1.setSymbol(" IC1 ");
         icy1.setBlocked(false);
         icy1.setDistanceTraveled(4);
@@ -432,14 +435,16 @@ public class MapControl {
 //        return actors;
 //    }
     
-        public static void moveActorsToStartingLocation(Map map) {
+    public static void moveActorsToStartingLocation(Map map) {
+        Game game = Adrift.getCurrentGame();
         Location[][] locations = map.getLocations();
-        
         // start point
         locations[0][1].setActors(ActorType.Luke);
         locations[0][1].setActors(ActorType.Chewy);
         locations[0][1].setActors(ActorType.Bones);
         locations[0][1].setActors(ActorType.R2C3Data);
+        game.setCurrentLocation(locations[0][0]);
+        
         
         
         }

@@ -6,6 +6,8 @@
 package byui.cit260.adrift.view;
 
 import adrift.Adrift;
+import byui.cit260.adrift.control.BuggyControl;
+import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
@@ -17,7 +19,13 @@ import java.util.Scanner;
  * @author Dallas
  */
 public class MoveLocationView extends View{
-    
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    Game game = Adrift.getCurrentGame();
+    BuggyControl buggyControl = new BuggyControl();
+    Buggy buggy  = game.getBuggy();
     private int row;
     private int column;
     
@@ -35,6 +43,8 @@ public class MoveLocationView extends View{
                     +"\n"
                     + "\nX - Enter X coordinate"
                     + "\nY - Enter Y coordinate"
+                    + "\nC - Check buggy's fuel level"
+                    + "\nF - Fill buggy with fuel"
                     + "\nQ - Quit to game menu"
                     + "\n---------------------------------------");
     }
@@ -50,6 +60,12 @@ public class MoveLocationView extends View{
                  break;
              case 'Y': //Load existing game
                  this.moveToY();
+                 break;
+             case 'C': //create and start new game
+                 this.checkFuel();
+                 break;
+             case 'F': //Load existing game
+                 this.fillBuggy();
                  break;
              case 'Q': //Exit the game
                  return true;
@@ -126,17 +142,58 @@ public class MoveLocationView extends View{
     }
 
     private void moveLocation() {
-        Game game = Adrift.getCurrentGame();
         Player player = game.getPlayer();
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
-        
+     
+        Location currentLocation = game.getCurrentLocation();
+        buggyControl.calcFuel(currentLocation, row, column);
         game.setCurrentLocation(locations[row][column]);
         
         SceneView sceneView = new SceneView();
             sceneView.displaySceneView(row, column);
         
   
+    }
+
+    private void checkFuel() {
+        double amountToFill = buggy.getFuelCapacity() - buggy.getFuelLevel();
+        System.out.println(ANSI_BLUE + "\nThe buggy's current fuel level is: " + buggy.getFuelLevel()
+                         + "\nThe buugy can hold " + amountToFill + " more gallons" + ANSI_RESET);
+    }
+
+    private void fillBuggy() {
+        boolean valid = false;
+        String input = null;  // Integer.parseInt(numberAsString)
+        int fillAmount = 0;
+        
+        Scanner keyboard = new Scanner(System.in);
+         
+        while (!valid){
+            System.out.println(ANSI_BLUE + "\nHow much fuel would you like to put in the buggy? MAX 4 when empty" + ANSI_RESET);
+             
+            input = keyboard.nextLine();
+            input= input.trim();
+             
+            if (input.length() < 1) {
+                System.out.println("Invalid selection - the menu item must not be blank");
+                continue;
+             }
+            
+        try {
+                  
+            fillAmount = Integer.parseInt(input);
+        } catch (NumberFormatException nf){
+            System.out.println("\nYou must enter a valid number");
+        }
+            break;
+        }
+        
+        if(fillAmount < 0 || fillAmount > 4) {
+            System.out.println("\nYou obviously cannot follow instructions. Enter 1-4");
+        }
+        
+        buggyControl.fillFuel(fillAmount);
     }
 }
 

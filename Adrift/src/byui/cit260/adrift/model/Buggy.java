@@ -14,32 +14,32 @@ import java.util.Objects;
  */
 public class Buggy implements Serializable{
     
-    private int fuelCapacity;
-    private int fuelLevel;
+    private double fuelCapacity;
+    private double fuelLevel;
     private int maxWeight;
     private int loadedWeight;
 
     public Buggy() {
-        this.fuelCapacity = 1;
-        this.fuelLevel = 0;
-        this.maxWeight = 6000;
+        this.fuelCapacity = 4;
+        this.fuelLevel = 1;
+        this.maxWeight = 60;
         this.loadedWeight = 0;
     }
     
 
-    public int getFuelCapacity() {
+    public double getFuelCapacity() {
         return fuelCapacity;
     }
 
-    public void setFuelCapacity(int fuelCapacity) {
+    public void setFuelCapacity(double fuelCapacity) {
         this.fuelCapacity = fuelCapacity;
     }
 
-    public int getFuelLevel() {
+    public double getFuelLevel() {
         return fuelLevel;
     }
 
-    public void setFuelLevel(int fuelLevel) {
+    public void setFuelLevel(double fuelLevel) {
         this.fuelLevel = fuelLevel;
     }
 
@@ -61,11 +61,11 @@ public class Buggy implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 19 * hash + this.fuelCapacity;
-        hash = 19 * hash + this.fuelLevel;
-        hash = 19 * hash + this.maxWeight;
-        hash = 19 * hash + this.loadedWeight;
+        int hash = 5;
+        hash = 41 * hash + (int) (Double.doubleToLongBits(this.fuelCapacity) ^ (Double.doubleToLongBits(this.fuelCapacity) >>> 32));
+        hash = 41 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
+        hash = 41 * hash + this.maxWeight;
+        hash = 41 * hash + this.loadedWeight;
         return hash;
     }
 
@@ -73,7 +73,7 @@ public class Buggy implements Serializable{
     public String toString() {
         return "Buggy{" + "fuelCapacity=" + fuelCapacity + ", fuelLevel=" + fuelLevel + ", maxWeight=" + maxWeight + ", loadedWeight=" + loadedWeight + '}';
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -86,10 +86,10 @@ public class Buggy implements Serializable{
             return false;
         }
         final Buggy other = (Buggy) obj;
-        if (this.fuelCapacity != other.fuelCapacity) {
+        if (Double.doubleToLongBits(this.fuelCapacity) != Double.doubleToLongBits(other.fuelCapacity)) {
             return false;
         }
-        if (this.fuelLevel != other.fuelLevel) {
+        if (Double.doubleToLongBits(this.fuelLevel) != Double.doubleToLongBits(other.fuelLevel)) {
             return false;
         }
         if (this.maxWeight != other.maxWeight) {
@@ -100,7 +100,5 @@ public class Buggy implements Serializable{
         }
         return true;
     }
-    
-    
-    
+  
 }
