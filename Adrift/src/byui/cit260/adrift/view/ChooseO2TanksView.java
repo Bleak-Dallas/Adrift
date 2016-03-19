@@ -37,9 +37,9 @@ class ChooseO2TanksView extends View{
  
     @Override
     public boolean doAction(String value) {
-        
+        int choice = 0;
        // value = value.toUpperCase(); // convert to all upper case
-        char choice = (char) Integer.parseInt(value); // change char to int
+        choice = (char) Integer.parseInt(value); // change char to int
         Game game = Adrift.getCurrentGame();
         Tools[] toolInventory = game.getToolInventory();
         Elevator elevator = game.getElevator();

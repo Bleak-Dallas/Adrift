@@ -8,6 +8,7 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.BuggyControl;
+import byui.cit260.adrift.control.SceneControl;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
@@ -33,6 +34,7 @@ public class SceneView extends View{
     InventoryItem[] inventoryList = game.getInventory();
     Buggy buggy = game.getBuggy();
     BuggyControl buggyControl = new BuggyControl();
+    SceneControl sceneControl = new SceneControl();
     int row;
     int column;
     int amountToMine;
@@ -60,7 +62,7 @@ public class SceneView extends View{
                 this.checkResources();
                 break;
             case 'M': //Load existing game
-                this.mineResources();
+                sceneControl.mineResources(resourceDescription, currentInventoryDesc);
                 break;
             case 'Q': //Quit the game
                 return true;
@@ -76,7 +78,7 @@ public class SceneView extends View{
         this.column = column;
 
         String menu = locations[row][column].getScene().getDescription();
-        System.out.println("\n" + menu);
+        System.out.println("\n" + ANSI_BLUE + menu + ANSI_RESET);
         this.display();
     }
 
@@ -89,44 +91,42 @@ public class SceneView extends View{
 
     }
 
-    private void mineResources() {
-        
-        boolean valid = false;
-        int currentInventoryAmount;
-        String input = null;  // Integer.parseInt(numberAsString)
-        Scanner keyboard = new Scanner(System.in);
-         
-        while (!valid){
-            System.out.println(ANSI_BLUE + "\nHow much " + resourceDescription 
-                                + " would you like to mine?" + ANSI_RESET);
-             
-            input = keyboard.nextLine();
-            input= input.trim();
-             
-            if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
-                continue;
-             }   
-            amountToMine = Integer.parseInt(input);
-                if(amountToMine > resourceAmount) {
-                    System.out.println("Invalid selection you only have " + resourceAmount
-                                        + " " + resourceDescription + " to mine.");
-                }
-                buggyControl.calWeight(amountToMine);
-        
-        for(InventoryItem inventory : inventoryList) {
-            currentInventoryAmount = inventory.getQuantityInStock();
-            currentInventoryDesc = inventory.getDescription().trim();
-            if(inventory.getDescription().trim().equals(resourceDescription.trim()))
-                inventory.setQuantityInStock(amountToMine + currentInventoryAmount);
-        }
-
-           sceneAmount = resourceAmount - amountToMine;
-                locations[row][column].getScene().setResourceAmount(sceneAmount);
-                break;
-        }
+//    private void mineResources() {
+//        
+//        boolean valid = false;
+//        int currentInventoryAmount;
+//        String input = null;  // Integer.parseInt(numberAsString)
+//        Scanner keyboard = new Scanner(System.in);
+//         
+//        while (!valid){
+//            System.out.println(ANSI_BLUE + "\nHow much " + resourceDescription 
+//                                + " would you like to mine?" + ANSI_RESET);
+//             
+//            input = keyboard.nextLine();
+//            input= input.trim();
+//             
+//            if (input.length() < 1) {
+//                System.out.println("Invalid selection - the menu item must not be blank");
+//                continue;
+//             }   
+//            amountToMine = Integer.parseInt(input);
+//                if(amountToMine > resourceAmount) {
+//                    System.out.println("Invalid selection you only have " + resourceAmount
+//                                        + " " + resourceDescription + " to mine.");
+//                }
+//                buggyControl.calWeight(amountToMine);
+//        
+//        for(InventoryItem inventory : inventoryList) {
+//            currentInventoryAmount = inventory.getQuantityInStock();
+//            currentInventoryDesc = inventory.getDescription().trim();
+//            if(inventory.getDescription().trim().equals(resourceDescription.trim()))
+//                inventory.setQuantityInStock(amountToMine + currentInventoryAmount);
+//        }
+//
+//           sceneAmount = resourceAmount - amountToMine;
+//                locations[row][column].getScene().setResourceAmount(sceneAmount);
+//                break;
+//        }
         
     }
 
-
-}

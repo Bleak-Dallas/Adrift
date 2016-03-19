@@ -38,12 +38,14 @@ class ChooseFuelView extends View{
  
     @Override
     public boolean doAction(String value) {
-      
+      int choice = 0;
         
        // value = value.toUpperCase(); // convert to all upper case
-    
-        char choice = (char) Integer.parseInt(value); // change char to int
-    
+    try {
+        choice = (char) Integer.parseInt(value); // change char to int
+       }    catch (NumberFormatException nf){
+            System.out.println("\nYou must enter a valid number");
+        }
         Game game = Adrift.getCurrentGame();
         InventoryItem[] inventory = game.getInventory();
         Elevator elevator = game.getElevator();

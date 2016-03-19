@@ -138,8 +138,8 @@ public class MapControl {
         scenes[SceneType.icy1.ordinal()] = icy1;
         
         Scene icy2 = new Scene();
-        icy2.setDescription("\nYou have arrived at what looks like a frozen lake. "
-                + "\nThe lake is very large and the ice is extremely blue.");
+        icy2.setDescription(ANSI_BLUE +"\nYou have arrived at what looks like a frozen lake. "
+                + ANSI_BLUE +"\nThe lake is very large and the ice is extremely blue." + ANSI_RESET);
         icy2.setSymbol(" IC2 ");
         icy2.setBlocked(false);
         icy2.setDistanceTraveled(17);
