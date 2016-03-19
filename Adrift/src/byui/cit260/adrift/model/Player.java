@@ -19,8 +19,10 @@ public class Player implements Serializable{
 
     //class instance variables
     private String playerName;
-    private int calorieLevel;
-    private int oxygenLevel;
+    private double currentCalorieLevel;
+    private double maxCalorieLevel = 4;
+    private double currentOxygenLevel;
+    private double maxOxygenLevel;
     private Point currentLocation;
 
     public Player() {
@@ -39,20 +41,20 @@ public class Player implements Serializable{
         this.playerName = playerName;
     }
 
-    public int getCalorieLevel() {
-        return calorieLevel;
+    public double getCurrentCalorieLevel() {
+        return currentCalorieLevel;
     }
 
-    public void setCalorieLevel(int calorieLevel) {
-        this.calorieLevel = calorieLevel;
+    public void setCurrentCalorieLevel(double currentCalorieLevel) {
+        this.currentCalorieLevel = currentCalorieLevel;
     }
 
-    public int getOxygenLevel() {
-        return oxygenLevel;
+    public double getMaxCalorieLevel() {
+        return maxCalorieLevel;
     }
 
-    public void setOxygenLevel(int oxygenLevel) {
-        this.oxygenLevel = oxygenLevel;
+    public void setMaxCalorieLevel(int maxCalorieLevel) {
+        this.maxCalorieLevel = maxCalorieLevel;
     }
 
     public Point getCurrentLocation() {
@@ -63,20 +65,37 @@ public class Player implements Serializable{
         this.currentLocation = currentLocation;
     }
 
+    public double getCurrentOxygenLevel() {
+        return currentOxygenLevel;
+    }
+
+    public void setCurrentOxygenLevel(double currentOxygenLevel) {
+        this.currentOxygenLevel = currentOxygenLevel;
+    }
+
+    public double getMaxOxygenLevel() {
+        return maxOxygenLevel;
+    }
+
+    public void setMaxOxygenLevel(int maxOxygenLevel) {
+        this.maxOxygenLevel = maxOxygenLevel;
+    }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.playerName);
-        hash = 53 * hash + this.calorieLevel;
-        hash = 53 * hash + this.oxygenLevel;
-        hash = 53 * hash + Objects.hashCode(this.currentLocation);
+        hash = 97 * hash + Objects.hashCode(this.playerName);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.currentCalorieLevel) ^ (Double.doubleToLongBits(this.currentCalorieLevel) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.maxCalorieLevel) ^ (Double.doubleToLongBits(this.maxCalorieLevel) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.currentOxygenLevel) ^ (Double.doubleToLongBits(this.currentOxygenLevel) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.maxOxygenLevel) ^ (Double.doubleToLongBits(this.maxOxygenLevel) >>> 32));
+        hash = 97 * hash + Objects.hashCode(this.currentLocation);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "playerName=" + playerName + ", calorieLevel=" + calorieLevel + ", oxygenLevel=" + oxygenLevel + ", currentLocation=" + currentLocation + '}';
+        return "Player{" + "playerName=" + playerName + ", currentCalorieLevel=" + currentCalorieLevel + ", maxCalorieLevel=" + maxCalorieLevel + ", currentOxygenLevel=" + currentOxygenLevel + ", maxOxygenLevel=" + maxOxygenLevel + ", currentLocation=" + currentLocation + '}';
     }
 
     @Override
@@ -91,10 +110,16 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
-        if (this.calorieLevel != other.calorieLevel) {
+        if (this.currentCalorieLevel != other.currentCalorieLevel) {
             return false;
         }
-        if (this.oxygenLevel != other.oxygenLevel) {
+        if (this.maxCalorieLevel != other.maxCalorieLevel) {
+            return false;
+        }
+        if (this.currentOxygenLevel != other.currentOxygenLevel) {
+            return false;
+        }
+        if (this.maxOxygenLevel != other.maxOxygenLevel) {
             return false;
         }
         if (!Objects.equals(this.playerName, other.playerName)) {
@@ -105,7 +130,5 @@ public class Player implements Serializable{
         }
         return true;
     }
-    
-    
 
 }

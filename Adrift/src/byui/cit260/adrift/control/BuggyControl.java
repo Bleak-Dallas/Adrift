@@ -19,10 +19,10 @@ import byui.cit260.adrift.model.Map;
  * @author Dallas
  */
 public class BuggyControl {
-    Game game = Adrift.getCurrentGame();
-    Map map = game.getMap();
-    Location[][] locations = map.getLocations();
-    InventoryItem[] inventoryList = game.getInventory();
+Game game = Adrift.getCurrentGame();
+Map map = game.getMap();
+Location[][] locations = map.getLocations();
+InventoryItem[] inventoryList = game.getInventory();
     Buggy buggy = game.getBuggy();
     int loadedWeight = buggy.getLoadedWeight();
     int maxWeight = buggy.getMaxWeight();
