@@ -8,6 +8,7 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byui.cit260.adrift.control.BuggyControl;
 import byui.cit260.adrift.control.ToolsControl;
+import byui.cit260.adrift.exceptions.BuggyControlException;
 import byui.cit260.adrift.exceptions.FoodControlException;
 import byui.cit260.adrift.exceptions.MapControlException;
 import byui.cit260.adrift.exceptions.ToolControlException;
@@ -89,7 +90,13 @@ public class MoveLocationView extends View{
                  this.checkFuel();
                  break;
              case 'F': 
-                 this.fillBuggy();
+        {
+            try {
+                this.fillBuggy();
+            } catch (BuggyControlException ex) {
+                System.out.println(ex);
+            }
+        }
                  break;
              case 'O': 
                  this.checkO2();
@@ -212,7 +219,7 @@ public class MoveLocationView extends View{
                     + ANSI_BLUE      + "\nThe buugy can hold " + amountToFill + " more gallons" + ANSI_RESET);
     }
 
-    private void fillBuggy() {
+    private void fillBuggy() throws BuggyControlException {
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
         int fillAmount = 0;
@@ -226,8 +233,7 @@ public class MoveLocationView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RED);
-                continue;
+                throw new BuggyControlException(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RED);
              }
             
         try {
@@ -240,10 +246,14 @@ public class MoveLocationView extends View{
         }
         
         if(fillAmount < 0 || fillAmount > 4) {
-            System.out.println(ANSI_RED + "\nYou obviously cannot follow instructions. Enter 1-4" + ANSI_RESET);
+            throw new BuggyControlException(ANSI_RED + "\nYou obviously cannot follow instructions. Enter 1-4" + ANSI_RESET);
         }
         
-        buggyControl.fillFuel(fillAmount);
+        try {
+            buggyControl.fillFuel(fillAmount);
+        } catch (BuggyControlException ex) {
+            System.out.println(ex);
+        }
     }
 
     private void checkO2() {

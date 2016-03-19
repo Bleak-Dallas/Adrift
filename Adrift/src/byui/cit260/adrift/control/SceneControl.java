@@ -9,6 +9,7 @@ import adrift.Adrift;
 
 import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.exceptions.SceneControlException;
+import byui.cit260.adrift.exceptions.BuggyControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
@@ -41,7 +42,7 @@ public class SceneControl {
     String currentInventoryDesc;
     
         public void mineResources(String resourceDescription, String currentInventoryDesc)
-                throws SceneControlException {
+                throws SceneControlException, BuggyControlException {
         
         boolean valid = false;
         int currentInventoryAmount;
@@ -61,9 +62,10 @@ public class SceneControl {
                 
              }   
             amountToMine = Integer.parseInt(input);
+            
                 if(amountToMine > resourceAmount) {
-                    System.out.println(ANSI_RED + "Invalid selection you only have " + resourceAmount
-                                        + " " + resourceDescription + " to mine." + ANSI_RESET);
+                    throw new BuggyControlException(ANSI_RED + "Invalid selection you only have " + resourceAmount
+                                    + ANSI_RED    + " " + resourceDescription + " to mine." + ANSI_RESET);
                 }
                 buggyControl.calWeight(amountToMine);
         

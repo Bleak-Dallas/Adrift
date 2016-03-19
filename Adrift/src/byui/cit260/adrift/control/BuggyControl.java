@@ -7,8 +7,8 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
-import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.model.Buggy;
+import byui.cit260.adrift.exceptions.BuggyControlException;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
@@ -41,13 +41,16 @@ public class BuggyControl {
     
     
     
-    public int calWeight(int noOfItems) {
+    public int calWeight(int noOfItems) 
+    
+    throws BuggyControlException {
+        
         currentWeight = loadedWeight + noOfItems;
 
         if(currentWeight > maxWeight) {
-            System.out.println(ANSI_RED + "\nYou cannot load" + noOfItems + " more items."
-                        + ANSI_RED      + "\nBuggy would be overweight" + ANSI_RESET);
-            return -1;
+            throw new BuggyControlException (ANSI_RED + "\nYou cannot load" + noOfItems + " more items."
+                                            + ANSI_RED + "\nBuggy would be overweight" + ANSI_RESET);
+     
         }
         
         if(currentWeight <= maxWeight) {
@@ -59,22 +62,22 @@ public class BuggyControl {
     return currentWeight;
     }
     
-    public double fillFuel(int noOfItems) {
+    public double fillFuel(int noOfItems) throws BuggyControlException{
         double fuelLevel = buggy.getFuelLevel();
         currentFuel = fuelLevel + noOfItems;
         fuelAfterFill = fuelInventory - noOfItems;
 
-
+        
         if(currentFuel > fuelCapacity) {
-            System.out.println(ANSI_RED + "\nYou cannot put " + noOfItems + " gallon/s of gas in the"
+            throw new BuggyControlException (ANSI_RED + "\nYou cannot put " + noOfItems + " gallon/s of gas in the"
                             + ANSI_RED  + "\nbuggy it would overfill the buggy."+ ANSI_RESET);
-            return -1;
+      
         }
         
         if(fuelInventory < noOfItems) {
-            System.out.println(ANSI_RED + "\nHey dummmy you do not have enough fuel in your inventory"
+            throw new BuggyControlException (ANSI_RED + "\nHey dummmy you do not have enough fuel in your inventory"
                             + ANSI_RED  + "\nto put " + noOfItems + " gallons in the buggy" + ANSI_RESET);
-            return -1;
+           
         }
         
         if(currentFuel <= fuelCapacity) {
