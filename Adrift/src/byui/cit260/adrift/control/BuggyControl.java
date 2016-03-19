@@ -34,6 +34,8 @@ public class BuggyControl {
     int currentFuel;
     int currentLoc;
     int destination;
+    boolean calledBefore = false;
+    
     
     public int calWeight(int noOfItems) {
         currentWeight = loadedWeight + noOfItems;
@@ -57,6 +59,7 @@ public class BuggyControl {
         currentFuel = (int) (fuelLevel + noOfItems);
         fuelAfterFill = fuelInventory - noOfItems;
 
+
         if(currentFuel > fuelCapacity) {
             System.out.println("\nYou cannot put " + noOfItems + " gallon/s of gas in the"
                              + "\nbuggy it would overfill the buggy.");
@@ -74,14 +77,17 @@ public class BuggyControl {
             inventoryList[Item.fuel.ordinal()].setQuantityInStock(fuelAfterFill);
                 System.out.println("\nYour buggy's current fuel level is " + currentFuel
                                  + "\n out of a max fuel level of " + fuelCapacity);
+            calledBefore = true;
 
         }
     return currentFuel;
+
     }
     
     public double calcFuel(Location currentLocation, int row, int column) {
         currentLoc = currentLocation.getScene().getDistanceTraveled();
         destination = locations[row][column].getScene().getDistanceTraveled();
+        double remainingFuel;
 
         double numberOfSpacesTraveled = 0;
          
@@ -98,9 +104,15 @@ public class BuggyControl {
             numberOfSpacesTraveled = currentLoc - destination;
             
         }
-
-        double remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
-        buggy.setFuelLevel(remainingFuel);
+        
+        
+        if(calledBefore == false) {
+            remainingFuel =  fuelLevel - (numberOfSpacesTraveled * .25);
+             buggy.setFuelLevel(remainingFuel);
+        } else {
+            remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
+            buggy.setFuelLevel(remainingFuel);
+        }
         
         return remainingFuel;
 
