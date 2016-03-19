@@ -60,7 +60,7 @@ public class MapControl {
         start.setSymbol(" ST ");
         start.setBlocked(false);
         start.setDistanceTraveled(0);
-        start.setResourceDescription("Ice");
+        start.setResourceDescription("Ice     ");
         start.setResourceAmount(1);
         scenes[SceneType.start.ordinal()] = start;
         
@@ -83,7 +83,7 @@ public class MapControl {
         sandy2.setSymbol(" SA2 ");
         sandy2.setBlocked(false);
         sandy2.setDistanceTraveled(15);
-        sandy2.setResourceDescription("Fuel");
+        sandy2.setResourceDescription("Fuel    ");
         sandy2.setResourceAmount(20);
         scenes[SceneType.sandy2.ordinal()] = sandy2;
         
@@ -93,7 +93,7 @@ public class MapControl {
         rocky1.setSymbol(" RO1 ");
         rocky1.setBlocked(false);
         rocky1.setDistanceTraveled(5);
-        rocky1.setResourceDescription("Iron");
+        rocky1.setResourceDescription("Iron    ");
         rocky1.setResourceAmount(20);
         scenes[SceneType.rocky1.ordinal()] = rocky1;
         
@@ -105,7 +105,7 @@ public class MapControl {
         rocky2.setSymbol(" RO2 ");
         rocky2.setBlocked(false);
         rocky2.setDistanceTraveled(18);
-        rocky2.setResourceDescription("Iron");
+        rocky2.setResourceDescription("Iron    ");
         rocky2.setResourceAmount(50);
         scenes[SceneType.rocky2.ordinal()] = rocky2;
         
@@ -117,7 +117,7 @@ public class MapControl {
         rocky3.setSymbol(" RO2 ");
         rocky3.setBlocked(false);
         rocky3.setDistanceTraveled(23);
-        rocky3.setResourceDescription("Iron");
+        rocky3.setResourceDescription("Iron    ");
         rocky3.setResourceAmount(50);
         scenes[SceneType.rocky3.ordinal()] = rocky3;
         
@@ -133,7 +133,7 @@ public class MapControl {
         icy1.setSymbol(" IC1 ");
         icy1.setBlocked(false);
         icy1.setDistanceTraveled(4);
-        icy1.setResourceDescription("Ice");
+        icy1.setResourceDescription("Ice     ");
         icy1.setResourceAmount(20);
         scenes[SceneType.icy1.ordinal()] = icy1;
         
@@ -154,7 +154,7 @@ public class MapControl {
         canyon1.setSymbol(" CA1 ");
         canyon1.setBlocked(false);
         canyon1.setDistanceTraveled(9);
-        canyon1.setResourceDescription("Uranium");
+        canyon1.setResourceDescription("Uranium ");
         canyon1.setResourceAmount(20);
         scenes[SceneType.canyon1.ordinal()] = canyon1;
         
@@ -164,7 +164,7 @@ public class MapControl {
         canyon2.setSymbol(" CA2 ");
         canyon2.setBlocked(false);
         canyon2.setDistanceTraveled(10);
-        canyon2.setResourceDescription("Uranium");
+        canyon2.setResourceDescription("Uranium ");
         canyon2.setResourceAmount(10);
         scenes[SceneType.canyon2.ordinal()] = canyon2;
         
@@ -176,7 +176,7 @@ public class MapControl {
         crater1.setSymbol(" CR1 ");
         crater1.setBlocked(false);
         crater1.setDistanceTraveled(7);
-        crater1.setResourceDescription("Copper");
+        crater1.setResourceDescription("Copper  ");
         crater1.setResourceAmount(10);
         scenes[SceneType.crater1.ordinal()] = crater1;
         
@@ -189,7 +189,7 @@ public class MapControl {
         crater2.setSymbol(" CR2 ");
         crater2.setBlocked(false);
         crater2.setDistanceTraveled(19);
-        crater2.setResourceDescription("Copper");
+        crater2.setResourceDescription("Copper  ");
         crater2.setResourceAmount(20);
         scenes[SceneType.crater2.ordinal()] = crater2;
         
@@ -200,7 +200,7 @@ public class MapControl {
         outpost1.setSymbol(" OP1 ");
         outpost1.setBlocked(false);
         outpost1.setDistanceTraveled(6);
-        outpost1.setResourceDescription("Food");
+        outpost1.setResourceDescription("Food    ");
         outpost1.setResourceAmount(15);
         scenes[SceneType.outpost1.ordinal()] = outpost1;
         
@@ -210,7 +210,7 @@ public class MapControl {
         outpost2.setSymbol(" OP2 ");
         outpost2.setBlocked(false);
         outpost2.setDistanceTraveled(11);
-        outpost2.setResourceDescription("Food");
+        outpost2.setResourceDescription("Food    ");
         outpost2.setResourceAmount(20);
         scenes[SceneType.outpost2.ordinal()] = outpost2;
         
@@ -221,7 +221,7 @@ public class MapControl {
         outpost3.setSymbol(" OP3 ");
         outpost3.setBlocked(false);
         outpost3.setDistanceTraveled(16);
-        outpost3.setResourceDescription("Food");
+        outpost3.setResourceDescription("Food    ");
         outpost3.setResourceAmount(20);
         scenes[SceneType.outpost3.ordinal()] = outpost3;
         
@@ -232,7 +232,7 @@ public class MapControl {
         outpost4.setSymbol(" OP4 ");
         outpost4.setBlocked(false);
         outpost4.setDistanceTraveled(21);
-        outpost4.setResourceDescription("Food");
+        outpost4.setResourceDescription("Food    ");
         outpost4.setResourceAmount(10);
         scenes[SceneType.outpost4.ordinal()] = outpost4;
         
@@ -243,7 +243,7 @@ public class MapControl {
         mountain1.setSymbol(" MN1 ");
         mountain1.setBlocked(false);
         mountain1.setDistanceTraveled(12);
-        mountain1.setResourceDescription("Iron");
+        mountain1.setResourceDescription("Iron    ");
         mountain1.setResourceAmount(30);
         scenes[SceneType.mountain1.ordinal()] = mountain1;
         
@@ -267,7 +267,7 @@ public class MapControl {
         cave1.setSymbol(" CV1 ");
         cave1.setBlocked(false);
         cave1.setDistanceTraveled(13);
-        cave1.setResourceDescription("Uranium");
+        cave1.setResourceDescription("Uranium ");
         cave1.setResourceAmount(20);
         scenes[SceneType.cave1.ordinal()] = cave1;
         
@@ -296,7 +296,7 @@ public class MapControl {
         drill1.setSymbol(" DL1 ");
         drill1.setBlocked(false);
         drill1.setDistanceTraveled(8);
-        drill1.setResourceDescription("Fuel");
+        drill1.setResourceDescription("Fuel    ");
         drill1.setResourceAmount(20);
         scenes[SceneType.drill1.ordinal()] = drill1;
         
@@ -306,7 +306,7 @@ public class MapControl {
         drill2.setSymbol(" DL2 ");
         drill2.setBlocked(false);
         drill2.setDistanceTraveled(14);
-        drill2.setResourceDescription("Fuel");
+        drill2.setResourceDescription("Fuel    ");
         drill2.setResourceAmount(10);
         scenes[SceneType.drill2.ordinal()] = drill2;
         
@@ -320,7 +320,7 @@ public class MapControl {
         drill3.setSymbol(" DL3 ");
         drill3.setBlocked(false);
         drill3.setDistanceTraveled(20);
-        drill3.setResourceDescription("Fuel");
+        drill3.setResourceDescription("Fuel    ");
         drill3.setResourceAmount(15);
         scenes[SceneType.drill3.ordinal()] = drill3;
         
@@ -332,7 +332,7 @@ public class MapControl {
         drill4.setSymbol(" DL4 ");
         drill4.setBlocked(false);
         drill4.setDistanceTraveled(22);
-        drill4.setResourceDescription("Fuel");
+        drill4.setResourceDescription("Fuel    ");
         drill4.setResourceAmount(10);
         scenes[SceneType.drill4.ordinal()] = drill4;
         
@@ -346,7 +346,7 @@ public class MapControl {
         facility.setSymbol(" FC ");
         facility.setBlocked(false);
         facility.setDistanceTraveled(2);
-        facility.setResourceDescription("Fuel");
+        facility.setResourceDescription("Fuel    ");
         facility.setResourceAmount(4);
         scenes[SceneType.facility.ordinal()] = facility;
         
@@ -357,7 +357,7 @@ public class MapControl {
         ship.setSymbol(" SP ");
         ship.setBlocked(false);
         ship.setDistanceTraveled(1);
-        ship.setResourceDescription("Fuel");
+        ship.setResourceDescription("Fuel    ");
         ship.setResourceAmount(1);
         scenes[SceneType.ship.ordinal()] = ship;
         
@@ -368,7 +368,7 @@ public class MapControl {
         finish.setSymbol(" FN ");
         finish.setBlocked(false);
         finish.setDistanceTraveled(0);
-        finish.setResourceDescription("Iron");
+        finish.setResourceDescription("Iron    ");
         finish.setResourceAmount(1);
         scenes[SceneType.finish.ordinal()] = finish;
         

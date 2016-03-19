@@ -30,7 +30,6 @@ public class GameMenuView extends View {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
-    
     Game game = Adrift.getCurrentGame();
     Map map = game.getMap();
     
@@ -172,14 +171,12 @@ public class GameMenuView extends View {
                             + "\n|          List of Inventory Items              |"
                             + "\n*************************************************\n");
         System.out.println("Description" + "\t\t" +
-                            "Required" + "\t" +
                             "In Stock");
         
         // for each inventory item
         for(InventoryItem item: inventory) {
             // Display the description, the required amount and the amount in stock
             System.out.println(item.getDescription() + "\t\t" +
-                               item.getRequiredAmount() + "\t\t" +
                                item.getQuantityInStock());
         }
     }
@@ -302,8 +299,9 @@ public class GameMenuView extends View {
         System.out.println("\n*************************************************"
                             + "\n|          List of Resource Items              |"
                             + "\n*************************************************\n");
-        System.out.println("Description" + "\t\t" +
-                            "Available");
+        System.out.println("Sector" + "\t\t" +
+                           "Description" + "\t\t" +
+                           "Available");
         
          
         
@@ -314,7 +312,8 @@ public class GameMenuView extends View {
             for (int column = 0; column < map.getLocations()[row].length; column++) {
                 
             // Display the description, the required amount and the amount in stock
-            System.out.println(locations[row][column].getScene().getResourceDescription() + "\t\t" +
+            System.out.println(row + "," + column + "\t\t" +
+                               locations[row][column].getScene().getResourceDescription() + "\t\t" +
                                locations[row][column].getScene().getResourceAmount());
         }
 //            System.out.println(locations[2][4].getScene().getResourceDescription() + "\t\t" +
