@@ -6,6 +6,8 @@
 package byui.cit260.adrift.control;
 
 import adrift.Adrift;
+import byui.cit260.adrift.exceptions.InventoryControlException;
+import byui.cit260.adrift.exceptions.SceneControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
@@ -36,7 +38,8 @@ public class SceneControl {
     String resourceDescription;
     String currentInventoryDesc;
     
-        public void mineResources(String resourceDescription, String currentInventoryDesc) {
+        public void mineResources(String resourceDescription, String currentInventoryDesc)
+                throws SceneControlException {
         
         boolean valid = false;
         int currentInventoryAmount;
@@ -51,8 +54,9 @@ public class SceneControl {
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
-                continue;
+            
+               throw new SceneControlException("Invalid selection - the menu item must not be blank");
+                
              }   
             amountToMine = Integer.parseInt(input);
                 if(amountToMine > resourceAmount) {

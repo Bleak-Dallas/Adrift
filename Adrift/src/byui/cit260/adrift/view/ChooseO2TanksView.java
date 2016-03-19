@@ -39,7 +39,12 @@ class ChooseO2TanksView extends View{
     public boolean doAction(String value) {
         int choice = 0;
        // value = value.toUpperCase(); // convert to all upper case
+    try {
         choice = (char) Integer.parseInt(value); // change char to int
+        }   catch (NumberFormatException nf){
+        System.out.println("\nYou must enter a valid number");
+        }
+    
         Game game = Adrift.getCurrentGame();
         Tools[] toolInventory = game.getToolInventory();
         Elevator elevator = game.getElevator();
