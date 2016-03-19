@@ -5,6 +5,8 @@
  */
 package byui.cit260.adrift.view;
 
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RESET;
 import byui.cit260.adrift.control.ProgramControl;
 import byui.cit260.adrift.model.Player;
 import java.util.Scanner;
@@ -17,6 +19,8 @@ public class StartProgramView {
     
 
     public StartProgramView() {
+        
+   
         
     }
 
@@ -73,7 +77,7 @@ public class StartProgramView {
             playerName= playerName.trim();
             
             if (playerName.length() < 2) {
-                System.out.println("Invalid name - the name must not be blank");
+                System.out.println(ANSI_RED + "Invalid name - the name must not be blank" + ANSI_RESET);
                 continue;
             }
             break;

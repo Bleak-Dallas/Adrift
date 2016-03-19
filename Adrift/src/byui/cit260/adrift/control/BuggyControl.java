@@ -19,10 +19,14 @@ import byui.cit260.adrift.model.Map;
  * @author Dallas
  */
 public class BuggyControl {
-Game game = Adrift.getCurrentGame();
-Map map = game.getMap();
-Location[][] locations = map.getLocations();
-InventoryItem[] inventoryList = game.getInventory();
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    
+    Game game = Adrift.getCurrentGame();
+    Map map = game.getMap();
+    Location[][] locations = map.getLocations();
+    InventoryItem[] inventoryList = game.getInventory();
     Buggy buggy = game.getBuggy();
     int loadedWeight = buggy.getLoadedWeight();
     int maxWeight = buggy.getMaxWeight();
@@ -37,19 +41,20 @@ InventoryItem[] inventoryList = game.getInventory();
     boolean calledBefore = false;
     
     
+    
     public int calWeight(int noOfItems) {
         currentWeight = loadedWeight + noOfItems;
 
         if(currentWeight > maxWeight) {
-            System.out.println("\nYou cannot load" + noOfItems + " more items."
-                             + "\nBuggy would be overweight");
+            System.out.println(ANSI_RED + "\nYou cannot load" + noOfItems + " more items."
+                        + ANSI_RED      + "\nBuggy would be overweight" + ANSI_RESET);
             return -1;
         }
         
         if(currentWeight <= maxWeight) {
             buggy.setLoadedWeight(currentWeight);
-                System.out.println("\nYour buggy's current weight is " + currentWeight
-                                 + "\n out of a max weight of " + maxWeight);
+                System.out.println(ANSI_GREEN + "\nYour buggy's current weight is " + currentWeight
+                            + ANSI_GREEN      + "\n out of a max weight of " + maxWeight + ANSI_RESET);
 
         }
     return currentWeight;
@@ -61,22 +66,22 @@ InventoryItem[] inventoryList = game.getInventory();
 
 
         if(currentFuel > fuelCapacity) {
-            System.out.println("\nYou cannot put " + noOfItems + " gallon/s of gas in the"
-                             + "\nbuggy it would overfill the buggy.");
+            System.out.println(ANSI_RED + "\nYou cannot put " + noOfItems + " gallon/s of gas in the"
+                            + ANSI_RED  + "\nbuggy it would overfill the buggy."+ ANSI_RESET);
             return -1;
         }
         
         if(fuelInventory < noOfItems) {
-            System.out.println("\nHey dummmy you do not have enough fuel in your inventory"
-                             + "\nto put " + noOfItems + " gallons in the buggy");
+            System.out.println(ANSI_RED + "\nHey dummmy you do not have enough fuel in your inventory"
+                            + ANSI_RED  + "\nto put " + noOfItems + " gallons in the buggy" + ANSI_RESET);
             return -1;
         }
         
         if(currentFuel <= fuelCapacity) {
             buggy.setFuelLevel(currentFuel);
             inventoryList[Item.fuel.ordinal()].setQuantityInStock(fuelAfterFill);
-                System.out.println("\nYour buggy's current fuel level is " + currentFuel
-                                 + "\n out of a max fuel level of " + fuelCapacity);
+                System.out.println(ANSI_RED + "\nYour buggy's current fuel level is " + currentFuel
+                            + ANSI_RED      + "\n out of a max fuel level of " + fuelCapacity + ANSI_RESET);
             calledBefore = true;
 
         }
@@ -92,7 +97,7 @@ InventoryItem[] inventoryList = game.getInventory();
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
-            System.out.println("your x and y coordinates must be between 1 and 25");
+            System.out.println(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);
         }
 
         if (currentLoc  < destination) {

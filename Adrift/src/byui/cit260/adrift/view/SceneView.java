@@ -67,7 +67,7 @@ public class SceneView extends View{
             case 'Q': //Quit the game
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try Again");
+                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }     
         return false;

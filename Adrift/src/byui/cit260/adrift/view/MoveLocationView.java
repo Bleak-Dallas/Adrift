@@ -37,14 +37,14 @@ public class MoveLocationView extends View{
                     + "\n----------------------------------------"
                     + "\n |       Move To New Location          |"
                     + "\n ---------------------------------------"
-                    + "\nTo move from one location to the next"
-                    + "\nyou will need to enter the X and Y "
-                    + "\ncoordinates. On the view map screen you"
-                    + "\nwill see Sectors like this: 0,2. The"
-                    + "\nfirst number is the X coordinate and"
-                    + "\nthe second number is the Y coordinate."
-                    +"\n"
-                    + "\nX - Enter X coordinate"
+     + ANSI_BLUE    + "\nTo move from one location to the next"
+     + ANSI_BLUE               + "\nyou will need to enter the X and Y "
+     + ANSI_BLUE               + "\ncoordinates. On the view map screen you"
+     + ANSI_BLUE               + "\nwill see Sectors like this: 0,2. The"
+     + ANSI_BLUE               + "\nfirst number is the X coordinate and"
+     + ANSI_BLUE               + "\nthe second number is the Y coordinate."
+     + ANSI_BLUE               +"\n" + ANSI_RESET
+                 + "\nX - Enter X coordinate" 
                     + "\nY - Enter Y coordinate"
                     + "\n --------------------------------------"
                     + "\nC - Check buggy's fuel level"
@@ -90,7 +90,7 @@ public class MoveLocationView extends View{
              case 'Q': //Exit the game
                  return true;
              default:
-                 System.out.println("\n*** Invalid selection *** Try Again");
+                 System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                  break;
          }  
          return false;
@@ -108,14 +108,14 @@ public class MoveLocationView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
+                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
                 continue;
              }
         try {
             
             row = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println("\nYou must enter a valid number");
+            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
             break;
          }
@@ -140,7 +140,7 @@ public class MoveLocationView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
+                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
                 continue;
              }
             
@@ -148,7 +148,7 @@ public class MoveLocationView extends View{
                   
             column = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println("\nYou must enter a valid number");
+            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
             break;
          }
@@ -184,7 +184,7 @@ public class MoveLocationView extends View{
     private void checkFuel() {
         double amountToFill = buggy.getFuelCapacity() - buggy.getFuelLevel();
         System.out.println(ANSI_BLUE + "\nThe buggy's current fuel level is: " + buggy.getFuelLevel()
-                         + "\nThe buugy can hold " + amountToFill + " more gallons" + ANSI_RESET);
+                    + ANSI_BLUE      + "\nThe buugy can hold " + amountToFill + " more gallons" + ANSI_RESET);
     }
 
     private void fillBuggy() {
@@ -201,7 +201,7 @@ public class MoveLocationView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
+                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RED);
                 continue;
              }
             
@@ -209,13 +209,13 @@ public class MoveLocationView extends View{
                   
             fillAmount = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println("\nYou must enter a valid number");
+            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
             break;
         }
         
         if(fillAmount < 0 || fillAmount > 4) {
-            System.out.println("\nYou obviously cannot follow instructions. Enter 1-4");
+            System.out.println(ANSI_RED + "\nYou obviously cannot follow instructions. Enter 1-4" + ANSI_RESET);
         }
         
         buggyControl.fillFuel(fillAmount);
