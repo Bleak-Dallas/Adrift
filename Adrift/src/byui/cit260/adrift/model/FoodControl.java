@@ -7,7 +7,7 @@ package byui.cit260.adrift.model;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
-
+import byui.cit260.adrift.exceptions.FoodControlException;
 
 /**
  *
@@ -37,23 +37,22 @@ public class FoodControl {
         System.out.println(ANSI_BLUE + "\nYour current food level is: " + playerCurrentFooodLevel + ANSI_RESET);
     }
 
-    public double fillFood(int noOfItems) {
+    public double fillFood(int noOfItems) 
+        throws FoodControlException{
        foodAfterAdding = (int) (currentPlayerFood + noOfItems);
        foodInvetoryAfterEating = currentFoodInventory - noOfItems;
 
 
 
-        if(currentPlayerFood > maxPlayerFood) {
-            System.out.println("\nYou cannot eat " + noOfItems + " food you would get sick."
-                             + "\nYou can only eat a max of " + maxPlayerFood + " food."
-                             + "\nCheck your current food level first.");
-            return -1;
+        if(foodAfterAdding > maxPlayerFood) {
+            throw new FoodControlException(ANSI_RED + "\nYou cannot eat " + noOfItems + " food you would get sick."
+                             + ANSI_RED +"\nYou can only eat a max of " + maxPlayerFood + " food."
+                             + ANSI_RED +"\nCheck your current food level first." + ANSI_RESET);
         }
         
         if(currentFoodInventory < noOfItems) {
-            System.out.println("\nHey dummmy you do not have enough food in your inventory"
-                             + "\nto eat " + noOfItems + " food.");
-            return -1;
+            throw new FoodControlException(ANSI_RED + "\nHey dummmy you do not have enough food in your inventory"
+                             + ANSI_RED +  "\nto eat " + noOfItems + " food." + ANSI_RESET);
         }
         
         if(currentPlayerFood <= maxPlayerFood) {
@@ -67,7 +66,9 @@ public class FoodControl {
     return foodAfterAdding;
     }
     
-     public double calcFood(Location currentLocation, int row, int column) {
+     public double calcFood(Location currentLocation, int row, int column) 
+                    throws FoodControlException{
+         
         currentLoc = currentLocation.getScene().getDistanceTraveled();
         destination = locations[row][column].getScene().getDistanceTraveled();
         double remainingFood;
@@ -75,7 +76,7 @@ public class FoodControl {
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
-            System.out.println("your x and y coordinates must be between 1 and 25");
+            throw new FoodControlException(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);
         }
 
         if (currentLoc  < destination) {

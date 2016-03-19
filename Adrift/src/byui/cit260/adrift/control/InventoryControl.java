@@ -36,7 +36,7 @@ public class InventoryControl {
         double remainingO2 =  currentO2 - (numberOfSpacesTraveled * .25);
                 if(remainingO2 < 0){
                     System.out.println(ANSI_RED + "\n\nIf you take this trip your remaining O2 would be " 
-                                        + remainingO2 + ". You would die!!" + ANSI_RESET);
+                                        + ANSI_RED + remainingO2 + ". You would die!!" + ANSI_RESET);
                 }
                 else{
                     System.out.println(ANSI_GREEN + "\n\nIf you take this trip your remaining O2 would be " + remainingO2 + ANSI_RESET);

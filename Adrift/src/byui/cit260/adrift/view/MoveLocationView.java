@@ -7,6 +7,7 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byui.cit260.adrift.control.BuggyControl;
+import byui.cit260.adrift.exceptions.FoodControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.FoodControl;
 import byui.cit260.adrift.model.Game;
@@ -167,7 +168,11 @@ public class MoveLocationView extends View{
      
         Location currentLocation = game.getCurrentLocation();
         buggyControl.calcFuel(currentLocation, row, column);
+    try {
         foodControl.calcFood(currentLocation, row, column);
+    } catch (FoodControlException ex) {
+        System.out.println(ex);
+        }
         game.setCurrentLocation(locations[row][column]);
         
         SceneView sceneView = new SceneView();
@@ -259,7 +264,11 @@ public class MoveLocationView extends View{
 
         
         }
-         foodControl.fillFood(fillAmount);
+    try {
+        foodControl.fillFood(fillAmount);
+    } catch (FoodControlException ex) {
+        System.out.println(ex);
+        }
     }
     
 }

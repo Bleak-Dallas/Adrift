@@ -84,7 +84,6 @@ public class CalculateO2View extends View {
                 continue;
              }
         try {
-            
             row = Integer.parseInt(input);
         } catch (NumberFormatException nf){
             System.out.println("\nYou must enter a valid number");
@@ -108,7 +107,6 @@ public class CalculateO2View extends View {
              }
             
         try {
-                  
             column = Integer.parseInt(input);
         } catch (NumberFormatException nf){
             System.out.println("\nYou must enter a valid number");
@@ -141,7 +139,6 @@ public class CalculateO2View extends View {
                 continue;
              }
         try {
-            
             row = Integer.parseInt(input);
         } catch (NumberFormatException nf){
             System.out.println("\nYou must enter a valid number");
@@ -164,8 +161,7 @@ public class CalculateO2View extends View {
                 continue;
              }
             
-        try {
-                  
+        try { 
             column = Integer.parseInt(input);
         } catch (NumberFormatException nf){
             System.out.println("\nYou must enter a valid number");
@@ -182,7 +178,7 @@ public class CalculateO2View extends View {
         try {
             inventoryControl.calculateO2Needed(currentO2, currentLocation, destination);
         } catch (InventoryControlException ex) {
-
+            System.out.println(ex);
         }
 
     }

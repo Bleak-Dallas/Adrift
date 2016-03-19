@@ -183,6 +183,7 @@ public class CalculateFuelView extends View{
         try {
             inventoryControl.calculateFuelNeeded(currentFuel, currentLocation, destination);
         } catch (InventoryControlException ex) {
+            System.out.println(ex);
 
         }
 

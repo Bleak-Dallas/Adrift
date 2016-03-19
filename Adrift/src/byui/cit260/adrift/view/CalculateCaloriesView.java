@@ -183,7 +183,7 @@ public class CalculateCaloriesView extends View {
         try {
             inventoryControl.calculateCaloriesNeeded(currentCalories, currentLocation, destination);
         } catch (InventoryControlException ex) {
-
+            System.out.println(ex);
         }
 
     }
