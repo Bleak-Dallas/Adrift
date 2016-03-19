@@ -14,8 +14,8 @@ import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
 
 /**
  *
@@ -27,8 +27,8 @@ class ChooseFuelView extends View{
     public ChooseFuelView() {
     super("\n"
             + "\n ======================================="
-            + "\n  How how many O2 tanks would you like, "
-            + "\n  you may choose 1-4"
+            + "\n  How how many gallans of fuel would you"
+            + "\n  like, you may choose 1-4"
             + "\n ======================================="
             + "\n1 - 1"
             + "\n2 - 2"
@@ -39,8 +39,12 @@ class ChooseFuelView extends View{
 
  
     @Override
-    public boolean doAction(String value) {
-      int choice = 0;
+    public boolean doAction(String value){
+        Game game = Adrift.getCurrentGame();
+        InventoryItem[] inventory = game.getInventory();
+        Elevator elevator = game.getElevator();
+        InventoryControl inventoryControl = new InventoryControl();
+        int choice = 0;
         
        // value = value.toUpperCase(); // convert to all upper case
     try {
@@ -48,12 +52,13 @@ class ChooseFuelView extends View{
        }    catch (NumberFormatException nf){
             System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
         }
-        Game game = Adrift.getCurrentGame();
-        InventoryItem[] inventory = game.getInventory();
-        Elevator elevator = game.getElevator();
-        InventoryControl inventoryControl = new InventoryControl();
-        
-        
+    
+        try {
+            inventoryControl.checkinput(choice);
+        } catch (InventoryControlException ex) {
+            System.out.println(ex);
+        }
+
         InventoryItem fuel = new InventoryItem();
         fuel.setDescription("Fuel    ");
         fuel.setQuantityInStock(choice);

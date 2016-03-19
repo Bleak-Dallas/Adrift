@@ -68,7 +68,7 @@ public class GameControl {
         
         InventoryItem food = new InventoryItem();
         food.setDescription("Food    ");
-        food.setQuantityInStock(2);
+        food.setQuantityInStock(0);
         food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
         

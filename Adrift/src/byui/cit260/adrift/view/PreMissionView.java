@@ -6,14 +6,10 @@
 package byui.cit260.adrift.view;
 
 import adrift.Adrift;
-import byu.cit260.adrift.enums.Item;
 import byu.cit260.adrift.enums.ToolType;
-import byui.cit260.adrift.control.MapControl;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
-import byui.cit260.adrift.model.Location;
-import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Tools;
 

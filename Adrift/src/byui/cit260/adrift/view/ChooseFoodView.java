@@ -12,8 +12,7 @@ import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *

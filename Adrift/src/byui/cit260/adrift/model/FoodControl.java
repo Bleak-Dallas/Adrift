@@ -34,11 +34,10 @@ public class FoodControl {
     
      public void checkFood() {
         double playerCurrentFooodLevel = player.getCurrentCalorieLevel();
-        System.out.println(ANSI_BLUE + "\nYour current food level is: " + playerCurrentFooodLevel + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "\nYour current food level is: " + playerCurrentFooodLevel + ANSI_RESET);
     }
 
-    public double fillFood(int noOfItems) 
-        throws FoodControlException{
+    public double fillFood(int noOfItems) throws FoodControlException{
        foodAfterAdding = (int) (currentPlayerFood + noOfItems);
        foodInvetoryAfterEating = currentFoodInventory - noOfItems;
 
@@ -52,7 +51,7 @@ public class FoodControl {
         
         if(currentFoodInventory < noOfItems) {
             throw new FoodControlException(ANSI_RED + "\nHey dummmy you do not have enough food in your inventory"
-                             + ANSI_RED +  "\nto eat " + noOfItems + " food." + ANSI_RESET);
+                                         + ANSI_RED +  "\nto eat " + noOfItems + " food." + ANSI_RESET);
         }
         
         if(currentPlayerFood <= maxPlayerFood) {
@@ -66,18 +65,12 @@ public class FoodControl {
     return foodAfterAdding;
     }
     
-     public double calcFood(Location currentLocation, int row, int column) 
-                    throws FoodControlException{
+     public double calcFood(Location currentLocation, int row, int column) {
          
         currentLoc = currentLocation.getScene().getDistanceTraveled();
         destination = locations[row][column].getScene().getDistanceTraveled();
         double remainingFood;
-
         double numberOfSpacesTraveled = 0;
-         
-        if (destination < 1 || destination > 25){
-            throw new FoodControlException(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);
-        }
 
         if (currentLoc  < destination) {
             numberOfSpacesTraveled = destination - currentLoc; 
