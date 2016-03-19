@@ -68,7 +68,7 @@ public class InventoryControl {
         double remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
                 if(remainingFuel < 0){
                     System.out.println(ANSI_RED + "\n\nIf you take this trip your remaining fuel would be " 
-                                        + remainingFuel + ". You would die!!" + ANSI_RESET);
+                                      + ANSI_RED + remainingFuel + ". You would die!!" + ANSI_RESET);
                 }
                 else{
                     System.out.println(ANSI_GREEN + "\n\nIf you take this trip your remaining fuel would be " + remainingFuel + ANSI_RESET);
@@ -118,7 +118,7 @@ public class InventoryControl {
          
         if (noOfItems <= 0){  
 // check to see if itmems less than or equal to zero
-            throw new InventoryControlException(ANSI_RED + "\n\nPlease enter a value greater than zero" + ANSI_RESET);
+            throw new InventoryControlException(ANSI_RED + "\nPlease enter a value greater than zero" + ANSI_RESET);
         }
 
         if (noOfItems > 12) { // check to see if items exceed 12
@@ -143,6 +143,14 @@ public class InventoryControl {
         remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
         return remainingCapacity;
     
+    }
+    
+    public void checkinput(int choice) throws InventoryControlException {
+        
+         if(choice < 1 || choice > 4) {
+                throw new InventoryControlException(ANSI_RED + "\nYou must enter a number from 1-4" + ANSI_RESET);
+        }
+        
     }
     
 

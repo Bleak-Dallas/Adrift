@@ -8,6 +8,7 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byui.cit260.adrift.control.BuggyControl;
 import byui.cit260.adrift.exceptions.FoodControlException;
+import byui.cit260.adrift.exceptions.MapControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.FoodControl;
 import byui.cit260.adrift.model.Game;
@@ -15,6 +16,8 @@ import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -63,11 +66,21 @@ public class MoveLocationView extends View{
         char choice = value.charAt(0); // get first character entered
         
         switch (choice) {
-             case 'X': //create and start new game
-                 this.moveToX();
+             case 'X': {
+            try {
+                this.moveToX();
+            } catch (MapControlException ex) {
+                System.out.println(ex);
+            }
+        }
                  break;
-             case 'Y': //Load existing game
-                 this.moveToY();
+             case 'Y': {
+            try {
+                this.moveToY();
+            } catch (MapControlException ex) {
+                System.out.println(ex);
+            }
+        }
                  break;
              case 'C': //create and start new game
                  this.checkFuel();
@@ -84,8 +97,14 @@ public class MoveLocationView extends View{
              case 'L': //create and start new game
                  this.checkFood();
                  break;
-             case 'E': //Load existing game
-                 this.fillFood();
+             case 'E': {
+            try {
+                //Load existing game
+                this.fillFood();
+            } catch (FoodControlException ex) {
+                System.out.println(ex);
+            }
+        }
                  break;
              case 'Q': //Exit the game
                  return true;
@@ -96,7 +115,7 @@ public class MoveLocationView extends View{
          return false;
     }
 
-    private void moveToX() {
+    private void moveToX() throws MapControlException {
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
         Scanner keyboard = new Scanner(System.in);
@@ -108,8 +127,8 @@ public class MoveLocationView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
-                continue;
+               throw new MapControlException(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
+
              }
         try {
             
@@ -121,13 +140,13 @@ public class MoveLocationView extends View{
          }
         
         if(row < 0 || row > 4) {
-                System.out.println("\n The X coordinate must be between 0 and 4");
+                throw new MapControlException("\n The X coordinate must be between 0 and 4");
             }
          
      }
     
 
-    private void moveToY() {
+    private void moveToY() throws MapControlException {
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
         
@@ -140,8 +159,7 @@ public class MoveLocationView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
-                continue;
+                throw new MapControlException(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
              }
             
         try {
@@ -154,7 +172,7 @@ public class MoveLocationView extends View{
          }
         
         if(column < 0 || column > 4) {
-            System.out.println("\n The Y coordinate must be between 0 and 4");
+           throw new MapControlException("\n The Y coordinate must be between 0 and 4");
         }
         
         this.moveLocation();
@@ -168,11 +186,9 @@ public class MoveLocationView extends View{
      
         Location currentLocation = game.getCurrentLocation();
         buggyControl.calcFuel(currentLocation, row, column);
-    try {
         foodControl.calcFood(currentLocation, row, column);
-    } catch (FoodControlException ex) {
-        System.out.println(ex);
-        }
+
+
         game.setCurrentLocation(locations[row][column]);
         
         SceneView sceneView = new SceneView();
@@ -236,7 +252,7 @@ public class MoveLocationView extends View{
         foodControl.checkFood();
     }
 
-    private void fillFood() {
+    private void fillFood() throws FoodControlException {
          boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
         int fillAmount = 0;
@@ -250,8 +266,7 @@ public class MoveLocationView extends View{
             input= input.trim();
              
             if (input.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
-                continue;
+                throw new FoodControlException("Invalid selection - the menu item must not be blank");
              }
             
         try {
