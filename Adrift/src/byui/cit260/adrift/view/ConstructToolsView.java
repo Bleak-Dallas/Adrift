@@ -54,7 +54,8 @@ class ConstructToolsView extends View{
                 gameMenu.display();
                 
             default:
-                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
+                ErrorView.display(this.getClass().getName(),
+                        ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         } 
         return true;         
@@ -66,15 +67,15 @@ class ConstructToolsView extends View{
     }
 
     private void makeShovel() {
-        System.out.println("\n*** makeShovel function called ***");
+        this.console.println("\n*** makeShovel function called ***");
     }
 
     private void makeHammer() {
-        System.out.println("\n*** makeHammer function called ***");
+        this.console.println("\n*** makeHammer function called ***");
     }
 
     private void makeO2Tank() {
-        System.out.println("\n*** makeO2Tank function called ***");
+        this.console.println("\n*** makeO2Tank function called ***");
     }
         
 }

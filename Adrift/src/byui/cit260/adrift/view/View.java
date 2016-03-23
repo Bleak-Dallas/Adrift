@@ -5,7 +5,11 @@
  */
 package byui.cit260.adrift.view;
 
-import java.util.Scanner;
+import adrift.Adrift;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 
 /**
  *
@@ -15,6 +19,9 @@ public abstract class View implements ViewInterface {
     
     protected String displayMessage;
     
+    protected final BufferedReader keyboard = Adrift.getInFile();
+    protected final PrintWriter console = Adrift.getOutFile();
+
     public View (String message) {
         this.displayMessage = message;
     }
@@ -36,16 +43,20 @@ public abstract class View implements ViewInterface {
         
         boolean valid = false;
         String value = null;
-        Scanner keyboard = new Scanner(System.in);
         
         while (!valid){
-            System.out.println("\n" + this.displayMessage);
+            this.console.println("\n" + this.displayMessage);
             
-            value = keyboard.nextLine();
+            try {
+                value = this.keyboard.readLine();
+            } catch (IOException ex) {
+                this.console.println("Enter valid selection");
+            }
             value = value.trim();
             
             if (value.length() < 1) {
-                System.out.println("Invalid selection - the menu item must not be blank");
+                ErrorView.display(this.getClass().getName(),
+                        "Invalid selection - the menu item must not be blank");
                 continue;
             }
             break;

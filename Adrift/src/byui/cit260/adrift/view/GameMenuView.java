@@ -8,16 +8,12 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byui.cit260.adrift.control.GameControl;
-import byui.cit260.adrift.control.MapControl;
 import byui.cit260.adrift.control.ToolsControl;
 import byui.cit260.adrift.model.Game;
-//import byui.cit260.adrift.control.MapControl;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Tools;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -44,12 +40,10 @@ public class GameMenuView extends View {
             + "\nS - View Ship Status"
             + "\nL - View Contents of Coordinate"
             + "\nM - Move To New Sector"
-            + "\nE - Estimate Resources Needed"
             + "\nF - Calculate Fuel"
             + "\nO - Calculate O2"
             + "\nC - Calculate Calories"
             + "\nT - Construct Tools"
-            + "\nR - Mine Resources"
             + "\nD - Deliver Resource"
             + "\nW - Repair Ship"
             + "\nJ - Launch Ship"
@@ -87,10 +81,6 @@ public class GameMenuView extends View {
                 this.moveLocation();
                 break;
                 
-            case 'E': // Estimate Resources needed
-                this.displayResourcesNeeded();
-                break;
-                
             case 'F': // Calculate Fuel
                 this.displayCalcFuel();
                 break;
@@ -107,20 +97,16 @@ public class GameMenuView extends View {
                 this.constructTools();
                 break;
                 
-            case 'R': // Mine Resources
-                System.out.println("Mine Resources"); //(ANSI_RED + "This text is red!" + ANSI_RESET)
-                break;
-                
             case 'D': // Deliver resources
-                System.out.println("Deliver resources");
+                this.console.println("Deliver resources");
                 break;
                 
             case 'W': // Repair ship
-                System.out.println("Repair ship");
+                this.console.println("Repair ship");
                 break;
                 
             case 'J': // Launch ship
-                System.out.println("Launch ship");
+                this.console.println("Launch ship");
                 break;
                 
             case 'H': // help
@@ -131,7 +117,8 @@ public class GameMenuView extends View {
                 return true;
                 
             default:
-                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
+                ErrorView.display(this.getClass().getName(),
+                        ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }     
         return false;
@@ -167,16 +154,16 @@ public class GameMenuView extends View {
         // get sorted list of inventory items for teh current game
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
-        System.out.println("\n*************************************************"
+        this.console.println("\n*************************************************"
                             + "\n|          List of Inventory Items              |"
                             + "\n*************************************************\n");
-        System.out.println("Description" + "\t\t" +
+        this.console.println("Description" + "\t\t" +
                             "In Stock");
         
         // for each inventory item
         for(InventoryItem item: inventory) {
             // Display the description, the required amount and the amount in stock
-            System.out.println(item.getDescription() + "\t\t" +
+            this.console.println(item.getDescription() + "\t\t" +
                                item.getQuantityInStock());
         }
     }
@@ -189,21 +176,21 @@ public class GameMenuView extends View {
             + "\n\t\t\t" + map.getName() + "   -   " + map.getDescription()
             + "\n***********************************************************************";
             
-            System.out.println(menu);
+            this.console.println(menu);
         
         for(int row = 0; row < locations.length; row++) {
             // Add header
             for (int column = 0; column < locations[row].length; column++) {
-                System.out.print("|```````````````|");
+                this.console.print("|```````````````|");
             }
         
-            System.out.println("");  // go to next line of row
+            this.console.println("");  // go to next line of row
             
             // Put row,col information in the map
             for(int col = 0; col < locations[row].length; col++) {
-                System.out.print("|===== " + row + "," + col + " =====|");
+                this.console.print("|===== " + row + "," + col + " =====|");
             }
-            System.out.println(""); // Go to next liine
+            this.console.println(""); // Go to next liine
             
             for (Location location :locations[row]) {
                 // We have 16 spaces to work with
@@ -211,52 +198,52 @@ public class GameMenuView extends View {
                         
                 int spaces = 15 - nameLength;
                 
-                System.out.print("|");
+                this.console.print("|");
                 
                  // Left Pad the name
                 if(spaces > 0) {
                     for(int i = 0;i < spaces/2; i++) {
-                        System.out.print(" ");
+                        this.console.print(" ");
                     }
                 }
                 
                 // Display location name
-                System.out.print(" Sector");
+                this.console.print(" Sector");
                 
                 // Right Pad
                 if(spaces > 0) {
                     for(int i = 0;i < spaces/2; i++) {
-                        System.out.print(" ");
+                        this.console.print(" ");
                     }
                 }
-                System.out.print("|");
+                this.console.print("|");
             }
             
-            System.out.println("");
+            this.console.println("");
             for(int col = 0; col < locations[row].length; col++) {
-                System.out.print("|***************|");
+                this.console.print("|***************|");
             }
             
-            System.out.println("");
+            this.console.println("");
 
                 for (int column = 0; column < locations[row].length; column++)
                     if(locations[row][column] == game.getCurrentLocation()) {
-                        System.out.print(ANSI_GREEN + "|__You're Here__|" + ANSI_RESET);
+                        this.console.print(ANSI_GREEN + "|__You're Here__|" + ANSI_RESET);
                     } else if (locations[row][column].isVisited()) {
-                        System.out.print(ANSI_RED + "|____Visited____|" + ANSI_RESET);
+                        this.console.print(ANSI_RED + "|____Visited____|" + ANSI_RESET);
                     } else {
-                        System.out.print("|__Not Visited__|");
+                        this.console.print("|__Not Visited__|");
                     }
                 
       
             
-            System.out.println("");
+            this.console.println("");
             for(int col = 0; col < locations[row].length; col++) {
-                System.out.print("|***************|");
+                this.console.print("|***************|");
             }
 
             
-            System.out.println("");
+            this.console.println("");
             
         }
     }
@@ -266,19 +253,14 @@ public class GameMenuView extends View {
         shipStauts.dislpayShipStatus();
     }
 
-    private void displayResourcesNeeded() {
-        EstimateResourcesView estimateResourcesMenu = new EstimateResourcesView ();//display the construct tools menu
-        estimateResourcesMenu.display();
-    }
-
     private void displayToolInventory() {
        // get sorted list of inventory items for teh current game
         Tools[] toolInventory = ToolsControl.getSortedToolList();
         
-        System.out.println("\n*************************************************"
+        this.console.println("\n*************************************************"
                             + "\n|          List of Tools              |"
                             + "\n*************************************************\n");
-        System.out.println("Description" + "\t\t" +
+        this.console.println("Description" + "\t\t" +
                             "In Stock"   + "\t" +
                             "Resource"   + "\t" +
                             "Amount Required");
@@ -286,7 +268,7 @@ public class GameMenuView extends View {
         // for each inventory item
         for(Tools item: toolInventory) {
             // Display the description, the required amount and the amount in stock
-            System.out.println(item.getDescription() + "\t\t" +
+            this.console.println(item.getDescription() + "\t\t" +
                                item.getQuantityInStock() + "\t\t" +
                                item.getRequiredResource() + "\t\t" +
                                item.getRequiredAmount());
@@ -296,10 +278,10 @@ public class GameMenuView extends View {
         private void viewResourceSceneType() {
          Location[][] locations = map.getLocations();
          
-        System.out.println("\n*************************************************"
+        this.console.println("\n*************************************************"
                             + "\n|          List of Resource Items              |"
                             + "\n*************************************************\n");
-        System.out.println("Sector" + "\t\t" +
+        this.console.println("Sector" + "\t\t" +
                            "Description" + "\t\t" +
                            "Available");
         
@@ -312,11 +294,11 @@ public class GameMenuView extends View {
             for (int column = 0; column < map.getLocations()[row].length; column++) {
                 
             // Display the description, the required amount and the amount in stock
-            System.out.println(row + "," + column + "\t\t" +
+            this.console.println(row + "," + column + "\t\t" +
                                locations[row][column].getScene().getResourceDescription() + "\t\t" +
                                locations[row][column].getScene().getResourceAmount());
         }
-//            System.out.println(locations[2][4].getScene().getResourceDescription() + "\t\t" +
+//            this.console.println(locations[2][4].getScene().getResourceDescription() + "\t\t" +
 //                               locations[2][4].getScene().getResourceAmount());
 
 

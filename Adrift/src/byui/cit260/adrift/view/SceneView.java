@@ -67,14 +67,15 @@ public class SceneView extends View{
            try {               
                sceneControl.mineResources(resourceDescription, currentInventoryDesc);
            } catch (SceneControlException | BuggyControlException ex) {
-               System.out.println(ex);
+               ErrorView.display(this.getClass().getName(),ex.getMessage());
            }
        }
                 break;
             case 'Q': //Quit the game
                 return true;
             default:
-                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
+                ErrorView.display(this.getClass().getName(),
+                        ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }     
         return false;
@@ -92,7 +93,7 @@ public class SceneView extends View{
         }
         else {
         String menu = locations[row][column].getScene().getDescription();
-        System.out.println("\n" + ANSI_BLUE + menu + ANSI_RESET);
+        this.console.println("\n" + ANSI_BLUE + menu + ANSI_RESET);
         this.display();
         }
     }
@@ -100,18 +101,18 @@ public class SceneView extends View{
     private void checkResources() {
         resourceDescription = locations[row][column].getScene().getResourceDescription().trim();
         resourceAmount = locations[row][column].getScene().getResourceAmount();
-        System.out.println(ANSI_BLUE + "\nThe resource found in this sector is " + resourceDescription
+        this.console.println(ANSI_BLUE + "\nThe resource found in this sector is " + resourceDescription
                          + "\nThe amount remaining is " + resourceAmount + ANSI_RESET);
         
     }
     
     public void displayStartingScene() {
         String startScene = scenes[SceneType.start.ordinal()].getDescription();
-        System.out.println(startScene);
+        this.console.println(startScene);
     }
     
     public void displayShipScene() {
-        System.out.println("\n*** The displayShipScene function was called in the SceneView class ***");
+        this.console.println("\n*** The displayShipScene function was called in the SceneView class ***");
     }
     
     public void displayFacilityScene() {

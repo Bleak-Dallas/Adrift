@@ -5,6 +5,9 @@
  */
 package byui.cit260.adrift.view;
 
+import adrift.Adrift;
+import byui.cit260.adrift.control.GameControl;
+
 /**
  *
  * @author Dallas
@@ -38,14 +41,26 @@ class LoadGameView extends View{
             case 'Q': //Quit the game
                 return true;
             default:
-                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
+                ErrorView.display(this.getClass().getName(),
+                        ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }     
         return false;
     }
 
     private void loadGame() {
-        System.out.println("\n*** loadGame function called ***");
+         this.console.println("\nEnter the filepath where the game file is located");
+        
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.loadGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
-
 }
+

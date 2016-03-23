@@ -7,7 +7,6 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 
-import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.exceptions.SceneControlException;
 import byui.cit260.adrift.exceptions.BuggyControlException;
 import byui.cit260.adrift.model.Buggy;
@@ -19,7 +18,11 @@ import byui.cit260.adrift.model.Scene;
 import static byui.cit260.adrift.view.SceneView.ANSI_BLUE;
 import static byui.cit260.adrift.view.SceneView.ANSI_RESET;
 import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
-import java.util.Scanner;
+import byui.cit260.adrift.view.ErrorView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 
 /**
  *
@@ -33,6 +36,8 @@ public class SceneControl {
     InventoryItem[] inventoryList = game.getInventory();
     Buggy buggy = game.getBuggy();
     BuggyControl buggyControl = new BuggyControl();
+    protected final BufferedReader keyboard = Adrift.getInFile();
+    protected final PrintWriter console = Adrift.getOutFile();
     int row;
     int column;
     int amountToMine;
@@ -47,13 +52,17 @@ public class SceneControl {
         boolean valid = false;
         int currentInventoryAmount;
         String input = null;  // Integer.parseInt(numberAsString)
-        Scanner keyboard = new Scanner(System.in);
          
         while (!valid){
-            System.out.println(ANSI_BLUE + "\nHow much " + resourceDescription 
+            this.console.println(ANSI_BLUE + "\nHow much " + resourceDescription 
                                 + " would you like to mine?" + ANSI_RESET);
              
-            input = keyboard.nextLine();
+            try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                 ErrorView.display(this.getClass().getName(),
+                         "Enter valid selection" + ex.getMessage());
+            }
             input= input.trim();
              
             if (input.length() < 1) {

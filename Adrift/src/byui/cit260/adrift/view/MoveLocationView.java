@@ -18,24 +18,23 @@ import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.IOException;
 
 /**
  *
  * @author Dallas
  */
 public class MoveLocationView extends View{
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private static final String ANSI_RESET = "\u001B[0m";
     Game game = Adrift.getCurrentGame();
     Buggy buggy  = game.getBuggy();
     BuggyControl buggyControl = new BuggyControl();
     FoodControl foodControl = new FoodControl();
     ToolsControl toolControl = new ToolsControl();
+    FacilitySceneView facilityScene = new FacilitySceneView();
     private int row;
     private int column;
     
@@ -51,13 +50,12 @@ public class MoveLocationView extends View{
      + ANSI_BLUE    + "\nfirst number is the X coordinate and"
      + ANSI_BLUE    + "\nthe second number is the Y coordinate."
      + ANSI_BLUE    + "\n" + ANSI_RESET
-                    + "\nX - Enter X coordinate" 
-                    + "\nY - Enter Y coordinate"
+                    + "\nD - Enter sector coordinates for destination"
+                    + "\n" 
                     + "\n --------------------------------------"
                     + "\nC - Check buggy's fuel level"
                     + "\nF - Fill buggy with fuel"
                     + "\nO - Check O2 level"
-                    + "\nR - Replacce O2"
                     + "\nL - Check food level"
                     + "\nE - Eat food"
                     + "\nQ - Quit to game menu"
@@ -70,19 +68,11 @@ public class MoveLocationView extends View{
         char choice = value.charAt(0); // get first character entered
         
         switch (choice) {
-             case 'X': {
+             case 'D': {
             try {
-                this.moveToX();
+                this.moveToDestination();
             } catch (MapControlException ex) {
-                System.out.println(ex);
-            }
-        }
-                 break;
-             case 'Y': {
-            try {
-                this.moveToY();
-            } catch (MapControlException ex) {
-                System.out.println(ex);
+                this.console.println(ex);
             }
         }
                  break;
@@ -94,15 +84,12 @@ public class MoveLocationView extends View{
             try {
                 this.fillBuggy();
             } catch (BuggyControlException ex) {
-                System.out.println(ex);
+                this.console.println(ex);
             }
         }
                  break;
              case 'O': 
                  this.checkO2();
-                 break;
-             case 'R': 
-                 this.fillO2();
                  break;
              case 'L': 
                  this.checkFood();
@@ -111,77 +98,80 @@ public class MoveLocationView extends View{
             try {
                 this.fillFood();
             } catch (FoodControlException ex) {
-                System.out.println(ex);
+                this.console.println(ex);
             }
         }
                  break;
              case 'Q': //Exit the game
                  return true;
              default:
-                 System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
+                ErrorView.display(this.getClass().getName(),
+                        ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                  break;
          }  
          return false;
     }
 
-    private void moveToX() throws MapControlException {
+    private void moveToDestination() throws MapControlException {
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
-        Scanner keyboard = new Scanner(System.in);
          
         while (!valid){
-            System.out.println("Enter selection");
-             
-            input = keyboard.nextLine();
+            this.console.println("Enter X coordinate");
+        try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), 
+                                        "Enter valid selection" + ex.getMessage());
+            }
             input= input.trim();
              
             if (input.length() < 1) {
-               throw new MapControlException(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
-
+                 ErrorView.display(this.getClass().getName(),
+                         ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
+                continue;
              }
         try {
-            
             row = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
+           ErrorView.display(this.getClass().getName(),
+                   ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
         }
             break;
-         }
+        }
         
         if(row < 0 || row > 4) {
-                throw new MapControlException("\n The X coordinate must be between 0 and 4");
+                ErrorView.display(this.getClass().getName(),
+                        "\n The X coordinate must be between 0 and 4");
             }
-         
-     }
-    
-
-    private void moveToY() throws MapControlException {
-        boolean valid = false;
-        String input = null;  // Integer.parseInt(numberAsString)
         
-        Scanner keyboard = new Scanner(System.in);
-         
-        while (!valid){
-            System.out.println("Enter selection");
-             
-            input = keyboard.nextLine();
+         while (!valid){
+            this.console.println("Enter Y coordinate");
+        try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(),
+                        "Enter valid selection" + ex.getMessage());
+            }
             input= input.trim();
              
             if (input.length() < 1) {
-                throw new MapControlException(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
+                ErrorView.display(this.getClass().getName(),
+                        ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
+                continue;
              }
             
         try {
-                  
             column = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
+           ErrorView.display(this.getClass().getName(),
+                   ANSI_RED + "\nYou must enter a valid number" + nf.getMessage()+ ANSI_RESET);
         }
             break;
          }
-        
         if(column < 0 || column > 4) {
-           throw new MapControlException("\n The Y coordinate must be between 0 and 4");
+            ErrorView.display(this.getClass().getName(),
+                    "\n The Y coordinate must be between 0 and 4");
         }
         
         this.moveLocation();
@@ -200,7 +190,7 @@ public class MoveLocationView extends View{
         try {
             toolControl.calcO2(currentLocation, row, column);
         } catch (ToolControlException ex) {
-            System.out.println(ex);
+            this.console.println(ex);
             startProgramView.startProgram();
         }
 
@@ -215,7 +205,7 @@ public class MoveLocationView extends View{
 
     private void checkFuel() {
         double amountToFill = buggy.getFuelCapacity() - buggy.getFuelLevel();
-        System.out.println(ANSI_BLUE + "\nThe buggy's current fuel level is: " + buggy.getFuelLevel()
+        this.console.println(ANSI_BLUE + "\nThe buggy's current fuel level is: " + buggy.getFuelLevel()
                     + ANSI_BLUE      + "\nThe buugy can hold " + amountToFill + " more gallons" + ANSI_RESET);
     }
 
@@ -224,12 +214,15 @@ public class MoveLocationView extends View{
         String input = null;  // Integer.parseInt(numberAsString)
         int fillAmount = 0;
         
-        Scanner keyboard = new Scanner(System.in);
          
         while (!valid){
-            System.out.println(ANSI_BLUE + "\nHow much fuel would you like to put in the buggy? MAX 4 when empty" + ANSI_RESET);
-             
-            input = keyboard.nextLine();
+            this.console.println(ANSI_BLUE + "\nHow much fuel would you like to put in the buggy? MAX 4 when empty" + ANSI_RESET);
+        try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(),
+                        "Enter valid selection" + ex.getMessage());
+            }
             input= input.trim();
              
             if (input.length() < 1) {
@@ -237,10 +230,10 @@ public class MoveLocationView extends View{
              }
             
         try {
-                  
             fillAmount = Integer.parseInt(input);
         } catch (NumberFormatException nf){
-            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
+            ErrorView.display(this.getClass().getName(),
+                    ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
         }
             break;
         }
@@ -252,17 +245,12 @@ public class MoveLocationView extends View{
         try {
             buggyControl.fillFuel(fillAmount);
         } catch (BuggyControlException ex) {
-            System.out.println(ex);
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
     }
 
     private void checkO2() {
-        System.out.println("\n*** called checkO2 function has been called in MoveLocation Class ***");
-
-    }
-
-    private void fillO2() {
-        System.out.println("\n*** called fillO2 function has been called in MoveLocation Class ***");
+        facilityScene.checkO2Level();
     }
 
     private void checkFood() {
@@ -273,13 +261,15 @@ public class MoveLocationView extends View{
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
         int fillAmount = 0;
-        
-        Scanner keyboard = new Scanner(System.in);
+
          
         while (!valid){
-            System.out.println(ANSI_BLUE + "\nHow much food would you like to eat?" + ANSI_RESET);
-             
-            input = keyboard.nextLine();
+            this.console.println(ANSI_BLUE + "\nHow much food would you like to eat?" + ANSI_RESET);
+        try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(),
+                                    "Enter valid selection" + ex.getMessage());
             input= input.trim();
              
             if (input.length() < 1) {
@@ -290,16 +280,17 @@ public class MoveLocationView extends View{
                   
             fillAmount = Integer.parseInt(input);
             } catch (NumberFormatException nf){
-                System.out.println("\nYou must enter a valid number");
+                ErrorView.display(this.getClass().getName(),
+                                "\nYou must enter a valid number" + nf.getMessage());
             }
             break;
-
-        
+            }
         }
+    
     try {
         foodControl.fillFood(fillAmount);
     } catch (FoodControlException ex) {
-        System.out.println(ex);
+        ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
     }
     

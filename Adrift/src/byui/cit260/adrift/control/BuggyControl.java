@@ -13,6 +13,7 @@ import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
+import java.io.PrintWriter;
 
 /**
  *
@@ -32,6 +33,7 @@ public class BuggyControl {
     int maxWeight = buggy.getMaxWeight();
     double fuelCapacity = buggy.getFuelCapacity();
     int fuelInventory = inventoryList[Item.fuel.ordinal()].getQuantityInStock();
+    private final PrintWriter console = Adrift.getOutFile();
     int fuelAfterFill;
     int currentWeight;
     double currentFuel;
@@ -55,7 +57,7 @@ public class BuggyControl {
         
         if(currentWeight <= maxWeight) {
             buggy.setLoadedWeight(currentWeight);
-                System.out.println(ANSI_GREEN + "\nYour buggy's current weight is " + currentWeight
+                this.console.println(ANSI_GREEN + "\nYour buggy's current weight is " + currentWeight
                             + ANSI_GREEN      + "\n out of a max weight of " + maxWeight + ANSI_RESET);
 
         }
@@ -83,7 +85,7 @@ public class BuggyControl {
         if(currentFuel <= fuelCapacity) {
             buggy.setFuelLevel(currentFuel);
             inventoryList[Item.fuel.ordinal()].setQuantityInStock(fuelAfterFill);
-                System.out.println(ANSI_RED + "\nYour buggy's current fuel level is " + currentFuel
+                this.console.println(ANSI_RED + "\nYour buggy's current fuel level is " + currentFuel
                             + ANSI_RED      + "\n out of a max fuel level of " + fuelCapacity + ANSI_RESET);
             calledBefore = true;
 
@@ -102,7 +104,7 @@ public class BuggyControl {
         
          
         if (destination < 1 || destination > 25){
-            System.out.println(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);
+            this.console.println(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);
         }
 
         if (currentLoc  < destination) {

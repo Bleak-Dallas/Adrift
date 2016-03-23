@@ -10,13 +10,19 @@ import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byu.cit260.adrift.enums.Item;
+import byui.cit260.adrift.exceptions.GameControlException;
 import byui.cit260.adrift.model.Elevator;
-import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Scene;
 import byui.cit260.adrift.model.Ship;
 import byui.cit260.adrift.model.Tools;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -145,14 +151,35 @@ public class GameControl {
         return inventoryList;
     }
 
-
-    public void saveGame(String player) {
-
-    }
+    public static void saveGame(Game game, String filePath) throws GameControlException{
+        try(FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game);
+        }
+        catch(IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
     
-    public void loadGame(String player) {
-
     }
 
+    
+   public static void loadGame(String filePath) throws GameControlException{
+       
+       Game game = null;
+       
+       try(FileInputStream fips = new FileInputStream(filePath)) {
+           ObjectInputStream output = new ObjectInputStream(fips);
+           
+           game = (Game) output.readObject();
+       }
+       catch(FileNotFoundException fnfe) {
+           throw new GameControlException(fnfe.getMessage());
+       }
+       catch (Exception e) {
+           throw new GameControlException(e.getMessage());
+       }
+       Adrift.setCurrentGame(game);
+    }
     
 }

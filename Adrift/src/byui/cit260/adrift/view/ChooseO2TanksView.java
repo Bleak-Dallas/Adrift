@@ -42,7 +42,8 @@ class ChooseO2TanksView extends View{
     try {
         choice = (char) Integer.parseInt(value); // change char to int
         }   catch (NumberFormatException nf){
-        System.out.println("\nYou must enter a valid number");
+        ErrorView.display(this.getClass().getName(),
+                "\nYou must enter a valid number" + nf.getMessage());
         }
     
         Game game = Adrift.getCurrentGame();
@@ -70,7 +71,7 @@ class ChooseO2TanksView extends View{
         try {
             inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+           ErrorView.display(this.getClass().getName(),ex.getMessage());
         }
   
 

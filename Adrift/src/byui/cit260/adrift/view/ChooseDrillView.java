@@ -60,7 +60,7 @@ class ChooseDrillView extends View{
         try {
             inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+           ErrorView.display(this.getClass().getName(),ex.getMessage());
         }
   
 

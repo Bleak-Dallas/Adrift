@@ -8,7 +8,6 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byu.cit260.adrift.enums.SceneType;
 import byu.cit260.adrift.enums.ToolType;
-import byui.cit260.adrift.exceptions.SceneControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Location;
@@ -67,7 +66,8 @@ public class FacilitySceneView extends View{
 
                 return true;
             default:
-                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
+                ErrorView.display(this.getClass().getName(),
+                        ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }
         return false;
@@ -77,7 +77,7 @@ public class FacilitySceneView extends View{
     void displayFacilitySCene() {
 
         String facilityScene = scenes[SceneType.facility.ordinal()].getDescription();
-        System.out.println(facilityScene);
+        this.console.println(facilityScene);
         this.display();
         }
 
@@ -85,9 +85,9 @@ public class FacilitySceneView extends View{
         buggy.setLoadedWeight(0);
     }
 
-    private void checkO2Level() {
+    public void checkO2Level() {
         currentO2 = player.getCurrentOxygenLevel();
-        System.out.println(ANSI_GREEN + "\nYour current O2 level is " + defaultFormat.format(currentO2) + ANSI_RESET);
+        this.console.println(ANSI_GREEN + "\nYour current O2 level is " + defaultFormat.format(currentO2) + ANSI_RESET);
     }
 
     private void fillO2() {

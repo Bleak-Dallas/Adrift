@@ -72,7 +72,8 @@ public class PreMissionView extends View{
                 gameMenu.display();
                 return true;
             default:
-                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
+                ErrorView.display(this.getClass().getName(),
+                        ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }
         return false;
@@ -99,12 +100,7 @@ public class PreMissionView extends View{
         chooseFuel.display();
     }
 
-//    private void chooseAmount() {
-//        Map map = MapControl.createMap();
-//        Location[][] locations = map.getLocations();
-//        System.out.println("\n***" + locations[0][2].getScene().getResourceDescription());
-
-    void createPlayerItems() {
+    private void createPlayerItems() {
         Game game = Adrift.getCurrentGame();
         Player player = game.getPlayer();
         Buggy buggy = game.getBuggy();

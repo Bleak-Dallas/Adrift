@@ -7,7 +7,6 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.ActorType;
-import byui.cit260.adrift.model.Actor;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Scene;
@@ -64,8 +63,8 @@ public class MapControl {
         start.setSymbol(" ST ");
         start.setBlocked(false);
         start.setDistanceTraveled(0);
-        start.setResourceDescription("Ice     ");
-        start.setResourceAmount(1);
+        start.setResourceDescription("Start   ");
+        start.setResourceAmount(0);
         scenes[SceneType.start.ordinal()] = start;
         
         Scene sandy1 = new Scene();
@@ -350,8 +349,8 @@ public class MapControl {
         facility.setSymbol(" FC ");
         facility.setBlocked(false);
         facility.setDistanceTraveled(2);
-        facility.setResourceDescription("Fuel    ");
-        facility.setResourceAmount(4);
+        facility.setResourceDescription("Mining Facility");
+        facility.setResourceAmount(0);
         scenes[SceneType.facility.ordinal()] = facility;
         
         Scene ship = new Scene();
@@ -361,8 +360,8 @@ public class MapControl {
         ship.setSymbol(" SP ");
         ship.setBlocked(false);
         ship.setDistanceTraveled(1);
-        ship.setResourceDescription("Fuel    ");
-        ship.setResourceAmount(1);
+        ship.setResourceDescription("Ship    ");
+        ship.setResourceAmount(0);
         scenes[SceneType.ship.ordinal()] = ship;
         
         Scene finish = new Scene();
@@ -372,8 +371,8 @@ public class MapControl {
         finish.setSymbol(" FN ");
         finish.setBlocked(false);
         finish.setDistanceTraveled(0);
-        finish.setResourceDescription("Iron    ");
-        finish.setResourceAmount(1);
+        finish.setResourceDescription("Finish  ");
+        finish.setResourceAmount(0);
         scenes[SceneType.finish.ordinal()] = finish;
         
         return scenes;
@@ -416,29 +415,6 @@ public class MapControl {
 
     }
 
-//    static Actor[] createActorList() {
-////         create list of actors
-//        Actor[] actors = new Actor[ActorType.values().length];
-//        
-//        Actor Luke = new Actor();
-//        Luke.setDescription("Ship pilot");
-//        actors[ActorType.Luke.ordinal()] = Luke;
-//        
-//        Actor Chewy = new Actor();
-//        Chewy.setDescription("ship technician");
-//        actors[ActorType.Chewy.ordinal()] = Chewy;
-//        
-//        Actor Bones = new Actor();
-//        Bones.setDescription("Ship geologist");
-//        actors[ActorType.Bones.ordinal()] = Bones;
-//        
-//        Actor R2C3Data = new Actor();
-//        R2C3Data.setDescription("Ship robot");
-//        actors[ActorType.R2C3Data.ordinal()] = R2C3Data;
-//        
-//        return actors;
-//    }
-    
     public static void moveActorsToStartingLocation(Map map) {
         Game game = Adrift.getCurrentGame();
         Location[][] locations = map.getLocations();
@@ -448,22 +424,7 @@ public class MapControl {
         locations[0][1].setActors(ActorType.Bones);
         locations[0][1].setActors(ActorType.R2C3Data);
         game.setCurrentLocation(locations[0][0]);
-        
-        
-        
-        }
-      
-     
-//        Map map = Adrift.getCurrentGame().getMap();
-//        int newRow = coordinates.x-0;
-//        int newColumn = coordinates.y-1;
-//       
-//            if (newRow < 0 || newColumn < 0 || newColumn >= map.getNoOfColumns() || newRow >= map.getNoOfRows()) {
-//                System.out.println("/nCan not move actor to location "
-//                                    + coordinates.x + "'" + coordinates.y
-//                                    + " beacuse that location is outside "
-//                                    + "the bounds of the map");
-//
-//            }
+
+    }
 
 }

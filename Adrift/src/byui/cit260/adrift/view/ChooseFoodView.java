@@ -9,6 +9,8 @@ import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.InventoryControl;
 import byui.cit260.adrift.exceptions.InventoryControlException;
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
+import static byui.cit260.adrift.control.InventoryControl.ANSI_RESET;
 import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
@@ -38,8 +40,12 @@ public class ChooseFoodView extends View{
     public boolean doAction(String value) {
         int choice = 0;
         
-       // value = value.toUpperCase(); // convert to all upper case
+        try {
         choice = (char) Integer.parseInt(value); // change char to int
+        } catch (NumberFormatException nf) {
+            ErrorView.display(this.getClass().getName(),
+                    ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
+        }
         Game game = Adrift.getCurrentGame();
         InventoryItem[] inventory = game.getInventory();
         Elevator elevator = game.getElevator();
@@ -61,7 +67,7 @@ public class ChooseFoodView extends View{
         try {
             inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+           ErrorView.display(this.getClass().getName(),ex.getMessage());
         }
   
 

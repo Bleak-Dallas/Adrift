@@ -1,0 +1,9 @@
+MainMenuView - C: (Access is denied)
+byui.cit260.adrift.view.SaveGameView - [31m
+*** Invalid selection *** Try Again[0m
+MainMenuView - C:\Users\Dallas\Google Drive\BYU-Idaho\CIT 260-07\Adrift\Adrift (Access is denied)
+MainMenuView - E:\Users\Dallas\Documents\My Games (Access is denied)
+byui.cit260.adrift.view.ChooseDrillView - [31m
+
+You may only have 12 items[0m
+byui.cit260.adrift.view.StartProgramView - [31mInvalid name - the name must not be blank[0m

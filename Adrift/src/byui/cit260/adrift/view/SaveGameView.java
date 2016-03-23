@@ -5,6 +5,9 @@
  */
 package byui.cit260.adrift.view;
 
+import adrift.Adrift;
+import byui.cit260.adrift.control.GameControl;
+
 /**
  *
  * @author Dallas
@@ -39,13 +42,23 @@ class SaveGameView extends View {
             case 'Q': //Quit the game
                 return true;
             default:
-                System.out.println(ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
+               ErrorView.display(this.getClass().getName(),
+                       ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         }     
         return false;
     }
 
     private void saveGame() {
-        System.out.println(ANSI_BLUE + "\n*** saveGame function called ***" + ANSI_RESET);
+        
+        this.console.println("\nEnter the filepath where the game will be saved");
+        
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.saveGame(Adrift.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
 }

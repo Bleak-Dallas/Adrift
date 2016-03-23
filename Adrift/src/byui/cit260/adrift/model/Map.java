@@ -5,7 +5,8 @@
  */
 package byui.cit260.adrift.model;
 
-    import java.io.Serializable;
+import byui.cit260.adrift.view.ErrorView;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 /**
@@ -13,7 +14,7 @@ import java.util.Objects;
  * @author Autumn
  */
 public class Map implements Serializable {
-    
+
     private String name = "Adrift";
     private String description = "Sector Map";
     private int noOfRows;
@@ -26,7 +27,8 @@ public class Map implements Serializable {
     public Map(int noOfRows, int noOfColumns) {
         
         if (noOfRows < 1 || noOfColumns < 1) {
-        System.out.println("The number of rows and columns must be greater than zero");
+        ErrorView.display(this.getClass().getName(),
+                "The number of rows and columns must be greater than zero");
         }
         
         this.noOfRows = noOfRows;

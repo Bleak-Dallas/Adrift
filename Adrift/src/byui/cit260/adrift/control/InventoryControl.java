@@ -5,14 +5,19 @@
  */
 package byui.cit260.adrift.control;
 
+import adrift.Adrift;
 import byui.cit260.adrift.exceptions.InventoryControlException;
+import java.io.PrintWriter;
+import java.text.NumberFormat;
 
 
 
 public class InventoryControl {
+    private final PrintWriter console = Adrift.getOutFile();
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
+    NumberFormat defaultFormat = NumberFormat.getPercentInstance();
   
     public double calculateO2Needed(double currentO2,int currentLocation,int destination)
                     throws InventoryControlException {
@@ -35,11 +40,11 @@ public class InventoryControl {
 
         double remainingO2 =  currentO2 - (numberOfSpacesTraveled * .25);
                 if(remainingO2 < 0){
-                    System.out.println(ANSI_RED + "\n\nIf you take this trip your remaining O2 would be " 
-                                        + ANSI_RED + remainingO2 + ". You would die!!" + ANSI_RESET);
+                    this.console.println(ANSI_RED + "\n\nIf you take this trip your remaining O2 would be " 
+                                        + ANSI_RED + defaultFormat.format(remainingO2) + ". You would die!!" + ANSI_RESET);
                 }
                 else{
-                    System.out.println(ANSI_GREEN + "\n\nIf you take this trip your remaining O2 would be " + remainingO2 + ANSI_RESET);
+                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining O2 would be " + defaultFormat.format(remainingO2) + ANSI_RESET);
                 }
         return remainingO2;
     
@@ -67,11 +72,11 @@ public class InventoryControl {
 
         double remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
                 if(remainingFuel < 0){
-                    System.out.println(ANSI_RED + "\n\nIf you take this trip your remaining fuel would be " 
-                                      + ANSI_RED + remainingFuel + ". You would die!!" + ANSI_RESET);
+                    this.console.println(ANSI_RED + "\n\nIf you take this trip your remaining fuel would be " 
+                                      + ANSI_RED + defaultFormat.format(remainingFuel) + ". You would die!!" + ANSI_RESET);
                 }
                 else{
-                    System.out.println(ANSI_GREEN + "\n\nIf you take this trip your remaining fuel would be " + remainingFuel + ANSI_RESET);
+                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining fuel would be " + defaultFormat.format(remainingFuel) + ANSI_RESET);
                 }
         return remainingFuel;
     
@@ -98,11 +103,11 @@ public class InventoryControl {
 
         double remainingCalories =  currentCalories - (numberOfSpacesTraveled * .25);
                 if(remainingCalories < 0){
-                    System.out.println(ANSI_RED + "\n\nIf you take this trip your remaining food would be " 
+                    this.console.println(ANSI_RED + "\n\nIf you take this trip your remaining food would be " 
                                         + remainingCalories + ". You would die!!" + ANSI_RESET);
                 }
                 else{
-                    System.out.println(ANSI_GREEN + "\n\nIf you take this trip your remaining food would be " + remainingCalories + ANSI_RESET);
+                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining food would be " + remainingCalories + ANSI_RESET);
                 }
         return remainingCalories;
     
@@ -128,13 +133,13 @@ public class InventoryControl {
 
         if (elevatorCapacityUsed < elevatorCapacity){ // check remaining elevator capacity
             remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
-            System.out.println(ANSI_GREEN +"Remaining capacity in elevator is " + remainingCapacity + ANSI_RESET);
+            this.console.println(ANSI_GREEN +"Remaining capacity in elevator is " + remainingCapacity + ANSI_RESET);
             return remainingCapacity;
             
         }
         
         if (elevatorCapacityUsed == elevatorCapacity){ // check to see if elevator is full
-            System.out.println(ANSI_RED + "Elevator is Full" + ANSI_RESET);
+            this.console.println(ANSI_RED + "Elevator is Full" + ANSI_RESET);
             remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
             return remainingCapacity;
         }

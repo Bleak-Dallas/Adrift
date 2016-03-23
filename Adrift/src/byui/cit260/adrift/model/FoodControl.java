@@ -8,6 +8,8 @@ package byui.cit260.adrift.model;
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.exceptions.FoodControlException;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 
 /**
  *
@@ -18,6 +20,8 @@ public class FoodControl {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
+    private final BufferedReader keyboard = Adrift.getInFile();
+    private final PrintWriter console = Adrift.getOutFile();
     Game game = Adrift.getCurrentGame();
     Map map = game.getMap();
     Player player = game.getPlayer();
@@ -34,7 +38,7 @@ public class FoodControl {
     
      public void checkFood() {
         double playerCurrentFooodLevel = player.getCurrentCalorieLevel();
-        System.out.println(ANSI_GREEN + "\nYour current food level is: " + playerCurrentFooodLevel + ANSI_RESET);
+        this.console.println(ANSI_GREEN + "\nYour current food level is: " + playerCurrentFooodLevel + ANSI_RESET);
     }
 
     public double fillFood(int noOfItems) throws FoodControlException{
@@ -57,7 +61,7 @@ public class FoodControl {
         if(currentPlayerFood <= maxPlayerFood) {
             player.setCurrentCalorieLevel(foodAfterAdding);
             inventoryList[Item.food.ordinal()].setQuantityInStock(foodInvetoryAfterEating);
-                System.out.println(ANSI_BLUE +"\nYour current food level is " + currentPlayerFood
+                this.console.println(ANSI_BLUE +"\nYour current food level is " + currentPlayerFood
                                 + ANSI_BLUE + "\n out of a max food level of " + maxPlayerFood + ANSI_RESET);
             calledBefore = true;
 

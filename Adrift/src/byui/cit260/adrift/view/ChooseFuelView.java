@@ -50,13 +50,14 @@ class ChooseFuelView extends View{
     try {
         choice = (char) Integer.parseInt(value); // change char to int
        }    catch (NumberFormatException nf){
-            System.out.println(ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET);
+            ErrorView.display(this.getClass().getName(),
+                    ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
         }
     
         try {
             inventoryControl.checkinput(choice);
         } catch (InventoryControlException ex) {
-            System.out.println(ex);
+            this.console.println(ex);
         }
 
         InventoryItem fuel = new InventoryItem();
@@ -74,7 +75,7 @@ class ChooseFuelView extends View{
         try {
             inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
         }
   
 
