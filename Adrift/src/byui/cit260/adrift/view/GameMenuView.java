@@ -47,6 +47,7 @@ public class GameMenuView extends View {
             + "\nD - Deliver Resource"
             + "\nW - Repair Ship"
             + "\nJ - Launch Ship"
+            + "\nP - Print reports"
             + "\nH - Help"
             + "\nQ - Exit to Main Menu"
             + "\n---------------------------------------");
@@ -107,6 +108,10 @@ public class GameMenuView extends View {
                 
             case 'J': // Launch ship
                 this.console.println("Launch ship");
+                break;
+                
+            case 'P': // Launch ship
+                this.printReports();
                 break;
                 
             case 'H': // help
@@ -275,7 +280,8 @@ public class GameMenuView extends View {
             
         }
     }
-        private void viewResourceSceneType() {
+    
+    private void viewResourceSceneType() {
          Location[][] locations = map.getLocations();
          
         this.console.println("\n*************************************************"
@@ -297,10 +303,7 @@ public class GameMenuView extends View {
             this.console.println(row + "," + column + "\t\t" +
                                locations[row][column].getScene().getResourceDescription() + "\t\t" +
                                locations[row][column].getScene().getResourceAmount());
-        }
-//            this.console.println(locations[2][4].getScene().getResourceDescription() + "\t\t" +
-//                               locations[2][4].getScene().getResourceAmount());
-
+            }
 
         }
     }
@@ -308,6 +311,11 @@ public class GameMenuView extends View {
     private void moveLocation() {
         MoveLocationView moveLocation = new MoveLocationView();
         moveLocation.display();
+    }
+
+    private void printReports() {
+        PrintReportView printReport = new PrintReportView (); //display the game menu
+        printReport.display();
     }
 
 

@@ -37,8 +37,7 @@ class SaveGameView extends View {
     
         switch (choice) {
             case 'S': //create and start new game
-                this.saveGame();
-                break;
+                return this.saveGame();
             case 'Q': //Quit the game
                 return true;
             default:
@@ -49,7 +48,7 @@ class SaveGameView extends View {
         return false;
     }
 
-    private void saveGame() {
+    private boolean saveGame() {
         
         this.console.println("\nEnter the filepath where the game will be saved");
         
@@ -57,8 +56,11 @@ class SaveGameView extends View {
         
         try {
             GameControl.saveGame(Adrift.getCurrentGame(), filePath);
+            this.console.println("your game was succesfully saved as: " + filePath);
+            return true;
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
+        return false;
     }
 }

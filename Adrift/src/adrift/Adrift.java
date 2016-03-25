@@ -25,6 +25,7 @@ public class Adrift {
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
     private static PrintWriter logFile = null;
+   
 
 
     public static void main(String[] args) {
@@ -61,6 +62,7 @@ public class Adrift {
                 
                 if(Adrift.logFile != null);
                     Adrift.logFile.close();
+
              } catch (IOException ex) {
                  System.out.println("Error closing files" + ex.getMessage());
              }
@@ -107,6 +109,5 @@ public class Adrift {
     public static void setLogFile(PrintWriter logFile) {
         Adrift.logFile = logFile;
     }
-    
 
 }
