@@ -22,7 +22,7 @@ class SaveGameView extends View {
     public SaveGameView(){
         super("\n"
             + "\n----------------------------------------"
-            + "\n | Save Game Menu                           |"
+            + "\n | Save Game Menu                      |"
             + "\n ---------------------------------------"
             + "\nS - Save game"
             + "\nQ - Quit to main menu"

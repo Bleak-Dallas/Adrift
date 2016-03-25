@@ -1,4 +1,0 @@
-byui.cit260.adrift.view.MoveLocationView - 
- The X coordinate must be between 0 and 4
-byui.cit260.adrift.view.MoveLocationView - 
- The Y coordinate must be between 0 and 4

@@ -98,8 +98,7 @@ class PrintReportView extends View{
         if(reportFile != null) {
             reportFile.close();
         }
-        
-        
+
 //        finally {
 //            try {
 //                if(reportFile != null)
