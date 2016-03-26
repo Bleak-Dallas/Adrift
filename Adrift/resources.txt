@@ -1,0 +1,10 @@
+
+
+                   Resources Report                    
+
+Description          In Stock          Resource     Amount Required
+-----------          --------          --------     ---------------
+Drill                   3               Iron                3
+O2Tank                  2               Aluminum            3
+Shovel                  0               Iron                2
+Hammer                  0               Iron                1

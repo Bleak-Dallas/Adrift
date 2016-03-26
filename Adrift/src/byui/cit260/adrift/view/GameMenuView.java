@@ -259,7 +259,7 @@ public class GameMenuView extends View {
     }
 
     private void displayToolInventory() {
-       // get sorted list of inventory items for teh current game
+       // get sorted list of inventory items for the current game
         Tools[] toolInventory = ToolsControl.getSortedToolList();
         
         this.console.println("\n*************************************************"

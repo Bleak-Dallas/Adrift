@@ -79,7 +79,7 @@ class PrintReportView extends View{
         reportFile.printf("%n%-15s%14s%18s%20s", "Description", "In Stock", "Resource", "Amount Required");
         reportFile.printf("%n%-15s%14s%18s%20s", "-----------", "--------", "--------", "---------------");
         
-        //print toool items
+        //print tool items
         for(Tools tool : toolInventory) {
             reportFile.printf("%n%-15s%10d%23s%13d" , tool.getDescription()
                                                     , tool.getQuantityInStock()
@@ -108,8 +108,44 @@ class PrintReportView extends View{
     }
 
     private void resourcesReport() {
-        this.console.println("\n**** resourceReport function called in PrintReportView  ****");
+        this.console.println(ANSI_BLUE + "\nEnter the filepath and file name where the report will be saved" + ANSI_RESET);
+        
+        String filePath = this.getInput();
+        try(PrintWriter reportFile = new PrintWriter(filePath)) {
+
+        // print title and column headings
+        reportFile.println("\n\n                   Resources Report                    ");
+        reportFile.printf("%n%-15s%14s%18s%20s", "Description", "In Stock", "Resource", "Amount Required");
+        reportFile.printf("%n%-15s%14s%18s%20s", "-----------", "--------", "--------", "---------------");
+        
+        //print Resources
+        for(Tools tool : toolInventory) {
+            reportFile.printf("%n%-15s%10d%23s%13d" , tool.getDescription()
+                                                    , tool.getQuantityInStock()
+                                                    , tool.getRequiredResource()
+                                                    , tool.getRequiredAmount());
+        }
+        if(reportFile != null) {
+            this.console.println(ANSI_GREEN + "\n\nYour report has been succesfully run and saved" + ANSI_RESET);
+        }
+
+        }
+        catch(IOException ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+        
+        finally {
+                try {
+                    if(reportFile != null)
+                        reportFile.close();
+
+                 } catch (Exception ex) {
+                    ErrorView.display("GameMenuView Error closing file", ex.getMessage());
+                }
+        }
     }
+}
+
 
     
-}
+
