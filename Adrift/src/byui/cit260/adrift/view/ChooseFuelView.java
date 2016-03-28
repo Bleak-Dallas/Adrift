@@ -23,7 +23,6 @@ import byui.cit260.adrift.model.InventoryItem;
  */
 class ChooseFuelView extends View{
     
-    
     public ChooseFuelView() {
     super("\n"
             + "\n ======================================="

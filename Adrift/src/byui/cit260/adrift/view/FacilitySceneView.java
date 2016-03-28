@@ -62,8 +62,6 @@ public class FacilitySceneView extends View{
                 this.fillO2();
                 break;
             case 'Q': 
-                
-
                 return true;
             default:
                 ErrorView.display(this.getClass().getName(),

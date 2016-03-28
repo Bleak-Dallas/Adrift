@@ -5,15 +5,25 @@
  */
 package byui.cit260.adrift.view;
 
-import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
-import static byui.cit260.adrift.control.InventoryControl.ANSI_RESET;
-import byui.cit260.adrift.control.ToolsControl;
+import adrift.Adrift;
+import byu.cit260.adrift.enums.Item;
+import byu.cit260.adrift.enums.ToolType;
+import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.InventoryItem;
+import byui.cit260.adrift.model.Tools;
 
 /**
  *
  * @author Dallas
  */
 class ConstructToolsView extends View{
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    Game game = Adrift.getCurrentGame();
+    Tools[] toolInventory = game.getToolInventory();
+    InventoryItem[] inventoryList = game.getInventory();
+        
     public ConstructToolsView(){
         super("\n"
             + "\n----------------------------------------"
@@ -30,7 +40,7 @@ class ConstructToolsView extends View{
 
     @Override
     public boolean doAction(String value) {
-         value = value.toUpperCase(); // convert to all upper case
+        value = value.toUpperCase(); // convert to all upper case
         char choice = value.charAt(0); // get first character entered
         switch (choice) {
             case 'D': //make mining drill
@@ -50,32 +60,89 @@ class ConstructToolsView extends View{
                 break;
                 
             case 'Q': //Exit the game menu
-                GameMenuView gameMenu = new GameMenuView(); //display the game menu
-                gameMenu.display();
-                
+                return true;
             default:
                 ErrorView.display(this.getClass().getName(),
                         ANSI_RED + "\n*** Invalid selection *** Try Again" + ANSI_RESET);
                 break;
         } 
-        return true;         
+        return false;         
     }
 
-    private void makeDrill() {
-//        ToolsControl drill = new ToolsControl();
-//        drill.resourcesNeeded();
+    private boolean makeDrill() {
+        int currentAmountOfDrills = toolInventory[ToolType.drill.ordinal()].getQuantityInStock();
+        int resourcesRequiredForDrill= toolInventory[ToolType.drill.ordinal()].getRequiredAmount();
+        int currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
+        
+        if(currentIron < resourcesRequiredForDrill) {
+            this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make a drill."
+                               + ANSI_RED+ "\nA drill takes " + resourcesRequiredForDrill + " iron to make." + ANSI_RESET);
+            return false;
+        }
+
+        if(currentIron >= resourcesRequiredForDrill) {
+            toolInventory[ToolType.drill.ordinal()].setQuantityInStock(currentAmountOfDrills + 1);
+            inventoryList[Item.iron.ordinal()].setQuantityInStock(currentIron - resourcesRequiredForDrill);
+                this.console.println(ANSI_GREEN + "You have made 1 drill." + ANSI_RESET);
+        }
+        return true;
     }
 
-    private void makeShovel() {
-        this.console.println("\n*** makeShovel function called ***");
+    private boolean makeShovel() {
+        int currentAmountOfShovels = toolInventory[ToolType.shovel.ordinal()].getQuantityInStock();
+        int resourcesRequiredForShovel= toolInventory[ToolType.shovel.ordinal()].getRequiredAmount();
+        int currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
+
+        if(currentIron < resourcesRequiredForShovel) {
+            this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make a shovel."
+                               + ANSI_RED+ "\nA drill takes " + resourcesRequiredForShovel + " iron to make." + ANSI_RESET);
+            return false;
+        }
+
+        if(currentIron >= resourcesRequiredForShovel) {
+            toolInventory[ToolType.drill.ordinal()].setQuantityInStock(currentAmountOfShovels + 1);
+            inventoryList[Item.iron.ordinal()].setQuantityInStock(currentIron - resourcesRequiredForShovel);
+                this.console.println(ANSI_GREEN + "You have made 1 drill." + ANSI_RESET);
+        }
+        return true;
     }
 
-    private void makeHammer() {
-        this.console.println("\n*** makeHammer function called ***");
+    private boolean makeHammer() {
+        int currentAmountOfHammers = toolInventory[ToolType.hammer.ordinal()].getQuantityInStock();
+        int resourcesRequiredForHammer= toolInventory[ToolType.hammer.ordinal()].getRequiredAmount();
+        int currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
+
+        if(currentIron < resourcesRequiredForHammer) {
+            this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make a hammer."
+                               + ANSI_RED+ "\nA drill takes " + resourcesRequiredForHammer + " iron to make." + ANSI_RESET);
+            return false;
+        }
+
+        if(currentIron >= resourcesRequiredForHammer) {
+            toolInventory[ToolType.drill.ordinal()].setQuantityInStock(currentAmountOfHammers + 1);
+            inventoryList[Item.iron.ordinal()].setQuantityInStock(currentIron - resourcesRequiredForHammer);
+                this.console.println(ANSI_GREEN + "You have made 1 drill." + ANSI_RESET);
+        }
+        return true;
     }
 
-    private void makeO2Tank() {
-        this.console.println("\n*** makeO2Tank function called ***");
+    private boolean makeO2Tank() {
+        int currentAmountOfO2tanks = toolInventory[ToolType.O2tank.ordinal()].getQuantityInStock();
+        int resourcesRequiredForO2tanks= toolInventory[ToolType.O2tank.ordinal()].getRequiredAmount();
+        int currentAlluminum = inventoryList[Item.aluminum.ordinal()].getQuantityInStock();
+
+        if(currentAlluminum < resourcesRequiredForO2tanks) {
+            this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make an O2 tank."
+                               + ANSI_RED+ "\nA drill takes " + resourcesRequiredForO2tanks + " iron to make." + ANSI_RESET);
+            return false;
+        }
+
+        if(currentAlluminum >= resourcesRequiredForO2tanks) {
+            toolInventory[ToolType.drill.ordinal()].setQuantityInStock(currentAmountOfO2tanks + 1);
+            inventoryList[Item.iron.ordinal()].setQuantityInStock(currentAlluminum - resourcesRequiredForO2tanks);
+                this.console.println(ANSI_GREEN + "You have made 1 drill." + ANSI_RESET);
+        }
+        return true;
     }
         
 }
