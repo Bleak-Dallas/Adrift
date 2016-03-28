@@ -6,8 +6,10 @@
 package byui.cit260.adrift.view;
 
 import adrift.Adrift;
+import byui.cit260.adrift.control.GameControl;
 import byui.cit260.adrift.control.ToolsControl;
 import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Tools;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,6 +26,7 @@ class PrintReportView extends View{
     public static final String ANSI_RESET = "\u001B[0m";
     Game game = Adrift.getCurrentGame();
     Tools[] toolInventory = ToolsControl.getSortedToolList();
+    InventoryItem[] inventory = GameControl.getSortedInventoryList();
     private static PrintWriter reportFile = null;
     
     public PrintReportView(){
@@ -65,7 +68,41 @@ class PrintReportView extends View{
     }
 
     private void inventoryReport() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.console.println(ANSI_BLUE + "\nEnter the filepath and file name where the report will be saved" + ANSI_RESET);
+        
+        String filePath = this.getInput();
+        try(PrintWriter reportFile = new PrintWriter(filePath)) {
+
+        // print title and column headings
+        reportFile.println("\n\n       Inventory Report          ");
+        reportFile.printf("%n%-15s%14s", "Description", "In Stock");
+        reportFile.printf("%n%-15s%14s", "-----------", "--------");
+        
+        //print tool items
+        for(InventoryItem item: inventory) {
+            reportFile.printf("%n%-15s%10d" , item.getDescription()
+                                                    , item.getQuantityInStock());
+                                                    
+        }
+        if(reportFile != null) {
+            this.console.println(ANSI_GREEN + "\n\nYour report has been succesfully run and saved" + ANSI_RESET);
+        }
+
+        }
+        catch(IOException ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+        
+        finally {
+                try {
+                    if(reportFile != null)
+                        reportFile.close();
+
+                 } catch (Exception ex) {
+                    ErrorView.display("GameMenuView Error closing file", ex.getMessage());
+                }  
+        
+        }
     }
 
     private void toolInventoryReport() {

@@ -1,0 +1,15 @@
+
+
+       Inventory Report          
+
+Description          In Stock
+-----------          --------
+Aluminum                0
+Copper                  0
+Flux Capacitor          0
+Food                    2
+Fuel                    3
+Iron                    0
+Oil                     0
+Uranium                 0
+Water                   0
