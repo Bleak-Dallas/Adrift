@@ -8,6 +8,7 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byui.cit260.adrift.control.GameControl;
+import byui.cit260.adrift.control.ShipControl;
 import byui.cit260.adrift.control.ToolsControl;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
@@ -44,8 +45,7 @@ public class GameMenuView extends View {
             + "\nO - Calculate O2"
             + "\nC - Calculate Calories"
             + "\nT - Construct Tools"
-            + "\nD - Deliver Resource"
-            + "\nW - Repair Ship"
+            + "\nR - Repair Ship"
             + "\nJ - Launch Ship"
             + "\nP - Print reports"
             + "\nH - Help"
@@ -70,7 +70,7 @@ public class GameMenuView extends View {
                 this.viewShipStatus();
                 break;
                 
-                case 'B': // view inventory
+            case 'B': // view inventory
                 this.displayToolInventory();
                 break;
                 
@@ -98,19 +98,15 @@ public class GameMenuView extends View {
                 this.constructTools();
                 break;
                 
-            case 'D': // Deliver resources
-                this.console.println("Deliver resources");
-                break;
-                
-            case 'W': // Repair ship
-                this.console.println("Repair ship");
+            case 'R': // Repair ship
+                this.repairShip();
                 break;
                 
             case 'J': // Launch ship
-                this.console.println("Launch ship");
+                this.launchShip();
                 break;
                 
-            case 'P': // Launch ship
+            case 'P': // Print Reports
                 this.printReports();
                 break;
                 
@@ -318,7 +314,16 @@ public class GameMenuView extends View {
         printReport.display();
     }
 
+    private void repairShip() {
+        RepairShipView repairShip = new RepairShipView();
+        repairShip.display();
+    }
 
+    private void launchShip() {
+        ShipControl shipControl = new ShipControl();
+        shipControl.launchShip();
+    }
+    
 }
 
         

@@ -41,8 +41,8 @@ public class ShipStatusView {
         for(int i=1; i < shipItems.length; i++) {
             // Display the description, the required amount and the amount in stock
             this.console.println(shipItems[i].getDescription() + "\t\t" + "    " +
-                               shipItems[i].getShipItemAmount() + "\t\t" + "      " + 
-                               shipItems[i].getRequiredShipAmount());
+                                 shipItems[i].getShipItemAmount() + "\t\t" + "      " + 
+                                 shipItems[i].getRequiredShipAmount());
             
     }
       

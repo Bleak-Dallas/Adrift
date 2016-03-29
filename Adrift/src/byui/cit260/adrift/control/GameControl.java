@@ -98,7 +98,7 @@ public class GameControl {
         
         InventoryItem iron = new InventoryItem();
         iron.setDescription("Iron    ");
-        iron.setQuantityInStock(0);
+        iron.setQuantityInStock(4);
         iron.setRequiredAmount(0);
         inventory[Item.iron.ordinal()] = iron;
         
