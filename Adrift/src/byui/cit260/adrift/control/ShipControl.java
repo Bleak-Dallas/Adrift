@@ -7,11 +7,16 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
+import byu.cit260.adrift.enums.SceneType;
 import byu.cit260.adrift.enums.ShipType;
 import byui.cit260.adrift.exceptions.ShipControlException;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
+import byui.cit260.adrift.model.Location;
+import byui.cit260.adrift.model.Map;
+import byui.cit260.adrift.model.Scene;
 import byui.cit260.adrift.model.Ship;
+import java.io.PrintWriter;
 
 
 public class ShipControl {
@@ -21,16 +26,20 @@ public class ShipControl {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
     Game game = Adrift.getCurrentGame();
+    Map map = game.getMap();
+    Location[][] locations = map.getLocations();
+    Scene[] scenes = game.getScenes();
     InventoryItem[] inventoryList = game.getInventory();
     Ship[] ship = game.getShip();
-    private double currentShipIron = ship[ShipType.iron.ordinal()].getShipItemAmount();
-    private double currentShipCopper = ship[ShipType.copper.ordinal()].getShipItemAmount();
-    private double currentShipUranium = ship[ShipType.uranium.ordinal()].getShipItemAmount();
-    private double requiredShipIron = ship[ShipType.iron.ordinal()].getRequiredShipAmount();
-    private double requiredShipCopper = ship[ShipType.copper.ordinal()].getRequiredShipAmount();
-    private double requiredShipUranium = ship[ShipType.uranium.ordinal()].getRequiredShipAmount();
-    private double currentAmountIC = currentShipIron + currentShipCopper;
-    private double requiredAmountIC = requiredShipIron + requiredShipCopper;
+    private final double currentShipIron = ship[ShipType.iron.ordinal()].getShipItemAmount();
+    private final double currentShipCopper = ship[ShipType.copper.ordinal()].getShipItemAmount();
+    private final double currentShipUranium = ship[ShipType.uranium.ordinal()].getShipItemAmount();
+    private final double requiredShipIron = ship[ShipType.iron.ordinal()].getRequiredShipAmount();
+    private final double requiredShipCopper = ship[ShipType.copper.ordinal()].getRequiredShipAmount();
+    private final double requiredShipUranium = ship[ShipType.uranium.ordinal()].getRequiredShipAmount();
+    private final double currentAmountIC = currentShipIron + currentShipCopper;
+    private final double requiredAmountIC = requiredShipIron + requiredShipCopper;
+    private final PrintWriter console = Adrift.getOutFile();;
       
 
     static Ship[] createShipList() {
@@ -174,7 +183,20 @@ public class ShipControl {
     }
 
     public void launchShip() {
-         System.out.println("\n***  launchShip function called in ShipControl ***");
+        int fluxCapacitor = inventoryList[Item.fluxcapacitor.ordinal()].getQuantityInStock();
+        int shipCurrentIron = ship[ShipType.iron.ordinal()].getShipItemAmount();
+        int shipIronRequired = ship[ShipType.iron.ordinal()].getRequiredShipAmount();
+        int shipCurrentCopper = ship[ShipType.copper.ordinal()].getShipItemAmount();
+        int shipCopperRequired = ship[ShipType.copper.ordinal()].getRequiredShipAmount();
+        int shipCurrentUranium = ship[ShipType.uranium.ordinal()].getShipItemAmount();
+        int shipUraniumRequired = ship[ShipType.uranium.ordinal()].getRequiredShipAmount();
+        String finishScene;
+        
+        if(shipCurrentIron == shipIronRequired && shipCurrentCopper == shipCopperRequired 
+                && shipCurrentUranium == shipUraniumRequired && fluxCapacitor == 1) {
+            finishScene = scenes[SceneType.finish.ordinal()].getDescription();
+            this.console.println(finishScene);
+      }
     }
 
 }

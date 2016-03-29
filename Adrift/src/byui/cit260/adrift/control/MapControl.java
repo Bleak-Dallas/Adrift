@@ -136,8 +136,8 @@ public class MapControl {
         icy1.setSymbol(" IC1 ");
         icy1.setBlocked(false);
         icy1.setDistanceTraveled(4);
-        icy1.setResourceDescription("Ice     ");
-        icy1.setResourceAmount(20);
+        icy1.setResourceDescription("Aluminum     ");
+        icy1.setResourceAmount(5);
         scenes[SceneType.icy1.ordinal()] = icy1;
         
         Scene icy2 = new Scene();
@@ -365,9 +365,8 @@ public class MapControl {
         scenes[SceneType.ship.ordinal()] = ship;
         
         Scene finish = new Scene();
-        finish.setDescription(ANSI_BLUE + "\nCongratulations Commander!! You have fixed "
-            + ANSI_BLUE    + "\nyour ship, retrieved the item and saved your crew. Your total "
-            + ANSI_BLUE    + "\ntravel time was:" + ANSI_RESET);
+        finish.setDescription(ANSI_BLUE + "\nCONGRATULATIONS COMMANDER!! You have fixed "
+            + ANSI_BLUE    + "\nyour ship, retrieved the item and saved your crew." + ANSI_RESET);
         finish.setSymbol(" FN ");
         finish.setBlocked(false);
         finish.setDistanceTraveled(0);
