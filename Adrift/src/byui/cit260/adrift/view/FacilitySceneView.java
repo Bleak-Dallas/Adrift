@@ -33,6 +33,8 @@ public class FacilitySceneView extends View{
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
     double currentO2;
+    double currentO2tanks;
+    double O2percent;
     
     public FacilitySceneView() {
         super("\n"
@@ -85,7 +87,9 @@ public class FacilitySceneView extends View{
 
     public void checkO2Level() {
         currentO2 = player.getCurrentOxygenLevel();
-        this.console.println(ANSI_GREEN + "\nYour current O2 level is " + defaultFormat.format(currentO2) + ANSI_RESET);
+        currentO2tanks = tool[ToolType.O2tank.ordinal()].getQuantityInStock();
+        O2percent = currentO2 / currentO2tanks;
+        this.console.println(ANSI_GREEN + "\nYour current O2 level is " + defaultFormat.format(O2percent) + ANSI_RESET);
     }
 
     private void fillO2() {

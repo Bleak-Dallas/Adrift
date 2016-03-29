@@ -6,6 +6,7 @@
 package byui.cit260.adrift.view;
 
 import adrift.Adrift;
+import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.BuggyControl;
 import byui.cit260.adrift.control.ToolsControl;
 import byui.cit260.adrift.exceptions.BuggyControlException;
@@ -15,10 +16,12 @@ import byui.cit260.adrift.exceptions.ToolControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.FoodControl;
 import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Player;
 import java.io.IOException;
+import java.text.NumberFormat;
 
 /**
  *
@@ -29,8 +32,10 @@ public class MoveLocationView extends View{
     private static final String ANSI_GREEN = "\u001B[32m";
     private static final String ANSI_BLUE = "\u001B[34m";
     private static final String ANSI_RESET = "\u001B[0m";
+    NumberFormat defaultFormat = NumberFormat.getPercentInstance();
     Game game = Adrift.getCurrentGame();
     Buggy buggy  = game.getBuggy();
+    InventoryItem[] inventoryList = game.getInventory();
     BuggyControl buggyControl = new BuggyControl();
     FoodControl foodControl = new FoodControl();
     ToolsControl toolControl = new ToolsControl();
@@ -208,8 +213,11 @@ public class MoveLocationView extends View{
     }
 
     private void checkFuel() {
+        double fuelCapacity = buggy.getFuelCapacity();
+        double fuelLevel = buggy.getFuelLevel();
+        double fuelPercent = fuelLevel / fuelCapacity;
         double amountToFill = buggy.getFuelCapacity() - buggy.getFuelLevel();
-        this.console.println(ANSI_BLUE + "\nThe buggy's current fuel level is: " + buggy.getFuelLevel()
+        this.console.println(ANSI_BLUE + "\nThe buggy's current fuel level is: " + defaultFormat.format(fuelPercent)
                     + ANSI_BLUE      + "\nThe buugy can hold " + amountToFill + " more gallons" + ANSI_RESET);
     }
 

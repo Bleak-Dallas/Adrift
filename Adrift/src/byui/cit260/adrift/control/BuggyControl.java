@@ -14,6 +14,7 @@ import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import java.io.PrintWriter;
+import java.text.NumberFormat;
 
 /**
  *
@@ -34,6 +35,7 @@ public class BuggyControl {
     double fuelCapacity = buggy.getFuelCapacity();
     int fuelInventory = inventoryList[Item.fuel.ordinal()].getQuantityInStock();
     private final PrintWriter console = Adrift.getOutFile();
+    NumberFormat defaultFormat = NumberFormat.getPercentInstance();
     int fuelAfterFill;
     int currentWeight;
     double currentFuel;
@@ -65,7 +67,9 @@ public class BuggyControl {
     }
     
     public double fillFuel(int noOfItems) throws BuggyControlException{
+        double fuelCapacity = buggy.getFuelCapacity();
         double fuelLevel = buggy.getFuelLevel();
+        double fuelPercent = fuelLevel / fuelCapacity;
         currentFuel = fuelLevel + noOfItems;
         fuelAfterFill = fuelInventory - noOfItems;
 
@@ -85,7 +89,7 @@ public class BuggyControl {
         if(currentFuel <= fuelCapacity) {
             buggy.setFuelLevel(currentFuel);
             inventoryList[Item.fuel.ordinal()].setQuantityInStock(fuelAfterFill);
-                this.console.println(ANSI_GREEN + "\nYour buggy's current fuel level is " + currentFuel
+                this.console.println(ANSI_GREEN + "\nYour buggy's current fuel level is " + defaultFormat.format(fuelPercent)
                                    + ANSI_GREEN + "\n out of a max fuel level of " + fuelCapacity + ANSI_RESET);
             calledBefore = true;
 

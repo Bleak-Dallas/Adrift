@@ -65,7 +65,7 @@ public class SceneView extends View{
                 break;
             case 'M': {
            try {               
-               sceneControl.mineResources(resourceDescription, currentInventoryDesc);
+               sceneControl.mineResources(resourceDescription, row, column);
            } catch (SceneControlException | BuggyControlException ex) {
                ErrorView.display(this.getClass().getName(),ex.getMessage());
            }
@@ -101,8 +101,8 @@ public class SceneView extends View{
     private void checkResources() {
         resourceDescription = locations[row][column].getScene().getResourceDescription().trim();
         resourceAmount = locations[row][column].getScene().getResourceAmount();
-        this.console.println(ANSI_BLUE + "\nThe resource found in this sector is " + resourceDescription
-                         + "\nThe amount remaining is " + resourceAmount + ANSI_RESET);
+        this.console.println(ANSI_BLUE + "\nThe resource found in this sector is " + resourceDescription +
+                             ANSI_BLUE + "\nThe amount remaining is " + resourceAmount + ANSI_RESET);
         
     }
     

@@ -36,19 +36,18 @@ public class SceneControl {
     InventoryItem[] inventoryList = game.getInventory();
     Buggy buggy = game.getBuggy();
     BuggyControl buggyControl = new BuggyControl();
-    protected final BufferedReader keyboard = Adrift.getInFile();
-    protected final PrintWriter console = Adrift.getOutFile();
+    private final BufferedReader keyboard = Adrift.getInFile();
+    private final PrintWriter console = Adrift.getOutFile();
     int row;
     int column;
     int amountToMine;
-    int resourceAmount;
     int sceneAmount;
     String resourceDescription;
     String currentInventoryDesc;
     
-        public void mineResources(String resourceDescription, String currentInventoryDesc)
+        public void mineResources(String resourceDescription, int row, int column)
                 throws SceneControlException, BuggyControlException {
-        
+        int resourceAmount = locations[row][column].getScene().getResourceAmount();
         boolean valid = false;
         int currentInventoryAmount;
         String input = null;  // Integer.parseInt(numberAsString)
@@ -63,7 +62,7 @@ public class SceneControl {
                  ErrorView.display(this.getClass().getName(),
                          "Enter valid selection" + ex.getMessage());
             }
-            input= input.trim();
+            input = input.trim();
              
             if (input.length() < 1) {
             

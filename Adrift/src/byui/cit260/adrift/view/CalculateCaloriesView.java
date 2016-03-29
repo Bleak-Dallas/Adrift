@@ -72,7 +72,7 @@ public class CalculateCaloriesView extends View {
         return false;
     }
 
-    private void currentLocation() {
+    private boolean currentLocation() {
         boolean valid = false;
         int row = 0;
         int column = 0;
@@ -104,7 +104,8 @@ public class CalculateCaloriesView extends View {
         
         if(row < 0 || row > 4) {
                 ErrorView.display(this.getClass().getName(),
-                        "\n The X coordinate must be between 0 and 4");
+                        ANSI_RED + "\n The X coordinate must be between 0 and 4"  + ANSI_RESET);
+                return false;
             }
         
          while (!valid){
@@ -131,12 +132,14 @@ public class CalculateCaloriesView extends View {
             break;
          }
         if(column < 0 || column > 4) {
-           ErrorView.display(this.getClass().getName(),"\n The Y coordinate must be between 0 and 4");
+           ErrorView.display(this.getClass().getName(), ANSI_RED + "\n The Y coordinate must be between 0 and 4"  + ANSI_RESET);
+           return false;
         }
         currentLocation = locations[row][column].getScene().getDistanceTraveled();
+        return true;
     }
 
-    private void destination() {
+    private boolean destination() {
         boolean valid = false;
         int row = 0;
         int column = 0;
@@ -168,7 +171,8 @@ public class CalculateCaloriesView extends View {
         
         if(row < 0 || row > 4) {
                 ErrorView.display(this.getClass().getName(),
-                        "\n The X coordinate must be between 0 and 4");
+                        ANSI_RED + "\n The X coordinate must be between 0 and 4" + ANSI_RESET);
+                return false;
             }
         
          while (!valid){
@@ -197,7 +201,8 @@ public class CalculateCaloriesView extends View {
          }
         if(column < 0 || column > 4) {
             ErrorView.display(this.getClass().getName(),
-                    "\n The Y coordinate must be between 0 and 4");
+                    ANSI_RED + "\n The Y coordinate must be between 0 and 4" + ANSI_RESET);
+            return false;
         }
         
         destination = locations[row][column].getScene().getDistanceTraveled();
@@ -207,6 +212,6 @@ public class CalculateCaloriesView extends View {
         } catch (InventoryControlException ex) {
             this.console.println(ex);
         }
-
+            return true;
     }
 }
