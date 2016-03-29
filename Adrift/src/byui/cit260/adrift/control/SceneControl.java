@@ -6,6 +6,7 @@
 package byui.cit260.adrift.control;
 
 import adrift.Adrift;
+import byu.cit260.adrift.enums.ToolType;
 
 import byui.cit260.adrift.exceptions.SceneControlException;
 import byui.cit260.adrift.exceptions.BuggyControlException;
@@ -18,6 +19,7 @@ import byui.cit260.adrift.model.Scene;
 import static byui.cit260.adrift.view.SceneView.ANSI_BLUE;
 import static byui.cit260.adrift.view.SceneView.ANSI_RESET;
 import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
+import byui.cit260.adrift.model.Tools;
 import byui.cit260.adrift.view.ErrorView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,6 +36,7 @@ public class SceneControl {
     Location[][] locations = map.getLocations();
     Scene[] scenes = game.getScenes();
     InventoryItem[] inventoryList = game.getInventory();
+    Tools[] tool = game.getToolInventory();
     Buggy buggy = game.getBuggy();
     BuggyControl buggyControl = new BuggyControl();
     private final BufferedReader keyboard = Adrift.getInFile();
@@ -48,10 +51,19 @@ public class SceneControl {
         public void mineResources(String resourceDescription, int row, int column)
                 throws SceneControlException, BuggyControlException {
         int resourceAmount = locations[row][column].getScene().getResourceAmount();
+        int hammer = tool[ToolType.hammer.ordinal()].getQuantityInStock();
+        int shovel = tool[ToolType.shovel.ordinal()].getQuantityInStock();
+        int drill = tool[ToolType.drill.ordinal()].getQuantityInStock();
         boolean valid = false;
         int currentInventoryAmount;
         String input = null;  // Integer.parseInt(numberAsString)
-         
+        
+        if(resourceDescription.trim().equals("Iron") && hammer >= 1 
+                || resourceDescription.trim().equals("Aluminum") && hammer >= 1  
+                || resourceDescription.trim().equals("Uranium") && hammer >= 1 && shovel >=1 
+                || resourceDescription.trim().equals("Copper") && hammer >= 1 
+                || resourceDescription.trim().equals("Fuel") && drill >= 1) {
+
         while (!valid){
             this.console.println(ANSI_BLUE + "\nHow much " + resourceDescription 
                                 + " would you like to mine?" + ANSI_RESET);
@@ -87,6 +99,10 @@ public class SceneControl {
            sceneAmount = resourceAmount - amountToMine;
                 locations[row][column].getScene().setResourceAmount(sceneAmount);
                 break;
+        }
+        }
+        else {
+            throw new SceneControlException(ANSI_RED + "\nYou do not have the tool required to mine this resource" + ANSI_RESET);
         }
         
     }
