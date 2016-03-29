@@ -85,8 +85,8 @@ public class BuggyControl {
         if(currentFuel <= fuelCapacity) {
             buggy.setFuelLevel(currentFuel);
             inventoryList[Item.fuel.ordinal()].setQuantityInStock(fuelAfterFill);
-                this.console.println(ANSI_RED + "\nYour buggy's current fuel level is " + currentFuel
-                            + ANSI_RED      + "\n out of a max fuel level of " + fuelCapacity + ANSI_RESET);
+                this.console.println(ANSI_GREEN + "\nYour buggy's current fuel level is " + currentFuel
+                                   + ANSI_GREEN + "\n out of a max fuel level of " + fuelCapacity + ANSI_RESET);
             calledBefore = true;
 
         }

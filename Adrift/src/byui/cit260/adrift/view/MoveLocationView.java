@@ -112,7 +112,7 @@ public class MoveLocationView extends View{
          return false;
     }
 
-    private void moveToDestination() throws MapControlException {
+    private boolean moveToDestination() throws MapControlException {
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
          
@@ -142,7 +142,8 @@ public class MoveLocationView extends View{
         
         if(row < 0 || row > 4) {
                 ErrorView.display(this.getClass().getName(),
-                        "\n The X coordinate must be between 0 and 4");
+                        ANSI_RED + "\n The X coordinate must be between 0 and 4"  + ANSI_RESET);
+                return false;
             }
         
          while (!valid){
@@ -171,10 +172,13 @@ public class MoveLocationView extends View{
          }
         if(column < 0 || column > 4) {
             ErrorView.display(this.getClass().getName(),
-                    "\n The Y coordinate must be between 0 and 4");
+                    ANSI_RED + "\n The Y coordinate must be between 0 and 4" + ANSI_RESET);
+            return false;
         }
         
         this.moveLocation();
+        
+        return true;
 
     }
 
