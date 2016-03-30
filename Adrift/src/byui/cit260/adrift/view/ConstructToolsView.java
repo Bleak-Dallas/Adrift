@@ -95,7 +95,7 @@ class ConstructToolsView extends View{
 
         if(currentIron < resourcesRequiredForShovel) {
             this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make a shovel."
-                               + ANSI_RED+ "\nA drill takes " + resourcesRequiredForShovel + " iron to make." + ANSI_RESET);
+                               + ANSI_RED+ "\nA shovel takes " + resourcesRequiredForShovel + " iron to make." + ANSI_RESET);
             return false;
         }
 
@@ -114,7 +114,7 @@ class ConstructToolsView extends View{
 
         if(currentIron < resourcesRequiredForHammer) {
             this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make a hammer."
-                               + ANSI_RED+ "\nA drill takes " + resourcesRequiredForHammer + " iron to make." + ANSI_RESET);
+                               + ANSI_RED+ "\nA hammer takes " + resourcesRequiredForHammer + " iron to make." + ANSI_RESET);
             return false;
         }
 
@@ -133,7 +133,7 @@ class ConstructToolsView extends View{
 
         if(currentAlluminum < resourcesRequiredForO2tanks) {
             this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make an O2 tank."
-                               + ANSI_RED+ "\nA drill takes " + resourcesRequiredForO2tanks + " iron to make." + ANSI_RESET);
+                               + ANSI_RED+ "\nA o2 tank takes " + resourcesRequiredForO2tanks + " iron to make." + ANSI_RESET);
             return false;
         }
 

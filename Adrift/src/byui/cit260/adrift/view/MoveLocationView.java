@@ -59,6 +59,7 @@ public class MoveLocationView extends View{
                     + "\n --------------------------------------"
                     + "\nC - Check buggy's fuel level"
                     + "\nF - Fill buggy with fuel"
+                    + "\nW - Check buggy's weight"
                     + "\nO - Check O2 level"
                     + "\nL - Check food level"
                     + "\nE - Eat food"
@@ -80,9 +81,11 @@ public class MoveLocationView extends View{
             }
         }
                  break;
+                 
              case 'C': 
                  this.checkFuel();
                  break;
+                 
              case 'F': 
         {
             try {
@@ -92,12 +95,19 @@ public class MoveLocationView extends View{
             }
         }
                  break;
+                 
+            case 'W': 
+                 buggyControl.checkBuggyWeight();
+                 break;
+                 
              case 'O': 
                  this.checkO2();
                  break;
+                 
              case 'L': 
                  this.checkFood();
                  break;
+                 
              case 'E': {
             try {
                 this.fillFood();
@@ -106,6 +116,7 @@ public class MoveLocationView extends View{
             }
         }
                  break;
+                 
              case 'Q': //Exit the game
                  return true;
              default:

@@ -48,9 +48,7 @@ public class BuggyControl {
     
     
     
-    public int calWeight(int noOfItems) 
-    
-    throws BuggyControlException {
+    public int calWeight(int noOfItems) throws BuggyControlException {
         
         currentWeight = loadedWeight + noOfItems;
 
@@ -67,6 +65,15 @@ public class BuggyControl {
 
         }
     return currentWeight;
+    }
+    
+    public void checkBuggyWeight() {
+        int buggyCurrentWeight = buggy.getLoadedWeight();
+        int buggyMaxWeight = buggy.getMaxWeight();
+        int remainingWeight = buggyMaxWeight - buggyCurrentWeight;
+        
+        this.console.println(ANSI_GREEN + "\nThe current loaded weight is " + buggyCurrentWeight
+                           + ANSI_GREEN + "\nThe buggy's remaining weight is " + remainingWeight + ANSI_RESET);
     }
     
     public double fillFuel(int noOfItems) throws BuggyControlException{

@@ -78,35 +78,35 @@ public class SceneControl {
             input = input.trim();
              
             if (input.length() < 1) {
+                throw new SceneControlException("Invalid selection - the menu item must not be blank");
             
-               throw new SceneControlException("Invalid selection - the menu item must not be blank");
-                
-             }   
+            }
+            break;
+        }
             amountToMine = Integer.parseInt(input);
             
                 if(amountToMine > resourceAmount) {
                     throw new BuggyControlException(ANSI_RED + "Invalid selection you only have " + resourceAmount
                                     + ANSI_RED    + " " + resourceDescription + " to mine." + ANSI_RESET);
                 }
+                
+                sceneAmount = resourceAmount - amountToMine;
+            if(sceneAmount < 0) {
+                this.console.println(ANSI_RED + "\nThere is no more resources to mine at this location" + ANSI_RESET);
+                return false;
+            } else {
+                locations[row][column].getScene().setResourceAmount(sceneAmount);
+            }
+            
                 buggyControl.calWeight(amountToMine);
         
-        for(InventoryItem inventory : inventoryList) {
-            currentInventoryAmount = inventory.getQuantityInStock();
-            currentInventoryDesc = inventory.getDescription().trim();
-            if(inventory.getDescription().trim().equals(resourceDescription.trim()))
-                inventory.setQuantityInStock(amountToMine + currentInventoryAmount);
-        }
-
-        sceneAmount = resourceAmount - amountToMine;
-            if(sceneAmount < 0) {
-                locations[row][column].getScene().setResourceAmount(sceneAmount);
-            } else {
-                this.console.println(ANSI_RED + "\nThere is no more resources to mine at this location" + ANSI_RESET);
-            }
-                return false;
-        }
-        }
-        else {
+            for(InventoryItem inventory : inventoryList) {
+                currentInventoryAmount = inventory.getQuantityInStock();
+                currentInventoryDesc = inventory.getDescription().trim();
+                if(inventory.getDescription().trim().equals(resourceDescription.trim()))
+                    inventory.setQuantityInStock(amountToMine + currentInventoryAmount);
+                }
+        } else {
             throw new SceneControlException(ANSI_RED + "\nYou do not have the tool required to mine this resource" + ANSI_RESET);
         }
         return true;

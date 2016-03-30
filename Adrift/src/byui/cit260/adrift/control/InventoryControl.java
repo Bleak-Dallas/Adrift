@@ -6,13 +6,22 @@
 package byui.cit260.adrift.control;
 
 import adrift.Adrift;
+import byu.cit260.adrift.enums.ToolType;
 import byui.cit260.adrift.exceptions.InventoryControlException;
+import byui.cit260.adrift.model.Buggy;
+import byui.cit260.adrift.model.Game;
+import byui.cit260.adrift.model.Player;
+import byui.cit260.adrift.model.Tools;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
 
 
 
 public class InventoryControl {
+    Game game = Adrift.getCurrentGame();
+    Buggy buggy = game.getBuggy();
+    Player player = game.getPlayer();
+    Tools[] tool = game.getToolInventory();
     private final PrintWriter console = Adrift.getOutFile();
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -21,7 +30,9 @@ public class InventoryControl {
   
     public double calculateO2Needed(double currentO2,int currentLocation,int destination)
                     throws InventoryControlException {
-        
+        int currentO2tanks = tool[ToolType.O2tank.ordinal()].getQuantityInStock();
+        double remainingO2;
+        double o2Percent;
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
@@ -38,13 +49,14 @@ public class InventoryControl {
             
         }
 
-        double remainingO2 =  currentO2 - (numberOfSpacesTraveled * .25);
+        remainingO2 =  currentO2 - (numberOfSpacesTraveled * .25);
+        o2Percent = remainingO2 / currentO2tanks;
                 if(remainingO2 < 0){
                     this.console.println(ANSI_RED + "\n\nIf you take this trip your remaining O2 would be " 
-                                        + ANSI_RED + defaultFormat.format(remainingO2) + ". You would die!!" + ANSI_RESET);
+                                        + ANSI_RED + defaultFormat.format(o2Percent) + ". You would die!!" + ANSI_RESET);
                 }
                 else{
-                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining O2 would be " + defaultFormat.format(remainingO2) + ANSI_RESET);
+                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining O2 would be " + defaultFormat.format(o2Percent) + ANSI_RESET);
                 }
         return remainingO2;
     
@@ -54,6 +66,10 @@ public class InventoryControl {
     public double calculateFuelNeeded(double currentFuel,int currentLocation,int destination)
                         throws InventoryControlException {
         
+        double fuelCapacity = buggy.getFuelCapacity();
+        double fuelPercent;
+        double remainingFuel;
+        
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
@@ -70,13 +86,14 @@ public class InventoryControl {
             
         }
 
-        double remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
+        remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
+        fuelPercent = remainingFuel / fuelCapacity;
                 if(remainingFuel < 0){
                     this.console.println(ANSI_RED + "\n\nIf you take this trip your remaining fuel would be " 
-                                      + ANSI_RED + defaultFormat.format(remainingFuel) + ". You would die!!" + ANSI_RESET);
+                                      + ANSI_RED + defaultFormat.format(fuelPercent) + ". You would die!!" + ANSI_RESET);
                 }
                 else{
-                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining fuel would be " + defaultFormat.format(remainingFuel) + ANSI_RESET);
+                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining fuel would be " + defaultFormat.format(fuelPercent) + ANSI_RESET);
                 }
         return remainingFuel;
     
@@ -85,6 +102,7 @@ public class InventoryControl {
     public double calculateCaloriesNeeded(double currentCalories,int currentLocation,int destination)
                             throws InventoryControlException {
         
+        double remainingCalories;
         double numberOfSpacesTraveled = 0;
          
         if (destination < 1 || destination > 25){
@@ -101,7 +119,7 @@ public class InventoryControl {
             
         }
 
-        double remainingCalories =  currentCalories - (numberOfSpacesTraveled * .25);
+        remainingCalories =  currentCalories - (numberOfSpacesTraveled * .25);
                 if(remainingCalories < 0){
                     this.console.println(ANSI_RED + "\n\nIf you take this trip your remaining food would be " 
                                         + remainingCalories + ". You would die!!" + ANSI_RESET);
