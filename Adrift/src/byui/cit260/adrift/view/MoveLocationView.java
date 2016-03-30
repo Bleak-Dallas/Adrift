@@ -299,6 +299,7 @@ public class MoveLocationView extends View{
             } catch (IOException ex) {
                 ErrorView.display(this.getClass().getName(),
                                     "Enter valid selection" + ex.getMessage());
+            }
             input= input.trim();
              
             if (input.length() < 1) {
@@ -313,7 +314,6 @@ public class MoveLocationView extends View{
                                 "\nYou must enter a valid number" + nf.getMessage());
             }
             break;
-            }
         }
     
     try {

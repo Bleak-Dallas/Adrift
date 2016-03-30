@@ -62,7 +62,8 @@ public class SceneControl {
                 || resourceDescription.trim().equals("Aluminum") && hammer >= 1  
                 || resourceDescription.trim().equals("Uranium") && hammer >= 1 && shovel >=1 
                 || resourceDescription.trim().equals("Copper") && hammer >= 1 
-                || resourceDescription.trim().equals("Fuel") && drill >= 1) {
+                || resourceDescription.trim().equals("Fuel") && drill >= 1 
+                || resourceDescription.trim().equals("Food")) {
 
         while (!valid){
             this.console.println(ANSI_BLUE + "\nHow much " + resourceDescription 
@@ -97,10 +98,10 @@ public class SceneControl {
         }
 
         sceneAmount = resourceAmount - amountToMine;
-            if(sceneAmount != 0) {
+            if(sceneAmount < 0) {
                 locations[row][column].getScene().setResourceAmount(sceneAmount);
             } else {
-                this.console.println(ANSI_RED + "\nThee is no more resources to mine at this location" + ANSI_RESET);
+                this.console.println(ANSI_RED + "\nThere is no more resources to mine at this location" + ANSI_RESET);
             }
                 return false;
         }

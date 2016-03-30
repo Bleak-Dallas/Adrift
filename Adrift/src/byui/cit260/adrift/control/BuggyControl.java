@@ -72,7 +72,7 @@ public class BuggyControl {
     public double fillFuel(int noOfItems) throws BuggyControlException{
         double fuelCapacity = buggy.getFuelCapacity();
         double fuelLevel = buggy.getFuelLevel();
-        double fuelPercent = fuelLevel / fuelCapacity;
+        double fuelPercent;
         currentFuel = fuelLevel + noOfItems;
         fuelAfterFill = fuelInventory - noOfItems;
 
@@ -91,6 +91,8 @@ public class BuggyControl {
         
         if(currentFuel <= fuelCapacity) {
             buggy.setFuelLevel(currentFuel);
+            double fuelLevel2 = buggy.getFuelLevel();
+            fuelPercent = fuelLevel2 / fuelCapacity;
             inventoryList[Item.fuel.ordinal()].setQuantityInStock(fuelAfterFill);
                 this.console.println(ANSI_GREEN + "\nYour buggy's current fuel level is " + defaultFormat.format(fuelPercent)
                                    + ANSI_GREEN + "\n out of a max fuel level of " + fuelCapacity + ANSI_RESET);
@@ -120,16 +122,20 @@ public class BuggyControl {
         
         if(calledBefore == false) {
             remainingFuel =  fuelLevel - (numberOfSpacesTraveled * .25);
-             buggy.setFuelLevel(remainingFuel);
-        } else {
-            remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
-            buggy.setFuelLevel(remainingFuel);
-        }
-        
-        if(remainingFuel <= 0) {
+            if(remainingFuel <= 0) {
             throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FUEL AND YOU WERE"
                                          + ANSI_RED + "\nUNABLE TO MAKE IT BACK TO SAFEY." + ANSI_RESET);
         }
+             buggy.setFuelLevel(remainingFuel);
+        } else {
+            remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
+            if(remainingFuel <= 0) {
+            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FUEL AND YOU WERE"
+                                         + ANSI_RED + "\nUNABLE TO MAKE IT BACK TO SAFEY." + ANSI_RESET);
+        }
+            buggy.setFuelLevel(remainingFuel);
+        }
+
         
         return remainingFuel;
 

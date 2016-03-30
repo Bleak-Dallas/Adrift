@@ -63,8 +63,9 @@ public class FoodControl {
         
         if(currentPlayerFood <= maxPlayerFood) {
             player.setCurrentCalorieLevel(foodAfterAdding);
+            double currentPLayerFood2 = player.getCurrentCalorieLevel();
             inventoryList[Item.food.ordinal()].setQuantityInStock(foodInvetoryAfterEating);
-                this.console.println(ANSI_BLUE +"\nYour current food level is " + currentPlayerFood
+                this.console.println(ANSI_BLUE +"\nYour current food level is " + currentPLayerFood2
                                 + ANSI_BLUE + "\n out of a max food level of " + maxPlayerFood + ANSI_RESET);
             calledBefore = true;
 
@@ -88,16 +89,20 @@ public class FoodControl {
         }
         
         if(calledBefore == false) {
-            remainingFood =  currentPlayerFood - (numberOfSpacesTraveled * .25);
-             player.setCurrentCalorieLevel(remainingFood);
+            remainingFood =  currentPlayerFood - (numberOfSpacesTraveled * 0.25);
+            if(remainingFood <= 0) {
+            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FOOD" + ANSI_RESET);
+        }
+            player.setCurrentCalorieLevel(remainingFood);
         } else {
-            remainingFood =  foodAfterAdding - (numberOfSpacesTraveled * .25);
+            remainingFood =  foodAfterAdding - (numberOfSpacesTraveled * 0.25);
+            if(remainingFood <= 0) {
+            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FOOD" + ANSI_RESET);
+        }
             player.setCurrentCalorieLevel(remainingFood);
         }
         
-        if(remainingFood <= 0) {
-            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FOOD" + ANSI_RESET);
-        }
+        
         
         return remainingFood;
 

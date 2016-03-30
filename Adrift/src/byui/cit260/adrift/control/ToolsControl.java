@@ -98,11 +98,10 @@ public class ToolsControl {
         }
 
         remainingO2 =  cuurentO2 - (numberOfSpacesTraveled * .25);
-        player.setCurrentOxygenLevel(remainingO2);
-        
-        if(cuurentO2 <= 0) {
+        if(remainingO2 <= 0) {
             throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF O2" + ANSI_RESET);
         }
+        player.setCurrentOxygenLevel(remainingO2);
 
         return remainingO2;
         }
