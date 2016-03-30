@@ -37,7 +37,6 @@ public class PreMissionView extends View{
             + "\n ======================================="
             + "\nR - Food Rations"
             + "\nT - O2 Tanks"
-            + "\nD - Drill"
             + "\nF - Fuel"
             + "\nQ - Done with selections"
             + "\n---------------------------------------");
@@ -57,9 +56,9 @@ public class PreMissionView extends View{
             case 'T': // display Help Menu
                 this.chooseO2Tanks();
                 break;
-            case 'D': //Save game
-                this.chooseDrill();
-                break;
+//            case 'D': //Save game
+//                this.chooseDrill();
+//                break;
             case 'F': //Save game
                 this.chooseFuel();
                 break;
@@ -90,10 +89,10 @@ public class PreMissionView extends View{
         O2TanksView.display();
     }
 
-    private void chooseDrill() {
-        ChooseDrillView chooseDrill = new ChooseDrillView();
-        chooseDrill.display();
-    }
+//    private void chooseDrill() {
+//        ChooseDrillView chooseDrill = new ChooseDrillView();
+//        chooseDrill.display();
+//    }
 
     private void chooseFuel() {
         ChooseFuelView chooseFuel = new ChooseFuelView();

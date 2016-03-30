@@ -48,7 +48,7 @@ public class SceneControl {
     String resourceDescription;
     String currentInventoryDesc;
     
-        public void mineResources(String resourceDescription, int row, int column)
+        public boolean mineResources(String resourceDescription, int row, int column)
                 throws SceneControlException, BuggyControlException {
         int resourceAmount = locations[row][column].getScene().getResourceAmount();
         int hammer = tool[ToolType.hammer.ordinal()].getQuantityInStock();
@@ -96,15 +96,19 @@ public class SceneControl {
                 inventory.setQuantityInStock(amountToMine + currentInventoryAmount);
         }
 
-           sceneAmount = resourceAmount - amountToMine;
+        sceneAmount = resourceAmount - amountToMine;
+            if(sceneAmount != 0) {
                 locations[row][column].getScene().setResourceAmount(sceneAmount);
-                break;
+            } else {
+                this.console.println(ANSI_RED + "\nThee is no more resources to mine at this location" + ANSI_RESET);
+            }
+                return false;
         }
         }
         else {
             throw new SceneControlException(ANSI_RED + "\nYou do not have the tool required to mine this resource" + ANSI_RESET);
         }
-        
+        return true;
     }
     
 }

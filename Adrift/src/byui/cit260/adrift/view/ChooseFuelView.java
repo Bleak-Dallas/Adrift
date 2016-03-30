@@ -8,8 +8,6 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.InventoryControl;
-import static byui.cit260.adrift.control.InventoryControl.ANSI_RED;
-import static byui.cit260.adrift.control.InventoryControl.ANSI_RESET;
 import byui.cit260.adrift.exceptions.InventoryControlException;
 import byui.cit260.adrift.model.Elevator;
 import byui.cit260.adrift.model.Game;
@@ -22,6 +20,10 @@ import byui.cit260.adrift.model.InventoryItem;
  * @author Dallas
  */
 class ChooseFuelView extends View{
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private static final String ANSI_RESET = "\u001B[0m";
     
     public ChooseFuelView() {
     super("\n"
@@ -46,9 +48,9 @@ class ChooseFuelView extends View{
         int choice = 0;
         
        // value = value.toUpperCase(); // convert to all upper case
-    try {
+        try {
         choice = (char) Integer.parseInt(value); // change char to int
-       }    catch (NumberFormatException nf){
+        }    catch (NumberFormatException nf){
             ErrorView.display(this.getClass().getName(),
                     ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
         }
@@ -57,25 +59,31 @@ class ChooseFuelView extends View{
             inventoryControl.checkinput(choice);
         } catch (InventoryControlException ex) {
             this.console.println(ex);
+            return false;
         }
+
+        int currentNoOfItems = elevator.getNoOfItems();
+            if(choice + currentNoOfItems > 10) {
+                ErrorView.display(this.getClass().getName(),
+                    ANSI_RED + "\nYou may only have 10 items in the elevator" + ANSI_RESET);
+                return false;
+            }
+        elevator.setNoOfItems(choice + currentNoOfItems);
+        int noOfItems = elevator.getNoOfItems();
+        int capacity = elevator.getElevatorCapacity();
+        try {
+            inventoryControl.packElevator(capacity, noOfItems);
+        } catch (InventoryControlException ex) {
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
+        }
+        elevator.setElevatorCapacityUsed(noOfItems);
+        
 
         InventoryItem fuel = new InventoryItem();
         fuel.setDescription("Fuel    ");
         fuel.setQuantityInStock(choice);
         fuel.setRequiredAmount(0);
         inventory[Item.fuel.ordinal()] = fuel;
-    
-        int currentNoOfItems = elevator.getNoOfItems();
-        elevator.setNoOfItems(choice + currentNoOfItems);
-        int noOfItems = elevator.getNoOfItems();
-        elevator.setElevatorCapacityUsed(noOfItems);
-        int capacityUsed = elevator.getElevatorCapacityUsed();
-        int capacity = elevator.getElevatorCapacity();
-        try {
-            inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
-        } catch (InventoryControlException ex) {
-            ErrorView.display(this.getClass().getName(),ex.getMessage());
-        }
   
 
         return true;

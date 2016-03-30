@@ -14,7 +14,6 @@ import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
 import byui.cit260.adrift.model.Scene;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *

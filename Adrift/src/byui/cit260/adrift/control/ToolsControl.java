@@ -7,6 +7,7 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.ToolType;
+import byui.cit260.adrift.exceptions.GameControlException;
 import byui.cit260.adrift.exceptions.ToolControlException;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Location;
@@ -81,34 +82,29 @@ public class ToolsControl {
         return toolList;
     }
      
-    public double calcO2(Location currentLocation, int row, int column) throws ToolControlException{
+    public double calcO2(Location currentLocation, int row, int column) throws GameControlException{
         int currentLoc = currentLocation.getScene().getDistanceTraveled();
         int destination = locations[row][column].getScene().getDistanceTraveled();
         double cuurentO2 = player.getCurrentOxygenLevel();
         double remainingO2;
         double numberOfSpacesTraveled = 0;
-        
-        if(cuurentO2 == 0) {
-            throw new ToolControlException(ANSI_RED + "YOU DIED!!!  YOU RAN OUT OF O2" + ANSI_RESET);
-        }
 
         if (currentLoc  < destination) {
             numberOfSpacesTraveled = destination - currentLoc; 
-            
         }
 
         if (currentLoc > destination){
             numberOfSpacesTraveled = currentLoc - destination;
-            
         }
 
         remainingO2 =  cuurentO2 - (numberOfSpacesTraveled * .25);
         player.setCurrentOxygenLevel(remainingO2);
-
         
-        return remainingO2;
+        if(cuurentO2 <= 0) {
+            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF O2" + ANSI_RESET);
+        }
 
+        return remainingO2;
         }
      
-           
 }

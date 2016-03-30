@@ -38,6 +38,10 @@ public class ChooseFoodView extends View{
  
     @Override
     public boolean doAction(String value) {
+        Game game = Adrift.getCurrentGame();
+        InventoryItem[] inventory = game.getInventory();
+        Elevator elevator = game.getElevator();
+        InventoryControl inventoryControl = new InventoryControl();
         int choice = 0;
         
         try {
@@ -46,29 +50,35 @@ public class ChooseFoodView extends View{
             ErrorView.display(this.getClass().getName(),
                     ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
         }
-        Game game = Adrift.getCurrentGame();
-        InventoryItem[] inventory = game.getInventory();
-        Elevator elevator = game.getElevator();
-        InventoryControl inventoryControl = new InventoryControl();
         
+        try {
+            inventoryControl.checkinput(choice);
+        } catch (InventoryControlException ex) {
+            this.console.println(ex);
+            return false;
+        }
+
+        int currentNoOfItems = elevator.getNoOfItems();
+            if(choice + currentNoOfItems > 10) {
+                ErrorView.display(this.getClass().getName(),
+                    ANSI_RED + "\nYou may only have 10 items in the elevator" + ANSI_RESET);
+                return false;
+            }
+        elevator.setNoOfItems(choice + currentNoOfItems);
+        int noOfItems = elevator.getNoOfItems();
+        int capacity = elevator.getElevatorCapacity();
+        try {
+            inventoryControl.packElevator(capacity, noOfItems);
+        } catch (InventoryControlException ex) {
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
+        }
+        elevator.setElevatorCapacityUsed(noOfItems);
         
         InventoryItem food = new InventoryItem();
         food.setDescription("Food    ");
         food.setQuantityInStock(choice);
         food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
-    
-        int currentNoOfItems = elevator.getNoOfItems();
-        elevator.setNoOfItems(choice + currentNoOfItems);
-        int noOfItems = elevator.getNoOfItems();
-        elevator.setElevatorCapacityUsed(noOfItems);
-        int capacityUsed = elevator.getElevatorCapacityUsed();
-        int capacity = elevator.getElevatorCapacity();
-        try {
-            inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
-        } catch (InventoryControlException ex) {
-           ErrorView.display(this.getClass().getName(),ex.getMessage());
-        }
   
 
         return true;

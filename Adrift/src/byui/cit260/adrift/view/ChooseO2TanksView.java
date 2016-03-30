@@ -20,6 +20,10 @@ import byui.cit260.adrift.model.Tools;
  * @author Dallas
  */
 class ChooseO2TanksView extends View{
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private static final String ANSI_RESET = "\u001B[0m";
 
     public ChooseO2TanksView() {
     super("\n"
@@ -37,20 +41,45 @@ class ChooseO2TanksView extends View{
  
     @Override
     public boolean doAction(String value) {
-        int choice = 0;
-       // value = value.toUpperCase(); // convert to all upper case
-    try {
-        choice = (char) Integer.parseInt(value); // change char to int
-        }   catch (NumberFormatException nf){
-        ErrorView.display(this.getClass().getName(),
-                "\nYou must enter a valid number" + nf.getMessage());
-        }
-    
         Game game = Adrift.getCurrentGame();
         Player player = game.getPlayer();
         Tools[] toolInventory = game.getToolInventory();
         Elevator elevator = game.getElevator();
         InventoryControl inventoryControl = new InventoryControl();
+        int choice = 0;
+        
+        try {
+        choice = (char) Integer.parseInt(value); // change char to int
+        }   catch (NumberFormatException nf){
+        ErrorView.display(this.getClass().getName(),
+                ANSI_RED + "\nYou must enter a valid number" + ANSI_RESET + nf.getMessage());
+        }
+    
+        try {
+            inventoryControl.checkinput(choice);
+        } catch (InventoryControlException ex) {
+            this.console.println(ex);
+            return false;
+        }
+
+        int currentNoOfItems = elevator.getNoOfItems();
+            if(choice + currentNoOfItems > 10) {
+                ErrorView.display(this.getClass().getName(),
+                    ANSI_RED + "\nYou may only have 10 items in the elevator" + ANSI_RESET);
+                return false;
+            }
+        elevator.setNoOfItems(choice + currentNoOfItems);
+        int noOfItems = elevator.getNoOfItems();
+        int capacity = elevator.getElevatorCapacity();
+        try {
+            inventoryControl.packElevator(capacity, noOfItems);
+        } catch (InventoryControlException ex) {
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
+        }
+        elevator.setElevatorCapacityUsed(noOfItems);
+        
+        double playerCurrentO2 = player.getCurrentOxygenLevel();
+        player.setCurrentOxygenLevel(playerCurrentO2 + choice);
         
         Tools O2tank = new Tools();
         O2tank.setDescription("O2Tank  ");
@@ -58,22 +87,6 @@ class ChooseO2TanksView extends View{
         O2tank.setRequiredAmount(3);
         O2tank.setRequiredResource("Aluminum");
         toolInventory[ToolType.O2tank.ordinal()] = O2tank;
-        
-        double playerCurrentO2 = player.getCurrentOxygenLevel();
-        player.setCurrentOxygenLevel(playerCurrentO2 + choice);
-    
-        int currentNoOfItems = elevator.getNoOfItems();
-        elevator.setNoOfItems(choice + currentNoOfItems);
-        int noOfItems = elevator.getNoOfItems();
-        elevator.setElevatorCapacityUsed(noOfItems);
-        int capacityUsed = elevator.getElevatorCapacityUsed();
-        int capacity = elevator.getElevatorCapacity();
-        try {
-            inventoryControl.packElevator(capacity, capacityUsed, noOfItems);
-        } catch (InventoryControlException ex) {
-           ErrorView.display(this.getClass().getName(),ex.getMessage());
-        }
-  
 
         return true;
 

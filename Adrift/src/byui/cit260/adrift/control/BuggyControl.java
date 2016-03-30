@@ -7,8 +7,11 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
+import static byui.cit260.adrift.control.ToolsControl.ANSI_RED;
+import static byui.cit260.adrift.control.ToolsControl.ANSI_RESET;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.exceptions.BuggyControlException;
+import byui.cit260.adrift.exceptions.GameControlException;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
@@ -98,27 +101,20 @@ public class BuggyControl {
 
     }
     
-    public double calcFuel(Location currentLocation, int row, int column) {
+    public double calcFuel(Location currentLocation, int row, int column) throws GameControlException {
         currentLoc = currentLocation.getScene().getDistanceTraveled();
         destination = locations[row][column].getScene().getDistanceTraveled();
         double fuelLevel = buggy.getFuelLevel();
         double remainingFuel;
 
         double numberOfSpacesTraveled = 0;
-        
-         
-        if (destination < 1 || destination > 25){
-            this.console.println(ANSI_RED + "your x and y coordinates must be between 1 and 25" + ANSI_RESET);
-        }
 
         if (currentLoc  < destination) {
             numberOfSpacesTraveled = destination - currentLoc; 
-            
         }
 
         if (currentLoc > destination){
             numberOfSpacesTraveled = currentLoc - destination;
-            
         }
         
         
@@ -128,6 +124,11 @@ public class BuggyControl {
         } else {
             remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
             buggy.setFuelLevel(remainingFuel);
+        }
+        
+        if(remainingFuel <= 0) {
+            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FUEL AND YOU WERE"
+                                         + ANSI_RED + "\nUNABLE TO MAKE IT BACK TO SAFEY." + ANSI_RESET);
         }
         
         return remainingFuel;

@@ -100,9 +100,9 @@ class ConstructToolsView extends View{
         }
 
         if(currentIron >= resourcesRequiredForShovel) {
-            toolInventory[ToolType.drill.ordinal()].setQuantityInStock(currentAmountOfShovels + 1);
+            toolInventory[ToolType.shovel.ordinal()].setQuantityInStock(currentAmountOfShovels + 1);
             inventoryList[Item.iron.ordinal()].setQuantityInStock(currentIron - resourcesRequiredForShovel);
-                this.console.println(ANSI_GREEN + "You have made 1 drill." + ANSI_RESET);
+                this.console.println(ANSI_GREEN + "You have made 1 shovel." + ANSI_RESET);
         }
         return true;
     }
@@ -119,9 +119,9 @@ class ConstructToolsView extends View{
         }
 
         if(currentIron >= resourcesRequiredForHammer) {
-            toolInventory[ToolType.drill.ordinal()].setQuantityInStock(currentAmountOfHammers + 1);
+            toolInventory[ToolType.hammer.ordinal()].setQuantityInStock(currentAmountOfHammers + 1);
             inventoryList[Item.iron.ordinal()].setQuantityInStock(currentIron - resourcesRequiredForHammer);
-                this.console.println(ANSI_GREEN + "You have made 1 drill." + ANSI_RESET);
+                this.console.println(ANSI_GREEN + "You have made 1 hammer." + ANSI_RESET);
         }
         return true;
     }
@@ -138,9 +138,9 @@ class ConstructToolsView extends View{
         }
 
         if(currentAlluminum >= resourcesRequiredForO2tanks) {
-            toolInventory[ToolType.drill.ordinal()].setQuantityInStock(currentAmountOfO2tanks + 1);
+            toolInventory[ToolType.O2tank.ordinal()].setQuantityInStock(currentAmountOfO2tanks + 1);
             inventoryList[Item.iron.ordinal()].setQuantityInStock(currentAlluminum - resourcesRequiredForO2tanks);
-                this.console.println(ANSI_GREEN + "You have made 1 drill." + ANSI_RESET);
+                this.console.println(ANSI_GREEN + "You have made 1 O2 tank." + ANSI_RESET);
         }
         return true;
     }

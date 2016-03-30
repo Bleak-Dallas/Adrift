@@ -7,7 +7,10 @@ package byui.cit260.adrift.model;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
+import static byui.cit260.adrift.control.BuggyControl.ANSI_RED;
+import static byui.cit260.adrift.control.BuggyControl.ANSI_RESET;
 import byui.cit260.adrift.exceptions.FoodControlException;
+import byui.cit260.adrift.exceptions.GameControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 
@@ -69,7 +72,7 @@ public class FoodControl {
     return foodAfterAdding;
     }
     
-     public double calcFood(Location currentLocation, int row, int column) {
+     public double calcFood(Location currentLocation, int row, int column) throws GameControlException {
          
         currentLoc = currentLocation.getScene().getDistanceTraveled();
         destination = locations[row][column].getScene().getDistanceTraveled();
@@ -78,14 +81,11 @@ public class FoodControl {
 
         if (currentLoc  < destination) {
             numberOfSpacesTraveled = destination - currentLoc; 
-            
         }
 
         if (currentLoc > destination){
             numberOfSpacesTraveled = currentLoc - destination;
-            
         }
-        
         
         if(calledBefore == false) {
             remainingFood =  currentPlayerFood - (numberOfSpacesTraveled * .25);
@@ -93,6 +93,10 @@ public class FoodControl {
         } else {
             remainingFood =  foodAfterAdding - (numberOfSpacesTraveled * .25);
             player.setCurrentCalorieLevel(remainingFood);
+        }
+        
+        if(remainingFood <= 0) {
+            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FOOD" + ANSI_RESET);
         }
         
         return remainingFood;

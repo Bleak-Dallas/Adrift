@@ -183,6 +183,7 @@ public class ShipControl {
     }
 
     public void launchShip() {
+        int totalDistance = game.getTotalDistanceTraveled();
         int fluxCapacitor = inventoryList[Item.fluxcapacitor.ordinal()].getQuantityInStock();
         int shipCurrentIron = ship[ShipType.iron.ordinal()].getShipItemAmount();
         int shipIronRequired = ship[ShipType.iron.ordinal()].getRequiredShipAmount();
@@ -196,7 +197,13 @@ public class ShipControl {
                 && shipCurrentUranium == shipUraniumRequired && fluxCapacitor == 1) {
             finishScene = scenes[SceneType.finish.ordinal()].getDescription();
             this.console.println(finishScene);
-      }
+            this.console.println(ANSI_BLUE + "\nYour total distance traveled is: " + totalDistance +  " kilometers"+ ANSI_RESET);
+        } else {
+            this.console.println(ANSI_RED + "\nYou have not met all the requirements in order to"
+                               + ANSI_RED + "\nlaunch the ship. To launch the ship all repairs must"
+                               + ANSI_RED + "\nbe completed and the secret item must be retrieved." + ANSI_RESET);
+        }
+        
     }
 
 }

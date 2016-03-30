@@ -16,6 +16,7 @@ import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
+import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Scene;
 
 
@@ -31,6 +32,7 @@ public class SceneView extends View{
     public static final String ANSI_RESET = "\u001B[0m";
     Game game = Adrift.getCurrentGame();
     Map map = game.getMap();
+    Player player = game.getPlayer();
     Location[][] locations = map.getLocations();
     Scene[] scenes = game.getScenes();
     InventoryItem[] inventoryList = game.getInventory();
@@ -84,7 +86,6 @@ public class SceneView extends View{
     void displaySceneView(int row, int column) {
         this.row = row;
         this.column = column;
-        
         if(row == 0 && column == 0) {
             this.displayShipScene();
         }
@@ -120,9 +121,6 @@ public class SceneView extends View{
         faciltyScene.displayFacilitySCene();
         
     }
-    
-    public void displayFinishScene() {
-        
-    }
+
 }
 

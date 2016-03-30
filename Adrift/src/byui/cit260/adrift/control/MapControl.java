@@ -366,7 +366,8 @@ public class MapControl {
         
         Scene finish = new Scene();
         finish.setDescription(ANSI_BLUE + "\nCONGRATULATIONS COMMANDER!! You have fixed "
-            + ANSI_BLUE    + "\nyour ship, retrieved the item and saved your crew." + ANSI_RESET);
+                            + ANSI_BLUE + "\nyour ship, retrieved the item and saved your "
+                            + ANSI_BLUE + "\ncrew." + ANSI_RESET);
         finish.setSymbol(" FN ");
         finish.setBlocked(false);
         finish.setDistanceTraveled(0);

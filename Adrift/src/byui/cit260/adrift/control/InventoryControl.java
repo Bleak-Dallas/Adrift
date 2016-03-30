@@ -115,39 +115,32 @@ public class InventoryControl {
     
 
     
-    public int packElevator(int elevatorCapacity, int elevatorCapacityUsed, int noOfItems)
+    public boolean packElevator(int elevatorCapacity, int noOfItems)
                             throws InventoryControlException {
         
         int remainingCapacity;
         
-         
         if (noOfItems <= 0){  
-// check to see if itmems less than or equal to zero
+        // check to see if itmems less than or equal to zero
             throw new InventoryControlException(ANSI_RED + "\nPlease enter a value greater than zero" + ANSI_RESET);
         }
 
-        if (noOfItems > 12) { // check to see if items exceed 12
-            throw new InventoryControlException(ANSI_RED + "\n\nYou may only have 12 items" + ANSI_RESET);
-            
+        if (noOfItems > 10) { // check to see if items exceed 10
+            throw new InventoryControlException(ANSI_RED + "\n\nYou may only have 10 items" + ANSI_RESET);
+        }
+        
+        if (noOfItems == elevatorCapacity){ // check to see if elevator is full
+            throw new InventoryControlException(ANSI_RED + "\nElevator is now Full" + ANSI_RESET);
         }
 
-        if (elevatorCapacityUsed < elevatorCapacity){ // check remaining elevator capacity
-            remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
+        if (noOfItems < elevatorCapacity){ // check remaining elevator capacity
+            remainingCapacity = elevatorCapacity - noOfItems;
             this.console.println(ANSI_GREEN +"Remaining capacity in elevator is " + remainingCapacity + ANSI_RESET);
-            return remainingCapacity;
-            
+            return true;
         }
         
-        if (elevatorCapacityUsed == elevatorCapacity){ // check to see if elevator is full
-            this.console.println(ANSI_RED + "Elevator is Full" + ANSI_RESET);
-            remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
-            return remainingCapacity;
-        }
-        
-        elevatorCapacityUsed = noOfItems;
-        remainingCapacity = elevatorCapacity - elevatorCapacityUsed;
-        return remainingCapacity;
-    
+        return true;
+ 
     }
     
     public void checkinput(int choice) throws InventoryControlException {

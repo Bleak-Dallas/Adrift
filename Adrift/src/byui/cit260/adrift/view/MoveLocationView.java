@@ -6,13 +6,12 @@
 package byui.cit260.adrift.view;
 
 import adrift.Adrift;
-import byu.cit260.adrift.enums.Item;
 import byui.cit260.adrift.control.BuggyControl;
 import byui.cit260.adrift.control.ToolsControl;
 import byui.cit260.adrift.exceptions.BuggyControlException;
 import byui.cit260.adrift.exceptions.FoodControlException;
+import byui.cit260.adrift.exceptions.GameControlException;
 import byui.cit260.adrift.exceptions.MapControlException;
-import byui.cit260.adrift.exceptions.ToolControlException;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.FoodControl;
 import byui.cit260.adrift.model.Game;
@@ -128,12 +127,13 @@ public class MoveLocationView extends View{
             } catch (IOException ex) {
                 ErrorView.display(this.getClass().getName(), 
                                         "Enter valid selection" + ex.getMessage());
+                break;
             }
             input= input.trim();
              
             if (input.length() < 1) {
                  ErrorView.display(this.getClass().getName(),
-                         ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
+                         ANSI_RED + "Invalid selection - the X coordinate must not be blank" + ANSI_RESET);
                 continue;
              }
         try {
@@ -141,6 +141,7 @@ public class MoveLocationView extends View{
         } catch (NumberFormatException nf){
            ErrorView.display(this.getClass().getName(),
                    ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
+           return false;
         }
             break;
         }
@@ -158,12 +159,13 @@ public class MoveLocationView extends View{
             } catch (IOException ex) {
                 ErrorView.display(this.getClass().getName(),
                         "Enter valid selection" + ex.getMessage());
+                break;
             }
             input= input.trim();
              
             if (input.length() < 1) {
                 ErrorView.display(this.getClass().getName(),
-                        ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RESET);
+                        ANSI_RED + "Invalid selection - the Y coordinate must not be blank" + ANSI_RESET);
                 continue;
              }
             
@@ -172,6 +174,7 @@ public class MoveLocationView extends View{
         } catch (NumberFormatException nf){
            ErrorView.display(this.getClass().getName(),
                    ANSI_RED + "\nYou must enter a valid number" + nf.getMessage()+ ANSI_RESET);
+           return false;
         }
             break;
          }
@@ -192,13 +195,27 @@ public class MoveLocationView extends View{
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
         StartProgramView startProgramView = new StartProgramView();
+        int totalDistanceTraveled = game.getTotalDistanceTraveled();
+        int currentLocationDist = game.getCurrentLocation().getScene().getDistanceTraveled();
+        int destinationDist = locations[row][column].getScene().getDistanceTraveled();
+        int distanceTraveled;
+        int totalDistance;
+         // this section calculates the total distance traveled in the game
+            if(destinationDist > currentLocationDist) {
+                distanceTraveled = destinationDist - currentLocationDist;
+            }
+            else {
+                distanceTraveled = currentLocationDist - destinationDist;
+            }
+            totalDistance = totalDistanceTraveled + distanceTraveled;
+        game.setTotalDistanceTraveled(totalDistance); // this ends total distance traveled section
      
         Location currentLocation = game.getCurrentLocation();
-        buggyControl.calcFuel(currentLocation, row, column);
-        foodControl.calcFood(currentLocation, row, column);
         try {
+            buggyControl.calcFuel(currentLocation, row, column);
+            foodControl.calcFood(currentLocation, row, column);
             toolControl.calcO2(currentLocation, row, column);
-        } catch (ToolControlException ex) {
+        } catch (GameControlException ex) {
             this.console.println(ex);
             startProgramView.startProgram();
         }
