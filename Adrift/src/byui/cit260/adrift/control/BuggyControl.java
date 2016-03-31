@@ -31,14 +31,14 @@ public class BuggyControl {
     Location[][] locations = map.getLocations();
     InventoryItem[] inventoryList = game.getInventory();
     Buggy buggy = game.getBuggy();
-    int loadedWeight = buggy.getLoadedWeight();
-    int maxWeight = buggy.getMaxWeight();
+    double loadedWeight = buggy.getLoadedWeight();
+    double maxWeight = buggy.getMaxWeight();
     double fuelCapacity = buggy.getFuelCapacity();
-    int fuelInventory = inventoryList[Item.fuel.ordinal()].getQuantityInStock();
+    double fuelInventory = inventoryList[Item.fuel.ordinal()].getQuantityInStock();
     private final PrintWriter console = Adrift.getOutFile();
     NumberFormat defaultFormat = NumberFormat.getPercentInstance();
-    int fuelAfterFill;
-    int currentWeight;
+    double fuelAfterFill;
+    double currentWeight;
     double currentFuel;
     int currentLoc;
     int destination;
@@ -46,7 +46,7 @@ public class BuggyControl {
     
     
     
-    public int calWeight(int noOfItems) throws BuggyControlException {
+    public double calWeight(double noOfItems) throws BuggyControlException {
         
         currentWeight = loadedWeight + noOfItems;
 
@@ -66,15 +66,15 @@ public class BuggyControl {
     }
     
     public void checkBuggyWeight() {
-        int buggyCurrentWeight = buggy.getLoadedWeight();
-        int buggyMaxWeight = buggy.getMaxWeight();
-        int remainingWeight = buggyMaxWeight - buggyCurrentWeight;
+        double buggyCurrentWeight = buggy.getLoadedWeight();
+        double buggyMaxWeight = buggy.getMaxWeight();
+        double remainingWeight = buggyMaxWeight - buggyCurrentWeight;
         
         this.console.println(ANSI_GREEN + "\nThe current loaded weight is " + buggyCurrentWeight
                            + ANSI_GREEN + "\nThe buggy's remaining weight is " + remainingWeight + ANSI_RESET);
     }
     
-    public double fillFuel(int noOfItems) throws BuggyControlException{
+    public double fillFuel(double noOfItems) throws BuggyControlException{
         double fuelCapacity = buggy.getFuelCapacity();
         double fuelLevel = buggy.getFuelLevel();
         double fuelPercent;

@@ -42,9 +42,9 @@ public class SceneView extends View{
     SceneControl sceneControl = new SceneControl();
     int row;
     int column;
-    int amountToMine;
-    int resourceAmount;
-    int sceneAmount;
+    double amountToMine;
+    double resourceAmount;
+    double sceneAmount;
     String resourceDescription;
     String currentInventoryDesc;
     

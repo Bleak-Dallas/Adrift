@@ -30,7 +30,7 @@ public class InventoryControl {
   
     public double calculateO2Needed(double currentO2,int currentLocation,int destination)
                     throws InventoryControlException {
-        int currentO2tanks = tool[ToolType.O2tank.ordinal()].getQuantityInStock();
+        double currentO2tanks = tool[ToolType.O2tank.ordinal()].getQuantityInStock();
         double remainingO2;
         double o2Percent;
         double numberOfSpacesTraveled = 0;
@@ -133,10 +133,10 @@ public class InventoryControl {
     
 
     
-    public boolean packElevator(int elevatorCapacity, int noOfItems)
+    public boolean packElevator(double elevatorCapacity, double noOfItems)
                             throws InventoryControlException {
         
-        int remainingCapacity;
+        double remainingCapacity;
         
         if (noOfItems <= 0){  
         // check to see if itmems less than or equal to zero
@@ -161,7 +161,7 @@ public class InventoryControl {
  
     }
     
-    public void checkinput(int choice) throws InventoryControlException {
+    public void checkinput(double choice) throws InventoryControlException {
         
          if(choice < 1 || choice > 4) {
                 throw new InventoryControlException(ANSI_RED + "\nYou must enter a number from 1-4" + ANSI_RESET);

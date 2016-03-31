@@ -17,8 +17,8 @@ public class InventoryItem implements Serializable{
 
     String[] inventory;
     private String description;
-    private int quantityInStock;
-    private int requiredAmount;
+    private double quantityInStock;
+    private double requiredAmount;
 
 
 
@@ -40,38 +40,38 @@ public class InventoryItem implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    public int getQuantityInStock() {
+
+    public double getQuantityInStock() {
         return quantityInStock;
     }
 
-    public void setQuantityInStock(int quantityInStock) {
+    public void setQuantityInStock(double quantityInStock) {
         this.quantityInStock = quantityInStock;
     }
-    
-    public int getRequiredAmount() {
+
+    public double getRequiredAmount() {
         return requiredAmount;
     }
 
-    public void setRequiredAmount(int requiredAmount) {
+    public void setRequiredAmount(double requiredAmount) {
         this.requiredAmount = requiredAmount;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 19 * hash + Arrays.deepHashCode(this.inventory);
-        hash = 19 * hash + Objects.hashCode(this.description);
-        hash = 19 * hash + this.quantityInStock;
-        hash = 19 * hash + this.requiredAmount;
+        int hash = 3;
+        hash = 89 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 89 * hash + Objects.hashCode(this.description);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.quantityInStock) ^ (Double.doubleToLongBits(this.quantityInStock) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.requiredAmount) ^ (Double.doubleToLongBits(this.requiredAmount) >>> 32));
         return hash;
     }
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventory=" + inventory + ", description=" + description + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + '}';
+        return "InventoryItem{" + "inventory=" + Arrays.toString(inventory) + ", description=" + description + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + '}';
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -84,10 +84,10 @@ public class InventoryItem implements Serializable{
             return false;
         }
         final InventoryItem other = (InventoryItem) obj;
-        if (this.quantityInStock != other.quantityInStock) {
+        if (Double.doubleToLongBits(this.quantityInStock) != Double.doubleToLongBits(other.quantityInStock)) {
             return false;
         }
-        if (this.requiredAmount != other.requiredAmount) {
+        if (Double.doubleToLongBits(this.requiredAmount) != Double.doubleToLongBits(other.requiredAmount)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
@@ -98,8 +98,6 @@ public class InventoryItem implements Serializable{
         }
         return true;
     }
-
-    
     
 
     

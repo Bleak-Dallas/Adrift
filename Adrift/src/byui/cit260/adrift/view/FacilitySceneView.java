@@ -94,7 +94,7 @@ public class FacilitySceneView extends View{
     }
 
     private void fillO2() {
-        int amountOfO2Tanks = tool[ToolType.O2tank.ordinal()].getQuantityInStock();
+        double amountOfO2Tanks = tool[ToolType.O2tank.ordinal()].getQuantityInStock();
         player.setCurrentOxygenLevel(amountOfO2Tanks);
     }
     

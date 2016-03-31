@@ -43,10 +43,10 @@ class ChooseDrillView extends View{
         Tools[] toolInventory = game.getToolInventory();
         Elevator elevator = game.getElevator();
         InventoryControl inventoryControl = new InventoryControl();
-        int choice = 0;
+        double choice = 0;
         
         try {
-        choice = (char) Integer.parseInt(value); // change char to int
+        choice = (char) Double.parseDouble(value); // change char to double
         }    catch (NumberFormatException nf){
             ErrorView.display(this.getClass().getName(),
                     ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
@@ -58,10 +58,10 @@ class ChooseDrillView extends View{
             this.console.println(ex);
         }
  
-        int currentNoOfItems = elevator.getNoOfItems();
+        double currentNoOfItems = elevator.getNoOfItems();
         elevator.setNoOfItems(choice + currentNoOfItems);
-        int noOfItems = elevator.getNoOfItems();
-        int capacity = elevator.getElevatorCapacity();
+        double noOfItems = elevator.getNoOfItems();
+        double capacity = elevator.getElevatorCapacity();
         try {
             inventoryControl.packElevator(capacity, noOfItems);
         } catch (InventoryControlException ex) {

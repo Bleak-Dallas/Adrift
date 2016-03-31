@@ -109,7 +109,7 @@ public class MapControl {
         rocky2.setBlocked(false);
         rocky2.setDistanceTraveled(18);
         rocky2.setResourceDescription("Iron    ");
-        rocky2.setResourceAmount(50);
+        rocky2.setResourceAmount(20);
         scenes[SceneType.rocky2.ordinal()] = rocky2;
         
         Scene rocky3 = new Scene();
@@ -121,7 +121,7 @@ public class MapControl {
         rocky3.setBlocked(false);
         rocky3.setDistanceTraveled(23);
         rocky3.setResourceDescription("Iron    ");
-        rocky3.setResourceAmount(50);
+        rocky3.setResourceAmount(20);
         scenes[SceneType.rocky3.ordinal()] = rocky3;
         
         Scene icy1 = new Scene();
@@ -247,7 +247,7 @@ public class MapControl {
         mountain1.setBlocked(false);
         mountain1.setDistanceTraveled(12);
         mountain1.setResourceDescription("Iron    ");
-        mountain1.setResourceAmount(30);
+        mountain1.setResourceAmount(20);
         scenes[SceneType.mountain1.ordinal()] = mountain1;
         
         Scene mountain2 = new Scene();
@@ -300,7 +300,7 @@ public class MapControl {
         drill1.setBlocked(false);
         drill1.setDistanceTraveled(8);
         drill1.setResourceDescription("Fuel    ");
-        drill1.setResourceAmount(20);
+        drill1.setResourceAmount(10);
         scenes[SceneType.drill1.ordinal()] = drill1;
         
         Scene drill2 = new Scene();

@@ -41,24 +41,24 @@ public class SceneControl {
     BuggyControl buggyControl = new BuggyControl();
     private final BufferedReader keyboard = Adrift.getInFile();
     private final PrintWriter console = Adrift.getOutFile();
-    int buggyMaxWeight = buggy.getMaxWeight();
-    int buggyCurrentWeight = buggy.getLoadedWeight();
+    double buggyMaxWeight = buggy.getMaxWeight();
+    double buggyCurrentWeight = buggy.getLoadedWeight();
     int row;
     int column;
-    int amountToMine;
-    int sceneAmount;
+    double amountToMine;
+    double sceneAmount;
     String resourceDescription;
     String currentInventoryDesc;
     
         public boolean mineResources(String resourceDescription, int row, int column)
                 throws SceneControlException, BuggyControlException {
             
-        int resourceAmount = locations[row][column].getScene().getResourceAmount();
-        int hammer = tool[ToolType.hammer.ordinal()].getQuantityInStock();
-        int shovel = tool[ToolType.shovel.ordinal()].getQuantityInStock();
-        int drill = tool[ToolType.drill.ordinal()].getQuantityInStock();
+        double resourceAmount = locations[row][column].getScene().getResourceAmount();
+        double hammer = tool[ToolType.hammer.ordinal()].getQuantityInStock();
+        double shovel = tool[ToolType.shovel.ordinal()].getQuantityInStock();
+        double drill = tool[ToolType.drill.ordinal()].getQuantityInStock();
         boolean valid = false;
-        int currentInventoryAmount;
+        double currentInventoryAmount;
         String input = null;  // Integer.parseInt(numberAsString)
         
         if(resourceDescription.trim().equals("Iron") && hammer >= 1 
@@ -81,12 +81,12 @@ public class SceneControl {
             input = input.trim();
              
             if (input.length() < 1) {
-                throw new SceneControlException("Invalid selection - the menu item must not be blank");
+                throw new SceneControlException("Invalid selection - choice must be 1 or greater.");
             
             }
             break;
         }
-            amountToMine = Integer.parseInt(input);
+            amountToMine = Double.parseDouble(input);
             
                 if(amountToMine > resourceAmount) {
                     throw new BuggyControlException(ANSI_RED + "Invalid selection you only have " + resourceAmount

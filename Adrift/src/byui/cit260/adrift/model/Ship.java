@@ -18,8 +18,8 @@ public class Ship implements Serializable{
 
 String [] shipItems;
 private String description;
-private int shipItemAmount;
-private int requiredShipAmount;
+private double shipItemAmount;
+private double requiredShipAmount;
 private double repairLevel;
 private double fuelLevel;
 
@@ -43,19 +43,19 @@ private double fuelLevel;
         this.description = description;
     }
 
-    public int getShipItemAmount() {
+    public double getShipItemAmount() {
         return shipItemAmount;
     }
 
-    public void setShipItemAmount(int shipItemAmount) {
+    public void setShipItemAmount(double shipItemAmount) {
         this.shipItemAmount = shipItemAmount;
     }
 
-    public int getRequiredShipAmount() {
+    public double getRequiredShipAmount() {
         return requiredShipAmount;
     }
 
-    public void setRequiredShipAmount(int requiredShipAmount) {
+    public void setRequiredShipAmount(double requiredShipAmount) {
         this.requiredShipAmount = requiredShipAmount;
     }
 
@@ -77,13 +77,13 @@ private double fuelLevel;
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Arrays.deepHashCode(this.shipItems);
-        hash = 53 * hash + Objects.hashCode(this.description);
-        hash = 53 * hash + this.shipItemAmount;
-        hash = 53 * hash + this.requiredShipAmount;
-        hash = 53 * hash + (int) (Double.doubleToLongBits(this.repairLevel) ^ (Double.doubleToLongBits(this.repairLevel) >>> 32));
-        hash = 53 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
+        int hash = 7;
+        hash = 31 * hash + Arrays.deepHashCode(this.shipItems);
+        hash = 31 * hash + Objects.hashCode(this.description);
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.shipItemAmount) ^ (Double.doubleToLongBits(this.shipItemAmount) >>> 32));
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.requiredShipAmount) ^ (Double.doubleToLongBits(this.requiredShipAmount) >>> 32));
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.repairLevel) ^ (Double.doubleToLongBits(this.repairLevel) >>> 32));
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
         return hash;
     }
 
@@ -104,10 +104,10 @@ private double fuelLevel;
             return false;
         }
         final Ship other = (Ship) obj;
-        if (this.shipItemAmount != other.shipItemAmount) {
+        if (Double.doubleToLongBits(this.shipItemAmount) != Double.doubleToLongBits(other.shipItemAmount)) {
             return false;
         }
-        if (this.requiredShipAmount != other.requiredShipAmount) {
+        if (Double.doubleToLongBits(this.requiredShipAmount) != Double.doubleToLongBits(other.requiredShipAmount)) {
             return false;
         }
         if (Double.doubleToLongBits(this.repairLevel) != Double.doubleToLongBits(other.repairLevel)) {

@@ -58,13 +58,6 @@ public class GameControl {
         
         Buggy buggy = new Buggy(); // create new buggy
         game.setBuggy(buggy);// save buggy in game
-
-
-        
-       
-        // move actors to starting location in the map
-//        ActorType actors = MapControl.assignScenesToLocations(map, scenes);
-//        game.setActors(actors); 
         
     }
 
@@ -78,18 +71,6 @@ public class GameControl {
         food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
         
-//        InventoryItem water = new InventoryItem();
-//        water.setDescription("Water    ");
-//        water.setQuantityInStock(0);
-//        water.setRequiredAmount(0);
-//        inventory[Item.water.ordinal()] = water;
-        
-//        InventoryItem oil = new InventoryItem();
-//        oil.setDescription("Oil      ");
-//        oil.setQuantityInStock(0);
-//        oil.setRequiredAmount(0);
-//        inventory[Item.oil.ordinal()] = oil;
-        
         InventoryItem fuel = new InventoryItem();
         fuel.setDescription("Fuel    ");
         fuel.setQuantityInStock(0);
@@ -98,7 +79,7 @@ public class GameControl {
         
         InventoryItem iron = new InventoryItem();
         iron.setDescription("Iron    ");
-        iron.setQuantityInStock(4);
+        iron.setQuantityInStock(2);
         iron.setRequiredAmount(0);
         inventory[Item.iron.ordinal()] = iron;
         

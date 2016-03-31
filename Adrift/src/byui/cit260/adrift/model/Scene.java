@@ -21,7 +21,7 @@ public class Scene implements Serializable{
     private String description;
     private Scene[] scenes;
     private String resourceDescription;
-    private int resourceAmount;
+    private double resourceAmount;
 
     public Scene() {
     }
@@ -75,28 +75,30 @@ public class Scene implements Serializable{
         this.resourceDescription = resourceDescription;
     }
 
-    public int getResourceAmount() {
+    public double getResourceAmount() {
         return resourceAmount;
     }
 
-    public void setResourceAmount(int resourceAmount) {
+    public void setResourceAmount(double resourceAmount) {
         this.resourceAmount = resourceAmount;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + this.distanceTraveled;
-        hash = 19 * hash + Objects.hashCode(this.symbol);
-        hash = 19 * hash + (this.blocked ? 1 : 0);
-        hash = 19 * hash + Objects.hashCode(this.description);
-        hash = 19 * hash + Arrays.deepHashCode(this.scenes);
+        int hash = 3;
+        hash = 59 * hash + this.distanceTraveled;
+        hash = 59 * hash + Objects.hashCode(this.symbol);
+        hash = 59 * hash + (this.blocked ? 1 : 0);
+        hash = 59 * hash + Objects.hashCode(this.description);
+        hash = 59 * hash + Arrays.deepHashCode(this.scenes);
+        hash = 59 * hash + Objects.hashCode(this.resourceDescription);
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.resourceAmount) ^ (Double.doubleToLongBits(this.resourceAmount) >>> 32));
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Scene{" + "distanceTraveled=" + distanceTraveled + ", symbol=" + symbol + ", blocked=" + blocked + ", description=" + description + ", scenes=" + scenes + '}';
+        return "Scene{" + "distanceTraveled=" + distanceTraveled + ", symbol=" + symbol + ", blocked=" + blocked + ", description=" + description + ", scenes=" + Arrays.toString(scenes) + ", resourceDescription=" + resourceDescription + ", resourceAmount=" + resourceAmount + '}';
     }
 
     @Override
@@ -117,10 +119,16 @@ public class Scene implements Serializable{
         if (this.blocked != other.blocked) {
             return false;
         }
+        if (Double.doubleToLongBits(this.resourceAmount) != Double.doubleToLongBits(other.resourceAmount)) {
+            return false;
+        }
         if (!Objects.equals(this.symbol, other.symbol)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.resourceDescription, other.resourceDescription)) {
             return false;
         }
         if (!Arrays.deepEquals(this.scenes, other.scenes)) {
@@ -128,7 +136,5 @@ public class Scene implements Serializable{
         }
         return true;
     }
-
-
 
 } 

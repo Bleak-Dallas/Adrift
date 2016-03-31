@@ -34,21 +34,21 @@ public class ToolsControl {
         Tools shovel = new Tools();
         shovel.setDescription("Shovel  ");
         shovel.setQuantityInStock(0);
-        shovel.setRequiredAmount(2);
+        shovel.setRequiredAmount(3);
         shovel.setRequiredResource("Iron    ");
         toolInventory[ToolType.shovel.ordinal()] = shovel;
 
         Tools drill = new Tools();
         drill.setDescription("Drill    ");
         drill.setQuantityInStock(0);
-        drill.setRequiredAmount(3);
+        drill.setRequiredAmount(5);
         drill.setRequiredResource("Iron    ");
         toolInventory[ToolType.drill.ordinal()] = drill;
         
         Tools hammer = new Tools();
         hammer.setDescription("Hammer  ");
         hammer.setQuantityInStock(0);
-        hammer.setRequiredAmount(1);
+        hammer.setRequiredAmount(2);
         hammer.setRequiredResource("Iron    ");
         toolInventory[ToolType.hammer.ordinal()] = hammer;
         

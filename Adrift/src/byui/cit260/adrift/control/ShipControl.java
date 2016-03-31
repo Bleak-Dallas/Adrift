@@ -117,12 +117,12 @@ public class ShipControl {
     }
 
     public void repairHull(int ironToBeAssigned) throws ShipControlException {
-        int currentInventoryIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
-        int shipCurrentIron = ship[ShipType.iron.ordinal()].getShipItemAmount();
-        int shipIronRequired = ship[ShipType.iron.ordinal()].getRequiredShipAmount();
-        int shipIronAfter = ironToBeAssigned + shipCurrentIron;
-        int shipIronUnnassigned = shipIronRequired - shipCurrentIron;
-        int ironAmountAfterRepair = currentInventoryIron - ironToBeAssigned;
+        double currentInventoryIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
+        double shipCurrentIron = ship[ShipType.iron.ordinal()].getShipItemAmount();
+        double shipIronRequired = ship[ShipType.iron.ordinal()].getRequiredShipAmount();
+        double shipIronAfter = ironToBeAssigned + shipCurrentIron;
+        double shipIronUnnassigned = shipIronRequired - shipCurrentIron;
+        double ironAmountAfterRepair = currentInventoryIron - ironToBeAssigned;
         
             if(ironToBeAssigned > currentInventoryIron) {
                 throw new ShipControlException(ANSI_RED + "\nYou do not have enough iron in your inventory to assign "
@@ -139,12 +139,12 @@ public class ShipControl {
     }
     
     public void repairShipWiring(int copperToBeAssigned) throws ShipControlException{
-        int currentInventoryCopper = inventoryList[Item.copper.ordinal()].getQuantityInStock();
-        int shipCurrentCopper = ship[ShipType.copper.ordinal()].getShipItemAmount();
-        int shipCopperRequired = ship[ShipType.copper.ordinal()].getRequiredShipAmount();
-        int shipCopperAfter = copperToBeAssigned + shipCurrentCopper;
-        int shipCopperUnnassigned = shipCopperRequired - shipCurrentCopper;
-        int copperAmountAfterRepair = currentInventoryCopper - copperToBeAssigned;
+        double currentInventoryCopper = inventoryList[Item.copper.ordinal()].getQuantityInStock();
+        double shipCurrentCopper = ship[ShipType.copper.ordinal()].getShipItemAmount();
+        double shipCopperRequired = ship[ShipType.copper.ordinal()].getRequiredShipAmount();
+        double shipCopperAfter = copperToBeAssigned + shipCurrentCopper;
+        double shipCopperUnnassigned = shipCopperRequired - shipCurrentCopper;
+        double copperAmountAfterRepair = currentInventoryCopper - copperToBeAssigned;
         
             if(copperToBeAssigned > currentInventoryCopper) {
                 throw new ShipControlException(ANSI_RED + "\nYou do not have enough iron in your inventory to assign "
@@ -160,12 +160,12 @@ public class ShipControl {
             inventoryList[Item.copper.ordinal()].setQuantityInStock(copperAmountAfterRepair);
     }
     public void repairFuelCells(int uraniumToBeAssigned) throws ShipControlException{
-        int currentInventoryUranium = inventoryList[Item.uranium.ordinal()].getQuantityInStock();
-        int shipCurrentUranium = ship[ShipType.uranium.ordinal()].getShipItemAmount();
-        int shipUraniumRequired = ship[ShipType.uranium.ordinal()].getRequiredShipAmount();
-        int shipUraniumAfter = uraniumToBeAssigned + shipCurrentUranium;
-        int shipUraniumUnnassigned = shipUraniumRequired - shipCurrentUranium;
-        int uraniumAmountAfterRepair = currentInventoryUranium - uraniumToBeAssigned;
+        double currentInventoryUranium = inventoryList[Item.uranium.ordinal()].getQuantityInStock();
+        double shipCurrentUranium = ship[ShipType.uranium.ordinal()].getShipItemAmount();
+        double shipUraniumRequired = ship[ShipType.uranium.ordinal()].getRequiredShipAmount();
+        double shipUraniumAfter = uraniumToBeAssigned + shipCurrentUranium;
+        double shipUraniumUnnassigned = shipUraniumRequired - shipCurrentUranium;
+        double uraniumAmountAfterRepair = currentInventoryUranium - uraniumToBeAssigned;
         
             if(uraniumToBeAssigned > currentInventoryUranium) {
                 throw new ShipControlException(ANSI_RED + "\nYou do not have enough iron in your inventory to assign "
@@ -184,13 +184,13 @@ public class ShipControl {
 
     public void launchShip() {
         int totalDistance = game.getTotalDistanceTraveled();
-        int fluxCapacitor = inventoryList[Item.fluxcapacitor.ordinal()].getQuantityInStock();
-        int shipCurrentIron = ship[ShipType.iron.ordinal()].getShipItemAmount();
-        int shipIronRequired = ship[ShipType.iron.ordinal()].getRequiredShipAmount();
-        int shipCurrentCopper = ship[ShipType.copper.ordinal()].getShipItemAmount();
-        int shipCopperRequired = ship[ShipType.copper.ordinal()].getRequiredShipAmount();
-        int shipCurrentUranium = ship[ShipType.uranium.ordinal()].getShipItemAmount();
-        int shipUraniumRequired = ship[ShipType.uranium.ordinal()].getRequiredShipAmount();
+        double fluxCapacitor = inventoryList[Item.fluxcapacitor.ordinal()].getQuantityInStock();
+        double shipCurrentIron = ship[ShipType.iron.ordinal()].getShipItemAmount();
+        double shipIronRequired = ship[ShipType.iron.ordinal()].getRequiredShipAmount();
+        double shipCurrentCopper = ship[ShipType.copper.ordinal()].getShipItemAmount();
+        double shipCopperRequired = ship[ShipType.copper.ordinal()].getRequiredShipAmount();
+        double shipCurrentUranium = ship[ShipType.uranium.ordinal()].getShipItemAmount();
+        double shipUraniumRequired = ship[ShipType.uranium.ordinal()].getRequiredShipAmount();
         String finishScene;
         
         if(shipCurrentIron == shipIronRequired && shipCurrentCopper == shipCopperRequired 

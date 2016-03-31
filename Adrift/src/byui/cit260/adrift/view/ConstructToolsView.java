@@ -70,9 +70,9 @@ class ConstructToolsView extends View{
     }
 
     private boolean makeDrill() {
-        int currentAmountOfDrills = toolInventory[ToolType.drill.ordinal()].getQuantityInStock();
-        int resourcesRequiredForDrill= toolInventory[ToolType.drill.ordinal()].getRequiredAmount();
-        int currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
+        double currentAmountOfDrills = toolInventory[ToolType.drill.ordinal()].getQuantityInStock();
+        double resourcesRequiredForDrill= toolInventory[ToolType.drill.ordinal()].getRequiredAmount();
+        double currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
         
         if(currentIron < resourcesRequiredForDrill) {
             this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make a drill."
@@ -89,9 +89,9 @@ class ConstructToolsView extends View{
     }
 
     private boolean makeShovel() {
-        int currentAmountOfShovels = toolInventory[ToolType.shovel.ordinal()].getQuantityInStock();
-        int resourcesRequiredForShovel= toolInventory[ToolType.shovel.ordinal()].getRequiredAmount();
-        int currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
+        double currentAmountOfShovels = toolInventory[ToolType.shovel.ordinal()].getQuantityInStock();
+        double resourcesRequiredForShovel= toolInventory[ToolType.shovel.ordinal()].getRequiredAmount();
+        double currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
 
         if(currentIron < resourcesRequiredForShovel) {
             this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make a shovel."
@@ -108,9 +108,9 @@ class ConstructToolsView extends View{
     }
 
     private boolean makeHammer() {
-        int currentAmountOfHammers = toolInventory[ToolType.hammer.ordinal()].getQuantityInStock();
-        int resourcesRequiredForHammer= toolInventory[ToolType.hammer.ordinal()].getRequiredAmount();
-        int currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
+        double currentAmountOfHammers = toolInventory[ToolType.hammer.ordinal()].getQuantityInStock();
+        double resourcesRequiredForHammer= toolInventory[ToolType.hammer.ordinal()].getRequiredAmount();
+        double currentIron = inventoryList[Item.iron.ordinal()].getQuantityInStock();
 
         if(currentIron < resourcesRequiredForHammer) {
             this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make a hammer."
@@ -127,9 +127,9 @@ class ConstructToolsView extends View{
     }
 
     private boolean makeO2Tank() {
-        int currentAmountOfO2tanks = toolInventory[ToolType.O2tank.ordinal()].getQuantityInStock();
-        int resourcesRequiredForO2tanks= toolInventory[ToolType.O2tank.ordinal()].getRequiredAmount();
-        int currentAlluminum = inventoryList[Item.aluminum.ordinal()].getQuantityInStock();
+        double currentAmountOfO2tanks = toolInventory[ToolType.O2tank.ordinal()].getQuantityInStock();
+        double resourcesRequiredForO2tanks= toolInventory[ToolType.O2tank.ordinal()].getRequiredAmount();
+        double currentAlluminum = inventoryList[Item.aluminum.ordinal()].getQuantityInStock();
 
         if(currentAlluminum < resourcesRequiredForO2tanks) {
             this.console.println(ANSI_RED + "\nSorry you do not have enough iron to make an O2 tank."

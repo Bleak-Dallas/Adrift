@@ -257,7 +257,7 @@ public class MoveLocationView extends View{
     private void fillBuggy() throws BuggyControlException {
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
-        int fillAmount = 0;
+        double fillAmount = 0;
         
          
         while (!valid){
@@ -270,12 +270,12 @@ public class MoveLocationView extends View{
             }
             input= input.trim();
              
-            if (input.length() < 1) {
-                throw new BuggyControlException(ANSI_RED + "Invalid selection - the menu item must not be blank" + ANSI_RED);
+            if (input.length() < 0.5) {
+                throw new BuggyControlException(ANSI_RED + "Invalid selection - must be 0.5 or greater" + ANSI_RED);
              }
             
         try {
-            fillAmount = Integer.parseInt(input);
+            fillAmount = Double.parseDouble(input);
         } catch (NumberFormatException nf){
             ErrorView.display(this.getClass().getName(),
                     ANSI_RED + "\nYou must enter a valid number" + nf.getMessage() + ANSI_RESET);
@@ -283,7 +283,7 @@ public class MoveLocationView extends View{
             break;
         }
         
-        if(fillAmount < 0 || fillAmount > 4) {
+        if(fillAmount < 0.5 || fillAmount > 4) {
             throw new BuggyControlException(ANSI_RED + "\nYou obviously cannot follow instructions. Enter 1-4" + ANSI_RESET);
         }
         
@@ -305,7 +305,7 @@ public class MoveLocationView extends View{
     private void fillFood() throws FoodControlException {
         boolean valid = false;
         String input = null;  // Integer.parseInt(numberAsString)
-        int fillAmount = 0;
+        double fillAmount = 0;
 
          
         while (!valid){
@@ -324,7 +324,7 @@ public class MoveLocationView extends View{
             
         try {
                   
-            fillAmount = Integer.parseInt(input);
+            fillAmount = Double.parseDouble(input);
             } catch (NumberFormatException nf){
                 ErrorView.display(this.getClass().getName(),
                                 "\nYou must enter a valid number" + nf.getMessage());

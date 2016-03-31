@@ -16,8 +16,8 @@ public class Buggy implements Serializable{
     
     private double fuelCapacity;
     private double fuelLevel;
-    private int maxWeight;
-    private int loadedWeight;
+    private double maxWeight;
+    private double loadedWeight;
 
     public Buggy() {
         this.fuelCapacity = 4;
@@ -43,29 +43,29 @@ public class Buggy implements Serializable{
         this.fuelLevel = fuelLevel;
     }
 
-    public int getMaxWeight() {
+    public double getMaxWeight() {
         return maxWeight;
     }
 
-    public void setMaxWeight(int maxWeight) {
+    public void setMaxWeight(double maxWeight) {
         this.maxWeight = maxWeight;
     }
 
-    public int getLoadedWeight() {
+    public double getLoadedWeight() {
         return loadedWeight;
     }
 
-    public void setLoadedWeight(int loadedWeight) {
+    public void setLoadedWeight(double loadedWeight) {
         this.loadedWeight = loadedWeight;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.fuelCapacity) ^ (Double.doubleToLongBits(this.fuelCapacity) >>> 32));
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
-        hash = 41 * hash + this.maxWeight;
-        hash = 41 * hash + this.loadedWeight;
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.fuelCapacity) ^ (Double.doubleToLongBits(this.fuelCapacity) >>> 32));
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.fuelLevel) ^ (Double.doubleToLongBits(this.fuelLevel) >>> 32));
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.maxWeight) ^ (Double.doubleToLongBits(this.maxWeight) >>> 32));
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.loadedWeight) ^ (Double.doubleToLongBits(this.loadedWeight) >>> 32));
         return hash;
     }
 
@@ -92,13 +92,13 @@ public class Buggy implements Serializable{
         if (Double.doubleToLongBits(this.fuelLevel) != Double.doubleToLongBits(other.fuelLevel)) {
             return false;
         }
-        if (this.maxWeight != other.maxWeight) {
+        if (Double.doubleToLongBits(this.maxWeight) != Double.doubleToLongBits(other.maxWeight)) {
             return false;
         }
-        if (this.loadedWeight != other.loadedWeight) {
+        if (Double.doubleToLongBits(this.loadedWeight) != Double.doubleToLongBits(other.loadedWeight)) {
             return false;
         }
         return true;
     }
-  
+
 }

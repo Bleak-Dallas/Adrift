@@ -7,8 +7,6 @@ package byui.cit260.adrift.model;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
-import static byui.cit260.adrift.control.BuggyControl.ANSI_RED;
-import static byui.cit260.adrift.control.BuggyControl.ANSI_RESET;
 import byui.cit260.adrift.exceptions.FoodControlException;
 import byui.cit260.adrift.exceptions.GameControlException;
 import java.io.BufferedReader;
@@ -30,12 +28,12 @@ public class FoodControl {
     Player player = game.getPlayer();
     Location[][] locations = map.getLocations();
     InventoryItem[] inventoryList = game.getInventory();
-    int currentFoodInventory = inventoryList[Item.food.ordinal()].getQuantityInStock();
+    double currentFoodInventory = inventoryList[Item.food.ordinal()].getQuantityInStock();
     double currentPlayerFood = player.getCurrentCalorieLevel();
     double maxPlayerFood = player.getMaxCalorieLevel();
     boolean calledBefore = false;
     double foodAfterAdding;
-    int foodInvetoryAfterEating;
+    double foodInvetoryAfterEating;
     int currentLoc;
     int destination;
     
@@ -44,8 +42,8 @@ public class FoodControl {
         this.console.println(ANSI_GREEN + "\nYour current food level is: " + playerCurrentFooodLevel + ANSI_RESET);
     }
 
-    public double fillFood(int noOfItems) throws FoodControlException{
-       foodAfterAdding = (int) (currentPlayerFood + noOfItems);
+    public double fillFood(double noOfItems) throws FoodControlException{
+       foodAfterAdding = currentPlayerFood + noOfItems;
        foodInvetoryAfterEating = currentFoodInventory - noOfItems;
 
 
