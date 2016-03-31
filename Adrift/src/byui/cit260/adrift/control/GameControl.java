@@ -74,25 +74,25 @@ public class GameControl {
         
         InventoryItem food = new InventoryItem();
         food.setDescription("Food    ");
-        food.setQuantityInStock(20);
+        food.setQuantityInStock(0);
         food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
         
-        InventoryItem water = new InventoryItem();
-        water.setDescription("Water    ");
-        water.setQuantityInStock(0);
-        water.setRequiredAmount(0);
-        inventory[Item.water.ordinal()] = water;
+//        InventoryItem water = new InventoryItem();
+//        water.setDescription("Water    ");
+//        water.setQuantityInStock(0);
+//        water.setRequiredAmount(0);
+//        inventory[Item.water.ordinal()] = water;
         
-        InventoryItem oil = new InventoryItem();
-        oil.setDescription("Oil      ");
-        oil.setQuantityInStock(0);
-        oil.setRequiredAmount(0);
-        inventory[Item.oil.ordinal()] = oil;
+//        InventoryItem oil = new InventoryItem();
+//        oil.setDescription("Oil      ");
+//        oil.setQuantityInStock(0);
+//        oil.setRequiredAmount(0);
+//        inventory[Item.oil.ordinal()] = oil;
         
         InventoryItem fuel = new InventoryItem();
         fuel.setDescription("Fuel    ");
-        fuel.setQuantityInStock(20);
+        fuel.setQuantityInStock(0);
         fuel.setRequiredAmount(0);
         inventory[Item.fuel.ordinal()] = fuel;
         

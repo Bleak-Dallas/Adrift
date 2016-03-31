@@ -8,7 +8,6 @@ package byui.cit260.adrift.control;
 import adrift.Adrift;
 import byu.cit260.adrift.enums.ToolType;
 import byui.cit260.adrift.exceptions.GameControlException;
-import byui.cit260.adrift.exceptions.ToolControlException;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
@@ -55,7 +54,7 @@ public class ToolsControl {
         
         Tools O2tank = new Tools();
         O2tank.setDescription("O2Tank  ");
-        O2tank.setQuantityInStock(20);
+        O2tank.setQuantityInStock(1);
         O2tank.setRequiredAmount(3);
         O2tank.setRequiredResource("Aluminum");
         toolInventory[ToolType.O2tank.ordinal()] = O2tank;

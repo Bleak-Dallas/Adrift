@@ -12,13 +12,13 @@ package byu.cit260.adrift.enums;
 public enum Item {
     
     food,
-    water,
+//    water,
     fuel,
     iron,
     aluminum,
     fluxcapacitor,
     copper,
-    oil,
+//    oil,
     uranium;
     
 }
