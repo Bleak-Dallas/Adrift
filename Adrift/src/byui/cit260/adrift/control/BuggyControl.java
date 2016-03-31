@@ -51,7 +51,7 @@ public class BuggyControl {
         currentWeight = loadedWeight + noOfItems;
 
         if(currentWeight > maxWeight) {
-            throw new BuggyControlException (ANSI_RED + "\nYou cannot load" + noOfItems + " more items."
+            throw new BuggyControlException (ANSI_RED + "\nYou cannot load " + noOfItems + " more items."
                                             + ANSI_RED + "\nBuggy would be overweight" + ANSI_RESET);
      
         }

@@ -83,6 +83,7 @@ public class FacilitySceneView extends View{
 
     private void unloadBuggy() {
         buggy.setLoadedWeight(0);
+        this.console.println(ANSI_GREEN + "You have unloaded the buggyy at the mining facility" + ANSI_RESET);
     }
 
     public void checkO2Level() {

@@ -41,6 +41,8 @@ public class SceneControl {
     BuggyControl buggyControl = new BuggyControl();
     private final BufferedReader keyboard = Adrift.getInFile();
     private final PrintWriter console = Adrift.getOutFile();
+    int buggyMaxWeight = buggy.getMaxWeight();
+    int buggyCurrentWeight = buggy.getLoadedWeight();
     int row;
     int column;
     int amountToMine;
@@ -50,6 +52,7 @@ public class SceneControl {
     
         public boolean mineResources(String resourceDescription, int row, int column)
                 throws SceneControlException, BuggyControlException {
+            
         int resourceAmount = locations[row][column].getScene().getResourceAmount();
         int hammer = tool[ToolType.hammer.ordinal()].getQuantityInStock();
         int shovel = tool[ToolType.shovel.ordinal()].getQuantityInStock();
@@ -95,11 +98,10 @@ public class SceneControl {
                 this.console.println(ANSI_RED + "\nThere is no more resources to mine at this location" + ANSI_RESET);
                 return false;
             } else {
+                buggyControl.calWeight(amountToMine);
                 locations[row][column].getScene().setResourceAmount(sceneAmount);
             }
-            
-                buggyControl.calWeight(amountToMine);
-        
+
             for(InventoryItem inventory : inventoryList) {
                 currentInventoryAmount = inventory.getQuantityInStock();
                 currentInventoryDesc = inventory.getDescription().trim();
