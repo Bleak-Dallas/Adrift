@@ -41,9 +41,7 @@ public class GameMenuView extends View {
             + "\nS - View Ship Status"
             + "\nL - View Contents of Coordinate"
             + "\nM - Move To New Sector"
-            + "\nF - Calculate Fuel"
-            + "\nO - Calculate O2"
-            + "\nC - Calculate Calories"
+            + "\nC - Calculate O2, Fuel, Calories"
             + "\nT - Construct Tools"
             + "\nR - Repair Ship"
             + "\nJ - Launch Ship"
@@ -82,17 +80,17 @@ public class GameMenuView extends View {
                 this.moveLocation();
                 break;
                 
-            case 'F': // Calculate Fuel
-                this.displayCalcFuel();
-                break;
+//            case 'F': // Calculate Fuel
+//                this.displayCalcFuel();
+//                break;
                 
-            case 'O': // Calculate O2
+            case 'C': // Calculate )2, Fuel, Calories
                 this.displayCalcO2();
                 break;
                 
-            case 'C': //Calculate Calories
-                this.displayCalcCalories();
-                break;
+//            case 'C': //Calculate Calories
+//                this.displayCalcCalories();
+//                break;
                 
             case 'T': // Construct Tools
                 this.constructTools();
@@ -131,20 +129,20 @@ public class GameMenuView extends View {
         constructToolsMenu.display();
     }
 
-    private void displayCalcFuel() {
-        CalculateFuelView calcFuel = new CalculateFuelView();
-        calcFuel.display();
-    }
+//    private void displayCalcFuel() {
+//        CalculateFuelView calcFuel = new CalculateFuelView();
+//        calcFuel.display();
+//    }
     
     private void displayCalcO2() {
         CalculateO2View calcO2 = new CalculateO2View();
         calcO2.display();
     }
 
-    private void displayCalcCalories() {
-        CalculateCaloriesView calcCalories = new CalculateCaloriesView();
-        calcCalories.display();
-    }
+//    private void displayCalcCalories() {
+//        CalculateCaloriesView calcCalories = new CalculateCaloriesView();
+//        calcCalories.display();
+//    }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView (); //display the game menu

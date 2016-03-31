@@ -1,3 +1,0 @@
-byui.cit260.adrift.view.SceneView - [31mInvalid selection you only have 0[31m Aluminum to mine.[0m
-byui.cit260.adrift.view.MoveLocationView - [31m
-*** Invalid selection *** Try Again[0m

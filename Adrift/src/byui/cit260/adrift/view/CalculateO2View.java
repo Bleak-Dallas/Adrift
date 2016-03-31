@@ -8,6 +8,7 @@ package byui.cit260.adrift.view;
 import adrift.Adrift;
 import byui.cit260.adrift.control.InventoryControl;
 import byui.cit260.adrift.exceptions.InventoryControlException;
+import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.Location;
 import byui.cit260.adrift.model.Map;
@@ -19,13 +20,17 @@ import java.io.IOException;
  * @author Joel
  */
 public class CalculateO2View extends View {
+    
     Game game = Adrift.getCurrentGame();
     Player player = game.getPlayer();
     Map map = game.getMap();
     Scene[] scenes = game.getScenes();
     Location[][] locations = map.getLocations();
+    Buggy buggy = game.getBuggy();
     InventoryControl inventoryControl = new InventoryControl();
     double currentO2 = player.getCurrentOxygenLevel();
+    double currentFuel = buggy.getFuelLevel();
+    double currentCalories = player.getCurrentCalorieLevel();
     int currentLocation;
     int destination;    
     public static final String ANSI_RED = "\u001B[31m";
@@ -35,12 +40,12 @@ public class CalculateO2View extends View {
     public CalculateO2View() {
         super("\n"
             + "\n----------------------------------------"
-            + "\n | Calculate O2                          |"
+            + "\n | Calculate O2, Fuel, and Food        |"
             + "\n ---------------------------------------"
-            + "\nTo calculate the O2 that will be needed"
-            + "\nto travel from your current location to "
-            + "\nyour destination please input your current"
-            + "\nlocation and desired destination "
+            + "\nTo calculate the O2, Fuel, and Food that"
+            + "\nwill be needed to travel from your current"
+            + "\nlocation to your destination please input"
+            + "\nyour current location and desired destination "
             +"\n"
             + "\nC - Current location"
             + "\nD - Destination"
@@ -206,6 +211,8 @@ public class CalculateO2View extends View {
         
         try {
             inventoryControl.calculateO2Needed(currentO2, currentLocation, destination);
+            inventoryControl.calculateFuelNeeded(currentFuel, currentLocation, destination);
+            inventoryControl.calculateCaloriesNeeded(currentCalories, currentLocation, destination);
         } catch (InventoryControlException ex) {
             this.console.println(ex);
         }

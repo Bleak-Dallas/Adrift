@@ -57,8 +57,9 @@ public class MoveLocationView extends View{
                     + "\nD - Enter sector coordinates for destination"
                     + "\n" 
                     + "\n --------------------------------------"
-                    + "\nC - Check buggy's fuel level"
-                    + "\nF - Fill buggy with fuel"
+                    + "\nC - Calculate O2, Fuel, Calories"
+                    + "\nF - Check buggy's fuel level"
+                    + "\nR - Refill buggy with fuel"
                     + "\nW - Check buggy's weight"
                     + "\nO - Check O2 level"
                     + "\nL - Check food level"
@@ -81,12 +82,16 @@ public class MoveLocationView extends View{
             }
         }
                  break;
-                 
-             case 'C': 
+            case 'C': 
+                CalculateO2View calcO2 = new CalculateO2View();
+                calcO2.display();
+                 break;
+            
+             case 'F': 
                  this.checkFuel();
                  break;
                  
-             case 'F': 
+             case 'R': 
         {
             try {
                 this.fillBuggy();

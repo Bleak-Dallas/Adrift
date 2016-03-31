@@ -56,7 +56,7 @@ public class InventoryControl {
                                         + ANSI_RED + defaultFormat.format(o2Percent) + ". You would die!!" + ANSI_RESET);
                 }
                 else{
-                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining O2 would be " + defaultFormat.format(o2Percent) + ANSI_RESET);
+                    this.console.println(ANSI_GREEN + "\n\nRemaining O2 would be " + defaultFormat.format(o2Percent) + ANSI_RESET);
                 }
         return remainingO2;
     
@@ -93,7 +93,7 @@ public class InventoryControl {
                                       + ANSI_RED + defaultFormat.format(fuelPercent) + ". You would die!!" + ANSI_RESET);
                 }
                 else{
-                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining fuel would be " + defaultFormat.format(fuelPercent) + ANSI_RESET);
+                    this.console.println(ANSI_GREEN + "Remaining fuel would be " + defaultFormat.format(fuelPercent) + ANSI_RESET);
                 }
         return remainingFuel;
     
@@ -125,7 +125,7 @@ public class InventoryControl {
                                         + remainingCalories + ". You would die!!" + ANSI_RESET);
                 }
                 else{
-                    this.console.println(ANSI_GREEN + "\n\nIf you take this trip your remaining food would be " + remainingCalories + ANSI_RESET);
+                    this.console.println(ANSI_GREEN + "Remaining food would be " + remainingCalories + ANSI_RESET);
                 }
         return remainingCalories;
     
