@@ -7,8 +7,6 @@ package byui.cit260.adrift.control;
 
 import adrift.Adrift;
 import byu.cit260.adrift.enums.Item;
-import static byui.cit260.adrift.control.ToolsControl.ANSI_RED;
-import static byui.cit260.adrift.control.ToolsControl.ANSI_RESET;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.exceptions.BuggyControlException;
 import byui.cit260.adrift.exceptions.GameControlException;

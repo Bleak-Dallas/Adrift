@@ -9,7 +9,6 @@ import adrift.Adrift;
 import byu.cit260.adrift.enums.ToolType;
 import byui.cit260.adrift.model.Buggy;
 import byui.cit260.adrift.model.Game;
-import byui.cit260.adrift.model.InventoryItem;
 import byui.cit260.adrift.model.Player;
 import byui.cit260.adrift.model.Tools;
 
@@ -53,15 +52,15 @@ public class PreMissionView extends View{
             case 'R': //create and start new game
                 this.chooseFood();
                 break;
+                
             case 'T': // display Help Menu
                 this.chooseO2Tanks();
                 break;
-//            case 'D': //Save game
-//                this.chooseDrill();
-//                break;
+
             case 'F': //Save game
                 this.chooseFuel();
                 break;
+                
             case 'Q': 
                 //display game menu
                 this.createPlayerItems();
@@ -89,10 +88,6 @@ public class PreMissionView extends View{
         O2TanksView.display();
     }
 
-//    private void chooseDrill() {
-//        ChooseDrillView chooseDrill = new ChooseDrillView();
-//        chooseDrill.display();
-//    }
 
     private void chooseFuel() {
         ChooseFuelView chooseFuel = new ChooseFuelView();

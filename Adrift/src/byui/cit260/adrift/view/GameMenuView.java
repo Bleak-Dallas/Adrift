@@ -8,7 +8,6 @@ package byui.cit260.adrift.view;
 
 import adrift.Adrift;
 import byui.cit260.adrift.control.GameControl;
-import byui.cit260.adrift.control.ShipControl;
 import byui.cit260.adrift.control.ToolsControl;
 import byui.cit260.adrift.model.Game;
 import byui.cit260.adrift.model.InventoryItem;
@@ -78,29 +77,13 @@ public class GameMenuView extends View {
                 this.moveLocation();
                 break;
                 
-//            case 'F': // Calculate Fuel
-//                this.displayCalcFuel();
-//                break;
-                
             case 'C': // Calculate )2, Fuel, Calories
                 this.displayCalcO2();
                 break;
                 
-//            case 'C': //Calculate Calories
-//                this.displayCalcCalories();
-//                break;
-                
             case 'T': // Construct Tools
                 this.constructTools();
                 break;
-                
-//            case 'R': // Repair ship
-//                this.repairShip();
-//                break;
-                
-//            case 'J': // Launch ship
-//                this.launchShip();
-//                break;
                 
             case 'P': // Print Reports
                 this.printReports();
@@ -126,21 +109,11 @@ public class GameMenuView extends View {
         ConstructToolsView constructToolsMenu = new ConstructToolsView ();//display the construct tools menu
         constructToolsMenu.display();
     }
-
-//    private void displayCalcFuel() {
-//        CalculateFuelView calcFuel = new CalculateFuelView();
-//        calcFuel.display();
-//    }
     
     private void displayCalcO2() {
         CalculateO2View calcO2 = new CalculateO2View();
         calcO2.display();
     }
-
-//    private void displayCalcCalories() {
-//        CalculateCaloriesView calcCalories = new CalculateCaloriesView();
-//        calcCalories.display();
-//    }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView (); //display the game menu
@@ -231,9 +204,7 @@ public class GameMenuView extends View {
                     } else {
                         this.console.print("|__Not Visited__|");
                     }
-                
-      
-            
+
             this.console.println("");
             for(int col = 0; col < locations[row].length; col++) {
                 this.console.print("|***************|");
@@ -309,16 +280,6 @@ public class GameMenuView extends View {
         PrintReportView printReport = new PrintReportView (); //display the game menu
         printReport.display();
     }
-
-//    private void repairShip() {
-//        RepairShipView repairShip = new RepairShipView();
-//        repairShip.display();
-//    }
-
-//    private void launchShip() {
-//        ShipControl shipControl = new ShipControl();
-//        shipControl.launchShip();
-//    }
     
 }
 
