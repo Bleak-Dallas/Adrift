@@ -235,8 +235,8 @@ public class MapControl {
         
         Scene outpost2 = new Scene();
         outpost2.setDescription(ANSI_BLUE + "\n==========================================================="
-                              + ANSI_BLUE   + "\nYou have reached the second outpost. Keep an "
-                              + ANSI_BLUE   + "\neye on your calories and look for any Emergency Rations."
+                              + ANSI_BLUE + "\nYou have reached the second outpost. Keep an "
+                              + ANSI_BLUE + "\neye on your calories and look for any Emergency Rations."
                               + ANSI_BLUE + "\n============================================================" + ANSI_RESET);
         outpost2.setSymbol(" OP2 ");
         outpost2.setBlocked(false);
@@ -300,10 +300,10 @@ public class MapControl {
         
         Scene cave1 = new Scene();
         cave1.setDescription(ANSI_BLUE + "\n==========================================================="
-                           + ANSI_BLUE    + "\nYou notice a cave in the distance and decide to "
-                           + ANSI_BLUE    + "\nexplore it. Upon entering R2C3Data’s sensors start going off. "
-                           + ANSI_BLUE    + "\nR2C3Data says, “High amounts of radiation detected. I may be "
-                           + ANSI_BLUE    + "\nable to get some uranium here."
+                           + ANSI_BLUE + "\nYou notice a cave in the distance and decide to "
+                           + ANSI_BLUE + "\nexplore it. Upon entering R2C3Data’s sensors start going off. "
+                           + ANSI_BLUE + "\nR2C3Data says, “High amounts of radiation detected. I may be "
+                           + ANSI_BLUE + "\nable to get some uranium here."
                            + ANSI_BLUE + "\n============================================================" + ANSI_RESET);
         cave1.setSymbol(" CV1 ");
         cave1.setBlocked(false);
