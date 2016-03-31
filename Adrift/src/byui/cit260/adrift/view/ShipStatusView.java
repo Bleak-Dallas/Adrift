@@ -24,15 +24,15 @@ public class ShipStatusView {
         ShipControl shipControl = new ShipControl();
         shipControl.shipStatus();
         
-        this.console.println("\n*************************************************"
-                    + "\n|             Ship Status                     |"
-                    + "\n*************************************************"
-                    + "\nRepair Level: " + defaultFormat.format(shipItems[ShipType.shipstatus.ordinal()].getRepairLevel()) 
-                    + "\nFuel Level: " + defaultFormat.format(shipItems[ShipType.shipstatus.ordinal()].getFuelLevel()));
+        this.console.println("\n***********************************************"
+                           + "\n|             Ship Status                     |"
+                           + "\n***********************************************"
+                           + "\nRepair Level: " + defaultFormat.format(shipItems[ShipType.shipstatus.ordinal()].getRepairLevel()) 
+                           + "\nFuel Level: " + defaultFormat.format(shipItems[ShipType.shipstatus.ordinal()].getFuelLevel()));
 
-        this.console.println("\n*************************************************"
-                            + "\n|             Ship Resource Status                     |"
-                            + "\n*************************************************\n");
+        this.console.println("\n************************************************"
+                            + "\n|             Ship Resource Status             |"
+                            + "\n************************************************\n");
         this.console.println("Description" + "\t" +
                             "In Stock"   + "\t" +
                             "Amount Required");

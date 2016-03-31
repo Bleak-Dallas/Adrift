@@ -55,7 +55,7 @@ public class ToolsControl {
         
         Tools O2tank = new Tools();
         O2tank.setDescription("O2Tank  ");
-        O2tank.setQuantityInStock(1);
+        O2tank.setQuantityInStock(20);
         O2tank.setRequiredAmount(3);
         O2tank.setRequiredResource("Aluminum");
         toolInventory[ToolType.O2tank.ordinal()] = O2tank;

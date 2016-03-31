@@ -74,7 +74,7 @@ public class GameControl {
         
         InventoryItem food = new InventoryItem();
         food.setDescription("Food    ");
-        food.setQuantityInStock(0);
+        food.setQuantityInStock(20);
         food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
         
@@ -92,7 +92,7 @@ public class GameControl {
         
         InventoryItem fuel = new InventoryItem();
         fuel.setDescription("Fuel    ");
-        fuel.setQuantityInStock(0);
+        fuel.setQuantityInStock(20);
         fuel.setRequiredAmount(0);
         inventory[Item.fuel.ordinal()] = fuel;
         

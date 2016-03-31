@@ -1,0 +1,4 @@
+byui.cit260.adrift.view.MoveLocationView - [31m
+You cannot eat 3 food you would get sick.[31m
+You can only eat a max of 4.0 food.[31m
+Check your current food level first.[0m

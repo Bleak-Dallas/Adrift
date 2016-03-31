@@ -43,8 +43,6 @@ public class GameMenuView extends View {
             + "\nM - Move To New Sector"
             + "\nC - Calculate O2, Fuel, Calories"
             + "\nT - Construct Tools"
-            + "\nR - Repair Ship"
-            + "\nJ - Launch Ship"
             + "\nP - Print reports"
             + "\nH - Help"
             + "\nQ - Exit to Main Menu"
@@ -96,13 +94,13 @@ public class GameMenuView extends View {
                 this.constructTools();
                 break;
                 
-            case 'R': // Repair ship
-                this.repairShip();
-                break;
+//            case 'R': // Repair ship
+//                this.repairShip();
+//                break;
                 
-            case 'J': // Launch ship
-                this.launchShip();
-                break;
+//            case 'J': // Launch ship
+//                this.launchShip();
+//                break;
                 
             case 'P': // Print Reports
                 this.printReports();
@@ -312,15 +310,15 @@ public class GameMenuView extends View {
         printReport.display();
     }
 
-    private void repairShip() {
-        RepairShipView repairShip = new RepairShipView();
-        repairShip.display();
-    }
+//    private void repairShip() {
+//        RepairShipView repairShip = new RepairShipView();
+//        repairShip.display();
+//    }
 
-    private void launchShip() {
-        ShipControl shipControl = new ShipControl();
-        shipControl.launchShip();
-    }
+//    private void launchShip() {
+//        ShipControl shipControl = new ShipControl();
+//        shipControl.launchShip();
+//    }
     
 }
 

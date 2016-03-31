@@ -158,7 +158,7 @@ public class MapControl {
         canyon1.setBlocked(false);
         canyon1.setDistanceTraveled(9);
         canyon1.setResourceDescription("Uranium ");
-        canyon1.setResourceAmount(20);
+        canyon1.setResourceAmount(5);
         scenes[SceneType.canyon1.ordinal()] = canyon1;
         
         Scene canyon2 = new Scene();
@@ -168,7 +168,7 @@ public class MapControl {
         canyon2.setBlocked(false);
         canyon2.setDistanceTraveled(10);
         canyon2.setResourceDescription("Uranium ");
-        canyon2.setResourceAmount(10);
+        canyon2.setResourceAmount(5);
         scenes[SceneType.canyon2.ordinal()] = canyon2;
         
         Scene crater1 = new Scene();
@@ -271,13 +271,13 @@ public class MapControl {
         cave1.setBlocked(false);
         cave1.setDistanceTraveled(13);
         cave1.setResourceDescription("Uranium ");
-        cave1.setResourceAmount(20);
+        cave1.setResourceAmount(5);
         scenes[SceneType.cave1.ordinal()] = cave1;
         
         Scene cave2 = new Scene();
         cave2.setDescription(ANSI_BLUE + "\nAfter days of searching you find another cave. "
             + ANSI_BLUE    + "\nThis one has some type of ancient gate on it. You are unable "
-            + ANSI_BLUE    + "\nto open the gate and ask R2C3Data to try. The robot get the "
+            + ANSI_BLUE    + "\nto open the gate and ask R2C3Data to try. The robot gets the "
             + ANSI_BLUE    + "\ngate open. There is strange writing on the walls and odd "
             + ANSI_BLUE    + "\nlooking instruments. While looking around you spot it, the "
             + ANSI_BLUE    + "\n“item,” you cannot believe that you have found it. Now all "
@@ -286,8 +286,8 @@ public class MapControl {
         cave2.setSymbol(" CV2 ");
         cave2.setBlocked(false);
         cave2.setDistanceTraveled(25);
-        cave2.setResourceDescription("Flux Capacitor");
-        cave2.setResourceAmount(1);
+        cave2.setResourceDescription("Uranium ");
+        cave2.setResourceAmount(5);
         scenes[SceneType.cave2.ordinal()] = cave2;
         
         Scene drill1 = new Scene();
@@ -340,12 +340,14 @@ public class MapControl {
         scenes[SceneType.drill4.ordinal()] = drill4;
         
         Scene facility = new Scene();
-        facility.setDescription(ANSI_BLUE + "\nWelcome to the mining facility. Here at the "
-            + ANSI_BLUE    + "\nfacility you can call on your crew to smelt ore, construct "
-            + ANSI_BLUE    + "\ntools, and refine resources. The mining facility has an "
-            + ANSI_BLUE   + "\noxygen reclaimer that you can use to fill up your O2 tanks "
-            + ANSI_BLUE    + "\nas well as a small supply of petroleum. You may also store "
-            + ANSI_BLUE    + "\nand resources you collect here at the facility." + ANSI_RESET);
+        facility.setDescription(ANSI_BLUE + "\n==========================================================="
+                              + ANSI_BLUE + "\nWelcome to the mining facility. Here at the facility you"
+                              + ANSI_BLUE + "\ncan call on your crew to smelt ore, construct tools, and"
+                              + ANSI_BLUE + "\nrefine resources. The mining facility has an oxygen"
+                              + ANSI_BLUE + "\nreclaimer that you can use to fill up your O2 tanks as"
+                              + ANSI_BLUE + "\nwell as a small supply of petroleum. You may also store "
+                              + ANSI_BLUE + "\nand resources you collect here at the facility." 
+                              + ANSI_BLUE + "\n============================================================" + ANSI_RESET);
         facility.setSymbol(" FC ");
         facility.setBlocked(false);
         facility.setDistanceTraveled(2);
@@ -354,9 +356,11 @@ public class MapControl {
         scenes[SceneType.facility.ordinal()] = facility;
         
         Scene ship = new Scene();
-        ship.setDescription(ANSI_BLUE + "\nYou are back at the crash site. The ship needs it "
-            + ANSI_BLUE    + "\nhull repaired and new fuel cells before it can take off. Do "
-            + ANSI_BLUE    + "\nyou want to work on the ship?" + ANSI_RESET);
+        ship.setDescription(ANSI_BLUE + "\n========================================================"
+                          + ANSI_BLUE + "\nYou are back at the crash site. The ship needs it hull"
+                          + ANSI_BLUE + "\nrepaired and new fuel cells before it can take off. Do "
+                          + ANSI_BLUE + "\nyou want to work on the ship?"
+                          + ANSI_BLUE + "\n========================================================" + ANSI_RESET);
         ship.setSymbol(" SP ");
         ship.setBlocked(false);
         ship.setDistanceTraveled(1);
@@ -365,9 +369,13 @@ public class MapControl {
         scenes[SceneType.ship.ordinal()] = ship;
         
         Scene finish = new Scene();
-        finish.setDescription(ANSI_BLUE + "\nCONGRATULATIONS COMMANDER!! You have fixed "
+        finish.setDescription(ANSI_BLUE + "\nWINNER===WINNER===WINNER===WINNER===WINNER==="
+                            + ANSI_BLUE + "\n"
+                            + ANSI_BLUE + "\nCONGRATULATIONS COMMANDER!! You have fixed "
                             + ANSI_BLUE + "\nyour ship, retrieved the item and saved your "
-                            + ANSI_BLUE + "\ncrew." + ANSI_RESET);
+                            + ANSI_BLUE + "\ncrew."
+                            + ANSI_BLUE + "\n"
+                            + ANSI_BLUE + "\nWINNER===WINNER===WINNER===WINNER===WINNER===" + ANSI_RESET);
         finish.setSymbol(" FN ");
         finish.setBlocked(false);
         finish.setDistanceTraveled(0);

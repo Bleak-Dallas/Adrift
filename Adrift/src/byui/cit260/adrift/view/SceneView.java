@@ -6,6 +6,7 @@
 package byui.cit260.adrift.view;
 
 import adrift.Adrift;
+import byu.cit260.adrift.enums.Item;
 import byu.cit260.adrift.enums.SceneType;
 import byui.cit260.adrift.control.BuggyControl;
 import byui.cit260.adrift.exceptions.BuggyControlException;
@@ -89,11 +90,14 @@ public class SceneView extends View{
         if(row == 0 && column == 0) {
             this.displayShipScene();
         }
-        else if(row == 0 && column == 01) {
+        else if(row == 0 && column == 1) {
             this.displayFacilityScene();
         }
         else {
         String menu = locations[row][column].getScene().getDescription();
+            if(row == 4 && column == 4) {
+                inventoryList[Item.fluxcapacitor.ordinal()].setQuantityInStock(1);
+            }
         this.console.println("\n" + ANSI_BLUE + menu + ANSI_RESET);
         this.display();
         }
@@ -113,7 +117,8 @@ public class SceneView extends View{
     }
     
     public void displayShipScene() {
-        this.console.println("\n*** The displayShipScene function was called in the SceneView class ***");
+        ShipSceneView shipScene = new ShipSceneView();
+        shipScene.displayShipScene();
     }
     
     public void displayFacilityScene() {
