@@ -95,7 +95,13 @@ public class FoodControl {
         } else {
             remainingFood =  foodAfterAdding - (numberOfSpacesTraveled * 0.25);
             if(remainingFood <= 0) {
-            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FOOD" + ANSI_RESET);
+            throw new GameControlException(ANSI_RED + "\n"  
+                                         + ANSI_RED + " __   _____  _   _   ___ ___ ___ ___    _ _   \n" 
+                                         + ANSI_RED + " \\ \\ / / _ \\| | | | |   \\_ _| __|   \\  | | |\n"
+                                         + ANSI_RED + "  \\ V / (_) | |_| | | |) | || _|| |) | |_|_|\n"
+                                         + ANSI_RED + "   |_| \\___/ \\___/  |___/___|___|___/  (_|_)\n"
+                                         + ANSI_RED + "                                            "
+                                         + ANSI_RED + "\n            YOU RAN OUT OF FOOD           " + ANSI_RESET);
         }
             player.setCurrentCalorieLevel(remainingFood);
         }

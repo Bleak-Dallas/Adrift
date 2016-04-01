@@ -388,7 +388,14 @@ public class MapControl {
         scenes[SceneType.drill4.ordinal()] = drill4;
         
         Scene facility = new Scene();
-        facility.setDescription(ANSI_BLUE + "\n==========================================================="
+        facility.setDescription(ANSI_BLUE + "\n"
+                              + ANSI_BLUE + "\n     ,------.             ,--.,--.,--.  ,--.               "
+                              + ANSI_BLUE + "\n     |  .---',--,--. ,---.`--'|  |`--',-'  '-.,--. ,--.    "
+                              + ANSI_BLUE + "\n     |  `--,' ,-.  || .--',--.|  |,--.'-.  .-' \\  '  /    "
+                              + ANSI_BLUE + "\n     |  |`  \\ '-'  |\\ `--.|  ||  ||  |  |  |    \\ '     "
+                              + ANSI_BLUE + "\n     `--'    `--`--' `---'`--'`--'`--'  `--'  .-'  /       "
+                              + ANSI_BLUE + "\n                                              `---'        "
+                              + ANSI_BLUE + "\n==========================================================="
                               + ANSI_BLUE + "\nWelcome to the mining facility. Here at the facility you"
                               + ANSI_BLUE + "\ncan call on your crew to smelt ore, construct tools, and"
                               + ANSI_BLUE + "\nrefine resources. The mining facility has an oxygen"
@@ -404,7 +411,14 @@ public class MapControl {
         scenes[SceneType.facility.ordinal()] = facility;
         
         Scene ship = new Scene();
-        ship.setDescription(ANSI_BLUE + "\n========================================================"
+        ship.setDescription(ANSI_BLUE + "\n"
+                          + ANSI_BLUE + "\n      ,---.  ,--.     ,--.        "
+                          + ANSI_BLUE + "\n     '   .-' |  ,---. `--' ,---.  "
+                          + ANSI_BLUE + "\n     `.  `-. |  .-.  |,--.| .-. | "
+                          + ANSI_BLUE + "\n     .-'    ||  | |  ||  || '-' ' "
+                          + ANSI_BLUE + "\n     `-----' `--' `--'`--'|  |-'  "
+                          + ANSI_BLUE + "\n                          `--'    "
+                          + ANSI_BLUE + "\n========================================================"
                           + ANSI_BLUE + "\nYou are back at the crash site. The ship needs it hull"
                           + ANSI_BLUE + "\nrepaired and new fuel cells before it can take off. Do "
                           + ANSI_BLUE + "\nyou want to work on the ship?"

@@ -128,15 +128,27 @@ public class BuggyControl {
         if(calledBefore == false) {
             remainingFuel =  fuelLevel - (numberOfSpacesTraveled * .25);
             if(remainingFuel <= 0) {
-            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FUEL AND YOU WERE"
-                                         + ANSI_RED + "\nUNABLE TO MAKE IT BACK TO SAFEY." + ANSI_RESET);
+            throw new GameControlException(ANSI_RED + "\n"  
+                                         + ANSI_RED + " __   _____  _   _   ___ ___ ___ ___    _ _   \n" 
+                                         + ANSI_RED + " \\ \\ / / _ \\| | | | |   \\_ _| __|   \\  | | |\n"
+                                         + ANSI_RED + "  \\ V / (_) | |_| | | |) | || _|| |) | |_|_|\n"
+                                         + ANSI_RED + "   |_| \\___/ \\___/  |___/___|___|___/  (_|_)\n"
+                                         + ANSI_RED + "                                            "
+                                         + ANSI_RED + "\n     YOU RAN OUT OF FUEL AND YOU WERE"
+                                         + ANSI_RED + "\n     UNABLE TO MAKE IT BACK TO SAFEY." + ANSI_RESET);
         }
              buggy.setFuelLevel(remainingFuel);
         } else {
             remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
             if(remainingFuel <= 0) {
-            throw new GameControlException(ANSI_RED + "\nYOU DIED!!!  YOU RAN OUT OF FUEL AND YOU WERE"
-                                         + ANSI_RED + "\nUNABLE TO MAKE IT BACK TO SAFEY." + ANSI_RESET);
+            throw new GameControlException(ANSI_RED + "\n"  
+                                         + ANSI_RED + " __   _____  _   _   ___ ___ ___ ___    _ _   \n" 
+                                         + ANSI_RED + " \\ \\ / / _ \\| | | | |   \\_ _| __|   \\  | | |\n"
+                                         + ANSI_RED + "  \\ V / (_) | |_| | | |) | || _|| |) | |_|_|\n"
+                                         + ANSI_RED + "   |_| \\___/ \\___/  |___/___|___|___/  (_|_)\n"
+                                         + ANSI_RED + "                                            "
+                                         + ANSI_RED + "\n     YOU RAN OUT OF FUEL AND YOU WERE"
+                                         + ANSI_RED + "\n     UNABLE TO MAKE IT BACK TO SAFEY." + ANSI_RESET);
         }
             buggy.setFuelLevel(remainingFuel);
         }

@@ -89,7 +89,7 @@ public class InventoryControl {
         remainingFuel =  currentFuel - (numberOfSpacesTraveled * .25);
         fuelPercent = remainingFuel / fuelCapacity;
                 if(remainingFuel < 0){
-                    this.console.println(ANSI_RED + "\n\nIf you take this trip your remaining fuel would be " 
+                    this.console.println(ANSI_RED + "If you take this trip your remaining fuel would be " 
                                       + ANSI_RED + defaultFormat.format(fuelPercent) + ". You would die!!" + ANSI_RESET);
                 }
                 else{
@@ -121,7 +121,7 @@ public class InventoryControl {
 
         remainingCalories =  currentCalories - (numberOfSpacesTraveled * .25);
                 if(remainingCalories < 0){
-                    this.console.println(ANSI_RED + "\n\nIf you take this trip your remaining food would be " 
+                    this.console.println(ANSI_RED + "If you take this trip your remaining food would be " 
                                         + remainingCalories + ". You would die!!" + ANSI_RESET);
                 }
                 else{
