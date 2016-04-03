@@ -147,7 +147,7 @@ public class ShipControl {
         double copperAmountAfterRepair = currentInventoryCopper - copperToBeAssigned;
         
             if(copperToBeAssigned > currentInventoryCopper) {
-                throw new ShipControlException(ANSI_RED + "\nYou do not have enough iron in your inventory to assign "
+                throw new ShipControlException(ANSI_RED + "\nYou do not have enough copper in your inventory to assign "
                                              + ANSI_RED + "\n" + copperToBeAssigned + " iron to the hull." + ANSI_RESET);
             }
             
@@ -168,7 +168,7 @@ public class ShipControl {
         double uraniumAmountAfterRepair = currentInventoryUranium - uraniumToBeAssigned;
         
             if(uraniumToBeAssigned > currentInventoryUranium) {
-                throw new ShipControlException(ANSI_RED + "\nYou do not have enough iron in your inventory to assign "
+                throw new ShipControlException(ANSI_RED + "\nYou do not have enough uranium in your inventory to assign "
                                              + ANSI_RED + "\n" + uraniumToBeAssigned + " iron to the hull." + ANSI_RESET);
             }
             
