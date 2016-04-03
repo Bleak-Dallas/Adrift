@@ -1,0 +1,5 @@
+byui.cit260.adrift.view.SceneView - [31m
+You do not have the tool required to mine this resource[0m
+byui.cit260.adrift.view.SceneView - [31mInvalid selection you only have 0.0[31m Aluminum to mine.[0m
+byui.cit260.adrift.view.SceneView - [31m
+*** Invalid selection *** Try Again[0m

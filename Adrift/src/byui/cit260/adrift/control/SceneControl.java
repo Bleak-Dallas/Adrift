@@ -47,12 +47,12 @@ public class SceneControl {
     int column;
     double amountToMine;
     double sceneAmount;
-    String resourceDescription;
     String currentInventoryDesc;
     
-        public boolean mineResources(String resourceDescription, int row, int column)
+        public boolean mineResources(int row, int column)
                 throws SceneControlException, BuggyControlException {
             
+        String resourceDescription = locations[row][column].getScene().getResourceDescription();
         double resourceAmount = locations[row][column].getScene().getResourceAmount();
         double hammer = tool[ToolType.hammer.ordinal()].getQuantityInStock();
         double shovel = tool[ToolType.shovel.ordinal()].getQuantityInStock();

@@ -68,7 +68,7 @@ public class SceneView extends View{
                 break;
             case 'M': {
            try {               
-               sceneControl.mineResources(resourceDescription, row, column);
+               sceneControl.mineResources(row, column);
            } catch (SceneControlException | BuggyControlException ex) {
                ErrorView.display(this.getClass().getName(),ex.getMessage());
            }
