@@ -32,7 +32,7 @@ public class PreMissionView extends View{
             + "\n"
             + "\n ======================================="
             + "\n  You may choose a maximum of 4 of any"
-            + "\n  item with a total of 12 items"
+            + "\n  item with a total of 10 items"
             + "\n ======================================="
             + "\nR - Food Rations"
             + "\nT - O2 Tanks"
